@@ -1,0 +1,7 @@
+node_modules/
+
+# ESP-IDF build products and local configuration.
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
