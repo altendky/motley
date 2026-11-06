@@ -1,0 +1,16 @@
+node_modules/
+
+# Rebuildable OpenLore artifacts. Authored configuration, memory and decisions
+# are retained; do not ignore the entire .openlore directory.
+.openlore/analysis/
+.openlore/cache/
+.openlore/logs/
+.openlore/telemetry/
+.openlore/session-ledger/
+.openlore/runtime/
+
+# ESP-IDF build products and local configuration.
+build/
+managed_components/
+sdkconfig
+sdkconfig.old

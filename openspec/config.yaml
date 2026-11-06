@@ -1,0 +1,14 @@
+schema: spec-driven
+
+context: |
+  Motley is configurable ESP32-C6 firmware using C++, ESP-IDF and esp-matter.
+  Initial use: externally powered wired temperature/humidity sensing integrated
+  with Home Assistant over Matter/Thread. Sensor heads are wired back to the
+  controller or expansion board; they are not independent wireless nodes.
+  Current intended hardware is Adafruit Feather, PCA9548 STEMMA QT multiplexer
+  and SHT45 breakouts, targeting about six feet of cable per remote branch.
+  Optional external heater switching is planned. Router operation, long battery
+  life and the historical Velux application are deferred.
+  Requirements are intended behavior, not claims of implemented firmware.
+  Preserve MOT-* requirement IDs through edits. Implementation anchors belong
+  only on requirements with real implementation evidence.

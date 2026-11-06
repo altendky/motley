@@ -1,0 +1,28 @@
+{
+  "version": "1.2.0",
+  "projectType": "unknown",
+  "openspecPath": "./openspec",
+  "analysis": {
+    "maxFiles": 100000,
+    "includePatterns": [],
+    "excludePatterns": [
+      "node_modules/**",
+      "build/**",
+      "managed_components/**",
+      "vendor/**",
+      "third_party/**",
+      "esp-idf/**",
+      "esp-matter/**"
+    ]
+  },
+  "generation": {
+    "domains": "auto"
+  },
+  "embedding": null,
+  "autoInit": false,
+  "panicResponse": {
+    "mode": "off"
+  },
+  "createdAt": "2026-11-06T14:10:24.476Z",
+  "lastRun": null
+}

@@ -1,0 +1,20 @@
+{
+  "name": "motley-devtools",
+  "private": true,
+  "description": "Local requirements and source-navigation tooling for Motley firmware",
+  "engines": {
+    "node": "^22.22.0 || >=23.5.0"
+  },
+  "scripts": {
+    "lore": "openlore",
+    "lore:analyze": "openlore analyze --no-embed --reanalyze",
+    "lore:mapping": "openlore mapping refresh",
+    "specs": "OPENSPEC_TELEMETRY=0 openspec",
+    "specs:validate": "OPENSPEC_TELEMETRY=0 openspec validate --specs --strict --no-interactive"
+  },
+  "devDependencies": {
+    "@fission-ai/openspec": "1.16.0",
+    "apache-arrow": "18.1.0",
+    "openlore": "3.5.0"
+  }
+}
