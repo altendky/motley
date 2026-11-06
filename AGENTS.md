@@ -11,8 +11,10 @@ technical assumptions. The npm manifest supplies development tools, not firmware
   need to operate RQML stages or maintain its artifacts manually.
 - Preserve requirement `id` and acceptance-criterion `id` values through prose,
   title, location and design changes. IDs identify obligations, not source files.
-- Start a focused change with `npm run rqml -- show <id> --spec requirements.rqml`
-  and `npm run rqml -- impact <id> --spec requirements.rqml --json`.
+- Start a focused change with MCP `rqml_show` and `rqml_impact`, using the path to
+  `requirements.rqml`. The CLI equivalents are `npm run rqml -- show <id> --spec
+  requirements.rqml` and `npm run rqml -- impact <id> --spec requirements.rqml
+  --json`. Use path inputs rather than loading the complete XML into each request.
 - Apply all `MOT-ENG-*` constraints to every firmware change, even if the impact
   traversal does not retrieve them. Domain goal links do not establish complete
   constraint applicability or a minimal implementation edit set.
@@ -53,6 +55,12 @@ Keep `requirements.rqml` and authored `.rqml/` state under version control,
 including `.rqml/baseline.json` when real implementation links create it. Never
 treat baselines as disposable caches or refresh them without review.
 
-Use the pinned local CLI through npm. No global installation, agent-host hooks,
-MCP registration or source-navigation companion is configured. Read
-`docs/tooling.md` and `docs/tooling-validation.md` for observed capabilities and gaps.
+Codex configuration enables a pinned project MCP server and the RQML plugin from
+the repository marketplace. From the root, run `npm ci`, then `npm run codex`
+so plugin hooks inherit the local RQML CLI on PATH. Skills come from the plugin;
+its bundled MCP launcher is disabled to avoid duplicating the project server.
+Hook activation requires the host's normal trust review. The upstream plugin
+uses standard check strictness by default; `requirements:check` remains the
+explicit strict completion check and still reports missing firmware/test links.
+No source-navigation companion is configured. Read `docs/tooling.md` and
+`docs/tooling-validation.md` for observed capabilities and gaps.

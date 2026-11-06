@@ -6,11 +6,48 @@ This branch evaluates RQML as the requirements and traceability layer. The curre
 agent discusses behavior, maintains the specification, edits implementation and
 runs verification. A source-navigation companion remains a separate decision.
 
-`@rqml/cli` 0.11.0 is an exact local development dependency. The lockfile resolves
-core 0.9.0 and schema package 0.2.2, whose document schema is 2.2.0. Run `npm ci`,
-then invoke `npm run rqml -- <command>`. No global CLI, model API, MCP server or
-agent-host hooks are needed for the trial. Installation uses published package
-contents with dependency lifecycle scripts disabled.
+`@rqml/cli` 0.11.0 and `@rqml/mcp` 0.8.0 are exact local development dependencies.
+The lockfile resolves core 0.9.0 and schema package 0.2.2, whose document schema
+is 2.2.0. Run `npm ci`, then invoke `npm run rqml -- <command>` or use the Codex
+MCP tools. Installation uses published package contents with dependency lifecycle
+scripts disabled. No global RQML CLI or model API is required.
+
+## Repository-scoped Codex configuration
+
+`.codex/config.toml` registers the stdio RQML server with `npm run --silent
+rqml:mcp`. Launch from the repository root; npm supplies the local binary.
+The configured marketplace source `.` also resolves from that launch directory,
+not from the `.codex/` folder. The explicit local marketplace registration is
+needed by the tested Codex CLI; the marketplace JSON alone was not discovered.
+There are no machine-specific paths or runtime package downloads in this launcher.
+The silent option keeps npm banners off the MCP protocol stream.
+
+`.agents/plugins/marketplace.json` declares the upstream `rqml-codex` plugin at
+commit `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`. The project config enables
+`rqml@motley`, providing the authoring, initialization, status, design, plan,
+check and review skills plus upstream hooks. Codex installs/caches the selected
+plugin outside the repository. No plugin source is vendored here.
+
+The plugin's bundled MCP server uses an unpinned npx launch, so its MCP entry is
+disabled through plugin-scoped policy. The standalone project server supplies
+the tools at the pinned lockfile version; skills and hooks remain enabled.
+
+From the repository root, launch Codex with `npm run codex` after `npm ci`.
+npm adds the local CLI to PATH, which the upstream hooks require.
+Starting Codex another way requires making
+that same CLI available on its PATH; missing CLI causes the upstream hooks to
+fail open. The launcher uses an already installed Codex, without downloading it.
+
+Codex loads project config only in a trusted project. Reload/restart to discover
+the integration, confirm the plugin/MCP views, and review the plugin's hooks in
+the host before relying on automatic feedback. Committed configuration does not
+establish that the current session has activated or trusted those hooks.
+
+Upstream hooks use standard strictness by default, including their stop check.
+This project retains the separate strict `requirements:check`, which currently
+fails for unimplemented/unverified work. A passing default hook check does not
+replace that strict result or actual test execution. No approval-mode overrides
+or project trust settings are committed.
 
 The only normative source is `requirements.rqml`; no parallel hand-maintained
 Markdown requirements are introduced. Native `overview`, `show`, `impact` and
@@ -78,9 +115,10 @@ as a visible completion target rather than adding fictional links or silently
 using standard mode as an acceptance gate.
 
 All requirements start in RQML's draft lifecycle. A later status transition must
-reflect actual review; it is not execution evidence. No RQML host plugin or
-approval gate is installed, and routine work proceeds from agreed requirements
-through conversation with the current agent.
+reflect actual review; it is not execution evidence. Once loaded and trusted,
+the RQML plugin supplies its pre-edit approval gate, spec validation and stop
+checks. Routine work still follows agreed requirements through conversation
+with the current agent; host hook activation is distinct from code acceptance.
 
 ## Observed limits
 
@@ -105,6 +143,9 @@ through conversation with the current agent.
 - [RQML project and agent loop](https://github.com/rqml-org/rqml)
 - [CLI documentation](https://rqml.org/docs/tooling/cli/)
 - [Core API and model](https://rqml.org/docs/tooling/core/)
+- [Pinned RQML Codex plugin](https://github.com/rqml-org/rqml-codex/tree/4b0272e7d13eebcbdf638b0abdf4018b2f3c505a)
+- [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)
+- [Codex repository plugin configuration](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo)
 - [OpenLore alternative, PR #2](https://github.com/altendky/motley/pull/2)
 
 The comparison follows the requirements-driven agent development research in the

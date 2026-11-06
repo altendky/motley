@@ -68,6 +68,23 @@ invalidate old implementation baselines, and `verifiedBy` links do not establish
 test freshness or execution. See [tooling](docs/tooling.md) and the
 [comparison and validation record](docs/tooling-validation.md).
 
+## Codex integration
+
+`.codex/config.toml` enables the locally pinned RQML MCP server. The repository
+marketplace in `.agents/plugins/marketplace.json` also selects a pinned revision
+of the upstream RQML Codex plugin for its skills and hooks. Its bundled MCP
+launcher is disabled so the local, locked server is the only RQML server.
+
+From the repository root, run `npm ci`, then `npm run codex`. This puts the RQML CLI
+on PATH for the plugin hooks. Codex must be installed separately. Reload/restart
+Codex after changing repository configuration, and use its plugin and MCP views
+to confirm the integration is loaded. Project configuration requires a trusted
+project; hooks additionally require the normal host trust review.
+
+The plugin is cached by Codex outside the repository. It uses standard checking
+by default; the project's separate strict check remains an unmet completion gate.
+See [tooling](docs/tooling.md) for setup and verification details.
+
 ## Next implementation step
 
 Select and record a compatible SDK set, establish the ESP32-C6 firmware build,

@@ -1,0 +1,17 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+[mcp_servers.rqml]
+command = "npm"
+args = ["run", "--silent", "rqml:mcp"]
+
+[marketplaces.motley]
+source_type = "local"
+# Launch npm run codex from the repository root so this resolves the marketplace.
+source = "."
+
+[plugins."rqml@motley"]
+enabled = true
+
+# Use the pinned project server above instead of the plugin's unpinned npx server.
+[plugins."rqml@motley".mcp_servers.rqml]
+enabled = false

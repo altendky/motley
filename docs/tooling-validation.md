@@ -1,7 +1,7 @@
 # RQML comparison and validation
 
 Observed on 2026-11-06 with Node 26.13.0 and npm 12.2.1 on Linux x86-64.
-Installed packages: `@rqml/cli` 0.11.0, core 0.9.0, schema package 0.2.2;
+Initial CLI-only trial packages: `@rqml/cli` 0.11.0, core 0.9.0, schema package 0.2.2;
 document schema 2.2.0. These are tool and representation checks, not firmware or
 hardware acceptance.
 
@@ -99,3 +99,43 @@ The validated uncommitted working content is identified by these SHA-256 values:
 No ESP-IDF build, sensor read, cable qualification, Home Assistant commissioning,
 reboot recovery or heater test has run. These remain the same pending application
 acceptance work as in the OpenLore alternative.
+
+## Codex MCP and plugin configuration follow-up
+
+The follow-up adds `@rqml/mcp` 0.8.0, a repository Codex MCP entry, and the upstream
+RQML Codex plugin pinned to commit `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`.
+The plugin's bundled unpinned MCP launcher is disabled; the local locked server
+supplies the tools. No model calls or test/requirement mutations were needed for
+the MCP probes.
+
+| Check | Observed result |
+| --- | --- |
+| Clean `npm ci` with the MCP dependency | Exit 0; 102 dependency packages installed |
+| Requirement validation and strict lint | Exit 0; unchanged requirements |
+| `codex mcp get rqml --json` on Codex 0.166.0 | Recognized the enabled project stdio server and npm launcher |
+| `npm run --silent codex -- plugin marketplace list --json` at the repo root | Recognized the `motley` local marketplace after explicit project registration |
+| MCP initialize and tools/list | Successful handshake and 13 RQML tools, with clean protocol stdout |
+| MCP `rqml_show` using a path input | Read `MOT-SENS-004` and returned its measurement-validity requirement |
+| MCP strict `rqml_check` | Returned the existing unimplemented/unverified coverage gaps |
+| Requirements content | Unchanged SHA-256 `031aded3a99a30bb903b584690881553258c80a6f5d2dcf6e8e229c2e3195cab` |
+
+Codex CLI did not discover the repository marketplace JSON by itself. The explicit
+`marketplaces.motley` entry fixes discovery at the repository root. Its source
+`.` is resolved from the launch directory, so the documented entry point is
+`npm run codex` from that root. This also exposes the local RQML CLI on PATH for
+the upstream hooks. Launching from arbitrary subdirectories is not established.
+
+The plugin manifest, skill entry points, hook launcher, CLI lookup and default
+standard strictness were inspected at the pinned upstream revision. Installing
+or configuring a plugin is not evidence that its hooks are trusted or active.
+Actual Codex plugin installation/loading and trusted-hook execution have not
+been verified in the current session; confirm them after restarting on this
+branch. This follow-up commits no user-level configuration or hook trust state.
+
+Follow-up SHA-256 values:
+
+| File | SHA-256 |
+| --- | --- |
+| `package-lock.json` | `f1e40904b365f549692923b4842cb7d347f48e3a5e69b3f74a9ae70341dafcad` |
+| `.codex/config.toml` | `7155358a951bb3e3e9e50f26d84ca3f92a6c4f16b2dd0b605d850da747d7a1a1` |
+| `.agents/plugins/marketplace.json` | `8ece5e5ead6a66d3846b335d65a8b6742dcc0edb77f4938a6d697694ab601964` |
