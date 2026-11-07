@@ -21,6 +21,21 @@ repos:
 
   - repo: local
     hooks:
+      - id: firmware-metadata-tests
+        name: test firmware identity and artifact handling
+        entry: uv run scripts/test_firmware.py
+        language: system
+        files: ^(scripts/|firmware/|\.github/workflows/ci\.yml|\.pre-commit-config\.yaml)
+        pass_filenames: false
+
+      - id: firmware-build
+        name: build and verify minimal ESP32-C6 firmware
+        entry: uv run scripts/firmware.py
+        language: system
+        stages: [manual]
+        always_run: true
+        pass_filenames: false
+
       - id: rqml-validate
         name: validate RQML
         entry: mise exec -- rqml validate requirements.rqml
@@ -36,8 +51,15 @@ repos:
         pass_filenames: false
 
       - id: rqml-check
-        name: check RQML coverage and drift
-        entry: mise exec -- rqml check requirements.rqml --strictness strict
+        name: check RQML consistency and drift
+        entry: mise exec -- rqml check requirements.rqml --strictness standard
+        language: system
+        always_run: true
+        pass_filenames: false
+
+      - id: rqml-gate
+        name: check mapped implementation approval
+        entry: mise exec -- rqml gate --spec requirements.rqml
         language: system
         always_run: true
         pass_filenames: false

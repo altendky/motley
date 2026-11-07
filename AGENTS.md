@@ -1,9 +1,9 @@
 # Motley development with RQML
 
-Read `docs/tooling.md` for tool setup and integration details. The maintained
-specification, `requirements.rqml`, currently contains only an empty draft scaffold.
-Develop product requirements and architectural decisions through discussion;
-do not populate them merely to demonstrate the tools or satisfy a gate.
+Read `docs/tooling.md` for tool setup and integration details. Develop the
+maintained specification, `requirements.rqml`, and architectural decisions
+through discussion; do not populate them merely to demonstrate the tools or
+satisfy a gate.
 `PLANNING_SESSION.md` is historical research, not approved specification content.
 Mise supplies development tools, not firmware.
 
@@ -11,6 +11,16 @@ Mise supplies development tools, not firmware.
 
 - Discuss intent before implementation, then maintain the affected requirements.
   The agent operates RQML and edits XML; the user need not maintain its artifacts.
+- Default to agreed requirements before meaningful maintained implementation
+  (`MOT-PROC-001`). Identify the governing requirements and affected obligations
+  during planning and review, and record real implementation links afterward.
+  Helpers, tests, and ordinary refactoring may support an existing requirement;
+  a separate requirement per function or file is unnecessary. Record the reason
+  and scope of an exception or temporary experiment before treating it as a
+  maintained capability.
+- Review actual changed source and configuration for missing requirement
+  mappings. RQML sees declared edges and cannot discover arbitrary unlinked
+  implementation. Approval and consistency checks do not replace that review.
 - Preserve requirement and acceptance-criterion IDs through prose, title,
   location and design changes. IDs identify obligations, not source files.
 - Before changing an existing artifact, use MCP `rqml_show` and `rqml_impact`
@@ -45,10 +55,11 @@ Mise supplies development tools, not firmware.
 - Record commands, results, applicable requirement content and tested source/test
   hashes or commit. Link review, structural checks and execution are distinct.
 - Run `mise exec -- pre-commit run --all-files` after changes. Pre-commit runs
-  schema validation, strict lint and strict coverage/drift checks. Report exit
-  codes and gaps. An empty scaffold passing is not evidence of product coverage.
-  Keep future unimplemented requirements visible without fabricated links or a
-  weakened gate.
+  schema validation, strict lint, standard consistency/drift checks, and a
+  separate mapped-implementation approval gate (`MOT-PROC-002`). Unimplemented
+  or unverified requirements are permitted backlog during incremental work;
+  report them through status/matrix without fabricating coverage. Report exit
+  codes and remaining gaps. Passing checks do not establish product completion.
 
 ## State and integrations
 
@@ -61,6 +72,7 @@ The MCP entry invokes mise itself. Upstream plugin hooks separately require the
 RQML CLI on Codex's PATH, for example through mise shell activation. The plugin's
 bundled MCP launcher is disabled to avoid duplicating the pinned project server.
 Hook activation requires the host's normal trust review. Upstream hooks use
-standard strictness; the pre-commit `rqml-check` hook is the strict completion
-check. No source-navigation companion is configured. Read `docs/tooling.md` for
+standard strictness; pre-commit combines standard consistency with the separate
+approval gate. Strict coverage remains an optional completeness assessment.
+No source-navigation companion is configured. Read `docs/tooling.md` for
 integration details and traceability boundaries.

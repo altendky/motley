@@ -1,0 +1,2 @@
+image = "espressif/idf:v6.0.2@sha256:0d8c9773d48a327233f9c1d7c654ff0bcf133ae24503ea2e97a57cfe02b8cb67"
+target = "esp32c6"
