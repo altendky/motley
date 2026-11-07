@@ -1,0 +1,29 @@
+min_version = "2026.11.2"
+
+[settings]
+locked = true
+# Replay the npm dependency graphs recorded alongside mise.lock.
+npm.package_manager = "aube"
+
+[tools]
+node = "24.21.0"
+# Reviewed v4 security backport published without v5's trusted-publisher evidence.
+# Its tarball matches the upstream tag and the previous npm lock; see docs/tooling.md.
+"npm:@rqml/cli" = { version = "0.11.0", trust_policy_excludes = ["fast-xml-parser@4.5.7"] }
+"npm:@rqml/mcp" = { version = "0.8.0", trust_policy_excludes = ["fast-xml-parser@4.5.7"] }
+
+[tasks.rqml]
+description = "Run the pinned RQML CLI"
+run = "rqml"
+
+[tasks."requirements:validate"]
+description = "Validate requirement schema and references"
+run = "rqml validate requirements.rqml"
+
+[tasks."requirements:lint"]
+description = "Lint requirements with strict semantics"
+run = "rqml lint requirements.rqml --strictness strict"
+
+[tasks."requirements:check"]
+description = "Check strict requirement coverage and implementation drift"
+run = "rqml check requirements.rqml --strictness strict"

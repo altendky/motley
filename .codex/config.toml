@@ -1,12 +1,12 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 
 [mcp_servers.rqml]
-command = "npm"
-args = ["run", "--silent", "rqml:mcp"]
+command = "mise"
+args = ["exec", "--", "rqml-mcp"]
 
 [marketplaces.motley]
 source_type = "local"
-# Launch npm run codex from the repository root so this resolves the marketplace.
+# Open Codex at the repository root so this resolves the marketplace.
 source = "."
 
 [plugins."rqml@motley"]

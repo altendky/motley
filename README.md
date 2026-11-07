@@ -1,97 +1,45 @@
 # Motley
 
-Configurable ESP32-C6 firmware for Home Assistant through Matter over Thread.
-The first application is an externally powered controller with remote wired
-temperature and humidity sensor heads.
+This repository has RQML requirements tooling configured. Product requirements,
+acceptance criteria and architectural decisions will be developed separately.
 
-This branch evaluates **RQML** as an alternative to the
-[OpenLore/OpenSpec setup in PR #2](https://github.com/altendky/motley/pull/2).
-It starts from the same planning-only `main` and preserves the same 12 requirements
-and 14 acceptance scenarios. It does not layer RQML over OpenLore or select a
-source-navigation companion.
+`requirements.rqml` is an intentionally empty draft: it contains no product
+goals, requirements, acceptance criteria, verification artifacts or trace links.
+`PLANNING_SESSION.md` preserves historical research; it is not an approved
+requirements or architecture document.
 
-## Current direction
+## Development tools
 
-- Adafruit ESP32-C6 Feather with modern C++, ESP-IDF and Espressif `esp-matter`.
-- Initially four temperature measurements and two humidity measurements, with
-  independently configurable locations.
-- Adafruit PCA9548 eight-channel STEMMA QT multiplexer and SHT45 breakouts as the
-  starting hardware; each identical sensor can have its own port.
-- Approximately six feet of four-wire cable per remote branch, subject to testing
-  the actual cable and electrical configuration.
-- Optional on/off control of an external accessory for a roughly 25 W, 120 V AC
-  heater. Switching hardware and any local regulation are not yet selected.
-- Safety, correctness, explicit errors, RAII and standard containers before
-  optimization. Unavoidable SDK pointer interfaces stay in adapters.
+Install [mise](https://mise.jdx.dev/) 2026.11.2 or newer. The project pins Node
+24.21.0, RQML CLI 0.11.0 and RQML MCP 0.8.0, including their dependency graphs.
 
-Thread router operation, long battery life and the earlier Velux controller are
-future work. The original [planning session](PLANNING_SESSION.md) remains a
-historical snapshot, not the current specification.
-
-## Requirements
-
-The authoritative [requirements.rqml](requirements.rqml) uses schema 2.2.0 and
-native IDs for requirements and acceptance criteria. Four packages contain:
-
-| Domain | Requirement IDs |
-| --- | --- |
-| Controller and integration | `MOT-PLAT-001` through `MOT-PLAT-003` |
-| Ports, sensor heads and readings | `MOT-SENS-001` through `MOT-SENS-004` |
-| C++ and verification constraints | `MOT-ENG-001` through `MOT-ENG-003` |
-| Conditional heater output | `MOT-OUT-001` and `MOT-OUT-002` |
-
-All firmware requirements are unimplemented and unverified. Scenario criteria are
-acceptance intent, not executed tests. Four explicit domain goals organize the
-declared graph; they do not provide source dependencies or implementation evidence.
-
-## Local tools
-
-Use Node satisfying `package.json` and npm. Firmware will use ESP-IDF's CMake build.
+From the repository root:
 
 ```sh
-npm ci
-npm run requirements:validate
-npm run requirements:lint
-npm run rqml -- show MOT-SENS-004 --spec requirements.rqml
-npm run rqml -- impact MOT-SENS-004 --spec requirements.rqml --json
-npm run rqml -- matrix requirements.rqml --json
+mise trust
+mise install --locked
+mise run requirements:validate
+mise run requirements:lint
+mise run requirements:check
+mise run rqml -- overview requirements.rqml
 ```
 
-`npm run requirements:check` runs the strict coverage/drift gate. It currently
-**exits 2**, reporting 12 unimplemented and 12 unverified requirements. Validation
-and lint pass. That distinction is intentional: no placeholder implementation or
-test links are added to make coverage appear complete.
-
-RQML links C++ files and detects file drift, but it does not validate `#function`
-fragments or discover C++ dependencies. Requirement edits do not automatically
-invalidate old implementation baselines, and `verifiedBy` links do not establish
-test freshness or execution. See [tooling](docs/tooling.md) and the
-[comparison and validation record](docs/tooling-validation.md).
+Validation, strict lint and the strict coverage/drift check pass for the empty
+scaffold. That verifies tool operation; it establishes no product coverage or
+firmware correctness. Once requirements are authored, missing implementation and
+verification links remain visible through the same strict check.
 
 ## Codex integration
 
-`.codex/config.toml` enables the locally pinned RQML MCP server. The repository
-marketplace in `.agents/plugins/marketplace.json` also selects a pinned revision
-of the upstream RQML Codex plugin for its skills and hooks. Its bundled MCP
-launcher is disabled so the local, locked server is the only RQML server.
+Open Codex normally at the repository root after installing the tools.
+`.codex/config.toml` starts the pinned MCP server with `mise exec -- rqml-mcp`.
+The project does not install Codex or require a special Codex launcher.
 
-From the repository root, run `npm ci`, then `npm run codex`. This puts the RQML CLI
-on PATH for the plugin hooks. Codex must be installed separately. Reload/restart
-Codex after changing repository configuration, and use its plugin and MCP views
-to confirm the integration is loaded. Project configuration requires a trusted
-project; hooks additionally require the normal host trust review.
+The repository marketplace pins the upstream RQML Codex plugin for skills and
+hooks. Its unpinned bundled MCP server is disabled to avoid a duplicate server.
+Plugin hooks separately require `rqml` on Codex's PATH, for example through mise
+shell activation. Project and hook trust use the host's normal review process.
+Confirm loaded tools and hooks in the host after configuration changes.
 
-The plugin is cached by Codex outside the repository. It uses standard checking
-by default; the project's separate strict check remains an unmet completion gate.
-See [tooling](docs/tooling.md) for setup and verification details.
-
-## Next implementation step
-
-Select and record a compatible SDK set, establish the ESP32-C6 firmware build,
-and prove one SHT45 reading through the multiplexer reaches Home Assistant and
-recovers after a power cycle. Cable qualification and heater output acceptance
-remain separate hardware checks.
-
-Before implementation, resolve measurement freshness limits, unavailable-reading
-representation, configuration persistence and endpoint allocation. For heater
-control, resolve accessory selection and manual versus local temperature control.
+See [tooling](docs/tooling.md) for the workflow and known limits, and
+[setup verification](docs/tooling-validation.md) for observed results.

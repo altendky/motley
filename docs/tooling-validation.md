@@ -1,141 +1,67 @@
-# RQML comparison and validation
+# RQML setup verification
 
-Observed on 2026-11-06 with Node 26.13.0 and npm 12.2.1 on Linux x86-64.
-Initial CLI-only trial packages: `@rqml/cli` 0.11.0, core 0.9.0, schema package 0.2.2;
-document schema 2.2.0. These are tool and representation checks, not firmware or
-hardware acceptance.
+The PR configures mise, RQML CLI/MCP and the repository Codex plugin with an empty
+draft specification. Product goals, requirements, acceptance criteria, decisions,
+verification artifacts and trace links are intentionally deferred.
+`PLANNING_SESSION.md` is unchanged historical material.
 
-This branch starts at planning-only main commit
-`6ee995ecdebdfbb1baac7b95bdce67baae57205e`. The comparison corpus is the
-[OpenLore branch at 1b4f73a725c962285ba55575f065faf71dfc9929](https://github.com/altendky/motley/tree/1b4f73a725c962285ba55575f065faf71dfc9929),
-submitted as [PR #2](https://github.com/altendky/motley/pull/2). The planning
-document remains unchanged in both alternatives.
+## Tool versions
 
-## Same requirements, different supporting tools
+- mise 2026.11.2 on Linux x64.
+- Node 24.21.0; RQML CLI 0.11.0; MCP 0.8.0; core 0.9.0.
+- Schema package 0.2.2, supplying document schema 2.2.0.
+- Codex CLI 0.166.0; upstream RQML plugin pinned to
+  `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`.
 
-Programmatic comparison confirmed the same 12 requirement IDs, titles, statements
-and 14 acceptance scenarios. Whitespace and the OpenLore-to-RQML report name in
-one criterion are the only normative-text adaptations. Each RQML criterion also
-has a stable native ID; scenario titles are preserved as XML comments.
+## Dependency installation
 
-| Concern | OpenLore/OpenSpec PR #2 | This RQML alternative |
-| --- | --- | --- |
-| Authored requirements | Markdown in four domain specs | XML in four requirement packages |
-| Requirement identity | Project `MOT-*` convention inside headings | Native `id` separate from title; criterion IDs too |
-| Scoped retrieval observed | Keyword requirement search and function orientation | `show`, scoped views, declared `impact` and matrix |
-| C++ navigation observed | Function extraction and a cross-file call | No recovered source call/include graph |
-| C++ implementation links observed | Exact symbol anchor reported `not-assessed` | File locator/hash works; `#symbol` is not verified |
-| Maintenance observed | Initial C++ mapping limitation established | File changes/moves detected; explicit repair preserves requirements |
-| Test evidence | Links/graphs are not test execution | `verifiedBy` is a relationship; no test content or existence checking through the drift gate |
-| Initial completion state | 12 unmapped requirements | 12 unimplemented and 12 unverified requirements |
+`mise install --locked` previously installed both pinned RQML tools successfully.
+The move from npm preserved the same 99 package names, versions and integrity
+hashes across the two mise dependency graphs. No local `node_modules/` is needed.
 
-These trials were not identical workload benchmarks. RQML's maintenance cases
-were broader than the initial OpenLore fixture. Neither option has demonstrated
-the complete repeated-change application workflow, and neither has run firmware
-tests. RQML is the more directly useful requirements/identity layer in this trial;
-OpenLore supplies source navigation that RQML lacks. No combined integration is
-configured or established by this PR.
+The exact `fast-xml-parser@4.5.7` trust-policy exception follows a review of the
+registry publisher history, tarball integrity and all 45 packaged files against
+the upstream tag. See [tooling](tooling.md) for its rationale and the remaining
+provenance limitation. The exception does not cover other versions.
 
-## Project checks
+## Empty-spec checks
 
-| Operation | Observed result |
+Observed on 2026-11-07 on Linux x64, against the final empty scaffold:
+
+| Check | Result |
 | --- | --- |
-| Clean `npm ci --no-audit --no-fund --loglevel=error` | Exit 0; six dependency packages installed |
-| `npm run requirements:validate` | Exit 0; valid schema 2.2.0 and references |
-| `npm run requirements:lint` | Exit 0; no strict lint findings |
-| `npm run requirements:check` | Exit 2; 12 unimplemented and 12 unverified requirements, no orphan requirements or uncovered goals |
-| Standard check | Exit 0 while still reporting the missing implementation/test links |
-| `show MOT-SENS-004` | Returned the statement, native criterion ID and goal edge |
-| `impact MOT-SENS-004` | Returned its goal and the other sensing requirements through declared goal edges |
-| Matrix JSON | Twelve draft, unimplemented, unverified requirement rows |
+| `mise install --locked node npm:@rqml/cli npm:@rqml/mcp` | Exit 0; all three pinned tools already installed |
+| `mise run requirements:validate` | Exit 0; valid schema 2.2.0 and references |
+| `mise run requirements:lint` | Exit 0; no strict lint findings |
+| `mise run requirements:check` | Exit 0; strict check passes with no coverage/drift findings |
+| MCP `rqml_validate` with a path input | Valid schema 2.2.0; no diagnostics |
+| MCP `rqml_status` with a path input | Draft document; zero requirements, zero edges, no coverage findings |
+| MCP `rqml_check` with strict strictness and a path input | Pass; valid document, no coverage/drift findings |
 
-The strict check is an intentionally unmet completion gate. A green standard
-check is not used to hide the initial gaps. No project implementation/test edges
-or reviewed-content baseline were fabricated.
+Passing the empty specification demonstrates tool operation and the absence of
+authored obligations; it establishes no product implementation or test coverage.
 
-## Disposable C++ trace trial
-
-Twenty-eight CLI operations exercised two synthetic requirements with a shared
-C++ implementation file, two function fragments, one shared test locator and a
-declared goal. The fixture's approved statuses were test data, not human approval
-of Motley requirements. No C++ code was compiled and no behavioral test ran.
-
-| Case | Observed result |
-| --- | --- |
-| Three implementation links and two test links | Recorded successfully; a strict fixture check passed |
-| Many-to-many matrix | One requirement had two code locators; both requirements shared a code locator and test |
-| Requirement retitle | Requirement and criterion IDs stayed unchanged; show and check succeeded |
-| Behavior-changing statement and acceptance edit | Strict check still passed and implementation baseline bytes were unchanged |
-| Change one function in the linked C++ file | Strict check exited 2 with changed implementation findings for whole-file links |
-| Restore the original source bytes | Baseline check passed again |
-| Replace fragment with `#does_not_exist` | Link and strict check passed; C++ symbol existence was not validated |
-| Move the implementation file | Strict check exited 2 with missing implementation findings |
-| Repoint all affected edges with `link --update` | Strict check passed; the requirements section remained byte-identical |
-| Change the linked test's assertion | Strict check still passed |
-| Remove the linked test file | Strict check still passed |
-| Declare a nonexistent local goal endpoint | Document validation failed with exit 1 |
-| Start CLI impact from an external source locator | Rejected with exit 64; use matrix inspection for reverse file-to-requirement lookup |
-
-The matrix called the synthetic rows `implemented` and `verified` even though no
-behavioral tests ran. Those labels indicate trace relationships; they must not be
-reported as execution evidence. The unchanged baseline after a requirement edit
-also means the agent must explicitly reconsider previous implementation and
-verification against the new requirement content.
-
-The fixture and raw operation outputs were temporary trial material, removed
-after these findings were recorded. The source-navigation companion, function
-resolution, requirement-revision invalidation and test freshness remain distinct
-work items. No automatic RQML/OpenLore bridge or agent-host hooks were tested.
-
-## Content identification
-
-The validated uncommitted working content is identified by these SHA-256 values:
+Tested content SHA-256 values:
 
 | File | SHA-256 |
 | --- | --- |
-| `requirements.rqml` | `031aded3a99a30bb903b584690881553258c80a6f5d2dcf6e8e229c2e3195cab` |
-| `package-lock.json` | `696bab5a168e885dbd9afb6f284af0691e67f541eb791da2a1ffc0dca979c4a1` |
+| `requirements.rqml` | `0a3a4ef31135e79285edbf612f168f13d3465b06847271c5609c2e5436cb4fd1` |
+| `mise.toml` | `17e3011c8134877e625381fda5b26ea229f52cb6e82194754816147fab364e34` |
+| `mise.lock` | `594b29b016d9a212ed529422368fd5590644e603405c17e0a73533aba2a5b4e5` |
+| `.codex/config.toml` | `ab27cacf1bc97a78e45996ea5ba142457d0c14a50334d3bd3bf2d2762ecb21e5` |
 
-No ESP-IDF build, sensor read, cable qualification, Home Assistant commissioning,
-reboot recovery or heater test has run. These remain the same pending application
-acceptance work as in the OpenLore alternative.
+## Host integration boundaries
 
-## Codex MCP and plugin configuration follow-up
+The existing project MCP configuration has completed initialization, advertised
+13 tools and served read-only calls in Codex. The RQML SessionStart hook has fired
+in this conversation. Those startup observations predate the empty-spec reset;
+the read-only empty-spec MCP calls above succeeded through that connection.
 
-The follow-up adds `@rqml/mcp` 0.8.0, a repository Codex MCP entry, and the upstream
-RQML Codex plugin pinned to commit `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`.
-The plugin's bundled unpinned MCP launcher is disabled; the local locked server
-supplies the tools. No model calls or test/requirement mutations were needed for
-the MCP probes.
+The MCP launcher invokes mise directly; Codex does not require a special launcher.
+Plugin hooks separately need `rqml` on the host process PATH and normal hook trust.
+An available MCP server alone does not establish hook activation in every host.
+Only Linux x64 execution has been verified; other platforms have lock targets.
 
-| Check | Observed result |
-| --- | --- |
-| Clean `npm ci` with the MCP dependency | Exit 0; 102 dependency packages installed |
-| Requirement validation and strict lint | Exit 0; unchanged requirements |
-| `codex mcp get rqml --json` on Codex 0.166.0 | Recognized the enabled project stdio server and npm launcher |
-| `npm run --silent codex -- plugin marketplace list --json` at the repo root | Recognized the `motley` local marketplace after explicit project registration |
-| MCP initialize and tools/list | Successful handshake and 13 RQML tools, with clean protocol stdout |
-| MCP `rqml_show` using a path input | Read `MOT-SENS-004` and returned its measurement-validity requirement |
-| MCP strict `rqml_check` | Returned the existing unimplemented/unverified coverage gaps |
-| Requirements content | Unchanged SHA-256 `031aded3a99a30bb903b584690881553258c80a6f5d2dcf6e8e229c2e3195cab` |
-
-Codex CLI did not discover the repository marketplace JSON by itself. The explicit
-`marketplaces.motley` entry fixes discovery at the repository root. Its source
-`.` is resolved from the launch directory, so the documented entry point is
-`npm run codex` from that root. This also exposes the local RQML CLI on PATH for
-the upstream hooks. Launching from arbitrary subdirectories is not established.
-
-The plugin manifest, skill entry points, hook launcher, CLI lookup and default
-standard strictness were inspected at the pinned upstream revision. Installing
-or configuring a plugin is not evidence that its hooks are trusted or active.
-Actual Codex plugin installation/loading and trusted-hook execution have not
-been verified in the current session; confirm them after restarting on this
-branch. This follow-up commits no user-level configuration or hook trust state.
-
-Follow-up SHA-256 values:
-
-| File | SHA-256 |
-| --- | --- |
-| `package-lock.json` | `f1e40904b365f549692923b4842cb7d347f48e3a5e69b3f74a9ae70341dafcad` |
-| `.codex/config.toml` | `7155358a951bb3e3e9e50f26d84ca3f92a6c4f16b2dd0b605d850da747d7a1a1` |
-| `.agents/plugins/marketplace.json` | `8ece5e5ead6a66d3846b335d65a8b6742dcc0edb77f4938a6d697694ab601964` |
+Earlier product drafts and disposable tooling trials are excluded from the
+current setup documentation. Their earlier commits remain in Git history; no
+fixture code or invented implementation/test links are retained in the spec.

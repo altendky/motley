@@ -1,153 +1,112 @@
-# Requirements with RQML
+# RQML tooling
 
-## Scope and installation
+## Scope
 
-This branch evaluates RQML as the requirements and traceability layer. The current
-agent discusses behavior, maintains the specification, edits implementation and
-runs verification. A source-navigation companion remains a separate decision.
+This setup supplies requirements tooling and an empty specification. It does not
+select product behavior, architecture, hardware or an implementation plan.
+`requirements.rqml` contains only document metadata and an empty requirements
+section. Add artifacts after discussing their intent; no example obligation is
+included as a placeholder.
 
-`@rqml/cli` 0.11.0 and `@rqml/mcp` 0.8.0 are exact local development dependencies.
-The lockfile resolves core 0.9.0 and schema package 0.2.2, whose document schema
-is 2.2.0. Run `npm ci`, then invoke `npm run rqml -- <command>` or use the Codex
-MCP tools. Installation uses published package contents with dependency lifecycle
-scripts disabled. No global RQML CLI or model API is required.
+## Installation and locked state
 
-## Repository-scoped Codex configuration
+Use mise 2026.11.2 or newer. `mise.toml` pins Node 24.21.0,
+`npm:@rqml/cli` 0.11.0 and `npm:@rqml/mcp` 0.8.0. Review the project configuration,
+run `mise trust`, then `mise install --locked`.
 
-`.codex/config.toml` registers the stdio RQML server with `npm run --silent
-rqml:mcp`. Launch from the repository root; npm supplies the local binary.
-The configured marketplace source `.` also resolves from that launch directory,
-not from the `.codex/` folder. The explicit local marketplace registration is
-needed by the tested Codex CLI; the marketplace JSON alone was not discovered.
-There are no machine-specific paths or runtime package downloads in this launcher.
-The silent option keeps npm banners off the MCP protocol stream.
+Mise installs tools outside the checkout. Its embedded aube installer replays the
+dependency graphs in `mise.lock` and `.mise/locks/` with dependency lifecycle
+scripts disabled. Commit sidecars with the lockfile; `mise lock --sidecars` lists
+them. Core is 0.9.0, schema package is 0.2.2, and document schema is 2.2.0.
 
-`.agents/plugins/marketplace.json` declares the upstream `rqml-codex` plugin at
-commit `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`. The project config enables
-`rqml@motley`, providing the authoring, initialization, status, design, plan,
-check and review skills plus upstream hooks. Codex installs/caches the selected
-plugin outside the repository. No plugin source is vendored here.
+Both RQML tools declare an exact `fast-xml-parser@4.5.7` trust-policy exception.
+Aube flags this v4 release because the earlier-published v5.9.1 used a trusted
+publisher, while v4.5.7 used the existing human publisher. The reviewed tarball's
+SHA-512 matches the previous npm lock and all 45 packaged files match upstream
+commit `49a12f10e9a44da765f045ca0c60e8d9e5be5aa0` (tag `v4.5.7`). It contains the
+[comment/CDATA security backport](https://github.com/NaturalIntelligence/fast-xml-parser/commit/e561c2188607a108a9a8d9b6428902a28aad8fb0)
+and has no installation lifecycle scripts. This review supports only that exact
+exception and does not supply the missing provenance.
 
-The plugin's bundled MCP server uses an unpinned npx launch, so its MCP entry is
-disabled through plugin-scoped policy. The standalone project server supplies
-the tools at the pinned lockfile version; skills and hooks remain enabled.
+The lock includes Linux x64/ARM64, macOS x64/ARM64 and Windows x64 tool targets.
+Only Linux x64 execution has been verified. To deliberately update a tool and its
+dependency graph, review the changes produced by a command such as:
 
-From the repository root, launch Codex with `npm run codex` after `npm ci`.
-npm adds the local CLI to PATH, which the upstream hooks require.
-Starting Codex another way requires making
-that same CLI available on its PATH; missing CLI causes the upstream hooks to
-fail open. The launcher uses an already installed Codex, without downloading it.
+```sh
+MISE_LOCKED=0 mise lock --bump --platform linux-x64,linux-arm64,macos-x64,macos-arm64,windows-x64 -- npm:@rqml/cli
+mise install --locked
+```
 
-Codex loads project config only in a trusted project. Reload/restart to discover
-the integration, confirm the plugin/MCP views, and review the plugin's hooks in
-the host before relying on automatic feedback. Committed configuration does not
-establish that the current session has activated or trusted those hooks.
+## Codex MCP and plugin
 
-Upstream hooks use standard strictness by default, including their stop check.
-This project retains the separate strict `requirements:check`, which currently
-fails for unimplemented/unverified work. A passing default hook check does not
-replace that strict result or actual test execution. No approval-mode overrides
-or project trust settings are committed.
+`.codex/config.toml` registers `mise exec -- rqml-mcp` as the project stdio server.
+Install tools before opening Codex normally at the repository root. The launcher
+has no machine-specific paths and passes protocol stdout through without task
+banners. Mise can try to install missing tools during startup.
 
-The only normative source is `requirements.rqml`; no parallel hand-maintained
-Markdown requirements are introduced. Native `overview`, `show`, `impact` and
-`matrix` commands provide readable and JSON views. IDs are separate attributes,
-so ordinary title changes do not rename the requirement or its acceptance criteria.
+The local marketplace is explicitly registered as `motley` with source `.`;
+that source resolves from the launch directory. The marketplace pins the upstream
+`rqml-codex` plugin to commit `4b0272e7d13eebcbdf638b0abdf4018b2f3c505a`.
+`rqml@motley` supplies authoring, initialization, status, design, plan, check and
+review skills plus upstream hooks. Codex caches the plugin outside this repo.
 
-The twelve requirements and fourteen acceptance scenarios preserve PR #2's
-intent. Whitespace is normalized; one scenario's tool-specific phrase changes
-from a clean OpenLore report to a clean RQML report. Scenario titles are retained
-as XML comments, while native criterion IDs identify their acceptance obligations.
-Four declared goals carry the original domain purpose/scope. No implementation
-or verification edges are present in the project baseline.
+The plugin's unpinned npx MCP launcher is disabled through plugin-scoped policy.
+The pinned project server supplies the tools. The project neither installs Codex
+nor requires a Codex wrapper. Plugin hooks separately look up `rqml` on Codex's
+PATH; mise shell activation can supply it. Missing CLI causes those hooks to
+fail open even when the independently launched MCP server works.
 
-## Agent loop
+Project configuration and hooks require the host's normal trust review. Confirm
+loaded tools and hooks after changing configuration. Upstream hooks use standard
+strictness; the project's explicit completion check is strict. No approval-mode
+overrides, user trust state or source-navigation companion are committed.
 
-1. Discuss the change and update the affected requirement and acceptance text,
-   retaining its IDs. Record unresolved questions explicitly.
-2. Use `show` for the requirement and its direct trace neighborhood. Use `impact`
-   for transitive declared relationships, then include all applicable engineering
-   constraints. A shared goal may return siblings; another domain's constraints
-   can be absent unless explicitly related.
-3. Follow implementation/test locators, inspect the actual C++ symbols and callers,
-   and use matrix JSON to identify other requirements linked to the same file.
-   Match the underlying file as well as exact fragment strings, because C++ drift
-   baselines are whole-file. CLI `impact` accepts declared artifact IDs, not an
-   external code locator as the starting node.
-4. Identify preserved behavior, make the focused patch, and explain any necessary
-   expansion or redesign. Keep requirements independent of the current realization.
-5. Inspect link and implementation changes before recording/repointing links or
-   refreshing baselines. Run relevant checks; separately validate the specification
-   and report coverage/drift results.
-6. Record actual execution evidence against requirement and source/test content,
-   including commands, outcomes and remaining gaps. A link, baseline refresh and
-   passing behavioral test are different facts.
+## Requirements workflow
 
-An implementation link uses `rqml link <id> path/to/file.cpp#symbol --spec
-requirements.rqml`. A test relationship adds `--type verifiedBy`. `--update`
-replaces an existing edge locator; `--refresh <edge-id>` accepts changed content
-for an implementation edge after review. These operations do not execute tests.
+1. Discuss intent and author the relevant goals, requirements and acceptance
+   criteria. Preserve stable IDs when revising existing obligations.
+2. Record significant design decisions in `.rqml/adr/` and a staged plan in
+   `.rqml/plan.md` when needed. Do not create product decisions as tool examples.
+3. Read existing artifacts with `show` and inspect declared relationships with
+   `impact`. Review applicable constraints and actual source dependencies too.
+4. Implement agreed behavior, then record real code/test traces using `rqml link`;
+   review changes before repointing links or refreshing baselines.
+5. Run appropriate behavioral tests, validate/lint the specification, and run the
+   strict coverage/drift gate. Record commands, results and tested content.
 
-## State retention
+`mise run rqml -- overview requirements.rqml` provides a readable document view.
+`mise run rqml -- matrix requirements.rqml --json` reports coverage relationships.
 
-| Location | Treatment |
-| --- | --- |
-| `requirements.rqml` | Authoritative requirements, criteria and declared trace graph |
-| `.rqml/baseline.json`, when created | Version-controlled reviewed implementation content hashes |
-| `.rqml/adr/` and `.rqml/plan.md`, when created | Version-controlled authored decisions and plan |
-| `docs/tooling-validation.md` | Observed tool behavior and comparison limits |
-| `node_modules/` | Ignored tools and local npm cache |
+## Checks and evidence
 
-No baseline exists until real implementation links are recorded. Do not ignore
-the whole `.rqml/` directory or regenerate reviewed baselines as if they were a
-cache. Keep the reason for an intentional baseline refresh with the change.
+- `mise run requirements:validate` checks schema and referential integrity.
+- `mise run requirements:lint` applies strict semantic lint rules.
+- `mise run requirements:check` runs the strict coverage/drift gate.
 
-## Validation and gate semantics
+All three pass for the empty scaffold. There are no authored obligations to
+assess; this establishes no product completeness or firmware correctness.
+Authored requirements without real implementation/test links will produce
+coverage findings. Keep the strict gate rather than inventing links.
 
-- `requirements:validate` checks XML/schema and referential integrity.
-- `requirements:lint` applies strict semantic lint rules.
-- `requirements:check` runs the strict deterministic coverage/drift check.
+Version-control authored `.rqml/` state, including reviewed implementation
+baselines when real links create them. No baseline is needed for the empty spec.
 
-The initial strict gate fails with exit 2 for missing implementation and test
-relationships. Standard check can exit 0 while reporting those gaps for draft
-requirements. Neither result is a claim that firmware works. Keep the strict gate
-as a visible completion target rather than adding fictional links or silently
-using standard mode as an acceptance gate.
+## Known limits of the pinned tools
 
-All requirements start in RQML's draft lifecycle. A later status transition must
-reflect actual review; it is not execution evidence. Once loaded and trusted,
-the RQML plugin supplies its pre-edit approval gate, spec validation and stop
-checks. Routine work still follows agreed requirements through conversation
-with the current agent; host hook activation is distinct from code acceptance.
-
-## Observed limits
-
-- C++ `#symbol` locators are navigation hints. File existence and file hashes are
-  checked; the symbol is not parsed or verified. Even a nonexistent function name
-  can pass the gate when its file exists. An unrelated edit in that file can mark
-  several implementation links changed.
-- Changing requirement and acceptance prose does not itself invalidate recorded
-  implementation baselines. Such edits require explicit review of realization,
-  preservation constraints and previous verification even when check stays green.
-- Drift baselines cover implementation edges. `verifiedBy` relationships are not
-  content-hashed by this version, and changing or deleting a linked test file can
-  leave strict check passing. Independently verify test targets and execution.
-- Impact follows declared graph relationships, not recovered C++ source
-  dependencies. Matrix coverage labels describe relationships, not executed tests.
-- Schema/lint/check do not establish semantic consistency, safety, complete impact
-  or correct behavior. A source move needs explicit link repair; a requirement
-  revision needs explicit reconsideration of its prior evidence.
+- C++ `#symbol` locators are navigation hints; the tool checks files, not symbols.
+  Implementation drift hashes whole files, so one edit can affect several links.
+- Requirement/acceptance edits do not invalidate implementation baselines; review
+  their realization and previous verification independently.
+- `verifiedBy` files are not content-baselined or checked for drift by this version.
+  Verify test targets and execution independently.
+- Impact traverses declared relationships, not recovered C++ call/include graphs.
+  Coverage labels indicate links, not observed passing tests.
+- Passing validation, lint or trace checks does not establish semantic
+  consistency, complete impact analysis or correct behavior.
 
 ## References
 
-- [RQML project and agent loop](https://github.com/rqml-org/rqml)
-- [CLI documentation](https://rqml.org/docs/tooling/cli/)
-- [Core API and model](https://rqml.org/docs/tooling/core/)
-- [Pinned RQML Codex plugin](https://github.com/rqml-org/rqml-codex/tree/4b0272e7d13eebcbdf638b0abdf4018b2f3c505a)
+- [RQML project](https://github.com/rqml-org/rqml)
+- [Pinned Codex plugin](https://github.com/rqml-org/rqml-codex/tree/4b0272e7d13eebcbdf638b0abdf4018b2f3c505a)
+- [Mise npm dependency locking](https://mise.jdx.dev/dev-tools/backends/npm#dependency-locking)
 - [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)
-- [Codex repository plugin configuration](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo)
-- [OpenLore alternative, PR #2](https://github.com/altendky/motley/pull/2)
-
-The comparison follows the requirements-driven agent development research in the
-sibling Tome repository. This project records the relevant procedure and findings
-here; that local research checkout is not a runtime dependency.
