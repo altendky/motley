@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
       - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5
         with:
-          version: 2026.11.2
+          version: 2026.11.3
           install_args: --locked --dry-run
           cache: false
 
@@ -35,7 +35,7 @@ jobs:
           persist-credentials: false
       - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5
         with:
-          version: 2026.11.2
+          version: 2026.11.3
           install_args: --locked
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
