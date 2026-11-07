@@ -16,6 +16,23 @@ mise exec -- pre-commit run --all-files
 Pre-commit validates and lints specification changes. Its strict coverage/drift
 check runs on every commit, including changes outside the specification.
 
+## Repository automation
+
+GitHub Actions runs the locked Mise check and pre-commit on pull requests and
+pushes to `main`. The aggregate `all` job is the required check. These are
+tooling and specification checks; no firmware build or product test exists yet.
+
+Renovate runs every six hours and on manual dispatch through the
+`altendky-renovate` GitHub App. Its repository variable `RENOVATE_CLIENT_ID` and
+secret `RENOVATE_APP_PRIVATE_KEY` supply app authentication. Updates preserve
+the selected Node major and Python minor, and regenerate `mise.lock` together
+with the native package graphs under `.mise/locks/` for all five locked platforms.
+
+Mergify queues non-draft pull requests to `main` when labeled `enqueue`, using
+merge commits and the required GitHub checks. Renovate pull requests receive
+that label automatically; approval and queue admission are separate rules.
+The `agent` issue label identifies work suitable for autonomous selection.
+
 ## Codex integration
 
 Open Codex at the repository root: the local marketplace source resolves from
