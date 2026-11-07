@@ -2,8 +2,19 @@
 
 Tool definitions and locking policy live in [mise.toml](../mise.toml).
 Keep `mise.lock` and its `.mise/locks/` dependency graphs together when updating
-tools. See the [README](../README.md) for setup and [AGENTS.md](../AGENTS.md) for
-the requirements workflow.
+tools. See [AGENTS.md](../AGENTS.md) for the requirements workflow.
+
+## Setup and checks
+
+```sh
+mise trust
+mise install
+mise exec -- pre-commit install
+mise exec -- pre-commit run --all-files
+```
+
+Pre-commit validates and lints specification changes. Its strict coverage/drift
+check runs on every commit, including changes outside the specification.
 
 ## Codex integration
 

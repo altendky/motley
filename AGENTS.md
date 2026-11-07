@@ -1,7 +1,7 @@
 # Motley development with RQML
 
-Read `README.md` for repository state and tool setup. `requirements.rqml` is the
-maintained specification and currently contains only an empty draft scaffold.
+Read `docs/tooling.md` for tool setup and integration details. The maintained
+specification, `requirements.rqml`, currently contains only an empty draft scaffold.
 Develop product requirements and architectural decisions through discussion;
 do not populate them merely to demonstrate the tools or satisfy a gate.
 `PLANNING_SESSION.md` is historical research, not approved specification content.
@@ -44,8 +44,8 @@ Mise supplies development tools, not firmware.
   checking test targets and observing their execution.
 - Record commands, results, applicable requirement content and tested source/test
   hashes or commit. Link review, structural checks and execution are distinct.
-- Run `mise run requirements:validate` and `mise run requirements:lint` after spec
-  edits, and `mise run requirements:check` for strict coverage/drift. Report exit
+- Run `mise exec -- pre-commit run --all-files` after changes. Pre-commit runs
+  schema validation, strict lint and strict coverage/drift checks. Report exit
   codes and gaps. An empty scaffold passing is not evidence of product coverage.
   Keep future unimplemented requirements visible without fabricated links or a
   weakened gate.
@@ -61,6 +61,6 @@ The MCP entry invokes mise itself. Upstream plugin hooks separately require the
 RQML CLI on Codex's PATH, for example through mise shell activation. The plugin's
 bundled MCP launcher is disabled to avoid duplicating the pinned project server.
 Hook activation requires the host's normal trust review. Upstream hooks use
-standard strictness; `requirements:check` remains the explicit strict completion
+standard strictness; the pre-commit `rqml-check` hook is the strict completion
 check. No source-navigation companion is configured. Read `docs/tooling.md` for
 integration details and traceability boundaries.
