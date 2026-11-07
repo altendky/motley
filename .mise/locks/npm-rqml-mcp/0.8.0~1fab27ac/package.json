@@ -1,0 +1,7 @@
+{
+  "name": "mise-npm-install",
+  "private": true,
+  "dependencies": {
+    "@rqml/mcp": "0.8.0"
+  }
+}

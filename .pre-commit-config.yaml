@@ -18,3 +18,26 @@ repos:
     rev: 1.1.0
     hooks:
       - id: validate-mergify-config
+
+  - repo: local
+    hooks:
+      - id: rqml-validate
+        name: validate RQML
+        entry: mise exec -- rqml validate requirements.rqml
+        language: system
+        files: ^requirements\.rqml$
+        pass_filenames: false
+
+      - id: rqml-lint
+        name: lint RQML
+        entry: mise exec -- rqml lint requirements.rqml --strictness strict
+        language: system
+        files: ^requirements\.rqml$
+        pass_filenames: false
+
+      - id: rqml-check
+        name: check RQML coverage and drift
+        entry: mise exec -- rqml check requirements.rqml --strictness strict
+        language: system
+        always_run: true
+        pass_filenames: false
