@@ -3,7 +3,7 @@ revision = 5
 requires-python = ">=3.11"
 
 [options]
-exclude-newer = "2026-11-06T14:00:10.756267344Z"
+exclude-newer = "2026-11-06T14:36:55.605556392Z"
 
 [[package]]
 name = "cfgv"

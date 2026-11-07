@@ -49,7 +49,7 @@ trust_policy_excludes = '["fast-xml-parser@4.5.7"]'
 version = "4.7.0"
 backend = "pipx:pre-commit"
 specifiers = ["4.7.0"]
-uv = { path = ".mise/locks/pipx-pre-commit/4.7.0", digest = "sha256:9f2b0b0713e941f87cd26a8850f9009551bd93367f19d0da2099b64970b4fb6f" }
+uv = { path = ".mise/locks/pipx-pre-commit/4.7.0", digest = "sha256:7849d0dc241009899c858423e715b22db04a5aa1635f6905dea720f9b1b97c4c" }
 
 [[tools.python]]
 version = "3.14.10"
