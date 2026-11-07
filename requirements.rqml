@@ -8,7 +8,313 @@
   <meta>
     <title>Motley requirements</title>
     <system>motley</system>
-    <summary>Empty requirements scaffold. Product requirements and architectural decisions will be developed separately from the RQML tooling setup.</summary>
+    <summary>Motley requirements under development. The engineering requirements capture the agreed portable-core and typed-result directions; product behavior and verification remain to be developed.</summary>
   </meta>
-  <requirements />
+  <goals>
+    <goal id="GOAL-MOT-PROCESS" title="Requirements-led incremental development" priority="must" status="draft">
+      <statement>Guide maintained implementation with agreed requirements while allowing future requirements to remain visible as unfinished work.</statement>
+      <rationale>The developer wants to favor requirements before implementation while learning where exceptions are useful, without requiring the entire backlog to be implemented.</rationale>
+    </goal>
+    <goal id="GOAL-MOT-BUILD" title="Buildable firmware foundation" priority="must" status="draft">
+      <statement>Establish an executable firmware build before developing device functionality.</statement>
+      <rationale>The developer requested a minimal do-nothing task to prove the build and defer functional design.</rationale>
+    </goal>
+    <goal id="GOAL-MOT-ENGINEERING" title="Engineering" priority="must" status="draft">
+      <statement>Keep Motley's application behavior understandable and testable independently of the controller hardware and external integrations.</statement>
+      <rationale>Host execution should allow development and verification of application behavior before hardware is available.</rationale>
+    </goal>
+  </goals>
+  <requirements>
+    <req id="MOT-PROC-001" type="PR" title="Requirements before maintained implementation" status="approved" priority="should">
+      <statement>Meaningful maintained implementation SHOULD follow agreed requirements specified before coding, with its implementation linked to those requirements and any exception recorded with its reason and scope.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-PROC-001-01">
+          <given>a proposed change to maintained behavior, constraints, or build/integration behavior</given>
+          <when>the change is planned and reviewed</when>
+          <then>the governing agreed requirements and affected obligations are identified before implementation, or an explicit scoped exception is recorded</then>
+        </criterion>
+        <criterion id="AC-MOT-PROC-001-02">
+          <given>helpers, tests, refactoring, or exploratory work</given>
+          <when>the work is classified</when>
+          <then>ordinary implementation details may support an existing requirement without a separate requirement per function or file; exceptions and temporary experiments are identified rather than silently promoted to maintained features</then>
+        </criterion>
+        <criterion id="AC-MOT-PROC-001-03">
+          <given>a meaningful implementation diff</given>
+          <when>traceability is reviewed</when>
+          <then>actual changed source and configuration are compared with the requirement mappings, including unlinked implementation that RQML cannot discover from the trace graph</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-PROC-002" type="PR" title="Backlog-tolerant requirements consistency checks" status="approved" priority="must">
+      <statement>During incremental development, repository requirements checks SHALL permit unimplemented and unverified requirements while rejecting invalid specifications, missing or changed linked implementations, and implementation mapped to unapproved requirements.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-PROC-002-01">
+          <given>draft or approved requirements lacking implementation or verification</given>
+          <when>the normal repository requirements checks execute</when>
+          <then>those coverage gaps remain reportable through status and matrix without blocking the checks solely for incomplete coverage</then>
+        </criterion>
+        <criterion id="AC-MOT-PROC-002-02">
+          <given>an invalid specification, missing/changed linked implementation, or implementation mapped to an unapproved requirement</given>
+          <when>the corresponding normal consistency or approval check executes</when>
+          <then>the check fails, independently of the nonblocking backlog policy</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-BUILD-002" type="DR" title="Firmware build identity and provenance" status="approved" priority="must">
+      <statement>Each successful firmware build SHALL carry a versioned receipt identifying its actual source checkout, working-tree state, build inputs, environment, execution context, outputs, and verification results, and SHALL embed its full commit hash and clean/dirty state in the firmware. Full commit hashes SHALL remain present and accessible in firmware metadata and build receipts. Size-limited standard fields MAY abbreviate them when required.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-BUILD-002-01">
+          <given>a local attached or detached checkout with staged, unstaged, or nonignored untracked changes</given>
+          <when>build identity is collected before output generation</when>
+          <then>the receipt records the full actual commit, committed tree, parents, attached branch or null, separate staged/unstaged/untracked indicators, and an actual-input fingerprint; only the designated build-output directory is excluded from cleanliness checks</then>
+        </criterion>
+        <criterion id="AC-MOT-BUILD-002-02">
+          <given>a CI checkout with optional pull-request or merge-queue context</given>
+          <when>source provenance is recorded</when>
+          <then>actual checkout identity is distinct from event identity; checkout kind, checkout ref, PR number/URL, source and target repository/branch/commit, and inclusion of the exact recorded base commit are reported from available evidence, using null or unknown for unavailable information</then>
+        </criterion>
+        <criterion id="AC-MOT-BUILD-002-03">
+          <given>a successful firmware build</given>
+          <when>its receipt and application image are inspected</when>
+          <then>the ELF and application image contain the full commit and clean/dirty state without truncation; displayed build identities and artifact names use the full commit, while size-limited standard fields may abbreviate it with the full identity remaining accessible; the receipt records UTC build time, target, SDK/container/compiler identity, effective build settings, configuration/input hashes, output names/sizes/hashes, check results, hardware-test status, and available CI event/workflow revision/run/attempt/job/URL</then>
+        </criterion>
+        <criterion id="AC-MOT-BUILD-002-04">
+          <given>build inputs or checkout state changing during compilation, or existing outputs being reverified</given>
+          <when>the build or verification check completes</when>
+          <then>changed inputs or mismatched provenance cause failure, while successful reverification preserves the original receipt including its time and CI context</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-CI-001" type="PR" title="Firmware CI build check" status="approved" priority="must">
+      <statement>CI SHALL build and verify firmware for every pull request and push to main using the documented project build check and declared toolchain.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-CI-001-01">
+          <given>a pull request or push to main</given>
+          <when>CI executes</when>
+          <then>a separate firmware job uses a fresh output directory without connected hardware and invokes the same build/verification check available locally</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-001-02">
+          <given>a compilation or verification failure</given>
+          <when>the firmware job and aggregate CI check complete</when>
+          <then>the firmware job fails and the aggregate check cannot pass</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-CI-002" type="PR" title="Retained firmware artifacts" status="approved" priority="must">
+      <statement>CI SHALL retain a downloadable, identified bundle of each successfully verified firmware build and retain available failed-build diagnostics separately.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-CI-002-01">
+          <given>a successful firmware build and verification</given>
+          <when>CI publishes its artifact</when>
+          <then>the bundle contains the application ELF/image, bootloader, partition table, flashing metadata with matching relative paths, linker map, receipt, verification and size reports; its name includes target, full commit hash, clean/dirty state, checkout context, run ID and attempt</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-002-02">
+          <given>missing required bundle files or a failed artifact upload</given>
+          <when>publication runs</when>
+          <then>the firmware job fails rather than reporting successful publication</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-002-03">
+          <given>a failed build with available diagnostics</given>
+          <when>failure artifacts are retained</when>
+          <then>they are labelled as failed diagnostics and are separate from verified firmware bundles</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-BUILD-001" type="FR" title="Minimal ESP32-C6 firmware build" status="approved" priority="must">
+      <statement>Motley SHALL provide a minimal C++ ESP32-C6 firmware target whose application task blocks without performing application work, together with a documented build using a version-pinned ESP-IDF environment.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-BUILD-001-01">
+          <given>a checkout and the documented build prerequisites without connected hardware</given>
+          <when>the firmware build check runs in a clean output directory</when>
+          <then>compilation and linking succeed and produce nonempty ESP32-C6 application ELF/image, bootloader, and partition-table artifacts using the declared SDK environment</then>
+        </criterion>
+        <criterion id="AC-MOT-BUILD-001-02">
+          <given>the minimal firmware entry point and effective build settings</given>
+          <when>the source and build evidence are inspected</when>
+          <then>the SDK application task only blocks, and owned C++ sources use the selected C++23 mode with exceptions and RTTI disabled</then>
+        </criterion>
+        <criterion id="AC-MOT-BUILD-001-03">
+          <given>the documented build check</given>
+          <when>artifact verification runs after compilation</when>
+          <then>it checks the target metadata, effective owned-source compiler settings, ELF and image artifacts, and reports failures without claiming that the firmware has booted on hardware</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-004" type="NFR" title="Host-testable portable C++ core" status="draft" priority="must">
+      <statement>Motley's application core SHALL be portable C++ that can be built and tested on a development host without ESP32 hardware or the ESP-IDF, FreeRTOS, and Matter SDK runtimes.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-004-01">
+          <given>a checkout with the documented host compiler, build tools, and host-test dependencies</given>
+          <when>the host core test target is built and executed</when>
+          <then>the core and its tests compile and run without installing the firmware SDKs, connecting controller hardware, or starting a Matter runtime</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-004-02">
+          <given>application-core behavior included in the firmware</given>
+          <when>the firmware and host test targets are inspected</when>
+          <then>both targets build the same core implementation rather than separate copies of its behavior</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-005" type="CR" title="Explicit core environment boundary" status="draft" priority="must">
+      <statement>Clock access, sensor I/O, persistent-storage I/O, and Matter I/O SHALL execute outside the application core in adapters. The core SHALL receive environmental observations and operation results as explicit inputs and expose requested external work as explicit outputs.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-005-01">
+          <given>core behavior that depends on time or an external operation</given>
+          <when>that behavior is exercised in a host test</when>
+          <then>the test supplies time and operation results explicitly and inspects requested work without executing device, storage, or network I/O from the core</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-005-02">
+          <given>the application core and its build dependencies</given>
+          <when>the environment boundary is reviewed</when>
+          <then>platform clock, sensor-driver, storage, and Matter APIs are confined to adapters and are not called by the core</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-006" type="CR" title="Explicit typed results for recoverable failures" status="draft" priority="must">
+      <statement>At application-owned C++ function boundaries, recoverable operational failures SHALL be represented by explicitly typed success/error results using std::expected&lt;T, E&gt; or std::expected&lt;void, E&gt;. These result-returning functions SHALL be marked [[nodiscard]], and an unacknowledged discarded result SHALL be diagnosed as a build error.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-006-01">
+          <given>an application-owned operation that can report a recoverable failure</given>
+          <when>its API and success/failure paths are reviewed and tested</when>
+          <then>the function returns std::expected with a typed error representation and callers handle or propagate the failure without using exceptions for routine operational control flow</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-006-02">
+          <given>a fallible application-owned function declaration</given>
+          <when>a compile check calls it and discards its result without explicit acknowledgement</when>
+          <then>the configured owned-code build rejects that call because the function is [[nodiscard]]</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-006-03">
+          <given>a recoverable operation without a success payload</given>
+          <when>its application success/failure paths are exercised</when>
+          <then>callers distinguish successful completion from the operation's typed failure through std::expected&lt;void, E&gt; without inventing a success sentinel value</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-007" type="CR" title="Exceptions-disabled production C++" status="draft" priority="must">
+      <statement>Motley-owned production C++ code SHALL be compiled with C++ exception handling disabled. Production dependencies SHALL be configured and used so that they do not propagate C++ exceptions across application boundaries.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-007-01">
+          <given>the production firmware build and a host build of the same core</given>
+          <when>the owned production sources' effective compiler settings are inspected and the targets are built</when>
+          <then>C++ exception handling is disabled for those sources in both builds</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-007-02">
+          <given>a production dependency being introduced or upgraded</given>
+          <when>its configuration and used API failure paths are reviewed</when>
+          <then>its exception requirements and failure behavior are recorded, and its selected configuration and use do not propagate exceptions into application code</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-007-03">
+          <given>a host test framework that uses exceptions internally</given>
+          <when>it runs tests of the production core</when>
+          <then>the core remains compiled with exception handling disabled and test-framework exceptions do not unwind through the core</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-008" type="CR" title="Bounded application memory" status="draft" priority="must">
+      <statement>Motley-owned production code SHALL have explicit bounds for buffers, collections, queues, and task stacks. It SHOULD prefer static storage or bounded stack storage. Dynamic allocation SHALL be restricted to justified uses with documented capacity bounds and lifetimes.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-008-01">
+          <given>a supported application configuration</given>
+          <when>its memory design and selected capacities are reviewed</when>
+          <then>owned buffers, collections, queues, and task stacks have explicit upper bounds, and each owned dynamic-allocation use has a stated reason, capacity bound, and lifetime</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-008-02">
+          <given>an application capacity limit and input at or beyond that limit</given>
+          <when>the relevant input or work is processed</when>
+          <then>the implementation respects the declared bound instead of growing memory use without limit, and ordinary capacity rejection follows the typed-result policy where applicable</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-008-03">
+          <given>the selected firmware configuration and supported operating workload</given>
+          <when>target memory usage is evaluated</when>
+          <then>the memory assessment accounts for static storage, task stacks, owned dynamic allocations, and SDK memory use, and records observed usage against the selected budgets</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-ENG-009" type="FR" title="Fatal handling of detected memory faults" status="draft" priority="must">
+      <statement>Detected memory-integrity faults and unexpected memory exhaustion SHALL enter a fatal-fault path that stops normal application execution. They SHALL NOT be treated as routine recoverable operation failures.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-009-01">
+          <given>a detected memory-integrity fault or unexpected memory exhaustion</given>
+          <when>the selected fault-injection procedure exercises its handling</when>
+          <then>the fatal-fault path is entered and normal application execution does not continue by returning an ordinary recoverable result</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-009-02">
+          <given>input that exceeds a declared application capacity and can be rejected before a memory fault</given>
+          <when>that input is validated</when>
+          <then>the ordinary validation/capacity error remains distinguishable from an actual memory-integrity fault or unexpected memory exhaustion</then>
+        </criterion>
+      </acceptance>
+    </req>
+  </requirements>
+  <trace>
+    <edge id="E-SAT-MOT-ENG-004-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-004" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-005-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-005" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-006-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-006" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-007-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-007" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-008-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-008" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-009-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-009" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-BUILD-001-GOAL-MOT-BUILD" type="satisfies" from="MOT-BUILD-001" to="GOAL-MOT-BUILD" status="draft" createdBy="rqml"/>
+    <edge id="E-IMP-MOT-BUILD-MAIN" type="implements" from="firmware/main/app_main.cpp#app_main" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>SDK application entry point suspends without application work; inspected source against AC-MOT-BUILD-001-02.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-BUILD-CMAKE" type="implements" from="firmware/CMakeLists.txt" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>Minimal ESP-IDF project and component selection.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-BUILD-CXX" type="implements" from="firmware/main/CMakeLists.txt" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>Owned component compiler settings; confirmed in the clean build compiler database.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-BUILD-CONFIG" type="implements" from="firmware/sdkconfig.defaults" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>Exceptions and RTTI defaults; confirmed in generated sdkconfig.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-BUILD-SDK" type="implements" from="firmware/toolchain.toml" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>Single authoritative SDK image digest and chip target.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-BUILD-RUNNER" type="implements" from="scripts/firmware.py#main" fromKind="code" to="MOT-BUILD-001" status="draft" createdBy="rqml">
+      <notes>Build command, receipt provenance, and explicit artifact failure handling.</notes>
+    </edge>
+    <edge id="E-VER-MOT-BUILD-ARTIFACTS" type="verifiedBy" from="MOT-BUILD-001" to="scripts/firmware.py#verify_artifacts" toKind="test" status="draft" createdBy="rqml">
+      <notes>Executed after a fresh ESP32-C6 cross-build on 2026-11-07, exit 0. Checks artifacts, target and compiler metadata, generated configuration, ELF, and esptool image inspection. Manual negative fixtures rejected missing/empty images, invalid ELF, wrong target/compiler flags/configuration. Evidence and tested hashes are in .rqml/plan.md. Structural entry-point review complements this check; no hardware execution asserted.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-BUILD-002-GOAL-MOT-BUILD" type="satisfies" from="MOT-BUILD-002" to="GOAL-MOT-BUILD" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-CI-001-GOAL-MOT-BUILD" type="satisfies" from="MOT-CI-001" to="GOAL-MOT-BUILD" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-CI-002-GOAL-MOT-BUILD" type="satisfies" from="MOT-CI-002" to="GOAL-MOT-BUILD" status="draft" createdBy="rqml"/>
+    <edge id="E-IMP-MOT-IDENTITY-SOURCE" type="implements" from="scripts/build_metadata.py#source_snapshot" fromKind="code" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>Actual Git snapshot, input fingerprint, and CI context classification.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-IDENTITY-RUNNER" type="implements" from="scripts/firmware.py#main" fromKind="code" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>Immutable receipts, stable-input guard, embedded version check, and bundle verification.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-IDENTITY-VERSION" type="implements" from="firmware/CMakeLists.txt" fromKind="code" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>SDK application version supplied by the host source identity.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-CI-BUILD" type="implements" from=".github/workflows/ci.yml" fromKind="code" to="MOT-CI-001" status="draft" createdBy="rqml">
+      <notes>PR/main triggers, full-history checkout, same manual build hook, and aggregate dependency. Hosted execution pending.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-CI-UPLOAD" type="implements" from=".github/workflows/ci.yml" fromKind="code" to="MOT-CI-002" status="draft" createdBy="rqml">
+      <notes>Separate success and failure artifact upload steps; missing success files/upload errors fail job. Hosted upload evidence pending.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-CI-BUNDLE" type="implements" from="scripts/firmware.py#create_bundle" fromKind="code" to="MOT-CI-002" status="draft" createdBy="rqml">
+      <notes>Curated bundle preserves relative flashing paths and fails on changed or missing files.</notes>
+    </edge>
+    <edge id="E-VER-MOT-IDENTITY-FIXTURES" type="verifiedBy" from="MOT-BUILD-002" to="scripts/test_firmware.py" toKind="test" status="draft" createdBy="rqml">
+      <notes>20 executed fixture tests on 2026-11-07 cover Git/CI provenance, input changes, stale receipts, image identity, flashing paths and bundle corruption. Real SDK cross-build/image inspection is recorded separately in the plan. No hosted CI or hardware execution asserted.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-IDENTITY-DESCRIPTOR" type="implements" from="firmware/main/app_main.cpp#motley_build_identity" fromKind="code" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>Full commit and clean/dirty identity retained in the SDK custom description. Confirmed in the cross-built ELF allocated section and application image, with no new task behavior.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-IDENTITY-TEMPLATE" type="implements" from="firmware/main/build_identity.hpp.in" fromKind="code" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>Full commit and clean/dirty identity retained in the SDK custom description. Confirmed in the cross-built ELF allocated section and application image, with no new task behavior.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-PROC-001-GOAL-MOT-PROCESS" type="satisfies" from="MOT-PROC-001" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-PROC-002-GOAL-MOT-PROCESS" type="satisfies" from="MOT-PROC-002" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml"/>
+    <edge id="E-IMP-MOT-PROC-GATE" type="implements" from="./.pre-commit-config.yaml" fromKind="code" to="MOT-PROC-002" status="draft" createdBy="rqml">
+      <notes>Standard consistency plus unconditional mapped approval gate; schema validation and strict lint preserved.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-PROC-REPORTING" type="implements" from="docs/tooling.md" fromKind="code" to="MOT-PROC-002" status="draft" createdBy="rqml">
+      <notes>Documents nonblocking backlog reporting, optional strict completeness checks, and reverse coverage limitations.</notes>
+    </edge>
+    <edge id="E-IMP-MOT-PROC-WORKFLOW" type="implements" from="./AGENTS.md" fromKind="code" to="MOT-PROC-001" status="draft" createdBy="rqml">
+      <notes>Project agent workflow defines the requirements-first default, supporting helper scope, explicit exceptions, and review of unlinked implementation.</notes>
+    </edge>
+  </trace>
 </rqml>

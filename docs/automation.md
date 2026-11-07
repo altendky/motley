@@ -20,9 +20,12 @@ and Windows x64.
 
 GitHub Actions runs on pull requests and pushes to `main`. It checks the Mise
 lockfile and runs pre-commit: whitespace, file syntax, merge conflicts, workflow
-lint, and Mergify configuration validation. The aggregate `all` job supplies the
-required GitHub status check. These checks validate repository configuration;
-no firmware build or product test exists yet.
+lint, Mergify configuration validation, requirements consistency/approval, and
+firmware metadata tests. A separate [firmware build](firmware-build.md) job builds
+and verifies the ESP32-C6 target and retains verified firmware artifacts or failed
+build diagnostics. The aggregate `all` job supplies the required GitHub status
+check. Hosted execution and physical-board behavior have separate verification
+evidence.
 
 ## Dependency updates
 
