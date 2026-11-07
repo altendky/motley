@@ -1,0 +1,11 @@
+min_version = "2026.11.2"
+
+[settings]
+locked = true
+lockfile = true
+lockfile_platforms = ["linux-x64", "linux-arm64", "macos-x64", "macos-arm64", "windows-x64"]
+
+[tools]
+python = "3.14.10"
+uv = "0.13.7"
+"pipx:pre-commit" = "4.7.0"
