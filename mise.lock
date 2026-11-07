@@ -2,6 +2,49 @@
 
 lockfile_version = 4
 
+[[tools.node]]
+version = "24.21.0"
+backend = "core:node"
+specifiers = ["24.21.0"]
+
+[tools.node."platforms.linux-arm64"]
+checksum = "sha256:724282c3b43aec998aa9527380465b45d229e021b58035f5f4f63095eabfe5d5"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-arm64.tar.gz"
+
+[tools.node."platforms.linux-x64"]
+checksum = "sha256:6e1db87ef58b8819e5d5402eff1536491b18edd8eb7bee5ef7897876e88dc5ff"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-x64.tar.gz"
+
+[tools.node."platforms.macos-arm64"]
+checksum = "sha256:bed7eea5325e1108f32ce5228ddd6a5f0f08a499ee42aa7442aea583702f6057"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-darwin-arm64.tar.gz"
+
+[tools.node."platforms.macos-x64"]
+checksum = "sha256:1462cb3b3046b815cf8ea436d3da450ec1a9f11dac7e5a46b0ada5305d7e8097"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-darwin-x64.tar.gz"
+
+[tools.node."platforms.windows-x64"]
+checksum = "sha256:158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip"
+
+[[tools."npm:@rqml/cli"]]
+version = "0.11.0"
+aube = { path = ".mise/locks/npm-rqml-cli/0.11.0~2f194f06", digest = "sha256:372145c3a22774fe493ec5b050f0edeab83bdea514a844b3e258577b894390d4" }
+backend = "npm:@rqml/cli"
+specifiers = ["0.11.0"]
+
+[tools."npm:@rqml/cli".options]
+trust_policy_excludes = '["fast-xml-parser@4.5.7"]'
+
+[[tools."npm:@rqml/mcp"]]
+version = "0.8.0"
+aube = { path = ".mise/locks/npm-rqml-mcp/0.8.0~1fab27ac", digest = "sha256:3993913dd60435b7163ebaf01153518f9837688557b7801366a1a5ad6d504902" }
+backend = "npm:@rqml/mcp"
+specifiers = ["0.8.0"]
+
+[tools."npm:@rqml/mcp".options]
+trust_policy_excludes = '["fast-xml-parser@4.5.7"]'
+
 [[tools."pipx:pre-commit"]]
 version = "4.7.0"
 backend = "pipx:pre-commit"

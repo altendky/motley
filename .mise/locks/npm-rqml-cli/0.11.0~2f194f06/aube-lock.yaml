@@ -1,0 +1,59 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@rqml/cli':
+        specifier: 0.11.0
+        version: 0.11.0
+
+packages:
+
+  '@rqml/cli@0.11.0':
+    resolution: {integrity: sha512-Gu5XMDNt+/na2/8sDXySeFhO/V+eg8XhFujAR0hehJFBXBG/nUh3ORJYtSubMwxx5zy1uCFcrhjB26EglJVOLA==}
+    hasBin: true
+
+  '@rqml/core@0.9.0':
+    resolution: {integrity: sha512-bcc9h61zaaM3BTvA093vjHWtvbTcAnTcp0l9wlZZ0VLal3OjkcP2f5xud6hlohInfnMSa3PwvZ8ybyup4QTYQQ==}
+
+  '@rqml/schema@0.2.2':
+    resolution: {integrity: sha512-Gv0qqEGAS6HMErgFnOoeq43C1vs+s+lCGhv1qLoFSYSBLuLowkdCyiiNCZhQhacJlUJM67MmAc1tn+B77YEMDQ==}
+
+  fast-xml-parser@4.5.7:
+    resolution: {integrity: sha512-a6Qh1RMCNbSrU1+sAyAAZH3rTe+OaWJbNZIq0S+ifZciUUOQtlVxBJwoTUE2bYhysmG/RYyI5WJFIKdBahJdrQ==}
+    hasBin: true
+
+  libxml2-wasm@0.7.2:
+    resolution: {integrity: sha512-Ek8Fdb8fIl6mBCvrMGImkOP02aDpANwus0PV827v4gobV9jnoYEHNoPTwWokt71egUBl+sng53fjZ5y2PexLqQ==}
+    engines: {node: '>=18'}
+
+  strnum@1.1.2:
+    resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
+
+snapshots:
+
+  '@rqml/cli@0.11.0':
+    dependencies:
+      '@rqml/core': 0.9.0
+      '@rqml/schema': 0.2.2
+
+  '@rqml/core@0.9.0':
+    dependencies:
+      '@rqml/schema': 0.2.2
+      fast-xml-parser: 4.5.7
+      libxml2-wasm: 0.7.2
+
+  '@rqml/schema@0.2.2': {}
+
+  fast-xml-parser@4.5.7:
+    dependencies:
+      strnum: 1.1.2
+
+  libxml2-wasm@0.7.2: {}
+
+  strnum@1.1.2: {}

@@ -1,0 +1,21 @@
+{
+  "name": "motley",
+  "interface": {
+    "displayName": "Motley development"
+  },
+  "plugins": [
+    {
+      "name": "rqml",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/rqml-org/rqml-codex.git",
+        "sha": "4b0272e7d13eebcbdf638b0abdf4018b2f3c505a"
+      },
+      "policy": {
+        "installation": "INSTALLED_BY_DEFAULT",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

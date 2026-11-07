@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rqml xmlns="https://rqml.org/schema/2.2.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      version="2.2.0"
+      docId="DOC-MOTLEY"
+      status="draft"
+      xsi:schemaLocation="https://rqml.org/schema/2.2.0 https://rqml.org/schema/rqml-2.2.0.xsd">
+  <meta>
+    <title>Motley requirements</title>
+    <system>motley</system>
+    <summary>Empty requirements scaffold. Product requirements and architectural decisions will be developed separately from the RQML tooling setup.</summary>
+  </meta>
+  <requirements />
+</rqml>
