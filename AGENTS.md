@@ -40,8 +40,8 @@ Mise supplies development tools, not firmware.
   verification even when RQML reports no drift. Keep intended behavior separate
   from current mappings; never rewrite intent merely to match observed code.
 - Independently check test-target existence, inspect changed tests and run
-  appropriate checks. RQML 0.11.0 does not baseline or detect missing/changed
-  `verifiedBy` files through its drift checker.
+  appropriate checks. Verification links and drift reports do not replace
+  checking test targets and observing their execution.
 - Record commands, results, applicable requirement content and tested source/test
   hashes or commit. Link review, structural checks and execution are distinct.
 - Run `mise run requirements:validate` and `mise run requirements:lint` after spec
@@ -56,11 +56,11 @@ Keep `requirements.rqml` and authored `.rqml/` state under version control,
 including `.rqml/baseline.json` when real implementation links create it. Never
 treat reviewed baselines as caches or refresh them without reviewing the change.
 
-Run `mise install --locked`, then open Codex normally at the repository root.
+Run `mise install`, then open Codex normally at the repository root.
 The MCP entry invokes mise itself. Upstream plugin hooks separately require the
 RQML CLI on Codex's PATH, for example through mise shell activation. The plugin's
 bundled MCP launcher is disabled to avoid duplicating the pinned project server.
 Hook activation requires the host's normal trust review. Upstream hooks use
 standard strictness; `requirements:check` remains the explicit strict completion
-check. No source-navigation companion is configured. Read `docs/tooling.md` and
-`docs/tooling-validation.md` for observed capabilities and gaps.
+check. No source-navigation companion is configured. Read `docs/tooling.md` for
+integration details and traceability boundaries.

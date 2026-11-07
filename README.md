@@ -10,14 +10,14 @@ requirements or architecture document.
 
 ## Development tools
 
-Install [mise](https://mise.jdx.dev/) 2026.11.2 or newer. The project pins Node
-24.21.0, RQML CLI 0.11.0 and RQML MCP 0.8.0, including their dependency graphs.
+Install [mise](https://mise.jdx.dev/). Tool versions and lock settings live in
+[`mise.toml`](mise.toml); dependency graphs live in `mise.lock` and `.mise/locks/`.
 
 From the repository root:
 
 ```sh
 mise trust
-mise install --locked
+mise install
 mise run requirements:validate
 mise run requirements:lint
 mise run requirements:check
@@ -32,7 +32,7 @@ verification links remain visible through the same strict check.
 ## Codex integration
 
 Open Codex normally at the repository root after installing the tools.
-`.codex/config.toml` starts the pinned MCP server with `mise exec -- rqml-mcp`.
+The MCP server is configured in [`.codex/config.toml`](.codex/config.toml).
 The project does not install Codex or require a special Codex launcher.
 
 The repository marketplace pins the upstream RQML Codex plugin for skills and
@@ -41,5 +41,4 @@ Plugin hooks separately require `rqml` on Codex's PATH, for example through mise
 shell activation. Project and hook trust use the host's normal review process.
 Confirm loaded tools and hooks in the host after configuration changes.
 
-See [tooling](docs/tooling.md) for the workflow and known limits, and
-[setup verification](docs/tooling-validation.md) for observed results.
+See [tooling](docs/tooling.md) for integration details and traceability boundaries.
