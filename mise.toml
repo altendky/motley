@@ -8,7 +8,7 @@ lockfile_platforms = ["linux-x64", "linux-arm64", "macos-x64", "macos-arm64", "w
 npm.package_manager = "aube"
 
 [tools]
-node = "24.21.0"
+node = "24.22.2"
 python = "3.14.10"
 uv = "0.13.7"
 "pipx:pre-commit" = "4.7.0"
