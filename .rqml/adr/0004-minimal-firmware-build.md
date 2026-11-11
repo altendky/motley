@@ -65,4 +65,5 @@ task is not registered as a watchdog progress source.
 
 ## Supersession
 
-Supersedes: None. Superseded by: None.
+Supersedes: None. Superseded in part by [ADR-0009](0009-matter-device-information-foundation.md):
+idle-only startup and the dependency-free build advance to the Matter milestone.

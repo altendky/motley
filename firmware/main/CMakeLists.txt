@@ -1,4 +1,5 @@
-idf_component_register(SRCS "app_main.cpp" REQUIRES freertos)
+idf_component_register(SRCS "app_main.cpp" INCLUDE_DIRS "."
+    PRIV_REQUIRES espressif__esp_matter nvs_flash)
 configure_file("${CMAKE_CURRENT_LIST_DIR}/build_identity.hpp.in"
     "${CMAKE_CURRENT_BINARY_DIR}/build_identity.hpp" @ONLY)
 target_include_directories(${COMPONENT_LIB} PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")

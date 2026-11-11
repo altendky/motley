@@ -197,6 +197,16 @@ class ArtifactTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.output = Path(self.temporary.name)
+        inputs = self.output / "inputs"
+        inputs.mkdir()
+        (inputs / "dependencies.lock").write_text("fixture\n")
+        patcher = patch.object(firmware, "FIRMWARE", inputs)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        firmware.stage_project(self.output)
+        component = self.output / "project/managed_components/component"
+        component.mkdir(parents=True)
+        (component / "source.cpp").write_text("// dependency fixture\n")
         self.version = "g" + "1" * 40 + "-dirty"
         for name in firmware.BUNDLE_FILES:
             path = self.output / name
@@ -210,7 +220,11 @@ class ArtifactTests(unittest.TestCase):
         (self.output / "project_description.json").write_text(json.dumps(self.description))
         self.command = "g++ -std=c++23 -fno-exceptions -fno-rtti"
         self.write_database()
-        (self.output / "sdkconfig").write_text("# CONFIG_COMPILER_CXX_EXCEPTIONS is not set\n# CONFIG_COMPILER_CXX_RTTI is not set\n")
+        (self.output / "sdkconfig").write_text(
+            "# CONFIG_COMPILER_CXX_EXCEPTIONS is not set\n# CONFIG_COMPILER_CXX_RTTI is not set\n"
+            "# CONFIG_ENABLE_WIFI_STATION is not set\n# CONFIG_ENABLE_OTA_REQUESTOR is not set\n"
+            "CONFIG_OPENTHREAD_ENABLED=y\nCONFIG_BT_NIMBLE_ENABLED=y\n"
+            "CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y\nCONFIG_PARTITION_TABLE_CUSTOM=y\n")
         flashing = {"extra_esptool_args": {"chip": "esp32c6"},
                     "write_flash_args": ["--flash-mode", "dio", "--flash-size", "2MB", "--flash-freq", "80m"],
                     "flash_files": dict(zip(("0x0", "0x8000", "0x10000"), firmware.ARTIFACTS[1:]))}
@@ -252,6 +266,15 @@ class ArtifactTests(unittest.TestCase):
             with patch.object(firmware, "run_sdk", return_value=subprocess.CompletedProcess([], 0, stdout)):
                 with self.assertRaises(ValueError):
                     firmware.verify_artifacts(self.output, {"target": "esp32c6", "image": "fixture"}, self.version)
+
+    def test_wrong_matter_transport_or_console_configuration_is_rejected(self):
+        path = self.output / "sdkconfig"
+        original = path.read_text()
+        for symbol in ("CONFIG_OPENTHREAD_ENABLED", "CONFIG_BT_NIMBLE_ENABLED",
+                       "CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG", "CONFIG_PARTITION_TABLE_CUSTOM"):
+            path.write_text(original.replace(f"{symbol}=y", f"# {symbol} is not set"))
+            with self.subTest(symbol=symbol), self.assertRaisesRegex(ValueError, "must be enabled"):
+                self.inspect()
 
     def test_receipt_preserves_context_and_rejects_stale_inputs(self):
         inspection = self.inspect()
@@ -327,24 +350,35 @@ class RunnerTests(unittest.TestCase):
             subprocess.run(["git", "init", str(root)], check=True, capture_output=True)
             (root / "firmware").mkdir()
             (root / "firmware" / "toolchain.toml").write_text('image = "sdk@sha256:' + 'a' * 64 + '"\ntarget = "esp32c6"\n')
+            (root / "firmware" / "dependencies.lock").write_text("fixture\n")
             output = root / "output"
             output.mkdir()
             (output / "bundle").mkdir()
             (output / "bundle" / "stale.bin").write_text("stale")
             (output / "build-receipt.json").write_text("stale")
+            component = output / "project/managed_components/component"
+            component.mkdir(parents=True)
+            (component / "source.cpp").write_text("// dependency fixture\n")
+            cached_config = output / "sdkconfig"
+            cached_config.write_text("CONFIG_ENABLE_WIFI_STATION=y\n")
+            def sdk(*args, **kwargs):
+                if kwargs.get("acquire"):
+                    self.assertFalse(cached_config.exists(), "cached bootstrap settings must not override declared defaults")
+                return subprocess.CompletedProcess([], 0, "size")
             source = {"commit": "1" * 40, "working_tree": {"state": "dirty"}}
             changed = {**source, "commit": "2" * 40}
             with (patch.object(firmware, "ROOT", root), patch.object(firmware, "FIRMWARE", root / "firmware"),
                   patch.object(firmware, "source_snapshot", side_effect=[source, changed]),
                   patch.object(firmware, "ci_context", return_value={"provider": "local", "pull_request": None, "checkout_kind": "branch"}),
-                  patch.object(firmware, "run_sdk", return_value=subprocess.CompletedProcess([], 0, "size")),
-                  patch.object(firmware, "verify_artifacts", return_value={}),
+                  patch.object(firmware, "run_sdk", side_effect=sdk),
+                  patch.object(firmware, "verify_artifacts", return_value={"dependencies": firmware.dependency_content(output)}),
                   patch.object(sys, "argv", ["firmware.py", "--build-dir", str(output)]),
                   redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO())):
                 self.assertEqual(firmware.main(), 1)
             self.assertFalse((output / "bundle").exists())
             self.assertFalse((output / "build-receipt.json").exists())
             self.assertEqual(json.loads((output / "failure.json").read_text())["status"], "failed")
+            self.assertIn("Build inputs or checkout changed", (output / "failure.json").read_text())
 
     def test_verify_only_never_relabels_original_execution(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -367,6 +401,84 @@ class RunnerTests(unittest.TestCase):
                   redirect_stdout(io.StringIO())):
                 self.assertEqual(firmware.main(), 0)
             self.assertEqual(path.read_bytes(), before)
+
+
+class DependencyTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.inputs = self.root / "firmware"
+        self.inputs.mkdir()
+        (self.inputs / "main.cpp").write_text("// source\n")
+        (self.inputs / "dependencies.lock").write_text("locked\n")
+        self.output = self.root / "build"
+        self.output.mkdir()
+        patcher = patch.object(firmware, "FIRMWARE", self.inputs)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        firmware.stage_project(self.output)
+        self.component = self.output / "project/managed_components/component"
+        self.component.mkdir(parents=True)
+        (self.component / "source.cpp").write_text("// dependency\n")
+
+    def test_staging_is_independent_and_detects_modified_and_added_owned_inputs(self):
+        firmware.check_staged_sources(self.output)
+        staged = self.output / "project/main.cpp"
+        staged.write_text("modified by SDK\n")
+        self.assertEqual((self.inputs / "main.cpp").read_text(), "// source\n")
+        with self.assertRaisesRegex(ValueError, "Staged firmware"):
+            firmware.check_staged_sources(self.output)
+        firmware.stage_project(self.output)
+        self.assertTrue((self.component / "source.cpp").is_file())
+        (self.output / "project/unexpected.txt").write_text("unexpected\n")
+        with self.assertRaisesRegex(ValueError, "Staged firmware"):
+            firmware.check_staged_sources(self.output)
+
+    def test_lock_change_is_rejected_without_mutating_repository_lock(self):
+        lock = self.output / "dependencies.lock"
+        lock.write_bytes((self.inputs / "dependencies.lock").read_bytes())
+        firmware.check_dependency_lock(self.output)
+        lock.write_text("new resolution\n")
+        with self.assertRaisesRegex(ValueError, "committed lock"):
+            firmware.check_dependency_lock(self.output)
+        self.assertEqual((self.inputs / "dependencies.lock").read_text(), "locked\n")
+
+    def test_dependency_identity_detects_bytes_modes_and_added_files(self):
+        original = firmware.dependency_content(self.output)
+        source = self.component / "source.cpp"
+        source.write_text("// altered dependency\n")
+        altered = firmware.dependency_content(self.output)
+        self.assertNotEqual(original, altered)
+        source.chmod(0o755)
+        self.assertNotEqual(altered, firmware.dependency_content(self.output))
+        (self.component / "extra.h").write_text("// extra\n")
+        self.assertEqual(firmware.dependency_content(self.output)["component"]["files"], 2)
+
+    def test_dependency_symlink_and_empty_tree_are_rejected(self):
+        link = self.component / "external.h"
+        link.symlink_to(self.inputs / "main.cpp")
+        with self.assertRaisesRegex(ValueError, "Symlinked"):
+            firmware.dependency_content(self.output)
+        link.unlink()
+        (self.component / "source.cpp").unlink()
+        self.component.rmdir()
+        with self.assertRaisesRegex(ValueError, "Empty managed"):
+            firmware.dependency_content(self.output)
+
+    def test_compile_is_offline_and_both_source_paths_are_readonly(self):
+        for acquire in (False, True):
+            with self.subTest(acquire=acquire), patch.object(firmware.subprocess, "run") as run:
+                firmware.run_sdk("pinned-image", self.output, "idf.py", acquire=acquire)
+                args = run.call_args.args[0]
+                mounts = [args[index + 1] for index, value in enumerate(args) if value == "--mount"]
+                project = f"type=bind,source={self.output / 'project'}"
+                self.assertIn(project + ",target=/project" + ("" if acquire else ",readonly"), mounts)
+                if acquire:
+                    self.assertNotIn("--network", args)
+                else:
+                    self.assertEqual(args[args.index("--network") + 1], "none")
+                    self.assertIn(project + ",target=/build/project,readonly", mounts)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""Build the minimal firmware in its pinned SDK and verify its artifacts."""
+"""Acquire locked Matter dependencies, build offline, and verify firmware artifacts."""
 
 import argparse
 from datetime import datetime, timezone
@@ -20,7 +20,7 @@ import sys
 import tomllib
 
 sys.dont_write_bytecode = True
-from build_metadata import artifact_name, ci_context, display_version, sdk_project_version, source_snapshot, validate_output
+from build_metadata import artifact_name, ci_context, digest, display_version, file_identity, sdk_project_version, source_snapshot, validate_output
 
 ROOT = Path(__file__).resolve().parent.parent
 FIRMWARE = ROOT / "firmware"
@@ -30,7 +30,8 @@ ARTIFACTS = (
     "bootloader/bootloader.bin",
     "partition_table/partition-table.bin",
 )
-REPORTS = ("motley-image-info.txt", "bootloader-image-info.txt", "compiler-version.txt", "size-report.txt", "verification.json")
+REPORTS = ("motley-image-info.txt", "bootloader-image-info.txt", "compiler-version.txt", "size-report.txt", "verification.json",
+           "dependencies.lock", "dependency-content.json")
 BUNDLE_FILES = (*ARTIFACTS, "flash_args", "flasher_args.json", "motley.map", *REPORTS)
 IDENTITY_MARKER = b"MOTLEY_BUILD_IDENTITY_V1:"
 
@@ -40,15 +41,21 @@ def sha256(path: Path) -> str:
 
 
 def run_sdk(image: str, build_dir: Path, *command: str, capture: bool = False,
-            log: Path | None = None):
-    arguments = ["docker", "run", "--rm", "--network", "none"]
+            log: Path | None = None, acquire: bool = False):
+    arguments = ["docker", "run", "--rm"]
+    if not acquire:
+        arguments.extend(["--network", "none"])
     if hasattr(os, "getuid"):
         arguments.extend(["--user", f"{os.getuid()}:{os.getgid()}"])
+    if not acquire:
+        # The writable /build parent must not expose a second writable source path.
+        arguments.extend(["--mount", f"type=bind,source={build_dir / 'project'},target=/build/project,readonly"])
     arguments.extend([
-        "--mount", f"type=bind,source={FIRMWARE},target=/project,readonly",
+        "--mount", f"type=bind,source={build_dir / 'project'},target=/project" + ("" if acquire else ",readonly"),
         "--mount", f"type=bind,source={build_dir},target=/build",
         "--workdir", "/project",
         "--env", "IDF_CCACHE_ENABLE=0",
+        "--env", "IDF_COMPONENT_CACHE_PATH=/build/component-cache",
         image,
         *command,
     ])
@@ -63,6 +70,55 @@ def run_sdk(image: str, build_dir: Path, *command: str, capture: bool = False,
     if code:
         raise subprocess.CalledProcessError(code, arguments)
     return subprocess.CompletedProcess(arguments, code)
+
+
+def stage_project(build_dir: Path) -> None:
+    """Copy owned inputs without ever giving the SDK a writable repository mount."""
+    project = build_dir / "project"
+    if project.is_symlink() or (FIRMWARE / "managed_components").exists():
+        raise ValueError("Staged project must be local; managed dependencies belong only in build output")
+    project.mkdir(exist_ok=True)
+    for path in project.iterdir():
+        if path.name == "managed_components" and path.is_dir() and not path.is_symlink():
+            continue
+        if path.is_dir() and not path.is_symlink():
+            shutil.rmtree(path)
+        else:
+            path.unlink()
+    shutil.copytree(FIRMWARE, project, dirs_exist_ok=True)
+
+
+def check_staged_sources(build_dir: Path) -> None:
+    project = build_dir / "project"
+    def inputs(root):
+        return {p.relative_to(root).as_posix(): file_identity(p) for p in root.rglob("*")
+                if (p.is_file() or p.is_symlink()) and p.relative_to(root).parts[0] != "managed_components"}
+    if inputs(FIRMWARE) != inputs(project):
+        raise ValueError("Staged firmware sources differ from declared inputs")
+
+
+def dependency_content(build_dir: Path) -> dict:
+    """Fingerprint actual dependency bytes/modes as well as recording the solver lock."""
+    managed = build_dir / "project" / "managed_components"
+    if not managed.is_dir() or managed.is_symlink():
+        raise ValueError("Missing managed dependencies")
+    result = {}
+    for component in sorted(managed.iterdir()):
+        if not component.is_dir() or component.is_symlink():
+            raise ValueError("Unexpected managed dependency entry")
+        paths = sorted(component.rglob("*"))
+        if any(p.is_symlink() for p in paths):
+            raise ValueError("Symlinked managed dependencies are not supported")
+        files = {p.relative_to(component).as_posix(): file_identity(p) for p in paths if p.is_file()}
+        result[component.name] = {"files": len(files), "content_sha256": digest(files)}
+    if not result:
+        raise ValueError("Empty managed dependencies")
+    return result
+
+
+def check_dependency_lock(build_dir: Path) -> None:
+    if (build_dir / "dependencies.lock").read_bytes() != (FIRMWARE / "dependencies.lock").read_bytes():
+        raise ValueError("Dependency resolution changed the committed lock; review an explicit dependency update")
 
 
 def report(path: Path, content: str, write: bool) -> None:
@@ -134,6 +190,10 @@ def verify_embedded_identity(elf: bytes, image: bytes, version: str) -> None:
 
 def verify_artifacts(build_dir: Path, toolchain: dict, version: str,
                      write_reports: bool = True) -> dict:
+    check_staged_sources(build_dir)
+    check_dependency_lock(build_dir)
+    dependencies = dependency_content(build_dir)
+    report(build_dir / "dependency-content.json", json.dumps(dependencies, indent=2) + "\n", write_reports)
     for name in ARTIFACTS:
         path = build_dir / name
         if not path.is_file() or path.stat().st_size == 0:
@@ -168,9 +228,14 @@ def verify_artifacts(build_dir: Path, toolchain: dict, version: str,
             raise ValueError(f"Effective compiler option is not {expected}")
 
     configuration = (build_dir / "sdkconfig").read_text().splitlines()
-    for option in ("CONFIG_COMPILER_CXX_EXCEPTIONS", "CONFIG_COMPILER_CXX_RTTI"):
+    for option in ("CONFIG_COMPILER_CXX_EXCEPTIONS", "CONFIG_COMPILER_CXX_RTTI",
+                   "CONFIG_ENABLE_WIFI_STATION", "CONFIG_ENABLE_OTA_REQUESTOR"):
         if f"# {option} is not set" not in configuration:
             raise ValueError(f"{option} must be disabled in the generated configuration")
+    for option in ("CONFIG_OPENTHREAD_ENABLED", "CONFIG_BT_NIMBLE_ENABLED",
+                   "CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG", "CONFIG_PARTITION_TABLE_CUSTOM"):
+        if f"{option}=y" not in configuration:
+            raise ValueError(f"{option} must be enabled in the generated configuration")
 
     for name in ("motley.bin", "bootloader/bootloader.bin"):
         result = run_sdk(
@@ -210,9 +275,11 @@ def verify_artifacts(build_dir: Path, toolchain: dict, version: str,
         "sdk_version": description["git_revision"],
         "sdk_project_version": description["project_version"],
         "container_image": toolchain["image"],
+        "matter_upstream": toolchain.get("matter_upstream"),
         "compiler_version": compiler.stdout.strip(),
         "owned_compile_arguments": arguments,
         "sdkconfig_sha256": sha256(build_dir / "sdkconfig"),
+        "dependencies": dependencies,
         "artifacts": {name: {"sha256": sha256(build_dir / name), "size": (build_dir / name).stat().st_size}
                       for name in BUNDLE_FILES},
         "checks": checks,
@@ -259,7 +326,11 @@ def main() -> int:
         default=Path(os.environ.get("MOTLEY_BUILD_DIR", ROOT / "build" / "firmware")),
     )
     parser.add_argument("--verify-only", action="store_true")
+    parser.add_argument("--update-dependencies", action="store_true",
+                        help="Resolve a candidate lock in build output for review; do not build or modify repository inputs")
     options = parser.parse_args()
+    if options.verify_only and options.update_dependencies:
+        parser.error("Choose either verification or dependency update")
     build_dir = options.build_dir.resolve()
     try:
         validate_output(ROOT, build_dir)
@@ -288,16 +359,36 @@ def main() -> int:
                 bundle.unlink()
             elif bundle.exists():
                 shutil.rmtree(bundle)
+            stage_project(build_dir)
+            # Defaults are declared inputs; a previous menuconfig must not override them.
+            for name in ("sdkconfig", "sdkconfig.old"):
+                (build_dir / name).unlink(missing_ok=True)
+            if (FIRMWARE / "dependencies.lock").is_file():
+                shutil.copy2(FIRMWARE / "dependencies.lock", build_dir / "dependencies.lock")
+            if options.update_dependencies:
+                (build_dir / "dependencies.lock").unlink(missing_ok=True)
+            configure = ("idf.py", "-B", "/build", "-D", "SDKCONFIG=/build/sdkconfig",
+                         "-D", f"IDF_TARGET={toolchain['target']}",
+                         "-D", f"MOTLEY_BUILD_VERSION={version}")
+            run_sdk(toolchain["image"], build_dir, *configure, "reconfigure",
+                    acquire=True, log=build_dir / "dependencies.log")
+            check_staged_sources(build_dir)
+            if options.update_dependencies:
+                if source != source_snapshot(ROOT, build_dir):
+                    raise ValueError("Build inputs or checkout changed during dependency resolution")
+                print(f"Review candidate dependency lock: {build_dir / 'dependencies.lock'}")
+                return 0
+            check_dependency_lock(build_dir)
+            dependencies = dependency_content(build_dir)
             run_sdk(
-                toolchain["image"], build_dir, "idf.py", "-B", "/build",
-                "-D", "SDKCONFIG=/build/sdkconfig",
-                "-D", f"IDF_TARGET={toolchain['target']}",
-                "-D", f"MOTLEY_BUILD_VERSION={version}", "build",
+                toolchain["image"], build_dir, *configure, "build",
                 log=build_dir / "build.log",
             )
             size = run_sdk(toolchain["image"], build_dir, "idf.py", "-B", "/build", "size", capture=True)
             (build_dir / "size-report.txt").write_text(size.stdout)
             inspection = verify_artifacts(build_dir, toolchain, version)
+            if dependencies != inspection["dependencies"]:
+                raise ValueError("Dependency content changed during compilation")
             receipt = {"schema_version": 3, "version": version, "source": source,
                        "execution": {"started_at_utc": started, "context": context},
                        "inspection": inspection, "artifact_name": artifact_name(toolchain["target"], source, context)}

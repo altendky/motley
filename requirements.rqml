@@ -11,6 +11,10 @@
     <summary>Motley requirements under development. The engineering requirements capture the agreed portable-core and typed-result directions; product behavior and verification remain to be developed.</summary>
   </meta>
   <goals>
+    <goal id="GOAL-MOT-PLATFORM" title="Matter device foundation" priority="must" status="draft">
+      <statement>Establish a commissionable ESP32-C6 Matter-over-Thread device with accessible device and firmware information before adding sensing or control behavior.</statement>
+      <rationale>The developer selected this as the next milestone after the minimal build and has Home Assistant and a working Thread border router available for tests.</rationale>
+    </goal>
     <goal id="GOAL-MOT-PROCESS" title="Requirements-led incremental development" priority="must" status="draft">
       <statement>Guide maintained implementation with agreed requirements while allowing future requirements to remain visible as unfinished work.</statement>
       <rationale>The developer wants to favor requirements before implementation while learning where exceptions are useful, without requiring the entire backlog to be implemented.</rationale>
@@ -23,8 +27,72 @@
       <statement>Keep Motley's application behavior understandable and testable independently of the controller hardware and external integrations.</statement>
       <rationale>Host execution should allow development and verification of application behavior before hardware is available.</rationale>
     </goal>
+    <goal id="GOAL-MOT-SENSING" title="Wired sensing" priority="must" status="draft">
+      <statement>Provide remote temperature and humidity measurements using wired sensor heads in later application milestones.</statement>
+      <rationale>Sensing remains future work after the Matter device foundation; its requirements can be recorded before implementation.</rationale>
+    </goal>
   </goals>
   <requirements>
+    <req id="MOT-PLAT-001" type="CR" title="Compatible pinned Matter firmware stack" status="approved" priority="must">
+      <statement>Motley's ESP32-C6 Matter firmware SHALL use a compatible, pinned ESP-IDF, esp-matter, and connectedhomeip dependency set with explicit resolved dependency identities.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-PLAT-001-01">
+          <given>a developer preparing the documented Matter firmware toolchain</given>
+          <when>the declared SDK and dependency inputs are inspected and resolved</when>
+          <then>the compatible SDK revisions and target are explicit, dependency resolution is recorded, and the build does not silently select moving upstream branches</then>
+        </criterion>
+        <criterion id="AC-MOT-PLAT-001-02">
+          <given>a clean checkout and the documented prerequisites</given>
+          <when>the Matter firmware build executes</when>
+          <then>it uses the declared dependency set and records the resolved build inputs and artifacts through the existing provenance workflow</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-PLAT-004" type="FR" title="Commissionable Matter-over-Thread foundation" status="approved" priority="must">
+      <statement>A supported ESP32-C6 controller SHALL be commissionable into Home Assistant as a Matter-over-Thread device, retain its commissioning state across ordinary power cycles, and provide an intentional documented reset procedure for recommissioning. The development interface SHALL provide commissioning-code output and deliberate factory reset through USB serial.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-PLAT-004-01">
+          <given>an uncommissioned controller, Home Assistant, and a working Thread border router</given>
+          <when>the documented commissioning procedure is followed</when>
+          <then>Home Assistant commissions the device onto the Thread network and can read its Matter device information without requiring a sensor or actuator to be attached</then>
+        </criterion>
+        <criterion id="AC-MOT-PLAT-004-02">
+          <given>a commissioned controller with readable device information</given>
+          <when>it loses power and restarts with unchanged firmware and configuration</when>
+          <then>it reconnects under the existing commissioning state and Home Assistant can read its information again without factory reset, recommissioning, or a duplicate device entry</then>
+        </criterion>
+        <criterion id="AC-MOT-PLAT-004-03">
+          <given>a commissioned controller</given>
+          <when>the intentional documented factory-reset procedure is performed</when>
+          <then>its previous commissioning state is cleared and it can be commissioned again; an ordinary reboot does not perform that reset</then>
+        </criterion>
+        <criterion id="AC-MOT-PLAT-004-04">
+          <given>the development controller connected through the documented USB serial interface</given>
+          <when>the developer follows the setup and explicit factory-reset procedures</when>
+          <then>the commissioning code is available through serial output and an explicit serial request can perform factory reset; physical setup/reset controls are not required for this development milestone</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-INFO-001" type="IR" title="Accessible device and firmware identity" status="approved" priority="must">
+      <statement>The commissioned device SHALL expose declared product, hardware, stable device, and firmware identity through Matter Basic Information, with its firmware version available in Home Assistant's device information.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-INFO-001-01">
+          <given>a commissioned device running an identified firmware build</given>
+          <when>its Basic Information attributes and Home Assistant device information are inspected</when>
+          <then>the declared vendor/product identity, hardware version, stable device identifier, numeric software version, and software version string are readable through their applicable standard attributes, and Home Assistant displays the firmware version string</then>
+        </criterion>
+        <criterion id="AC-MOT-INFO-001-02">
+          <given>a build identity that fits the standard Matter software-version-string capacity</given>
+          <when>that attribute is read through Matter and displayed by Home Assistant</when>
+          <then>it matches the full commit hash and clean/dirty identity embedded in the running firmware and its build receipt rather than inheriting the shorter SDK label; constrained fields may abbreviate only as permitted by MOT-BUILD-002</then>
+        </criterion>
+        <criterion id="AC-MOT-INFO-001-03">
+          <given>the same controller and firmware after an ordinary reboot</given>
+          <when>device and firmware information are read again</when>
+          <then>the stable device identifier remains unchanged and firmware identity still describes the running build</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-PROC-001" type="PR" title="Requirements before maintained implementation" status="approved" priority="should">
       <statement>Meaningful maintained implementation SHOULD follow agreed requirements specified before coding, with its implementation linked to those requirements and any exception recorded with its reason and scope.</statement>
       <acceptance>
@@ -121,7 +189,7 @@
       </acceptance>
     </req>
     <req id="MOT-BUILD-001" type="FR" title="Minimal ESP32-C6 firmware build" status="approved" priority="must">
-      <statement>Motley SHALL provide a minimal C++ ESP32-C6 firmware target whose application task blocks without performing application work, together with a documented build using a version-pinned ESP-IDF environment.</statement>
+      <statement>Motley SHALL provide a C++ ESP32-C6 firmware target with a documented build using a version-pinned ESP-IDF environment. Its application behavior SHALL follow the approved milestone requirements.</statement>
       <acceptance>
         <criterion id="AC-MOT-BUILD-001-01">
           <given>a checkout and the documented build prerequisites without connected hardware</given>
@@ -131,7 +199,7 @@
         <criterion id="AC-MOT-BUILD-001-02">
           <given>the minimal firmware entry point and effective build settings</given>
           <when>the source and build evidence are inspected</when>
-          <then>the SDK application task only blocks, and owned C++ sources use the selected C++23 mode with exceptions and RTTI disabled</then>
+          <then>owned C++ sources use the selected C++23 mode with exceptions and RTTI disabled; application startup follows the approved milestone requirements</then>
         </criterion>
         <criterion id="AC-MOT-BUILD-001-03">
           <given>the documented build check</given>
@@ -245,6 +313,17 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-SENS-005" type="FR" title="Sensor power readiness" status="draft" priority="must">
+      <statement>Before communicating with a supported sensor, Motley SHALL enable any required board-controlled sensor power and wait until the sensor's documented supply and startup conditions are met.</statement>
+      <notes>The Adafruit ESP32-C6 Feather #5933 uses active-high GPIO20 to enable its STEMMA QT supply, shared with NeoPixel power. ESP-IDF board initialization needs this mapping. Source: https://learn.adafruit.com/adafruit-esp32-c6-feather/pinouts . This reminder belongs to future sensing work; no fixed startup delay has been selected.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-SENS-005-01">
+          <given>a supported sensor on a board-controlled power rail that is initially disabled</given>
+          <when>sensing is initialized</when>
+          <then>the rail is enabled and the sensor's documented supply and startup conditions are met before the first bus transaction to that sensor</then>
+        </criterion>
+      </acceptance>
+    </req>
   </requirements>
   <trace>
     <edge id="E-SAT-MOT-ENG-004-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-004" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
@@ -316,5 +395,58 @@
     <edge id="E-IMP-MOT-PROC-WORKFLOW" type="implements" from="./AGENTS.md" fromKind="code" to="MOT-PROC-001" status="draft" createdBy="rqml">
       <notes>Project agent workflow defines the requirements-first default, supporting helper scope, explicit exceptions, and review of unlinked implementation.</notes>
     </edge>
+    <edge id="E-SAT-MOT-PLAT-001-GOAL-MOT-PLATFORM" type="satisfies" from="MOT-PLAT-001" to="GOAL-MOT-PLATFORM" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-PLAT-004-GOAL-MOT-PLATFORM" type="satisfies" from="MOT-PLAT-004" to="GOAL-MOT-PLATFORM" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-INFO-001-GOAL-MOT-PLATFORM" type="satisfies" from="MOT-INFO-001" to="GOAL-MOT-PLATFORM" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-INFO-001-MOT-BUILD-002" type="dependsOn" from="MOT-INFO-001" to="MOT-BUILD-002" status="draft" createdBy="rqml">
+      <notes>Matter firmware identity must match the existing full build identity and its constrained-field policy.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-PLAT-004-MOT-PLAT-001" type="dependsOn" from="MOT-PLAT-004" to="MOT-PLAT-001" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-PLAT-001" type="implements" from="firmware/main/idf_component.yml" fromKind="code" to="MOT-PLAT-001" status="draft" createdBy="rqml">
+      <notes>Exact managed release and compatible IDF constraint.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-001-2" type="implements" from="firmware/dependencies.lock" fromKind="code" to="MOT-PLAT-001" status="draft" createdBy="rqml">
+      <notes>Resolved direct and transitive registry versions and component hashes.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-001-3" type="implements" from="firmware/toolchain.toml" fromKind="code" to="MOT-PLAT-001" status="draft" createdBy="rqml">
+      <notes>Digest-pinned SDK image and upstream source identities.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-001-4" type="implements" from="firmware/CMakeLists.txt" fromKind="code" to="MOT-PLAT-001" status="draft" createdBy="rqml">
+      <notes>Managed dependency lock build property and numeric version integration.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-001-5" type="implements" from="scripts/firmware.py#main" fromKind="code" to="MOT-PLAT-001" status="draft" createdBy="rqml">
+      <notes>Staged acquisition, committed-lock check, offline compilation and dependency-content provenance.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-004" type="implements" from="firmware/main/app_main.cpp#app_main" fromKind="code" to="MOT-PLAT-004" status="draft" createdBy="rqml">
+      <notes>Root-node startup, native Thread radio, onboarding-code output and explicit SDK reset command registration; hardware acceptance pending.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-004-2" type="implements" from="firmware/sdkconfig.defaults" fromKind="code" to="MOT-PLAT-004" status="draft" createdBy="rqml">
+      <notes>BLE onboarding, Thread transport, primary interactive USB console and persistent NVS configuration.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-004-3" type="implements" from="firmware/partitions.csv" fromKind="code" to="MOT-PLAT-004" status="draft" createdBy="rqml">
+      <notes>NVS and single application partition layout for development.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-PLAT-004-4" type="implements" from="docs/matter-development.md" fromKind="code" to="MOT-PLAT-004" status="draft" createdBy="rqml">
+      <notes>Development commissioning and deliberate serial reset procedure; execution evidence remains pending.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-INFO-001" type="implements" from="firmware/main/app_main.cpp#ConfigurationManager" fromKind="code" to="MOT-INFO-001" status="draft" createdBy="rqml">
+      <notes>Registered configuration-manager override supplies full software identity when it fits; SDK handles stable device identity and persistence.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-INFO-001-2" type="implements" from="firmware/main/chip_project_config.h" fromKind="code" to="MOT-INFO-001" status="draft" createdBy="rqml">
+      <notes>Declared development vendor/product and prototype hardware names.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-INFO-001-3" type="implements" from="firmware/main/build_identity.hpp.in" fromKind="code" to="MOT-INFO-001" status="draft" createdBy="rqml">
+      <notes>Generated full firmware identity and constrained SDK-label fallback.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-INFO-001-4" type="implements" from="firmware/sdkconfig.defaults" fromKind="code" to="MOT-INFO-001" status="draft" createdBy="rqml">
+      <notes>Test vendor/product IDs and hardware version; shared SDK test serial disabled.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-INFO-001-5" type="implements" from="firmware/CMakeLists.txt" fromKind="code" to="MOT-INFO-001" status="draft" createdBy="rqml">
+      <notes>Independent numeric software version and generated identity inputs.</notes>
+    </edge>
+    <edge id="E-VER-MOT-PLAT-001" type="verifiedBy" from="MOT-PLAT-001" to="scripts/test_firmware.py" toKind="test" status="draft" createdBy="rqml">
+      <notes>Host fixtures verify staged input/lock/dependency integrity, acquisition versus offline mount policy, and rejection of incompatible effective configuration. Actual SDK compilation and hardware behavior are separate evidence.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-SENS-005-GOAL-MOT-SENSING" type="satisfies" from="MOT-SENS-005" to="GOAL-MOT-SENSING" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>
