@@ -1,8 +1,10 @@
-# Minimal firmware build
+# Firmware build
 
-This implements the build-only milestone `MOT-BUILD-001` in
-[requirements.rqml](../requirements.rqml), using [ADR-0004](../.rqml/adr/0004-minimal-firmware-build.md).
-The SDK's existing application task suspends without doing application work.
+The ESP32-C6 target implements the build obligations of `MOT-BUILD-001` and the
+Matter foundation in [requirements.rqml](../requirements.rqml).
+[ADR-0009](../.rqml/adr/0009-matter-device-information-foundation.md) advances
+the completed idle-only bootstrap to Matter startup. Hardware acceptance is
+tracked separately in [the development procedure](matter-development.md).
 
 ## Prerequisites and command
 
@@ -20,8 +22,33 @@ mise exec -- pre-commit run --hook-stage manual firmware-build --all-files
 By default, outputs go to `build/firmware/`. To keep them elsewhere, set
 `MOTLEY_BUILD_DIR` to an output directory before running that command. Use a
 fresh output directory for clean-build verification. The runner mounts firmware
-sources read-only; generated configuration and artifacts stay in the output
-directory. Compilation inside the container has networking disabled.
+inputs into a staging project under the output directory. An online SDK
+reconfigure acquires the exact managed components in the committed
+[dependency lock](../firmware/dependencies.lock). Compilation then mounts that
+staging project read-only with networking disabled. Generated configuration and
+artifacts stay in the output directory. The original repository is never
+mounted writable into the SDK container.
+
+Each build regenerates `sdkconfig` from the declared defaults. A cached or
+manually edited output `sdkconfig` cannot override them; put reviewed setting
+changes in the firmware inputs. Reverification preserves the original config.
+
+Ordinary builds reject changes to the committed lock or staged owned sources.
+Dependency content hashes, executable modes, and file counts are recorded per
+component and checked for changes during compilation and reverification.
+The bundle includes the exact lock and `dependency-content.json`; the receipt
+also records the upstream identities declared in `toolchain.toml`.
+
+To intentionally resolve a new candidate dependency set:
+
+```sh
+mise exec -- uv run scripts/firmware.py --build-dir /path/to/update-output --update-dependencies
+```
+
+This produces a candidate `/path/to/update-output/dependencies.lock` without
+changing repository inputs or publishing a successful build. Review its
+compatibility and changes, copy the accepted lock into `firmware/`, and rebuild
+normally. A lock pins transitive ranges as well as the direct exact release.
 
 The same hook runs in the firmware CI job. It is a manual-stage hook so ordinary
 repository checks do not require downloading the SDK image.
@@ -52,7 +79,9 @@ Build identities use `g<full-commit-hash>-clean|dirty`, including artifact
 names and console output. The ELF and application image retain that complete
 identity in an SDK custom application-description record. Verification checks
 the allocated ELF section and the corresponding image bytes, so an incidental
-debug string cannot satisfy the check. The SDK's 32-byte standard version field
+debug string cannot satisfy the check. Matter's 64-character version field
+uses the full identity when it fits, otherwise the shortened SDK label. The
+full identity remains in the custom descriptor and boot log. The SDK's 32-byte standard version field
 uses `g<12-character-prefix>-clean|dirty`; the verifier checks that label against
 the full identity and records it separately as `sdk_project_version` in the
 receipt. A short standard label alone does not identify a build. See
@@ -87,9 +116,10 @@ include target, full commit hash, clean/dirty state, checkout kind/PR number, an
 ID/attempt. Missing bundle files and upload failures fail the firmware job and
 its aggregate check. Failed-run logs and failure status use a separate diagnostics
 artifact. Retention follows repository settings. Hosted upload/download execution
-remains pending until observed in CI.
+was observed for the prior bootstrap in PR #14; the Matter revision still needs
+its own hosted run.
 
-This establishes a cross-build and inspectable artifacts. Board boot, actual
-flash settings, task execution, Matter integration, and application fault or
-watchdog behavior remain hardware/integration work. The minimal target uses
-ESP-IDF directly; it has no managed-component manifest or lockfile yet.
+Build verification establishes cross-compilation and inspectable artifacts.
+Board boot, radio operation, commissioning, controller presentation, and power
+cycle/reset behavior require hardware evidence. It does not establish
+application fault or watchdog supervision.

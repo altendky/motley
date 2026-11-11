@@ -1,2 +1,7 @@
 image = "espressif/idf:v6.0.2@sha256:0d8c9773d48a327233f9c1d7c654ff0bcf133ae24503ea2e97a57cfe02b8cb67"
 target = "esp32c6"
+
+# Upstream identities of the locked registry package and its bundled CHIP tree.
+[matter_upstream]
+esp_matter = "067ccbd1a40df2a762c96ddaf2ff0c04791cc9e0"
+connectedhomeip = "b1902b39ac6734913ce5f4d2abf153693a50264b"

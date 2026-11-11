@@ -2,6 +2,117 @@
 
 ## Readiness
 
+### Next milestone: commissionable Matter device and firmware information
+
+**IMPLEMENTING:** the developer approved this milestone on 2026-11-09.
+`MOT-PLAT-001`, `MOT-PLAT-004`, and `MOT-INFO-001` are approved;
+ADR-0009 records dependency delivery, identity, serial UI, and the explicit
+transition from idle-only startup. `MOT-BUILD-001` retains its build/compiler
+obligations while application behavior advances to the approved milestone.
+The developer confirmed Home Assistant and a working Thread border router are
+available. Dependency resolution succeeded with the exact managed release and
+its complete lock. SDK compilation and image inspection passed; radio tests,
+commissioning, and physical reset verification remain pending.
+
+The development interface is agreed: use USB serial for commissioning-code
+output and an explicit factory-reset request. Physical/deployed setup controls
+will be defined and implemented in
+[deferred issue #15](https://github.com/altendky/motley/issues/15).
+
+- [x] Research the compatible SDK route and standard firmware information path.
+- [x] Draft `MOT-PLAT-001`, `MOT-PLAT-004`, and `MOT-INFO-001` with acceptance
+  criteria and declared dependencies; propose ADR-0009.
+- [x] Review the exact milestone: commission over Thread, read device/firmware
+  identity in Home Assistant and through Matter, retain commissioning across a
+  power cycle, and deliberately reset for recommissioning.
+- [x] Select and pin the dependency delivery/resolution scheme. Candidate
+  managed component compatibility matches the current IDF pin; account for the
+  runner's read-only sources and offline compile phase. Record generated locks
+  and actual resolved inputs rather than treating published compatibility as
+  build evidence.
+- [x] Resolve the idle-only bootstrap transition, truthful prototype identity
+  fields, numeric software version, board/flash configuration, setup-code
+  output and explicit reset command details over USB serial before coding those
+  behaviors. No physical control is required for this development milestone.
+- [ ] Prove the standard firmware string can use the full build identity through
+  the supported SDK configuration interface. Verify the transmitted value, not
+  only generated configuration or an abbreviated SDK label.
+- [ ] Build and test the smallest valid information-focused device model. A
+  root-only prototype is a research candidate; Home Assistant source suggests
+  registry support but actual controller acceptance and device-model suitability
+  remain open. Do not invent sensor readings to populate an endpoint.
+- [ ] Exercise actual commissioning with the available Home Assistant/Thread
+  environment; independently read Basic Information, compare the firmware
+  identity with its receipt, power-cycle and reread, then reset/recommission.
+- [ ] Preserve C++23/exceptions/RTTI settings, CI artifacts, full firmware
+  identity, and existing accepted behavior through reviewed traces and tests.
+
+`MOT-PLAT-001` retains the historical compatible-stack obligation and its first
+acceptance ID. The old board-specific draft is not treated as hardware approval.
+Historical `MOT-PLAT-002` and `MOT-PLAT-003` remain reserved for their broader
+integration/scope obligations; this foundation does not restore sensing scope.
+Implementation traces follow inspected source; hardware acceptance remains
+unverified until observed on the target and Home Assistant.
+
+Milestone exclusions for now: sensor measurements, heater/output control, OTA,
+extended runtime diagnostics, and product-certification claims.
+
+### Matter integration evidence, 2026-11-09
+
+The source/configuration review preserves C++23, disabled exceptions/RTTI,
+full-hash identity, immutable reverification, and separate success/failure
+artifacts. The new dependency lock fixes all six registry components and IDF.
+Actual managed-component content identities are recorded with each build.
+Only endpoint zero is created; capacity three is reserved because the managed
+package compiles bridge helpers whose array bounds require spare capacity.
+This does not create sensor, bridge, or actuator endpoints.
+
+`mise exec -- uv run scripts/test_firmware.py`: 29 tests passed, exit 0.
+They include altered staged inputs, changed locks/dependency content, read-only
+mount policy, cached bootstrap configuration removal, and effective Matter
+transport/console rejection alongside the existing provenance/artifact fixtures.
+A real container probe confirmed `EROFS` when opening both `/project/main/app_main.cpp`
+and its `/build/project/main/app_main.cpp` alias for writing; no bytes were changed.
+Review identified the writable alias and cached configuration risks before these
+fixes. A second review found no further substantive issue.
+
+`mise exec -- pre-commit run --all-files` and explicit checks on the new files
+passed, exit 0. The initial sandboxed run encountered read-only tracked agent
+configuration and unavailable schema networking; the normal host run passed.
+RQML standard checking passes with no drift, dangling refs, premature mappings,
+or unimplemented approved requirements. Six engineering requirements remain
+unimplemented; twelve requirements have no verification edge. A test edge is
+partial evidence and does not establish every acceptance criterion.
+
+The initial SDK compilation exposed example-only Thread configuration macros
+and an invalid bridge-helper array bound at capacity one. The corrected
+configuration uses explicit native-radio/host/queue settings and capacity three.
+The corrected SDK compilation/link and artifact inspection passed, producing
+a 1,933,088-byte application (`0x1d7f20`) with 52% of its application partition
+free. The static size report records 187,592 bytes of DIRAM used; this is not a
+runtime heap/stack budget assessment. Packaging was correctly rejected because
+concurrent planning/trace edits changed the checkout during this build. A final
+stable-checkout run produces the identified receipt and bundle; rechecking must
+use that same checkout state. Upstream Kconfig warnings and an SDK submodule
+Git-ownership diagnostic remain visible in the logs.
+The firmware has not been flashed or commissioned. The USB board has not yet
+appeared on this host; hardware/controller criteria remain unverified.
+
+Reviewed source SHA-256 identities:
+
+| Input | SHA-256 |
+| --- | --- |
+| `firmware/main/app_main.cpp` | `2b62468f4668d5ffee6c5e5854aa82b3569149d17d40e743b1b979a0799d0578` |
+| `firmware/sdkconfig.defaults` | `d12cbc5e07616ffd4e7cf89aeaaaf029c0c4b329e6fcf0f98033c5f20398e55a` |
+| `firmware/dependencies.lock` | `483e8cb9c13c9827bba5df97ef44e5e1fb8d495a5ed67def85a77f700ab7e7a2` |
+| `scripts/firmware.py` | `e10907a2acfb4df1c71af15f446515ab1d3941b7913f32be4ce1ec2e6c56c8f9` |
+| `scripts/test_firmware.py` | `67f928516fb488208809a80e6e254b357ab12dc3442f5a09547f4506fc76a312` |
+
+Older bootstrap trace notes retain their historical observations; ADR-0009 and
+this section describe the current behavior and evidence. Reviewed baseline
+refreshes accept changed content; they do not execute tests or prove hardware
+behavior. The old completed stages below remain historical evidence.
+
 ### Requirements-first workflow
 
 **IMPLEMENTED:** the developer permits unfinished requirements and prefers agreed
