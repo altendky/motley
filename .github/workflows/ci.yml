@@ -74,6 +74,7 @@ jobs:
           name: motley-failed-diagnostics-run${{ github.run_id }}-a${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/motley-firmware/build.log
+            ${{ runner.temp }}/motley-firmware/dependencies.log
             ${{ runner.temp }}/motley-firmware/failure.json
             ${{ runner.temp }}/motley-firmware/log/
           if-no-files-found: warn

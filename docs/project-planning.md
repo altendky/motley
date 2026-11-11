@@ -7,6 +7,11 @@ The maintained specification is [requirements.rqml](../requirements.rqml).
 It contains draft engineering requirements and the approved minimal-build
 milestone; product behavior still needs to be specified.
 
+Current component research is recorded in [Hardware candidates](hardware-candidates.md).
+It preserves preliminary parts, sourcing snapshots, and open alternatives,
+including two AC outlets and both power-entry arrangements, without promoting
+them to a complete selection or approved hardware design.
+
 ## Where information belongs
 
 | Artifact | Owns | References rather than duplicates |
@@ -191,7 +196,31 @@ Keep selected versions in configuration rather than copying them into prose.
 
 ## Current software and documentation focus
 
-Hardware selection is parked while software planning proceeds. The proposed
+The current approved checkpoint is a commissionable Matter-over-Thread device with
+readable device and firmware information, followed by power-cycle/recommissioning
+checks. The developer has Home Assistant and a working Thread border router.
+Approved `MOT-PLAT-001`, `MOT-PLAT-004`, and `MOT-INFO-001` capture this stage;
+[ADR-0009](../.rqml/adr/0009-matter-device-information-foundation.md) records the
+integration decision and evidence. Progress and remaining verification are in
+[the plan](../.rqml/plan.md). Application sensing and control remain later work.
+
+Use standard Matter Basic Information for declared vendor/product, hardware,
+stable-device, and firmware identity. The aim is to show the complete current
+commit/cleanliness identity in Home Assistant's normal firmware information.
+The SDK's shortened version label remains separate. ADR-0009 selects numeric
+software version, prototype identity, board settings and serial commands.
+The root-only device model and actual controller presentation remain to be
+validated on hardware; see [the development procedure](matter-development.md).
+
+Use a development-style USB serial interface for commissioning-code output and
+deliberate factory reset in this milestone. The deployed-device setup/recovery
+interface will be defined and implemented in
+[deferred issue #15](https://github.com/altendky/motley/issues/15).
+
+The following broader tooling proposals remain open beyond that checkpoint.
+
+Hardware research continues separately in [Hardware candidates](hardware-candidates.md);
+it does not change the approved software milestone. The proposed
 core/adapters architecture is in
 [ADR-0001](../.rqml/adr/0001-portable-core-and-adapters.md). The immediate focus
 is code and project tooling:

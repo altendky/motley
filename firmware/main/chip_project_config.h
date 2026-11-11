@@ -1,0 +1,5 @@
+#pragma once
+
+#define CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME "Motley development"
+#define CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME "Motley prototype"
+#define CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION_STRING "ESP32-C6 Feather prototype"
