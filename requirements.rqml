@@ -200,6 +200,21 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-CI-003" type="PR" title="Downloadable human-readable requirements report" status="approved" priority="must">
+      <statement>Every pull-request and main-push CI run SHALL generate a human-readable Markdown report from its checked-out RQML specification and retain it as a downloadable artifact associated with that commit and run.</statement>
+      <rationale>The developer requested building the standard RQML overview report and retaining it in CI, and explicitly identified this as a CI requirement.</rationale>
+      <acceptance>
+        <criterion id="AC-MOT-CI-003-01">
+          <given>a valid checked-out requirements.rqml on a pull request or push to main</given><when>the CI report job runs</when><then>the pinned RQML overview command generates a nonempty Markdown report containing requirement identifiers, titles, lifecycle statuses, statements and acceptance criteria, including draft requirements</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-003-02">
+          <given>a generated requirements report</given><when>CI publishes it</when><then>it is downloadable as an artifact named with its checked-out commit, run identifier and attempt; report generation and upload do not depend on the firmware job succeeding</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-003-03">
+          <given>report generation failure, a missing or empty report, or upload failure</given><when>CI completes</when><then>the requirements-report job fails and the aggregate check cannot pass</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-BUILD-001" type="FR" title="Minimal ESP32-C6 firmware build" status="approved" priority="must">
       <statement>Motley SHALL provide a C++ ESP32-C6 firmware target with a documented build using a version-pinned ESP-IDF environment. Its application behavior SHALL follow the approved milestone requirements.</statement>
       <acceptance>
@@ -940,5 +955,12 @@
     <edge id="E-SAT-MOT-AC-010-GOAL-MOT-AC" type="satisfies" from="MOT-AC-010" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
     <edge id="E-DEP-MOT-AC-010-MOT-AC-008" type="dependsOn" from="MOT-AC-010" to="MOT-AC-008" status="draft" createdBy="rqml"/>
     <edge id="E-DEP-MOT-AC-004-MOT-AC-010" type="dependsOn" from="MOT-AC-004" to="MOT-AC-010" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-CI-003-GOAL-MOT-PROCESS" type="satisfies" from="MOT-CI-003" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml">
+      <notes>Human-readable CI artifacts support developer review of the maintained specification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-CI-003" type="implements" from=".github/workflows/ci.yml#requirements-report" fromKind="code" to="MOT-CI-003" status="draft" createdBy="rqml">
+      <notes>Independent PR/main report job validates and renders the checked-out specification, checks nonempty output, uploads a commit/run/attempt-named artifact and participates in the aggregate gate.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-CI-003-2" type="implements" from="docs/tooling.md#human-readable-requirements-report" fromKind="doc" to="MOT-CI-003" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>

@@ -36,6 +36,26 @@ from the normal incremental-development gate. See
 The separately invoked [firmware build](firmware-build.md) uses the pinned
 ESP-IDF container and also runs as a CI job.
 
+## Human-readable requirements report
+
+Every PR and push to `main` has an independent **Requirements report** CI job
+(`MOT-CI-003`). It validates the checked-out specification and generates the
+standard RQML Markdown overview, including draft requirements, lifecycle status,
+statements and acceptance criteria. The job runs alongside the firmware build,
+so the report can be downloaded without waiting for firmware success.
+
+Download the `requirements-<commit>-run<run-id>-a<attempt>` artifact from the
+workflow run's artifacts. It contains `requirements.md`; the commit is the
+checked-out GitHub event SHA, including the test-merge commit on PR runs.
+Generation, empty-output or upload failures fail this job and the aggregate
+`all` check. Retention uses the repository's normal artifact settings.
+
+Generate the same Markdown locally; redirect stdout to save it to a chosen file:
+
+```sh
+mise exec -- rqml overview requirements.rqml
+```
+
 ## Codex integration
 
 Open Codex at the repository root: the local marketplace source resolves from
