@@ -1,5 +1,50 @@
 # Motley plan
 
+## Compiler-aware firmware CI caching, 2026-11-13
+
+**Readiness:** READY under approved `MOT-BUILD-001/002`, `MOT-CI-001/002`
+and `MOT-PLAT-001`. ADR-0019 preserves fresh CI outputs and existing identity,
+dependency and artifact checks. The separate pinout requirement is deferred.
+
+- [x] **Goal:** Reuse native compiler results and component downloads. **Files:**
+  `scripts/firmware.py`, `.github/workflows/ci.yml`, `docs/firmware-build.md`.
+  Add explicit cache mounts, bounded IDF ccache, compatible GitHub restore/save
+  keys, cache statistics and phase timings; keep build outputs fresh and sources
+  read-only/offline during compilation. Refresh reviewed existing implementation
+  edges for the runner and workflow; do not claim new requirement coverage.
+  Implementation and 33 runner fixtures pass, including a regression preventing
+  a symlinked cache root from creating a writable alias of staged sources.
+  Actionlint and full pre-commit pass. The actual registry package compiles Matter
+  through IDF/CMake with no PCH commands in this configuration; all 1,921 compiler
+  calls in the cold run were cacheable. The upstream GN/PCH paths considered in
+  ADR-0019 are not the active package build path.
+- [x] **Goal:** Establish correctness and measure useful reuse. **Files:**
+  `scripts/test_firmware.py` and temporary build evidence. **Verification:**
+  runner fixtures, fresh-output cold/warm SDK builds sharing only native caches,
+  different commit identity and changed-source/configuration cases, observed
+  ccache statistics, full `mise exec -- pre-commit run --all-files` and standard
+  RQML. Retain accurate gaps for unexecuted hosted or dependency-change cases.
+  Cold `26f239ed600d05b154ca0c754ca8eed988177d26` and warm
+  `eab21032052afbdd9c913b6dd0816ee6caa80628` detached study checkouts used the
+  modified runner and were correctly identified as dirty. Both had executable
+  input fingerprint `35947a54d22fe3c8b83c54d5c7c63a52d583f61f9755cfe68cc40afbf2bb873b`.
+  Cold/warm complete runner times were 683.3/151.7 seconds, compilation/linking
+  609.6/87.7 seconds, and warm hits 1,916 of 1,921 (99.7%). Both full artifact,
+  dependency and embedded-identity checks passed. A third fresh-output run changed
+  the application log string and main-task stack default (8192 to 9216); its
+  application image contained the new marker, generated sdkconfig held 9216,
+  input fingerprint changed to
+  `6e4681b956269b8f8802f3b74e5e78ffdf26336b9a6926efb3bd51f42c01fe16`,
+  and all artifact checks passed (171.4 seconds, 1,915/1,921 cache hits).
+  Hosted cache transport and SDK lock-change runs remain unexecuted; existing
+  lock-mutation rejection fixtures pass. Temporary receipts and logs live under the owned
+  `firmware-cache-study` evidence directory, not in the repository.
+  `mise exec -- uv run scripts/test_firmware.py` passed (exit 0, 33 tests) with
+  runner SHA-256 `016aadd40f1a8acf3eaa6e6b863c8ec731aee27a7efe99f728d84cda92681faf`
+  and fixture SHA-256 `9bcd5228330a16fc00c119ff1fa0c100ad395c9fae4cedfbf700258351bf3824`.
+  The SDK study invoked that runner with `MOTLEY_CACHE_DIR=<study>/native-cache`
+  and distinct `--build-dir` outputs; full runner exits were zero.
+
 ## Controller AC/DC module substitution, 2026-11-13
 
 **Readiness:** READY for the developer-approved exploratory substitution of

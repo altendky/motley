@@ -480,6 +480,52 @@ class DependencyTests(unittest.TestCase):
                     self.assertEqual(args[args.index("--network") + 1], "none")
                     self.assertIn(project + ",target=/build/project,readonly", mounts)
 
+    def test_external_native_cache_is_shared_without_restoring_build_outputs(self):
+        cache = self.root / "native-cache"
+        for build in (self.output, self.root / "fresh-output"):
+            with (self.subTest(build=build),
+                  patch.dict(firmware.os.environ, {"MOTLEY_CACHE_DIR": str(cache)}, clear=True),
+                  patch.object(firmware.subprocess, "run") as run):
+                firmware.run_sdk("pinned-image", build, "idf.py")
+                args = run.call_args.args[0]
+                self.assertIn(f"type=bind,source={cache},target=/cache", args)
+                self.assertIn("IDF_CCACHE_ENABLE=1", args)
+                self.assertIn("CCACHE_DIR=/cache/ccache", args)
+                self.assertIn("IDF_COMPONENT_CACHE_PATH=/cache/components", args)
+                self.assertIn("CCACHE_COMPILERCHECK=content", args)
+                self.assertNotIn("CCACHE_SLOPPINESS", " ".join(args))
+        self.assertTrue((cache / "ccache").is_dir())
+        self.assertTrue((cache / "components").is_dir())
+        self.assertFalse((self.root / "fresh-output").exists())
+
+    def test_external_cache_rejects_source_and_output_overlap_and_symlinked_subdirs(self):
+        for cache in (firmware.ROOT, firmware.ROOT / "firmware", self.output,
+                      self.output / "nested-cache", self.output.parent):
+            with (self.subTest(cache=cache),
+                  patch.dict(firmware.os.environ, {"MOTLEY_CACHE_DIR": str(cache)}),
+                  self.assertRaises(ValueError)):
+                firmware.sdk_cache_dir(self.output)
+        cache = self.root / "separate-cache"
+        cache.mkdir()
+        (cache / "ccache").symlink_to(self.inputs, target_is_directory=True)
+        with (patch.dict(firmware.os.environ, {"MOTLEY_CACHE_DIR": str(cache)}),
+              self.assertRaisesRegex(ValueError, "symlinks")):
+            firmware.sdk_cache_dir(self.output)
+
+    def test_cache_can_be_bypassed_for_reference_compilations(self):
+        with (patch.dict(firmware.os.environ, {"IDF_CCACHE_ENABLE": "0"}),
+              patch.object(firmware.subprocess, "run") as run):
+            firmware.run_sdk("pinned-image", self.output, "idf.py")
+            self.assertIn("IDF_CCACHE_ENABLE=0", run.call_args.args[0])
+
+    def test_default_cache_cannot_expose_staged_sources_through_a_symlink(self):
+        (self.output / "cache").symlink_to(self.output / "project", target_is_directory=True)
+        with (patch.dict(firmware.os.environ, {}, clear=True),
+              patch.object(firmware.subprocess, "run") as run,
+              self.assertRaisesRegex(ValueError, "cache root")):
+            firmware.run_sdk("pinned-image", self.output, "idf.py")
+        run.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,6 +6,7 @@
 """Acquire locked Matter dependencies, build offline, and verify firmware artifacts."""
 
 import argparse
+from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -17,6 +18,7 @@ import shutil
 import struct
 import subprocess
 import sys
+import time
 import tomllib
 
 sys.dont_write_bytecode = True
@@ -40,8 +42,38 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def sdk_cache_dir(build_dir: Path) -> Path:
+    """Keep persistent CI caches separate from fresh output and owned inputs."""
+    external = os.environ.get("MOTLEY_CACHE_DIR")
+    location = Path(external) if external else build_dir / "cache"
+    if location.is_symlink():
+        raise ValueError("Native cache root must not be a symlink")
+    cache = location.resolve()
+    validate_output(ROOT, cache)
+    if external and (cache.is_relative_to(ROOT) or cache.is_relative_to(build_dir)
+                     or build_dir.is_relative_to(cache)):
+        raise ValueError("MOTLEY_CACHE_DIR must be outside the checkout and build directory")
+    for name in ("ccache", "components"):
+        directory = cache / name
+        if directory.is_symlink():
+            raise ValueError("Native cache directories must not be symlinks")
+        directory.mkdir(parents=True, exist_ok=True)
+    return cache
+
+
+@contextmanager
+def build_phase(name: str):
+    started = time.monotonic()
+    print(f"Starting {name}", flush=True)
+    try:
+        yield
+    finally:
+        print(f"{name}: {time.monotonic() - started:.1f}s", flush=True)
+
+
 def run_sdk(image: str, build_dir: Path, *command: str, capture: bool = False,
             log: Path | None = None, acquire: bool = False):
+    cache = sdk_cache_dir(build_dir)
     arguments = ["docker", "run", "--rm"]
     if not acquire:
         arguments.extend(["--network", "none"])
@@ -53,9 +85,13 @@ def run_sdk(image: str, build_dir: Path, *command: str, capture: bool = False,
     arguments.extend([
         "--mount", f"type=bind,source={build_dir / 'project'},target=/project" + ("" if acquire else ",readonly"),
         "--mount", f"type=bind,source={build_dir},target=/build",
+        "--mount", f"type=bind,source={cache},target=/cache",
         "--workdir", "/project",
-        "--env", "IDF_CCACHE_ENABLE=0",
-        "--env", "IDF_COMPONENT_CACHE_PATH=/build/component-cache",
+        "--env", f"IDF_CCACHE_ENABLE={os.environ.get('IDF_CCACHE_ENABLE', '1')}",
+        "--env", "CCACHE_DIR=/cache/ccache",
+        "--env", "CCACHE_MAXSIZE=2G",
+        "--env", "CCACHE_COMPILERCHECK=content",
+        "--env", "IDF_COMPONENT_CACHE_PATH=/cache/components",
         image,
         *command,
     ])
@@ -370,8 +406,9 @@ def main() -> int:
             configure = ("idf.py", "-B", "/build", "-D", "SDKCONFIG=/build/sdkconfig",
                          "-D", f"IDF_TARGET={toolchain['target']}",
                          "-D", f"MOTLEY_BUILD_VERSION={version}")
-            run_sdk(toolchain["image"], build_dir, *configure, "reconfigure",
-                    acquire=True, log=build_dir / "dependencies.log")
+            with build_phase("dependency acquisition and configuration"):
+                run_sdk(toolchain["image"], build_dir, *configure, "reconfigure",
+                        acquire=True, log=build_dir / "dependencies.log")
             check_staged_sources(build_dir)
             if options.update_dependencies:
                 if source != source_snapshot(ROOT, build_dir):
@@ -380,13 +417,17 @@ def main() -> int:
                 return 0
             check_dependency_lock(build_dir)
             dependencies = dependency_content(build_dir)
-            run_sdk(
-                toolchain["image"], build_dir, *configure, "build",
-                log=build_dir / "build.log",
-            )
+            with build_phase("compilation and linking"):
+                run_sdk(
+                    toolchain["image"], build_dir, *configure, "build",
+                    log=build_dir / "build.log",
+                )
+            statistics = run_sdk(toolchain["image"], build_dir, "ccache", "--show-stats", capture=True)
+            print(statistics.stdout, end="", flush=True)
             size = run_sdk(toolchain["image"], build_dir, "idf.py", "-B", "/build", "size", capture=True)
             (build_dir / "size-report.txt").write_text(size.stdout)
-            inspection = verify_artifacts(build_dir, toolchain, version)
+            with build_phase("artifact verification"):
+                inspection = verify_artifacts(build_dir, toolchain, version)
             if dependencies != inspection["dependencies"]:
                 raise ValueError("Dependency content changed during compilation")
             receipt = {"schema_version": 3, "version": version, "source": source,
