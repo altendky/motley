@@ -36,6 +36,50 @@ from the normal incremental-development gate. See
 The separately invoked [firmware build](firmware-build.md) uses the pinned
 ESP-IDF container and also runs as a CI job.
 
+## KiCad
+
+On Linux x86-64, `mise install` installs KiCad 10.0.8 from the official full
+AppImage distributed by [KiCad's MIT mirror](https://www.kicad.org/download/linux/).
+The archive checksum is pinned in configuration and `mise.lock`. Mise extracts
+the AppImage once, including symbols, footprints and 3D models; launches need no
+FUSE mount. Use the mise environment to select it instead of a system KiCad:
+
+```sh
+mise exec -- kicad-cli version
+mise exec -- kicad hardware/controller/motley-carrier.kicad_pro
+mise exec -- eeschema hardware/controller/motley-carrier.kicad_sch
+mise exec -- pcbnew hardware/controller/motley-carrier.kicad_pcb
+```
+
+The KiCad tool is skipped on other platforms; install the same release using
+[KiCad's platform packages](https://www.kicad.org/download/). Other mise tools
+remain available there. Initial installation needs about 4 GB for the extracted
+application and libraries, plus the download/archive.
+
+For later major upgrades, inspect release notes and capture connectivity and
+geometry before changing native sources. KiCad 10 provides
+[native upgrade commands](https://docs.kicad.org/10.0/en/cli/cli.html):
+
+```sh
+for sheet in hardware/controller/*.kicad_sch; do
+  mise exec -- kicad-cli sch upgrade "$sheet"
+done
+for board in hardware/controller/*.kicad_pcb; do
+  mise exec -- kicad-cli pcb upgrade "$board"
+done
+for library in hardware/controller/*.kicad_sym; do
+  mise exec -- kicad-cli sym upgrade "$library"
+done
+mise exec -- kicad-cli fp upgrade hardware/controller/Motley.pretty
+```
+
+Schematic upgrade handles only the named sheet; enumerate children explicitly.
+Review stock-library/model variables as well as serializer changes. There is no
+CLI project-file upgrade command; do not hand-increment `.kicad_pro` schemas.
+Compare fresh netlists, ERC/DRC and native trace checks before refreshing reviewed
+RQML baselines. The KiCad 10 migration evidence is in the
+[hardware verification record](../hardware/controller/verification.md).
+
 ## Human-readable requirements report
 
 Every PR and push to `main` has an independent **Requirements report** CI job

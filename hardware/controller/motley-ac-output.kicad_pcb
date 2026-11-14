@@ -1,7 +1,7 @@
 (kicad_pcb
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(general
 		(thickness 1.6)
 		(legacy_teardrops no)
@@ -41,7 +41,20 @@
 	(setup
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
-		(tenting front back)
+		(tenting
+			(front yes)
+			(back yes)
+		)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(capping no)
+		(filling no)
 		(pcbplotparams
 			(layerselection 0x00000000_00000000_55555555_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
@@ -50,15 +63,12 @@
 			(usegerberattributes yes)
 			(usegerberadvancedattributes yes)
 			(creategerberjobfile yes)
-			(dashed_line_dash_ratio 12.000000)
-			(dashed_line_gap_ratio 3.000000)
+			(dashed_line_dash_ratio 12)
+			(dashed_line_gap_ratio 3)
 			(svgprecision 4)
 			(plotframeref no)
 			(mode 1)
 			(useauxorigin no)
-			(hpglpennumber 1)
-			(hpglpenspeed 20)
-			(hpglpendiameter 15.000000)
 			(pdf_front_fp_property_popups yes)
 			(pdf_back_fp_property_popups yes)
 			(pdf_metadata yes)
@@ -82,30 +92,6 @@
 			(outputdirectory "")
 		)
 	)
-	(net 0 "")
-	(net 1 "+5V_SYS")
-	(net 2 "/Heater 1/TRIAC_A1")
-	(net 3 "AC_L_FUSED")
-	(net 4 "AC_N")
-	(net 5 "CUT_EN")
-	(net 6 "GND")
-	(net 7 "HEAT_EN")
-	(net 8 "Net-(C101-Pad1)")
-	(net 9 "Net-(D1-A)")
-	(net 10 "Net-(J10-Pin_1)")
-	(net 11 "Net-(Q101-B)")
-	(net 12 "Net-(Q101-C)")
-	(net 13 "Net-(Q102-A2)")
-	(net 14 "Net-(Q102-G)")
-	(net 15 "Net-(Q103-B)")
-	(net 16 "Net-(R101-Pad2)")
-	(net 17 "Net-(R104-Pad1)")
-	(net 18 "PE")
-	(net 19 "unconnected-(U2-NC-Pad3)")
-	(net 20 "unconnected-(U2-NC-Pad5)")
-	(net 21 "Net-(J20-Pin_1)")
-	(net 22 "Net-(D101-K)")
-	(net 23 "Net-(D102-K)")
 	(footprint "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "0a3f5abb-277e-4c9c-ad3e-52384bc53cfb")
@@ -175,6 +161,7 @@
 		(sheetname "/")
 		(sheetfile "motley-ac-output.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -3.87 -4.62)
 			(end 18.87 -4.62)
@@ -449,7 +436,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(roundrect_rratio 0.1)
-			(net 3 "AC_L_FUSED")
+			(net "AC_L_FUSED")
 			(uuid "d3ddd042-f42f-4367-bbd2-239da3b7a0fa")
 		)
 		(pad "2" thru_hole circle
@@ -458,7 +445,7 @@
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 4 "AC_N")
+			(net "AC_N")
 			(uuid "7ff3d2e3-260e-41c2-8435-f1182139d059")
 		)
 		(pad "3" thru_hole circle
@@ -467,11 +454,11 @@
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 18 "PE")
+			(net "PE")
 			(uuid "0ef42def-7025-4667-938b-6979238b9b8c")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/TerminalBlock_MetzConnect.3dshapes/TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/TerminalBlock_MetzConnect.3dshapes/TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -554,6 +541,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -731,7 +719,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(uuid "0faccc8b-d999-4e7c-8cad-6060617e08f2")
 		)
 		(pad "1" thru_hole circle
@@ -740,7 +728,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(uuid "98c1e9eb-5d43-4413-baad-a224f45647b7")
 		)
 		(embedded_fonts no)
@@ -814,6 +802,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -1084,7 +1073,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 7 "HEAT_EN")
+			(net "HEAT_EN")
 			(uuid "255f7c99-c2f1-4438-a52c-a9f17a1082d7")
 		)
 		(pad "2" smd roundrect
@@ -1092,7 +1081,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 5 "CUT_EN")
+			(net "CUT_EN")
 			(uuid "30960a67-25e6-4b25-9e66-9d6192c2afc1")
 		)
 		(pad "3" smd roundrect
@@ -1100,11 +1089,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "2364888f-b08f-4286-bfc0-23a69b48e09a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1185,6 +1174,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -1243,7 +1233,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 22 "Net-(D101-K)")
+			(net "Net-(D101-K)")
 			(pintype "passive")
 			(uuid "1b7e0a75-a5ee-4ee6-ab23-e4db18edecd1")
 		)
@@ -1252,12 +1242,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 11 "Net-(Q101-B)")
+			(net "Net-(Q101-B)")
 			(pintype "passive")
 			(uuid "296bdd3e-c14a-4a59-a50e-34c614bd18ea")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1338,6 +1328,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.38)
@@ -1496,7 +1487,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "Net-(J20-Pin_1)")
+			(net "Net-(J20-Pin_1)")
 			(uuid "34e11289-3fc1-4a7a-8449-87b388badd77")
 		)
 		(pad "2" thru_hole circle
@@ -1505,7 +1496,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "/Heater 1/TRIAC_A1")
+			(net "/Heater 1/TRIAC_A1")
 			(uuid "09f7a34c-300f-4f3d-b785-ac0c84fe8622")
 		)
 		(pad "3" thru_hole circle
@@ -1514,7 +1505,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "Net-(J20-Pin_1)")
+			(net "Net-(J20-Pin_1)")
 			(uuid "dcfa30e7-0244-4938-877b-9a303f6d4af3")
 		)
 		(pad "4" thru_hole circle
@@ -1523,11 +1514,11 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "/Heater 1/TRIAC_A1")
+			(net "/Heater 1/TRIAC_A1")
 			(uuid "a18dd2dc-7437-40b8-a7c5-4745fb15fc81")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x02_P2.54mm_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x02_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1610,6 +1601,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -1787,7 +1779,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 7 "HEAT_EN")
+			(net "HEAT_EN")
 			(uuid "241a67da-5051-4f7b-95f8-599c9cb20358")
 		)
 		(pad "1" thru_hole circle
@@ -1796,7 +1788,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 7 "HEAT_EN")
+			(net "HEAT_EN")
 			(uuid "af486a18-35e3-4ce0-90db-3165a1e36c7e")
 		)
 		(embedded_fonts no)
@@ -1869,6 +1861,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr smd exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 4.4 0)
@@ -1895,7 +1888,7 @@
 			(at 0 0)
 			(size 8 8)
 			(layers "F.Cu" "F.Mask")
-			(net 6 "GND")
+			(net "GND")
 			(solder_mask_margin 0)
 			(uuid "9b4b05e6-451c-4e8d-b848-31ab6e744607")
 		)
@@ -1968,6 +1961,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 3.2 0)
@@ -2079,6 +2073,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.45 -3.87)
 			(end -2.45 3.87)
@@ -2217,7 +2212,7 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 16 "Net-(R101-Pad2)")
+			(net "Net-(R101-Pad2)")
 			(pintype "passive")
 			(uuid "cab8bf5c-0d99-4d7d-9ef6-ffeb472adcab")
 		)
@@ -2226,7 +2221,7 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 12 "Net-(Q101-C)")
+			(net "Net-(Q101-C)")
 			(pintype "passive")
 			(uuid "29d16090-8fbb-41f8-b7c0-c0932ad208c8")
 		)
@@ -2235,7 +2230,7 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 19 "unconnected-(U2-NC-Pad3)")
+			(net "unconnected-(U2-NC-Pad3)")
 			(pinfunction "NC")
 			(pintype "no_connect")
 			(uuid "987b2eb1-2702-48db-828c-36c10a337133")
@@ -2245,7 +2240,7 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 14 "Net-(Q102-G)")
+			(net "Net-(Q102-G)")
 			(pintype "passive")
 			(uuid "384a3aa7-6306-4baa-9704-9a4eb18c9bbb")
 		)
@@ -2254,7 +2249,7 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 20 "unconnected-(U2-NC-Pad5)")
+			(net "unconnected-(U2-NC-Pad5)")
 			(pinfunction "NC")
 			(pintype "no_connect")
 			(uuid "bcc534c8-1d82-4d7b-a99e-698d0ebe990d")
@@ -2264,12 +2259,12 @@
 			(size 2 1.78)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.140449)
-			(net 17 "Net-(R104-Pad1)")
+			(net "Net-(R104-Pad1)")
 			(pintype "passive")
 			(uuid "8c65f493-192e-4e35-9f6d-962bf08e779c")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_DIP.3dshapes/SMDIP-6_W7.62mm.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/SMDIP-6_W7.62mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2352,6 +2347,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -2529,7 +2525,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "ec133bef-fef4-4fb4-b636-9a5bc5079c8f")
 		)
 		(pad "1" thru_hole circle
@@ -2538,7 +2534,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "2c1d8737-c918-4910-bce3-bcf0e17c784c")
 		)
 		(embedded_fonts no)
@@ -2612,6 +2608,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 0.54 -1.37)
 			(end 7.08 -1.37)
@@ -2731,7 +2728,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 17 "Net-(R104-Pad1)")
+			(net "Net-(R104-Pad1)")
 			(pintype "passive")
 			(uuid "061a418b-ed53-419e-9068-3caa49c3faaf")
 		)
@@ -2741,12 +2738,12 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 13 "Net-(Q102-A2)")
+			(net "Net-(Q102-A2)")
 			(pintype "passive")
 			(uuid "cad41209-d74a-4442-bb63-10d7decc9b55")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2829,6 +2826,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.36 -1)
 			(end -2.36 1)
@@ -3025,7 +3023,7 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(pinfunction "K")
 			(pintype "passive")
 			(uuid "6da821f9-597a-4a0d-b864-2db2a71920ce")
@@ -3035,13 +3033,13 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 9 "Net-(D1-A)")
+			(net "Net-(D1-A)")
 			(pinfunction "A")
 			(pintype "passive")
 			(uuid "1cf5e17f-198f-4b0f-bf09-90af65cf0d1a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3121,6 +3119,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.4 -1.7)
 			(end 19.2 -1.7)
@@ -3247,7 +3246,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(pinfunction "COIL")
 			(pintype "passive")
 			(thermal_bridge_angle 45)
@@ -3259,7 +3258,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 9 "Net-(D1-A)")
+			(net "Net-(D1-A)")
 			(pinfunction "COIL")
 			(pintype "passive")
 			(uuid "95cb2bd7-a27b-4d6d-bc97-45f0c96d4093")
@@ -3270,7 +3269,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "/Heater 1/TRIAC_A1")
+			(net "/Heater 1/TRIAC_A1")
 			(pinfunction "NO")
 			(pintype "passive")
 			(uuid "dadbb37c-e223-4516-8948-5fda2356bbba")
@@ -3281,7 +3280,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 10 "Net-(J10-Pin_1)")
+			(net "Net-(J10-Pin_1)")
 			(pinfunction "COM")
 			(pintype "passive")
 			(uuid "ba5f5d71-f364-487e-ba5f-81e807f52014")
@@ -3357,6 +3356,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 7.08 -1.37)
 			(end 7.08 -1.04)
@@ -3476,7 +3476,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 13 "Net-(Q102-A2)")
+			(net "Net-(Q102-A2)")
 			(pintype "passive")
 			(uuid "d660a7b0-0361-416c-88e7-03d8652c705d")
 		)
@@ -3486,12 +3486,12 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 8 "Net-(C101-Pad1)")
+			(net "Net-(C101-Pad1)")
 			(pintype "passive")
 			(uuid "1b3bf86e-206c-407e-a7e4-cb7187d59979")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3572,6 +3572,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.261252 -0.735)
 			(end 0.261252 -0.735)
@@ -3630,7 +3631,7 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 11 "Net-(Q101-B)")
+			(net "Net-(Q101-B)")
 			(uuid "57ead162-494b-4475-b936-cd8c4eb2c3e2")
 		)
 		(pad "2" smd roundrect
@@ -3638,11 +3639,11 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "ffd565ed-23c0-4e34-89a5-8e5cae4191b5")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3723,6 +3724,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.57 -3.26)
 			(end 7.65 -3.26)
@@ -3862,7 +3864,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "/Heater 1/TRIAC_A1")
+			(net "/Heater 1/TRIAC_A1")
 			(pinfunction "A1")
 			(pintype "passive")
 			(uuid "5f56a02b-12d6-4869-b683-1ec747d35943")
@@ -3873,7 +3875,7 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 13 "Net-(Q102-A2)")
+			(net "Net-(Q102-A2)")
 			(pinfunction "A2")
 			(pintype "passive")
 			(uuid "c3041811-60db-4b75-80a2-f79e4828373b")
@@ -3884,13 +3886,13 @@
 			(drill 1.1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 14 "Net-(Q102-G)")
+			(net "Net-(Q102-G)")
 			(pinfunction "G")
 			(pintype "input")
 			(uuid "c89dc743-662a-483e-8305-38f72a49ba59")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3971,6 +3973,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -4241,7 +4244,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 11 "Net-(Q101-B)")
+			(net "Net-(Q101-B)")
 			(pinfunction "B")
 			(pintype "input")
 			(uuid "57bdd3c7-9bf1-4a69-b0f6-feaf0c29321b")
@@ -4251,7 +4254,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(pinfunction "E")
 			(pintype "passive")
 			(uuid "79959583-4516-4054-ba01-1719f3fe3ccc")
@@ -4261,13 +4264,13 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 12 "Net-(Q101-C)")
+			(net "Net-(Q101-C)")
 			(pinfunction "C")
 			(pintype "passive")
 			(uuid "98fbbe11-e69c-4380-917e-86302345c3f8")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4348,6 +4351,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.261252 -0.735)
 			(end 0.261252 -0.735)
@@ -4406,7 +4410,7 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 15 "Net-(Q103-B)")
+			(net "Net-(Q103-B)")
 			(uuid "6380dad4-3a9e-4a00-8a7b-cdee1b977c74")
 		)
 		(pad "2" smd roundrect
@@ -4414,11 +4418,11 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "cd92615d-b45c-47d9-9f19-61ea201ff282")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4501,6 +4505,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.5 -2.65)
 			(end -0.5 -1.1)
@@ -4799,7 +4804,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(roundrect_rratio 0.25)
-			(net 3 "AC_L_FUSED")
+			(net "AC_L_FUSED")
 			(pintype "passive")
 			(uuid "9740ebcc-b14f-4993-bc0b-c639075784fb")
 		)
@@ -4810,7 +4815,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(roundrect_rratio 0.25)
-			(net 3 "AC_L_FUSED")
+			(net "AC_L_FUSED")
 			(pintype "passive")
 			(uuid "e0135ced-8b82-4e1d-a2ac-b51ff3fdf307")
 		)
@@ -4820,7 +4825,7 @@
 			(drill 1.05)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 13 "Net-(Q102-A2)")
+			(net "Net-(Q102-A2)")
 			(pintype "passive")
 			(uuid "3b65fb3c-491c-4641-8d10-bf6ddbbd9fd7")
 		)
@@ -4830,12 +4835,12 @@
 			(drill 1.05)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 13 "Net-(Q102-A2)")
+			(net "Net-(Q102-A2)")
 			(pintype "passive")
 			(uuid "bb8c7501-ce40-43bf-bfbe-388e08a6acec")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Fuse.3dshapes/Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4914,6 +4919,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 3.2 0)
@@ -5027,6 +5033,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.36 -1)
 			(end -2.36 1)
@@ -5223,7 +5230,7 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 23 "Net-(D102-K)")
+			(net "Net-(D102-K)")
 			(uuid "dd51ef72-da33-4648-9279-0d9816473254")
 		)
 		(pad "2" smd roundrect
@@ -5231,11 +5238,11 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 5 "CUT_EN")
+			(net "CUT_EN")
 			(uuid "a5b5f337-f427-4ae2-b350-039a0f7a58dc")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5314,6 +5321,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 3.2 0)
@@ -5425,6 +5433,7 @@
 		(sheetname "/")
 		(sheetfile "motley-ac-output.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.38)
@@ -5563,7 +5572,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "d7d188be-789f-4488-a6c7-3d8b75eacc49")
 		)
 		(pad "2" thru_hole circle
@@ -5572,7 +5581,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(uuid "2ff6e1e2-3204-43ca-a65c-ba52ae249c64")
 		)
 		(pad "3" thru_hole circle
@@ -5581,7 +5590,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 7 "HEAT_EN")
+			(net "HEAT_EN")
 			(uuid "720bc28e-5765-4358-8aba-972ef6b8f2c9")
 		)
 		(pad "4" thru_hole circle
@@ -5590,11 +5599,11 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "CUT_EN")
+			(net "CUT_EN")
 			(uuid "c0ed1ac8-659f-4049-8db0-ab3717e636ff")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5675,6 +5684,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -5733,7 +5743,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 11 "Net-(Q101-B)")
+			(net "Net-(Q101-B)")
 			(pintype "passive")
 			(uuid "751f16e3-cc60-4b16-b567-8dc37d1bf86a")
 		)
@@ -5742,12 +5752,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 6 "GND")
+			(net "GND")
 			(pintype "passive")
 			(uuid "a034b31b-9084-4299-a24d-8f35e84f280a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5830,6 +5840,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.36 -1)
 			(end -2.36 1)
@@ -6026,7 +6037,7 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 22 "Net-(D101-K)")
+			(net "Net-(D101-K)")
 			(uuid "0b3882d5-7a4b-4365-adda-639249df23f3")
 		)
 		(pad "2" smd roundrect
@@ -6034,11 +6045,11 @@
 			(size 0.9 1.2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 7 "HEAT_EN")
+			(net "HEAT_EN")
 			(uuid "079c4281-b4c4-405c-8c21-e8819d35b86e")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6117,6 +6128,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 3.2 0)
@@ -6230,6 +6242,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -6407,7 +6420,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "CUT_EN")
+			(net "CUT_EN")
 			(uuid "1c1f0b1a-0848-4dce-a6cf-47490742a717")
 		)
 		(pad "1" thru_hole circle
@@ -6416,7 +6429,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "CUT_EN")
+			(net "CUT_EN")
 			(uuid "625be2ec-90ab-4695-9277-f997ff0adf06")
 		)
 		(embedded_fonts no)
@@ -6490,6 +6503,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -6548,7 +6562,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 14 "Net-(Q102-G)")
+			(net "Net-(Q102-G)")
 			(pintype "passive")
 			(uuid "2c75a1a7-268a-4498-8947-05c5d74edfa5")
 		)
@@ -6557,12 +6571,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 2 "/Heater 1/TRIAC_A1")
+			(net "/Heater 1/TRIAC_A1")
 			(pintype "passive")
 			(uuid "2b49d846-234b-4e8e-9142-4a8ec07eb6dc")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6643,6 +6657,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 18.87 -4.62)
 			(end 18.87 4.62)
@@ -6917,7 +6932,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(roundrect_rratio 0.1)
-			(net 10 "Net-(J10-Pin_1)")
+			(net "Net-(J10-Pin_1)")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "635deeda-fff7-4111-8c3b-2e9e4eb250c4")
@@ -6928,7 +6943,7 @@
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 4 "AC_N")
+			(net "AC_N")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "aa2fb2a5-e772-46bf-86a2-52436c41a935")
@@ -6939,13 +6954,13 @@
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 18 "PE")
+			(net "PE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "1fa278fa-05c4-4a26-86c8-6e38502338ff")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/TerminalBlock_MetzConnect.3dshapes/TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/TerminalBlock_MetzConnect.3dshapes/TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7026,6 +7041,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -7084,7 +7100,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 15 "Net-(Q103-B)")
+			(net "Net-(Q103-B)")
 			(pintype "passive")
 			(uuid "06ac1c01-c3da-4e38-adf1-88fb50d09ade")
 		)
@@ -7093,12 +7109,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 6 "GND")
+			(net "GND")
 			(pintype "passive")
 			(uuid "dedadf9a-98d8-4810-ba9c-e2d61126d70a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7179,6 +7195,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.62 -2.27)
 			(end 10.62 -2.27)
@@ -7278,7 +7295,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 8 "Net-(C101-Pad1)")
+			(net "Net-(C101-Pad1)")
 			(pintype "passive")
 			(uuid "d821cde8-4ba6-4486-bd41-2af0bb9dcf2d")
 		)
@@ -7288,12 +7305,12 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "Net-(J20-Pin_1)")
+			(net "Net-(J20-Pin_1)")
 			(pintype "passive")
 			(uuid "ceacff9e-59f7-4a51-86e5-243199365b46")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Rect_L11.0mm_W4.3mm_P10.00mm_MKT.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Rect_L11.0mm_W4.3mm_P10.00mm_MKT.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7374,6 +7391,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -7432,7 +7450,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 23 "Net-(D102-K)")
+			(net "Net-(D102-K)")
 			(pintype "passive")
 			(uuid "422e1c3f-bbb0-4c12-92d1-7be3bc14074e")
 		)
@@ -7441,12 +7459,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 15 "Net-(Q103-B)")
+			(net "Net-(Q103-B)")
 			(pintype "passive")
 			(uuid "601cbf55-edeb-4f2a-89bd-786a2b16e997")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7529,6 +7547,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "output-access.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.26 -0.6)
 			(end -1.26 0.6)
@@ -7715,7 +7734,7 @@
 			(size 0.6 0.7)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(uuid "ff3b5b5d-a615-45ed-b3af-b1b41be75960")
 		)
 		(pad "2" smd roundrect
@@ -7723,11 +7742,11 @@
 			(size 0.6 0.7)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(uuid "8b6a5a46-d34a-4257-8487-eefc16a76fc3")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-523.step"
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-523.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7808,6 +7827,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -8078,7 +8098,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 15 "Net-(Q103-B)")
+			(net "Net-(Q103-B)")
 			(pinfunction "B")
 			(pintype "input")
 			(uuid "9f157f24-24d8-4e2e-aa9b-b2bf6ac144c4")
@@ -8088,7 +8108,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "GND")
+			(net "GND")
 			(pinfunction "E")
 			(pintype "passive")
 			(uuid "dd9de3eb-7551-4a89-964f-628d06b28b8e")
@@ -8098,13 +8118,13 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 9 "Net-(D1-A)")
+			(net "Net-(D1-A)")
 			(pinfunction "C")
 			(pintype "passive")
 			(uuid "b0254f27-2fbe-4bcb-b7e2-cc5a12650a2b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8185,6 +8205,7 @@
 		(sheetname "/Heater 1/")
 		(sheetfile "heater-channel.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -8243,7 +8264,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 1 "+5V_SYS")
+			(net "+5V_SYS")
 			(pintype "passive")
 			(uuid "914007cb-b0e8-4507-8ce9-16ba8c5e01c6")
 		)
@@ -8252,12 +8273,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 16 "Net-(R101-Pad2)")
+			(net "Net-(R101-Pad2)")
 			(pintype "passive")
 			(uuid "63ac4be1-bdcd-4629-b397-fc963a4c6782")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8464,8 +8485,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "621c6215-4f84-40b9-a0b0-0561532eb780")
 		(name "HEATER_1")
@@ -8474,7 +8493,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -8489,6 +8507,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts

@@ -1,7 +1,7 @@
 (kicad_pcb
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(general
 		(thickness 1.6)
 		(legacy_teardrops no)
@@ -40,7 +40,20 @@
 	(setup
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
-		(tenting front back)
+		(tenting
+			(front yes)
+			(back yes)
+		)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(capping no)
+		(filling no)
 		(pcbplotparams
 			(layerselection 0x00000000_00000000_55555555_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
@@ -49,15 +62,12 @@
 			(usegerberattributes yes)
 			(usegerberadvancedattributes yes)
 			(creategerberjobfile yes)
-			(dashed_line_dash_ratio 12.000000)
-			(dashed_line_gap_ratio 3.000000)
+			(dashed_line_dash_ratio 12)
+			(dashed_line_gap_ratio 3)
 			(svgprecision 4)
 			(plotframeref no)
 			(mode 1)
 			(useauxorigin no)
-			(hpglpennumber 1)
-			(hpglpenspeed 20)
-			(hpglpendiameter 15.000000)
 			(pdf_front_fp_property_popups yes)
 			(pdf_back_fp_property_popups yes)
 			(pdf_metadata yes)
@@ -81,58 +91,6 @@
 			(outputdirectory "")
 		)
 	)
-	(net 0 "")
-	(net 1 "GND")
-	(net 2 "I2C_SCL")
-	(net 3 "I2C_SDA")
-	(net 4 "MUX_RESET_N")
-	(net 5 "SCL0")
-	(net 6 "SCL1")
-	(net 7 "SCL2")
-	(net 8 "SCL3")
-	(net 9 "SCL4")
-	(net 10 "SCL5")
-	(net 11 "SCL6")
-	(net 12 "SCL7")
-	(net 13 "SDA0")
-	(net 14 "SDA1")
-	(net 15 "SDA2")
-	(net 16 "SDA3")
-	(net 17 "SDA4")
-	(net 18 "SDA5")
-	(net 19 "SDA6")
-	(net 20 "SDA7")
-	(net 21 "+3V3_SENS")
-	(net 22 "/Sensor ports/Port 0/SCL_CABLE")
-	(net 23 "/Sensor ports/Port 0/SDA_CABLE")
-	(net 24 "/Sensor ports/Port 1/SCL_CABLE")
-	(net 25 "/Sensor ports/Port 1/SDA_CABLE")
-	(net 26 "/Sensor ports/Port 2/SCL_CABLE")
-	(net 27 "/Sensor ports/Port 2/SDA_CABLE")
-	(net 28 "/Sensor ports/Port 3/SCL_CABLE")
-	(net 29 "/Sensor ports/Port 3/SDA_CABLE")
-	(net 30 "/Sensor ports/Port 4/SCL_CABLE")
-	(net 31 "/Sensor ports/Port 4/SDA_CABLE")
-	(net 32 "/Sensor ports/Port 5/SCL_CABLE")
-	(net 33 "/Sensor ports/Port 5/SDA_CABLE")
-	(net 34 "/Sensor ports/Port 6/SCL_CABLE")
-	(net 35 "/Sensor ports/Port 6/SDA_CABLE")
-	(net 36 "/Sensor ports/Port 7/SCL_CABLE")
-	(net 37 "/Sensor ports/Port 7/SDA_CABLE")
-	(net 38 "unconnected-(D41-IO2-Pad2)")
-	(net 39 "unconnected-(D43-IO2-Pad2)")
-	(net 40 "unconnected-(D45-IO2-Pad2)")
-	(net 41 "unconnected-(D47-IO2-Pad2)")
-	(net 42 "unconnected-(D49-IO2-Pad2)")
-	(net 43 "unconnected-(D51-IO2-Pad2)")
-	(net 44 "unconnected-(D53-IO2-Pad2)")
-	(net 45 "unconnected-(D55-IO2-Pad2)")
-	(net 46 "/I2C multiplexer/MUX_A0")
-	(net 47 "/I2C multiplexer/MUX_A1")
-	(net 48 "/I2C multiplexer/MUX_A2")
-	(net 49 "/QWIIC_UP_3V3")
-	(net 50 "Net-(R2-Pad1)")
-	(net 51 "Net-(R3-Pad1)")
 	(footprint "Resistor_SMD:R_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "015c1841-24de-475d-bdee-3997abf0737d")
@@ -202,6 +160,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -260,7 +219,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "2f562645-7ee1-4add-b679-a9805f4e8a72")
 		)
@@ -269,12 +228,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 11 "SCL6")
+			(net "SCL6")
 			(pintype "passive")
 			(uuid "920763c0-05d7-4bbf-a1d6-deb201614333")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -355,6 +314,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -651,7 +611,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "672e0f41-05cb-4882-b731-2fe0d4f2251a")
@@ -661,7 +621,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "a5abf53d-c67f-4c43-a322-fb154b0fdc31")
@@ -671,7 +631,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 35 "/Sensor ports/Port 6/SDA_CABLE")
+			(net "/Sensor ports/Port 6/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "98f0e56c-54d9-42bb-9909-179e876e70dd")
@@ -681,7 +641,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 34 "/Sensor ports/Port 6/SCL_CABLE")
+			(net "/Sensor ports/Port 6/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "ce7728f9-e6a9-4be3-a4b5-3cdfa5175e50")
@@ -701,7 +661,7 @@
 			(uuid "e0d9fed8-c16a-4efb-b47b-c61ba3e94753")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -782,6 +742,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -1052,7 +1013,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "6dd10a69-a3f3-4e29-adf3-064e9c1f7482")
 		)
 		(pad "2" smd roundrect
@@ -1060,7 +1021,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 42 "unconnected-(D49-IO2-Pad2)")
+			(net "unconnected-(D49-IO2-Pad2)")
 			(uuid "e4d110e1-8d19-4324-8368-a8129c59e747")
 		)
 		(pad "3" smd roundrect
@@ -1068,11 +1029,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "13fdf6bc-6d8e-412b-9ab3-02918c842db4")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1153,6 +1114,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -1211,7 +1173,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 19 "SDA6")
+			(net "SDA6")
 			(uuid "d5196f73-c65b-4ac3-b4ed-38d1624e3188")
 		)
 		(pad "2" smd roundrect
@@ -1219,11 +1181,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 35 "/Sensor ports/Port 6/SDA_CABLE")
+			(net "/Sensor ports/Port 6/SDA_CABLE")
 			(uuid "000a889a-80c8-4b13-9c09-bda8b0f95412")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1304,6 +1266,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -1362,7 +1325,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "2487f3e7-1284-4051-ad04-12335fa1851f")
 		)
@@ -1371,12 +1334,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 10 "SCL5")
+			(net "SCL5")
 			(pintype "passive")
 			(uuid "2e6561d0-5e32-4e58-b736-158113881da3")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1457,6 +1420,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -1515,7 +1479,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 5 "SCL0")
+			(net "SCL0")
 			(uuid "8f59abb3-90b6-401f-a5d0-0135ea949cf8")
 		)
 		(pad "2" smd roundrect
@@ -1523,11 +1487,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 22 "/Sensor ports/Port 0/SCL_CABLE")
+			(net "/Sensor ports/Port 0/SCL_CABLE")
 			(uuid "24032042-cfe3-4142-a74c-6421f25621d9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1608,6 +1572,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -1878,7 +1843,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 35 "/Sensor ports/Port 6/SDA_CABLE")
+			(net "/Sensor ports/Port 6/SDA_CABLE")
 			(uuid "daadf8ae-660b-474a-a6a5-5f5295e60570")
 		)
 		(pad "2" smd roundrect
@@ -1886,7 +1851,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 34 "/Sensor ports/Port 6/SCL_CABLE")
+			(net "/Sensor ports/Port 6/SCL_CABLE")
 			(uuid "31c049ae-e36e-4c10-9025-64be3cdee76d")
 		)
 		(pad "3" smd roundrect
@@ -1894,11 +1859,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "caaa9118-788f-4470-8ae2-80236931bb37")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1979,6 +1944,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -2037,7 +2003,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 18 "SDA5")
+			(net "SDA5")
 			(uuid "c2de8f77-c63e-4cef-aadb-6e25ef172f43")
 		)
 		(pad "2" smd roundrect
@@ -2045,11 +2011,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 33 "/Sensor ports/Port 5/SDA_CABLE")
+			(net "/Sensor ports/Port 5/SDA_CABLE")
 			(uuid "a8df3890-a7b3-45fb-a6b6-33122e874155")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2127,6 +2093,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 1.2 0)
@@ -2239,6 +2206,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -2509,7 +2477,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "1e03fa13-9003-4ac0-a7d1-76b2a0546f8a")
 		)
 		(pad "2" smd roundrect
@@ -2517,7 +2485,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 45 "unconnected-(D55-IO2-Pad2)")
+			(net "unconnected-(D55-IO2-Pad2)")
 			(uuid "3df96d04-4885-4b49-b0f2-40b27a0000db")
 		)
 		(pad "3" smd roundrect
@@ -2525,11 +2493,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "15283b53-6a3d-4a4c-9b58-4ead0e00e972")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2610,6 +2578,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -2880,7 +2849,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "fdd45abe-892c-4806-9724-19d006d48b7f")
 		)
 		(pad "2" smd roundrect
@@ -2888,7 +2857,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 43 "unconnected-(D51-IO2-Pad2)")
+			(net "unconnected-(D51-IO2-Pad2)")
 			(uuid "31166fb2-8818-462d-810e-8187bc249064")
 		)
 		(pad "3" smd roundrect
@@ -2896,11 +2865,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "a645930b-d83e-466e-a42c-fb12b7fadd17")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2981,6 +2950,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -3039,7 +3009,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 48 "/I2C multiplexer/MUX_A2")
+			(net "/I2C multiplexer/MUX_A2")
 			(uuid "de764ae5-27df-4f31-a99c-f96483158977")
 		)
 		(pad "2" smd roundrect
@@ -3047,11 +3017,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "3c75a9c0-139f-46c2-b999-c4ef82dcf03f")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3132,6 +3102,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -3190,7 +3161,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 9 "SCL4")
+			(net "SCL4")
 			(uuid "3a3ea26d-0d96-48dd-a9ac-ff7b2d93b5ee")
 		)
 		(pad "2" smd roundrect
@@ -3198,11 +3169,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 30 "/Sensor ports/Port 4/SCL_CABLE")
+			(net "/Sensor ports/Port 4/SCL_CABLE")
 			(uuid "bc759be6-43f2-4f96-b639-ecca1578a450")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3283,6 +3254,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -3341,7 +3313,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "734c9d81-4e59-4ca3-8c79-77d4d851c233")
 		)
@@ -3350,12 +3322,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 6 "SCL1")
+			(net "SCL1")
 			(pintype "passive")
 			(uuid "5fcb4fec-44f0-428a-b813-23f70041c3eb")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3436,6 +3408,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -3706,7 +3679,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "eec14637-ad51-47a1-9dde-e248bcdee97b")
 		)
 		(pad "2" smd roundrect
@@ -3714,7 +3687,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 40 "unconnected-(D45-IO2-Pad2)")
+			(net "unconnected-(D45-IO2-Pad2)")
 			(uuid "966ae1f5-653d-43a1-9606-ed676829309a")
 		)
 		(pad "3" smd roundrect
@@ -3722,11 +3695,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "ce555b93-bdac-4e18-a0f5-9b0fd79633b2")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3807,6 +3780,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -3865,7 +3839,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 17 "SDA4")
+			(net "SDA4")
 			(uuid "eb506dad-583e-4d36-b971-2daae34bfcb1")
 		)
 		(pad "2" smd roundrect
@@ -3873,11 +3847,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 31 "/Sensor ports/Port 4/SDA_CABLE")
+			(net "/Sensor ports/Port 4/SDA_CABLE")
 			(uuid "25ed946d-c795-4196-9a31-32aa371beb1e")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3958,6 +3932,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -4016,7 +3991,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "526705ec-a148-4953-8146-2c25154d437a")
 		)
@@ -4025,12 +4000,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 14 "SDA1")
+			(net "SDA1")
 			(pintype "passive")
 			(uuid "8ace04a8-7ffa-4114-a100-18e21e402ed3")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4111,6 +4086,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -4381,7 +4357,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "30ef5a37-3ba0-45d6-ad3c-bf3ca29a05ad")
 		)
 		(pad "2" smd roundrect
@@ -4389,7 +4365,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 39 "unconnected-(D43-IO2-Pad2)")
+			(net "unconnected-(D43-IO2-Pad2)")
 			(uuid "4f5ad250-8aae-46f7-8e2c-8f05922d6f89")
 		)
 		(pad "3" smd roundrect
@@ -4397,11 +4373,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "e335658d-fb94-450d-8e6f-007f0135aea9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4482,6 +4458,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -4540,7 +4517,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "0fe74f17-59b8-4aee-b147-a1db130d7ba9")
 		)
@@ -4549,12 +4526,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 19 "SDA6")
+			(net "SDA6")
 			(pintype "passive")
 			(uuid "9890ef4e-6635-4e0f-8e60-d460eed11e2d")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4635,6 +4612,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -4931,7 +4909,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "2341979b-aacb-4280-a508-9a2d2371dc19")
@@ -4941,7 +4919,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "0751d268-4adb-47e2-b4aa-e363712e7b5e")
@@ -4951,7 +4929,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 23 "/Sensor ports/Port 0/SDA_CABLE")
+			(net "/Sensor ports/Port 0/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "d05ff49d-8c5f-4389-8552-ecca5b548242")
@@ -4961,7 +4939,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 22 "/Sensor ports/Port 0/SCL_CABLE")
+			(net "/Sensor ports/Port 0/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "46f0683f-8359-4c12-a90a-217e5fd4976f")
@@ -4981,7 +4959,7 @@
 			(uuid "6273e175-ab55-4b12-b2fc-07a040a300bb")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5064,6 +5042,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -5103,7 +5082,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "f43f9abf-4c9c-4aa6-830f-e8c377623d6e")
 		)
 		(embedded_fonts no)
@@ -5177,6 +5156,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -5473,7 +5453,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "4d2e8dd3-5176-4850-ac15-de713c9ae6d8")
@@ -5483,7 +5463,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "6dc654bf-53eb-43f0-bc8f-cbf2289e6ae6")
@@ -5493,7 +5473,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 27 "/Sensor ports/Port 2/SDA_CABLE")
+			(net "/Sensor ports/Port 2/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "48121f18-211a-4327-888b-43a73d46dbe4")
@@ -5503,7 +5483,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 26 "/Sensor ports/Port 2/SCL_CABLE")
+			(net "/Sensor ports/Port 2/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "440b1809-49c8-4684-b437-1caec6fe375d")
@@ -5523,7 +5503,7 @@
 			(uuid "9897260f-a578-4dda-87e9-f6c0486680ea")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5604,6 +5584,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -5900,7 +5881,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "2d7992e5-ffdf-4c20-b66b-8f0e3a9f80b2")
@@ -5910,7 +5891,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "3bbd5c19-09f3-4ac0-8a83-ff449bfcc504")
@@ -5920,7 +5901,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 25 "/Sensor ports/Port 1/SDA_CABLE")
+			(net "/Sensor ports/Port 1/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "05833fb5-24ab-4621-a9a2-e642a797cbcf")
@@ -5930,7 +5911,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 24 "/Sensor ports/Port 1/SCL_CABLE")
+			(net "/Sensor ports/Port 1/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "860c8c32-f1cb-4d59-886e-350e17f50f52")
@@ -5950,7 +5931,7 @@
 			(uuid "906ae6d7-d7bf-43e4-b0ed-263489b662d7")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6031,6 +6012,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -6089,7 +6071,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 51 "Net-(R3-Pad1)")
+			(net "Net-(R3-Pad1)")
 			(pintype "passive")
 			(uuid "971c02c7-79b9-450e-92d6-5ce7f369739c")
 		)
@@ -6098,12 +6080,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(pintype "passive")
 			(uuid "0992827f-9122-4b9d-990f-96f8685a951b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6184,6 +6166,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -6242,7 +6225,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "87fb7d00-a03a-402e-9a8d-3c6cfdeef931")
 		)
@@ -6251,12 +6234,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 17 "SDA4")
+			(net "SDA4")
 			(pintype "passive")
 			(uuid "88502357-4c5e-4044-b26e-5284f913ddbd")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6336,6 +6319,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr smd exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 4.4 0)
@@ -6362,7 +6346,7 @@
 			(at 0 0)
 			(size 8 8)
 			(layers "F.Cu" "F.Mask")
-			(net 1 "GND")
+			(net "GND")
 			(solder_mask_margin 0)
 			(uuid "67e0d8fc-bd63-4434-80fc-f799d1ab15d7")
 		)
@@ -6437,6 +6421,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -6707,7 +6692,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "39257133-9c2e-4220-b878-771f9517bb72")
 		)
 		(pad "2" smd roundrect
@@ -6715,7 +6700,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "65415de9-9f44-49a6-af08-5ee5724138c0")
 		)
 		(pad "3" smd roundrect
@@ -6723,11 +6708,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "a3a0bfc0-4888-4a71-8ff7-bab085e52ef8")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6808,6 +6793,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -6866,7 +6852,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "d02a4fcf-71aa-4382-b6c8-f7924dc8d439")
 		)
@@ -6875,12 +6861,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 16 "SDA3")
+			(net "SDA3")
 			(pintype "passive")
 			(uuid "dccfc245-ac26-4ba2-a034-b5d3220c67fd")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6961,6 +6947,7 @@
 		(sheetname "/")
 		(sheetfile "motley-sensors.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -3.11 -1.785)
 			(end -2.06 -1.785)
@@ -7257,7 +7244,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "98dd2444-6d7e-401c-b63f-1e0037f81cf7")
 		)
 		(pad "2" smd roundrect
@@ -7265,7 +7252,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 49 "/QWIIC_UP_3V3")
+			(net "/QWIIC_UP_3V3")
 			(uuid "f7f68786-2fbd-429e-8605-264f578a5bca")
 		)
 		(pad "3" smd roundrect
@@ -7273,7 +7260,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "727bcef4-c056-4cea-8c69-e93348967f01")
 		)
 		(pad "4" smd roundrect
@@ -7281,7 +7268,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "f2569fd3-ebf0-41fd-874e-1b772f4e9af4")
 		)
 		(pad "MP" smd roundrect
@@ -7299,7 +7286,7 @@
 			(uuid "3c14a014-2275-49ee-8851-5382d7461f27")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7380,6 +7367,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -7438,7 +7426,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "799fb5f9-5439-431d-894b-6ff3ec3d7c46")
 		)
 		(pad "2" smd roundrect
@@ -7446,11 +7434,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 51 "Net-(R3-Pad1)")
+			(net "Net-(R3-Pad1)")
 			(uuid "de22e17c-8e60-4597-b444-b815b9ec8184")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7531,6 +7519,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -7589,7 +7578,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 12 "SCL7")
+			(net "SCL7")
 			(uuid "c7566b07-9add-4d9b-acb6-f8404f045d84")
 		)
 		(pad "2" smd roundrect
@@ -7597,11 +7586,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 36 "/Sensor ports/Port 7/SCL_CABLE")
+			(net "/Sensor ports/Port 7/SCL_CABLE")
 			(uuid "0a5b7b9c-ef15-44cf-a8a9-550a7f4f0b03")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7682,6 +7671,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -7740,7 +7730,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "74dd265c-f33d-4010-83bd-5bc1552dd152")
 		)
@@ -7749,12 +7739,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 20 "SDA7")
+			(net "SDA7")
 			(pintype "passive")
 			(uuid "a10d563b-1f03-412f-b3d7-9e0571cf1c02")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7835,6 +7825,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -8105,7 +8096,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 23 "/Sensor ports/Port 0/SDA_CABLE")
+			(net "/Sensor ports/Port 0/SDA_CABLE")
 			(uuid "a4f52a45-9a23-439d-a920-6e02195aeed7")
 		)
 		(pad "2" smd roundrect
@@ -8113,7 +8104,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 22 "/Sensor ports/Port 0/SCL_CABLE")
+			(net "/Sensor ports/Port 0/SCL_CABLE")
 			(uuid "7e8f6b90-baaf-4981-add5-d726060e9fbf")
 		)
 		(pad "3" smd roundrect
@@ -8121,11 +8112,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "708c115f-68ee-4505-a4d5-f4b840a02938")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8206,6 +8197,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -8502,7 +8494,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "d1625f79-b1de-4eba-9afb-2395482f8fdf")
@@ -8512,7 +8504,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "5322a999-8159-4bdc-8876-d454d10fcf73")
@@ -8522,7 +8514,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 37 "/Sensor ports/Port 7/SDA_CABLE")
+			(net "/Sensor ports/Port 7/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "f10515a1-6cdf-4b63-9be0-8a66da3cf46d")
@@ -8532,7 +8524,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 36 "/Sensor ports/Port 7/SCL_CABLE")
+			(net "/Sensor ports/Port 7/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "7d1c7de0-1b33-43a3-a871-11e39547d7ab")
@@ -8552,7 +8544,7 @@
 			(uuid "4c4baf1d-d36f-4cfb-82c0-3518bcd8caba")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8633,6 +8625,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -8903,7 +8896,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "fe52d11d-fbf9-4617-83f5-86d57a24ebe5")
 		)
 		(pad "2" smd roundrect
@@ -8911,7 +8904,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(uuid "12ca451d-4d4b-4466-8ce5-9b3d6ab023b2")
 		)
 		(pad "3" smd roundrect
@@ -8919,11 +8912,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "e6c8504f-7aaf-403d-b501-66630fec9a08")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9004,6 +8997,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -9274,7 +9268,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "9ad88d12-a276-466b-85e3-74db08414e8d")
 		)
 		(pad "2" smd roundrect
@@ -9282,7 +9276,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 38 "unconnected-(D41-IO2-Pad2)")
+			(net "unconnected-(D41-IO2-Pad2)")
 			(uuid "3f11629e-c013-405b-aa81-721bc06c6c4b")
 		)
 		(pad "3" smd roundrect
@@ -9290,11 +9284,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "bf89518f-8ef3-40d3-89cb-20b54616bc00")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9375,6 +9369,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -9433,7 +9428,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "23953f88-115a-4263-afd6-21bf515016ad")
 		)
@@ -9442,12 +9437,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 15 "SDA2")
+			(net "SDA2")
 			(pintype "passive")
 			(uuid "aef7518a-7a6f-4985-8f43-e8e89e5a7d14")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9528,6 +9523,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -9586,7 +9582,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 16 "SDA3")
+			(net "SDA3")
 			(uuid "989dc23c-6cbc-4a6f-80a7-24d6f14600b0")
 		)
 		(pad "2" smd roundrect
@@ -9594,11 +9590,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 29 "/Sensor ports/Port 3/SDA_CABLE")
+			(net "/Sensor ports/Port 3/SDA_CABLE")
 			(uuid "75861c22-2d41-4427-b535-e4b23b16d298")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9679,6 +9675,7 @@
 		(sheetname "/")
 		(sheetfile "motley-sensors.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -3.11 -1.785)
 			(end -2.06 -1.785)
@@ -9975,7 +9972,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "edc1e995-8121-4070-90c4-e67bf9d383e5")
 		)
 		(pad "2" smd roundrect
@@ -9983,7 +9980,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 49 "/QWIIC_UP_3V3")
+			(net "/QWIIC_UP_3V3")
 			(uuid "851c0fd1-fa84-45d4-ba97-633d9c10c46c")
 		)
 		(pad "3" smd roundrect
@@ -9991,7 +9988,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "fe1db0f0-ac94-4b62-bb83-a72ceac1d905")
 		)
 		(pad "4" smd roundrect
@@ -9999,7 +9996,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "a6e286d2-b32a-44ad-bfcb-30a950b17c23")
 		)
 		(pad "MP" smd roundrect
@@ -10017,7 +10014,7 @@
 			(uuid "f22851a1-0462-4c6f-b032-0d267cba0c2d")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10098,6 +10095,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -10156,7 +10154,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "8574fa0f-176d-4f2c-87ed-12ae6e604d26")
 		)
@@ -10165,12 +10163,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 8 "SCL3")
+			(net "SCL3")
 			(pintype "passive")
 			(uuid "7739eeb5-fe94-483c-8fc4-95363e19bf2c")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10251,6 +10249,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -10309,7 +10308,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "03abe423-059c-45f6-961e-0a0696d241bb")
 		)
@@ -10318,12 +10317,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 7 "SCL2")
+			(net "SCL2")
 			(pintype "passive")
 			(uuid "863160c9-41b8-4723-9514-d04b71cb6029")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10404,6 +10403,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -10462,7 +10462,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 47 "/I2C multiplexer/MUX_A1")
+			(net "/I2C multiplexer/MUX_A1")
 			(uuid "9802496d-0fe7-4560-a4bb-cbc4bc502fc1")
 		)
 		(pad "2" smd roundrect
@@ -10470,11 +10470,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "0c1b9e68-3014-4300-b5bd-1d26534479e8")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10555,6 +10555,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -10825,7 +10826,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "5d28a624-95a9-4a22-b852-e02d1ff6a2c3")
 		)
 		(pad "2" smd roundrect
@@ -10833,7 +10834,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 41 "unconnected-(D47-IO2-Pad2)")
+			(net "unconnected-(D47-IO2-Pad2)")
 			(uuid "15d23ada-5f39-447e-bcbb-a745187a8451")
 		)
 		(pad "3" smd roundrect
@@ -10841,11 +10842,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "4776a38d-37e5-4937-86eb-e5ccab7ee6fe")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10926,6 +10927,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.31 -4.035)
 			(end 2.31 -4.035)
@@ -11106,7 +11108,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 46 "/I2C multiplexer/MUX_A0")
+			(net "/I2C multiplexer/MUX_A0")
 			(pinfunction "A0")
 			(pintype "input")
 			(uuid "3808ca0e-bbab-486e-a52b-033e83f288b0")
@@ -11116,7 +11118,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 47 "/I2C multiplexer/MUX_A1")
+			(net "/I2C multiplexer/MUX_A1")
 			(pinfunction "A1")
 			(pintype "input")
 			(uuid "d02f77c7-0af5-4c34-af27-d5461cab01ce")
@@ -11126,7 +11128,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(pinfunction "~{RESET}")
 			(pintype "input")
 			(uuid "851789ab-3576-483e-a3d2-9bc4a7c1c0c0")
@@ -11136,7 +11138,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 13 "SDA0")
+			(net "SDA0")
 			(pinfunction "SD0")
 			(pintype "bidirectional")
 			(uuid "f2d79265-c1e3-4550-8c08-31a763f58466")
@@ -11146,7 +11148,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 5 "SCL0")
+			(net "SCL0")
 			(pinfunction "SC0")
 			(pintype "output")
 			(uuid "fbf85b2b-7f90-469c-95dd-51a3912123f8")
@@ -11156,7 +11158,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 14 "SDA1")
+			(net "SDA1")
 			(pinfunction "SD1")
 			(pintype "bidirectional")
 			(uuid "0c066655-7a9a-48fd-bb24-1187afc75877")
@@ -11166,7 +11168,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 6 "SCL1")
+			(net "SCL1")
 			(pinfunction "SC1")
 			(pintype "output")
 			(uuid "29d7ad8a-11c8-47bc-b5a5-a798234b7735")
@@ -11176,7 +11178,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 15 "SDA2")
+			(net "SDA2")
 			(pinfunction "SD2")
 			(pintype "bidirectional")
 			(uuid "59ddd6fa-7a94-470e-900f-3d424f660d29")
@@ -11186,7 +11188,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 7 "SCL2")
+			(net "SCL2")
 			(pinfunction "SC2")
 			(pintype "output")
 			(uuid "fdc5c981-793d-4412-bd12-840ae520a9d5")
@@ -11196,7 +11198,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 16 "SDA3")
+			(net "SDA3")
 			(pinfunction "SD3")
 			(pintype "bidirectional")
 			(uuid "d1b7d814-e0cc-4667-af67-aadedc25a912")
@@ -11206,7 +11208,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 8 "SCL3")
+			(net "SCL3")
 			(pinfunction "SC3")
 			(pintype "output")
 			(uuid "fa2ea537-1cac-40b3-bb29-69d0e2ae3c05")
@@ -11216,7 +11218,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "GND")
 			(pintype "power_in")
 			(uuid "aec9ddbf-ceaf-4f7f-a3cc-ac0f5307a8cc")
@@ -11226,7 +11228,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 17 "SDA4")
+			(net "SDA4")
 			(pinfunction "SD4")
 			(pintype "bidirectional")
 			(uuid "2f90e144-f04c-4a78-88fc-4d91c8597686")
@@ -11236,7 +11238,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 9 "SCL4")
+			(net "SCL4")
 			(pinfunction "SC4")
 			(pintype "output")
 			(uuid "4e708df2-5318-475c-9423-d963ee696b80")
@@ -11246,7 +11248,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 18 "SDA5")
+			(net "SDA5")
 			(pinfunction "SD5")
 			(pintype "bidirectional")
 			(uuid "775f0460-212a-4554-a90b-1f2e4e7d0a88")
@@ -11256,7 +11258,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 10 "SCL5")
+			(net "SCL5")
 			(pinfunction "SC5")
 			(pintype "output")
 			(uuid "31cad25c-f6b2-4c82-887c-91f883d0c325")
@@ -11266,7 +11268,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 19 "SDA6")
+			(net "SDA6")
 			(pinfunction "SD6")
 			(pintype "bidirectional")
 			(uuid "3bba4bdf-a589-4c28-8501-a7d547ae3071")
@@ -11276,7 +11278,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 11 "SCL6")
+			(net "SCL6")
 			(pinfunction "SC6")
 			(pintype "output")
 			(uuid "c23c663d-ccc6-43a6-8f9a-4d1b62743822")
@@ -11286,7 +11288,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 20 "SDA7")
+			(net "SDA7")
 			(pinfunction "SD7")
 			(pintype "bidirectional")
 			(uuid "777deef7-f77e-46e0-aca0-af93ca49de72")
@@ -11296,7 +11298,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 12 "SCL7")
+			(net "SCL7")
 			(pinfunction "SC7")
 			(pintype "output")
 			(uuid "43913093-b4a0-4641-aaa3-5d8128425dae")
@@ -11306,7 +11308,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 48 "/I2C multiplexer/MUX_A2")
+			(net "/I2C multiplexer/MUX_A2")
 			(pinfunction "A2")
 			(pintype "input")
 			(uuid "e5c0e310-170e-4dbd-b44d-bfa34e81fde6")
@@ -11316,7 +11318,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(pinfunction "SCL")
 			(pintype "input")
 			(uuid "bb241019-9a6b-4ef0-9a6b-7504cda7c2d5")
@@ -11326,7 +11328,7 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(pinfunction "SDA")
 			(pintype "bidirectional")
 			(uuid "5587f199-becc-4cd0-87a4-3e1a5a286a04")
@@ -11336,13 +11338,13 @@
 			(size 1.475 0.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "VCC")
 			(pintype "power_in")
 			(uuid "d01faccb-141d-4565-8add-395bcfd5be63")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_SO.3dshapes/TSSOP-24_4.4x7.8mm_P0.65mm.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_SO.3dshapes/TSSOP-24_4.4x7.8mm_P0.65mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11423,6 +11425,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -11481,7 +11484,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 14 "SDA1")
+			(net "SDA1")
 			(uuid "2089c2a2-73d4-48a5-904e-023aecf10b10")
 		)
 		(pad "2" smd roundrect
@@ -11489,11 +11492,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 25 "/Sensor ports/Port 1/SDA_CABLE")
+			(net "/Sensor ports/Port 1/SDA_CABLE")
 			(uuid "79193979-c9ad-47f6-b9f2-5832f84ce6e8")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11574,6 +11577,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -11632,7 +11636,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "4a33e0c1-e4de-42e7-97aa-987eb26180aa")
 		)
@@ -11641,12 +11645,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 13 "SDA0")
+			(net "SDA0")
 			(pintype "passive")
 			(uuid "cfa254d6-776b-4830-b776-370325f08ce8")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11727,6 +11731,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -11997,7 +12002,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 31 "/Sensor ports/Port 4/SDA_CABLE")
+			(net "/Sensor ports/Port 4/SDA_CABLE")
 			(uuid "d5de9999-00f7-4b73-8cb4-4f2432391667")
 		)
 		(pad "2" smd roundrect
@@ -12005,7 +12010,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 30 "/Sensor ports/Port 4/SCL_CABLE")
+			(net "/Sensor ports/Port 4/SCL_CABLE")
 			(uuid "5c112b06-3dbc-41bb-9f7c-b33e4e0d160c")
 		)
 		(pad "3" smd roundrect
@@ -12013,11 +12018,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "0dd0f24e-7d13-420b-9d8d-6dff836b73da")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12098,6 +12103,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -12368,7 +12374,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 33 "/Sensor ports/Port 5/SDA_CABLE")
+			(net "/Sensor ports/Port 5/SDA_CABLE")
 			(uuid "2d61889a-3941-4129-add5-c98b69830233")
 		)
 		(pad "2" smd roundrect
@@ -12376,7 +12382,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 32 "/Sensor ports/Port 5/SCL_CABLE")
+			(net "/Sensor ports/Port 5/SCL_CABLE")
 			(uuid "a214c317-2b69-49b0-8636-b27d6131d4b9")
 		)
 		(pad "3" smd roundrect
@@ -12384,11 +12390,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "a4e5042c-692d-4ae3-9137-4c20dd298c15")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12469,6 +12475,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -12739,7 +12746,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 37 "/Sensor ports/Port 7/SDA_CABLE")
+			(net "/Sensor ports/Port 7/SDA_CABLE")
 			(uuid "2e703642-3d0c-4b55-9ae7-f9a141435e04")
 		)
 		(pad "2" smd roundrect
@@ -12747,7 +12754,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 36 "/Sensor ports/Port 7/SCL_CABLE")
+			(net "/Sensor ports/Port 7/SCL_CABLE")
 			(uuid "520ec4af-71ae-4eb0-9453-8e22f2ab2e83")
 		)
 		(pad "3" smd roundrect
@@ -12755,11 +12762,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "fe1bab05-568b-416c-8c17-8995d1d4acc7")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12840,6 +12847,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -12898,7 +12906,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "09107fad-6380-4dcb-a996-1fccdc507168")
 		)
@@ -12907,12 +12915,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 5 "SCL0")
+			(net "SCL0")
 			(pintype "passive")
 			(uuid "493fb546-1ada-40cb-acc0-2ae2618f81a5")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12993,6 +13001,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -13289,7 +13298,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "b5e83a48-64e6-41af-aa5e-3e4ff61008ef")
@@ -13299,7 +13308,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "a067355f-6b5a-4b65-9f99-676b6b7bff34")
@@ -13309,7 +13318,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 29 "/Sensor ports/Port 3/SDA_CABLE")
+			(net "/Sensor ports/Port 3/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "91d178bb-c3cb-4bf9-bc65-2d613b682240")
@@ -13319,7 +13328,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 28 "/Sensor ports/Port 3/SCL_CABLE")
+			(net "/Sensor ports/Port 3/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "ee47f1ce-9caf-4a88-bbdd-e2288ced5268")
@@ -13339,7 +13348,7 @@
 			(uuid "c4e6bfe4-84f8-4243-86ca-e250d6b399bd")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13420,6 +13429,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -13478,7 +13488,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 15 "SDA2")
+			(net "SDA2")
 			(uuid "d2219c78-50ce-439e-8fdb-9746ed2ac3b8")
 		)
 		(pad "2" smd roundrect
@@ -13486,11 +13496,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 27 "/Sensor ports/Port 2/SDA_CABLE")
+			(net "/Sensor ports/Port 2/SDA_CABLE")
 			(uuid "e7240e61-2169-4cc2-8a82-b03eab45f57b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13571,6 +13581,7 @@
 		(sheetname "/")
 		(sheetfile "motley-sensors.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -13629,7 +13640,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "ad41ad4c-a5b2-4658-a6d1-117947cd6f65")
 		)
 		(pad "2" smd roundrect
@@ -13637,11 +13648,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 49 "/QWIIC_UP_3V3")
+			(net "/QWIIC_UP_3V3")
 			(uuid "935fafa0-10dd-4297-aaf5-60874d4cf533")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13724,6 +13735,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -13763,7 +13775,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(uuid "da6278c1-10bf-4b0d-9aca-1b4c6fbe40bd")
 		)
 		(embedded_fonts no)
@@ -13837,6 +13849,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -13895,7 +13908,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "20d4bdd0-688f-4a20-8e89-a4f612c1c309")
 		)
@@ -13904,12 +13917,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(pintype "passive")
 			(uuid "1adf7d13-02b1-4b5f-beab-36e0857318e7")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13990,6 +14003,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -14260,7 +14274,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 25 "/Sensor ports/Port 1/SDA_CABLE")
+			(net "/Sensor ports/Port 1/SDA_CABLE")
 			(uuid "5f72965c-958f-4c6c-87d1-0bc3afc44701")
 		)
 		(pad "2" smd roundrect
@@ -14268,7 +14282,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 24 "/Sensor ports/Port 1/SCL_CABLE")
+			(net "/Sensor ports/Port 1/SCL_CABLE")
 			(uuid "816380c5-18aa-412f-890b-eef53a2341b0")
 		)
 		(pad "3" smd roundrect
@@ -14276,11 +14290,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "034dbd02-99f0-4eb2-9fcd-8e18c6e488db")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14361,6 +14375,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -14419,7 +14434,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 46 "/I2C multiplexer/MUX_A0")
+			(net "/I2C multiplexer/MUX_A0")
 			(uuid "02b6057c-5c6f-4d26-97f2-c6dea2bbe9fb")
 		)
 		(pad "2" smd roundrect
@@ -14427,11 +14442,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "a4c84b01-1318-4e7b-a427-399e0ec1c1a9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14512,6 +14527,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -14808,7 +14824,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "0f851fe0-0f21-4431-9c34-fc64b503e924")
@@ -14818,7 +14834,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "78e0beb9-cc03-4373-b858-5455f8685eb3")
@@ -14828,7 +14844,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 33 "/Sensor ports/Port 5/SDA_CABLE")
+			(net "/Sensor ports/Port 5/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "cbed32ca-d33c-41b5-8541-7a565977c2be")
@@ -14838,7 +14854,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 32 "/Sensor ports/Port 5/SCL_CABLE")
+			(net "/Sensor ports/Port 5/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "e2f72c41-a8c5-4a34-9ae6-80cfb0372656")
@@ -14858,7 +14874,7 @@
 			(uuid "22a8949c-2873-4fca-b49c-3863565efe19")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14936,6 +14952,7 @@
 			)
 		)
 		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 1.2 0)
@@ -15048,6 +15065,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -15106,7 +15124,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 8 "SCL3")
+			(net "SCL3")
 			(uuid "c0bc6a42-231c-40c9-bd93-e79b5a02e3c5")
 		)
 		(pad "2" smd roundrect
@@ -15114,11 +15132,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 28 "/Sensor ports/Port 3/SCL_CABLE")
+			(net "/Sensor ports/Port 3/SCL_CABLE")
 			(uuid "da262913-296c-4177-a015-04297f8454ea")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15199,6 +15217,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -15257,7 +15276,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 10 "SCL5")
+			(net "SCL5")
 			(uuid "8559aa16-7779-4765-b935-e90e87856c0c")
 		)
 		(pad "2" smd roundrect
@@ -15265,11 +15284,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 32 "/Sensor ports/Port 5/SCL_CABLE")
+			(net "/Sensor ports/Port 5/SCL_CABLE")
 			(uuid "424f85ed-c7f9-4da3-b035-b25cdf6399d5")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15352,6 +15371,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -15529,7 +15549,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "9674e4c9-2098-481c-ad12-45cb95a041a8")
 		)
 		(pad "1" thru_hole circle
@@ -15538,7 +15558,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "27372bdd-7f5e-4bcb-b7b6-cf51d824aad1")
 		)
 		(embedded_fonts no)
@@ -15612,6 +15632,7 @@
 		(sheetname "/Sensor ports/Port 0/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -15670,7 +15691,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 13 "SDA0")
+			(net "SDA0")
 			(uuid "aa946908-4b6b-49d4-bff2-c4692c30eb7f")
 		)
 		(pad "2" smd roundrect
@@ -15678,11 +15699,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 23 "/Sensor ports/Port 0/SDA_CABLE")
+			(net "/Sensor ports/Port 0/SDA_CABLE")
 			(uuid "df1454ed-3085-45d7-918e-5c3c284d13ba")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15763,6 +15784,7 @@
 		(sheetname "/Sensor ports/Port 1/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -15821,7 +15843,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 6 "SCL1")
+			(net "SCL1")
 			(uuid "fcd2f6d9-a2a7-4541-92e4-07fc41fc745a")
 		)
 		(pad "2" smd roundrect
@@ -15829,11 +15851,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 24 "/Sensor ports/Port 1/SCL_CABLE")
+			(net "/Sensor ports/Port 1/SCL_CABLE")
 			(uuid "76c9a4b5-58a8-4279-80f1-6d8f00a65366")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15914,6 +15936,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -15972,7 +15995,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 11 "SCL6")
+			(net "SCL6")
 			(uuid "5c73d040-a68c-4fcd-bef5-0e4e4b3eec82")
 		)
 		(pad "2" smd roundrect
@@ -15980,11 +16003,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 34 "/Sensor ports/Port 6/SCL_CABLE")
+			(net "/Sensor ports/Port 6/SCL_CABLE")
 			(uuid "060b706b-a36d-4580-a99b-de3f37578e79")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16067,6 +16090,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.03 -0.4)
 			(end -0.53 -0.9)
@@ -16244,7 +16268,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "abc73774-334b-4313-b112-e0cc8cad3f2a")
 		)
 		(pad "1" thru_hole circle
@@ -16253,7 +16277,7 @@
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "02ee3af8-a8e6-425f-af93-dfc11a9191f3")
 		)
 		(embedded_fonts no)
@@ -16327,6 +16351,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -16385,7 +16410,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "638c2255-db15-4bd0-b9da-e7e6f850e80c")
 		)
@@ -16394,12 +16419,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 9 "SCL4")
+			(net "SCL4")
 			(pintype "passive")
 			(uuid "4f009a74-eeeb-48f0-86bf-d1e220ca9bbd")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16480,6 +16505,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -16538,7 +16564,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 50 "Net-(R2-Pad1)")
+			(net "Net-(R2-Pad1)")
 			(pintype "passive")
 			(uuid "843354e3-5f34-4176-b4f1-6aaadca64bd9")
 		)
@@ -16547,12 +16573,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(pintype "passive")
 			(uuid "72a37885-70d8-4079-9d53-c5eecb7884fe")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16633,6 +16659,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -16691,7 +16718,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 7 "SCL2")
+			(net "SCL2")
 			(uuid "dc56ddee-67df-4ef1-8dde-41d9524452da")
 		)
 		(pad "2" smd roundrect
@@ -16699,11 +16726,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 26 "/Sensor ports/Port 2/SCL_CABLE")
+			(net "/Sensor ports/Port 2/SCL_CABLE")
 			(uuid "f9f97ae0-81a7-49a9-9863-87d6a34861cf")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16786,6 +16813,7 @@
 		(sheetname "/ESD and LV service access/")
 		(sheetfile "sensor-access.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -16825,7 +16853,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "12dce534-4b3f-4667-be34-ab5e5451f67e")
 		)
 		(embedded_fonts no)
@@ -16899,6 +16927,7 @@
 		(sheetname "/Sensor ports/Port 2/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -17169,7 +17198,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 27 "/Sensor ports/Port 2/SDA_CABLE")
+			(net "/Sensor ports/Port 2/SDA_CABLE")
 			(uuid "eccd266a-5b77-46c8-9657-67a15b2756ea")
 		)
 		(pad "2" smd roundrect
@@ -17177,7 +17206,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 26 "/Sensor ports/Port 2/SCL_CABLE")
+			(net "/Sensor ports/Port 2/SCL_CABLE")
 			(uuid "48d5960b-14b9-4166-a82e-95919e9bde3d")
 		)
 		(pad "3" smd roundrect
@@ -17185,11 +17214,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "1b923210-f42b-4378-9b6f-29ac36cc87b6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17270,6 +17299,7 @@
 		(sheetname "/Sensor ports/Port 4/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 3.11 0.715)
 			(end 3.11 -1.785)
@@ -17566,7 +17596,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pinfunction "Pin_1")
 			(pintype "passive")
 			(uuid "5f75df51-6142-40a3-b5cd-7c9d9dc86e4a")
@@ -17576,7 +17606,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "dcb403de-5fef-41e9-8154-f606b861f1ae")
@@ -17586,7 +17616,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 31 "/Sensor ports/Port 4/SDA_CABLE")
+			(net "/Sensor ports/Port 4/SDA_CABLE")
 			(pinfunction "Pin_3")
 			(pintype "passive")
 			(uuid "8ee2046d-835e-4ec6-817d-8e76a696eb1c")
@@ -17596,7 +17626,7 @@
 			(size 0.6 1.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 30 "/Sensor ports/Port 4/SCL_CABLE")
+			(net "/Sensor ports/Port 4/SCL_CABLE")
 			(pinfunction "Pin_4")
 			(pintype "passive")
 			(uuid "34db3d4c-9cc6-4a00-bf2e-43e37334a665")
@@ -17616,7 +17646,7 @@
 			(uuid "c5226e75-8795-42a9-b1fe-e42d466cb399")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17697,6 +17727,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -17755,7 +17786,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 20 "SDA7")
+			(net "SDA7")
 			(uuid "157643fa-43bc-4625-9dd2-6687c4e9d78d")
 		)
 		(pad "2" smd roundrect
@@ -17763,11 +17794,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 37 "/Sensor ports/Port 7/SDA_CABLE")
+			(net "/Sensor ports/Port 7/SDA_CABLE")
 			(uuid "47116f70-37f2-411d-a03d-d9a4724dff3a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17848,6 +17879,7 @@
 		(sheetname "/Sensor ports/Port 5/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -17906,7 +17938,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "89a6de04-2594-479e-9280-34a05c55be0f")
 		)
@@ -17915,12 +17947,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 18 "SDA5")
+			(net "SDA5")
 			(pintype "passive")
 			(uuid "4f2c260b-9a4c-4778-b811-88bbbb364755")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18001,6 +18033,7 @@
 		(sheetname "/")
 		(sheetfile "motley-sensors.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.38)
@@ -18139,7 +18172,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "3221fc5f-bfb4-428a-8f71-ce4779ac4f28")
 		)
 		(pad "2" thru_hole circle
@@ -18148,7 +18181,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "9b358251-3e0b-4e84-ad45-1d88e3724041")
 		)
 		(pad "3" thru_hole circle
@@ -18157,7 +18190,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "b28549af-53cb-47f9-8f55-11f9c42d2369")
 		)
 		(pad "4" thru_hole circle
@@ -18166,7 +18199,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "198c9c42-a77f-4e32-b86b-3eca0706b950")
 		)
 		(pad "5" thru_hole circle
@@ -18175,11 +18208,11 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(uuid "8dba2e60-23ac-405b-9dd6-f5e20a755edf")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18260,6 +18293,7 @@
 		(sheetname "/Sensor ports/Port 6/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -18530,7 +18564,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "b41e185a-eea7-4493-af9a-a9bd9d474ba3")
 		)
 		(pad "2" smd roundrect
@@ -18538,7 +18572,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 44 "unconnected-(D53-IO2-Pad2)")
+			(net "unconnected-(D53-IO2-Pad2)")
 			(uuid "c469a71b-94ae-44b6-8834-b2246c70c74e")
 		)
 		(pad "3" smd roundrect
@@ -18546,11 +18580,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "dadfaca0-6dbd-491a-be5e-8213489bfdd6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18631,6 +18665,7 @@
 		(sheetname "/Sensor ports/Port 7/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -18689,7 +18724,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "89d27423-d6bf-4a9e-973c-203a803dd32f")
 		)
@@ -18698,12 +18733,12 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 12 "SCL7")
+			(net "SCL7")
 			(pintype "passive")
 			(uuid "d3347c2a-e49d-46e0-b428-dc81262085e9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18784,6 +18819,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -3.65 -4.89)
 			(end -3.65 -3.507)
@@ -19184,7 +19220,7 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "23232afa-f141-40c6-aabb-94ebe709faf8")
 		)
 		(pad "2" smd roundrect
@@ -19192,7 +19228,7 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "27f248e2-7470-4687-a9c3-1dbf3dc5b108")
 		)
 		(pad "3" smd roundrect
@@ -19200,7 +19236,7 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "71bebb65-4469-4cf6-ac8f-22a5ead2af01")
 		)
 		(pad "4" smd roundrect
@@ -19208,7 +19244,7 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 48 "/I2C multiplexer/MUX_A2")
+			(net "/I2C multiplexer/MUX_A2")
 			(uuid "b6556449-9917-4b3c-b0b1-20d2f3538663")
 		)
 		(pad "5" smd roundrect
@@ -19216,7 +19252,7 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 47 "/I2C multiplexer/MUX_A1")
+			(net "/I2C multiplexer/MUX_A1")
 			(uuid "afd1de15-c18b-4fe5-9118-98bcbf303254")
 		)
 		(pad "6" smd roundrect
@@ -19224,11 +19260,11 @@
 			(size 2.44 1.12)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.223214)
-			(net 46 "/I2C multiplexer/MUX_A0")
+			(net "/I2C multiplexer/MUX_A0")
 			(uuid "1d232251-967a-41b8-978e-a37f91249429")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx03_Slide_6.7x9.18mm_W8.61mm_P2.54mm_LowProfile.step"
+		(model "${KICAD10_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx03_Slide_6.7x9.18mm_W8.61mm_P2.54mm_LowProfile.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19309,6 +19345,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.261252 -0.735)
 			(end 0.261252 -0.735)
@@ -19367,7 +19404,7 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(pintype "passive")
 			(uuid "9176fb7d-8cdd-4b95-8b72-21dd00bddc3f")
 		)
@@ -19376,12 +19413,12 @@
 			(size 1 1.45)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(pintype "passive")
 			(uuid "3bda8fbd-32c1-4834-aaa9-61b722595a39")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19462,6 +19499,7 @@
 		(sheetname "/Sensor ports/Port 3/")
 		(sheetfile "sensor-port.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.76 -1.56)
 			(end 0.76 -1.56)
@@ -19732,7 +19770,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 29 "/Sensor ports/Port 3/SDA_CABLE")
+			(net "/Sensor ports/Port 3/SDA_CABLE")
 			(uuid "d81454f4-4943-4f3e-82ed-c834468254e6")
 		)
 		(pad "2" smd roundrect
@@ -19740,7 +19778,7 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 28 "/Sensor ports/Port 3/SCL_CABLE")
+			(net "/Sensor ports/Port 3/SCL_CABLE")
 			(uuid "ef664a7a-a5bb-4714-a050-6a862751a5cc")
 		)
 		(pad "3" smd roundrect
@@ -19748,11 +19786,11 @@
 			(size 1.475 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "92ae8e96-f28e-4c45-90f2-5e259bb8d115")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19833,6 +19871,7 @@
 		(sheetname "/")
 		(sheetfile "motley-sensors.kicad_sch")
 		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.38)
@@ -19971,7 +20010,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 1 "GND")
+			(net "GND")
 			(uuid "3f376f8a-fc73-433f-b2f8-9b76dfa85bfa")
 		)
 		(pad "2" thru_hole circle
@@ -19980,7 +20019,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "19c87ed7-0ee0-4a07-a0cd-512ca4634266")
 		)
 		(pad "3" thru_hole circle
@@ -19989,7 +20028,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 3 "I2C_SDA")
+			(net "I2C_SDA")
 			(uuid "a10c4a76-ff1d-4129-b416-09de940f0d9e")
 		)
 		(pad "4" thru_hole circle
@@ -19998,7 +20037,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 2 "I2C_SCL")
+			(net "I2C_SCL")
 			(uuid "dd586bcb-2431-462e-8b18-9f8dc4425a3d")
 		)
 		(pad "5" thru_hole circle
@@ -20007,11 +20046,11 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 4 "MUX_RESET_N")
+			(net "MUX_RESET_N")
 			(uuid "027b5037-2795-4716-b7af-b5f4d3453f89")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x05_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20092,6 +20131,7 @@
 		(sheetname "/I2C multiplexer/")
 		(sheetfile "mux.kicad_sch")
 		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
 			(end 0.227064 -0.735)
@@ -20150,7 +20190,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 21 "+3V3_SENS")
+			(net "+3V3_SENS")
 			(uuid "caee970f-46bb-4db2-b056-4e91b805ba91")
 		)
 		(pad "2" smd roundrect
@@ -20158,11 +20198,11 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 50 "Net-(R2-Pad1)")
+			(net "Net-(R2-Pad1)")
 			(uuid "ad8eef8e-a9dd-4339-aaef-98f0e20ac1da")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20485,8 +20525,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "225df471-dc72-4faa-96dc-6cdd4f29f0f9")
 		(name "SENSOR_PORT_0")
@@ -20495,7 +20533,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20510,6 +20547,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20518,8 +20556,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "29377a06-6823-47ef-a700-ea760d2e139b")
 		(name "SENSOR_PORT_1")
@@ -20528,7 +20564,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20543,6 +20578,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20551,8 +20587,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "3b568f5e-bf2f-431a-965a-6e8bdc7b8a56")
 		(name "SENSOR_PORT_3")
@@ -20561,7 +20595,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20576,6 +20609,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20584,8 +20618,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "3d26bf88-93fb-4e7a-93e6-b415d5e658fd")
 		(name "SENSOR_PORT_6")
@@ -20594,7 +20626,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20609,6 +20640,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20617,8 +20649,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "6d3c6330-c35e-4852-a76f-1fe3f5f37c4a")
 		(name "SENSOR_PORT_7")
@@ -20627,7 +20657,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20642,6 +20671,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20650,8 +20680,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "732ed65a-4b0a-4b0c-a132-87f42bed595f")
 		(name "SENSOR_PORT_2")
@@ -20660,7 +20688,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20675,6 +20702,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20683,8 +20711,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "73aa3d2b-b77d-4ac8-b1cc-62f9ffc6d120")
 		(name "SENSOR_PORT_4")
@@ -20693,7 +20719,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20708,6 +20733,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts
@@ -20716,8 +20742,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layers "F.Cu" "B.Cu")
 		(uuid "b4f2cefb-39c1-4a2e-a3f5-b8d5c54c49da")
 		(name "SENSOR_PORT_5")
@@ -20726,7 +20750,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.25)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks allowed)
 			(vias allowed)
@@ -20741,6 +20764,7 @@
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts

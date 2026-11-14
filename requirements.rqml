@@ -962,5 +962,18 @@
       <notes>Independent PR/main report job validates and renders the checked-out specification, checks nonempty output, uploads a commit/run/attempt-named artifact and participates in the aggregate gate.</notes>
     </edge>
     <edge id="E-IMPL-MOT-CI-003-2" type="implements" from="docs/tooling.md#human-readable-requirements-report" fromKind="doc" to="MOT-CI-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-21" type="implements" from="./mise.toml" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-22" type="implements" from="./mise.lock" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-23" type="implements" from="scripts/kicad-launcher.sh" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-24" type="implements" from="hardware/controller/sym-lib-table" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-25" type="implements" from="hardware/controller/fp-lib-table" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-26" type="implements" from="hardware/controller/Motley.kicad_sym" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-27" type="implements" from="hardware/controller/MotleyPower.kicad_sym" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-28" type="implements" from="hardware/controller/Motley.pretty/ESP32-C6-WROOM-1.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-29" type="implements" from="hardware/controller/Motley.pretty/Mechanical_Pin_PTH_Study.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-30" type="implements" from="hardware/controller/Motley.pretty/Relay_G6DN_1A_L_DC5_Study.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-31" type="implements" from="hardware/controller/Motley.pretty/TouchGround_8mm.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-32" type="implements" from="hardware/controller/Motley.pretty/WireLoop_P2.54.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-33" type="implements" from="hardware/controller/Motley.pretty/WirePost_1mm.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>

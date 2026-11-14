@@ -1,5 +1,44 @@
 # Motley plan
 
+## KiCad tool pin and native format migration, 2026-11-14
+
+**Readiness:** READY for the developer's request to manage KiCad through mise
+and apply native format upgrades. This is tooling maintenance supporting approved
+`MOT-HW-003`, under `MOT-PROC-001/002`; the existing electrical study remains an
+exploratory exception. Preserve connectivity, UUID identities, requirement fields,
+placement, outlines and unrouted status. No product requirement or architectural
+decision changes are needed. Shared tooling documentation also retains
+`MOT-CI-003`'s report instructions.
+
+- [x] **Goal:** Pin stable KiCad using an official distribution and mise's HTTP
+  backend, with a locked checksum. **Files:** `mise.toml`, `mise.lock`,
+  `docs/tooling.md` and any necessary launcher/install helper. Explicitly document
+  platform support. Record real supporting tool links to `MOT-HW-003`.
+- [x] **Goal:** Upgrade native sources using KiCad's own serializers, including
+  every child schematic and local library. **Files:** `hardware/controller/`,
+  including library tables, README and verification notes. Capture pre-migration
+  netlists and structural inventories; inspect native changes and library paths.
+  Do not manually bump project schemas or alter electrical design.
+- [x] **Goal:** Verify preservation. **Verification:** compare before/after
+  connectivity and native identities/geometry, run fresh ERC/DRC, hardware trace
+  checker and fixtures, and full `mise exec -- pre-commit run --all-files` plus
+  standard RQML. Record commands, results and source hashes; refresh only reviewed
+  changed trace baselines. Retain honest coverage and unrouted-board limitations.
+  KiCad 10.0.8 installs and runs through mise; all 25 native upgrades exit 0.
+  Fresh netlists preserve 193 components / 134 nets and all pin connectivity;
+  parsed native comparisons preserve the 203 footprint placements, pad geometry,
+  outlines and groups. Native source/test hashes, serializer UUID repairs and
+  identical before/after KiCad 10 ERC/DRC findings are recorded in
+  `hardware/controller/verification.md`. Four referenced stock STEP models are
+  absent from the official bundle; existing symbol/metadata parity differences
+  remain documented. Hardware trace and all 15 fixtures, ShellCheck, full
+  pre-commit, the new launcher's scoped pre-commit and standard RQML pass
+  (exit 0). The first full pre-commit attempt failed only on a protected Mergify
+  schema cache; after granting that cache access the full run passed. Reviewed
+  implementation baselines were refreshed, and 13 tool/library support links
+  were added. Backlog remains 37 unverified / 30 unimplemented requirements,
+  with zero unapproved implementations, dangling references or lint findings.
+
 ## Human-readable requirements CI artifact, 2026-11-13
 
 **Readiness:** READY for the developer's explicit request to generate the standard

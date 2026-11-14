@@ -2,6 +2,15 @@
 
 lockfile_version = 4
 
+[[tools."http:kicad"]]
+version = "10.0.8"
+backend = "http:kicad"
+specifiers = ["10.0.8"]
+
+[tools."http:kicad"."platforms.linux-x64"]
+checksum = "sha256:27e4b4baa85c2181be6b219c22667ce138c20c0148dd2e047ba84dbda480dbb4"
+url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-10.0.8-x86_64.AppImage.tar"
+
 [[tools.node]]
 version = "26.13.1"
 backend = "core:node"
