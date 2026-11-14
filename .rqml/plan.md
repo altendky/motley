@@ -1,5 +1,36 @@
 # Motley plan
 
+## Human-readable requirements CI artifact, 2026-11-13
+
+**Readiness:** READY for the developer's explicit request to generate the standard
+Markdown report and retain it in CI. `MOT-CI-003` records that agreed behavior;
+`MOT-PROC-001/002` govern specification-first implementation and honest coverage.
+Existing `MOT-CI-001/002` firmware build/publication and `MOT-HW-003` documentation
+trace obligations remain intact. The artifact uses the pinned CLI's overview
+without a custom renderer. This is an implementation detail requiring no ADR.
+The deferred pinout requirement remains separate.
+
+- [x] **Goal:** Generate and retain the checked-out specification's Markdown.
+  **Files:** `.github/workflows/ci.yml`, `docs/tooling.md`, `requirements.rqml`.
+  Add a small independent report job, validate and render with the pinned CLI,
+  reject empty output, upload a commit/run/attempt-named artifact and include the
+  job in `all`. Record real implementation links to the job and documentation;
+  refresh reviewed shared workflow and documentation baselines.
+- [ ] **Goal:** Verify report content and publication. **Verification:** Generate
+  the report locally, reconcile requirement and acceptance IDs/content with XML,
+  inspect Markdown, check empty-file failure, run actionlint and full pre-commit
+  including standard RQML. Observe the hosted report job and download its artifact
+  using `gh`; compare the downloaded Markdown to the checked-out specification's
+  generated report. Record results and actual source/test hashes or commit.
+  Local pinned `rqml validate` and `rqml overview requirements.rqml` exit zero;
+  ElementTree reconciliation confirms all 41 requirement headers, statuses and
+  statements plus all 110 acceptance IDs and given/when/then texts. The generated
+  report is 97,017 bytes; `test -s` accepts it and rejects an empty fixture.
+  Spec/report SHA-256 values are
+  `9e31caca94fa6e56d89423e56617e39cb7b7f72a95d1ff13d696446a1c5d279b` /
+  `e54605d6a14bea226abde8b3ebe09850f92808de7639367f01f3a4b969ade956`.
+  Actionlint passes. Hosted publication/download comparison remains pending.
+
 ## Compiler-aware firmware CI caching, 2026-11-13
 
 **Readiness:** READY under approved `MOT-BUILD-001/002`, `MOT-CI-001/002`

@@ -45,6 +45,33 @@ jobs:
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml', 'mise.toml', 'mise.lock', '.mise/locks/**') }}
       - run: pre-commit run --all-files --show-diff-on-failure
 
+  requirements-report:
+    name: Requirements report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5
+        with:
+          version: 2026.11.4
+          install_args: --locked
+      - name: Generate requirements Markdown
+        env:
+          REPORT_DIR: ${{ runner.temp }}/motley-requirements
+        run: |
+          mkdir -p "$REPORT_DIR"
+          rqml validate requirements.rqml
+          rqml overview requirements.rqml > "$REPORT_DIR/requirements.md"
+          test -s "$REPORT_DIR/requirements.md"
+      - name: Retain requirements report
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: requirements-${{ github.sha }}-run${{ github.run_id }}-a${{ github.run_attempt }}
+          path: ${{ runner.temp }}/motley-requirements/requirements.md
+          if-no-files-found: error
+
   firmware:
     name: Firmware build
     runs-on: ubuntu-latest
@@ -111,7 +138,7 @@ jobs:
   all:
     name: all
     if: ${{ !cancelled() }}
-    needs: [mise, pre-commit, firmware]
+    needs: [mise, pre-commit, requirements-report, firmware]
     runs-on: ubuntu-latest
     steps:
       - uses: re-actors/alls-green@b5b5b37504aa4183270bd3d855c52a67f212be35 # release/v1
