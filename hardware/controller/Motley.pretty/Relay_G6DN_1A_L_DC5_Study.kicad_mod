@@ -1,0 +1,208 @@
+(footprint "Relay_G6DN_1A_L_DC5_Study"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Placement-study land pattern from Omron G6DN bottom-view drawing; verify before fabrication")
+	(property "Reference" "REF**"
+		(at 9.1 -3 0)
+		(layer "F.SilkS")
+		(uuid "d71c840c-e0c1-4db8-b465-72491e1a2f06")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "G6DN-1A-L DC5"
+		(at 9.1 5.5 0)
+		(layer "F.Fab")
+		(uuid "3dfb4c8f-74d1-44af-9815-3285073e14fa")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bdee2a36-e6dd-4bfe-b62f-0fec89dbf5cf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aac386b3-ebb4-46f4-b44c-617de77ab133")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -1.4 -1.7)
+		(end 19.2 -1.7)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "94e20efa-6117-4faf-ba26-a9f8aa7100cc")
+	)
+	(fp_line
+		(start -1.4 3.92)
+		(end -1.4 -1.7)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "6b78b793-426b-4a7b-a43a-e6ddee874d6e")
+	)
+	(fp_line
+		(start 19.2 -1.7)
+		(end 19.2 3.92)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "052ecc7c-3f54-42fa-af6f-103a7b9c565e")
+	)
+	(fp_line
+		(start 19.2 3.92)
+		(end -1.4 3.92)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "02d71239-8bc7-493a-80fd-223d054edcc6")
+	)
+	(fp_line
+		(start -1.4 -1.78)
+		(end 19.6 -1.78)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "1090307e-36ca-4b94-ba66-1493165f1947")
+	)
+	(fp_line
+		(start -1.4 4.3)
+		(end -1.4 -1.78)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "fc6c8107-bfa3-42ec-9708-8c50bbb35f70")
+	)
+	(fp_line
+		(start 19.6 -1.78)
+		(end 19.6 4.3)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "54c53a05-c383-449c-856d-d6030c226320")
+	)
+	(fp_line
+		(start 19.6 4.3)
+		(end -1.4 4.3)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "c59000f4-8949-4f9a-b540-181c4e921206")
+	)
+	(fp_line
+		(start -0.9 -1.28)
+		(end 19.1 -1.28)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "3641cb4f-7e39-403d-9024-1ca6bbd84662")
+	)
+	(fp_line
+		(start -0.9 3.8)
+		(end -0.9 -1.28)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7b0903c6-b5b6-42b6-a4a3-3d451324fab6")
+	)
+	(fp_line
+		(start 19.1 -1.28)
+		(end 19.1 3.8)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "36a352a1-3730-441b-89fb-2ccafd01730a")
+	)
+	(fp_line
+		(start 19.1 3.8)
+		(end -0.9 3.8)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "8c77bdc9-ed82-4d99-ac5d-cd88927dc4e0")
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(thermal_bridge_angle 45)
+		(uuid "f5a2f884-de47-4f79-b94d-3fc297eebe03")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7b0c1e78-0bf1-4243-a61c-08baabf19b10")
+	)
+	(pad "5" thru_hole circle
+		(at 10.16 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6d1e0319-2da6-4027-ac86-245c17085846")
+	)
+	(pad "8" thru_hole circle
+		(at 17.78 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4b7f140a-3214-494d-b4c0-eaf7b1b235a2")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,1717 @@
+(kicad_sch
+  (version 20250114)
+  (generator eeschema)
+  (generator_version "9.0")
+  (uuid "db02dbfa-b163-5d5f-b272-c78fcc797386")
+  (paper "A3")
+  (title_block (title "Integrated ESP32-C6 controller and recovery") (date "2026-11-12") (rev "0.3") (company "Motley") (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
+  (lib_symbols
+  (symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  (symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  (symbol "Device:LED"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "D"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "LED diode"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "LED_0_1"
+			(polyline
+				(pts
+					(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 0) (xy 1.27 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 -1.27) (xy -1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "LED_1_1"
+			(pin passive line
+				(at -3.81 0 0)
+				(length 2.54)
+				(name "K"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 0 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  (symbol "Switch:SW_Push"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "SW"
+			(at 1.27 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 0 -1.524 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "switch normally-open pushbutton push-button"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "SW_Push_0_1"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.27) (xy 0 3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 1.27) (xy -2.54 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  (symbol "Connector_Generic:Conn_01x04"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x04"
+			(at 0 -7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x04_1_1"
+			(rectangle
+				(start -1.27 3.81)
+				(end 1.27 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  (symbol "Motley:ESP32-C6-WROOM-1"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESP32-C6-WROOM-1"
+			(at -25.4 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Motley:ESP32-C6-WROOM-1"
+			(at 0 -45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf"
+			(at 0 -48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESP32-C6-WROOM-1/U is a module that supports 2.4 GHz Wi-Fi 6 (802.11 ax), Bluetooth® 5 (LE), Zigbee and Thread (802.15.4)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "esp32-c6 esp32-c6-wroom-1 esp32-c6-wroom-1u"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "ESP32-C6-WROOM-1*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "ESP32-C6-WROOM-1_0_0"
+			(text "ESP32-C6-WROOM-1"
+				(at 0 -20.955 0)
+				(effects
+					(font
+						(size 2 2)
+					)
+				)
+			)
+		)
+		(symbol "ESP32-C6-WROOM-1_0_1"
+			(rectangle
+				(start -25.4 30.48)
+				(end 25.4 -30.48)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "ESP32-C6-WROOM-1_1_1"
+			(pin power_in line
+				(at 0 -33.02 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 7.62 180)
+				(length 2.54)
+				(name "GPIO8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 2.54 180)
+				(length 2.54)
+				(name "GPIO10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 0 180)
+				(length 2.54)
+				(name "GPIO11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 17.78 180)
+				(length 2.54)
+				(name "GPIO12/USB_D-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 20.32 180)
+				(length 2.54)
+				(name "GPIO13/USB_D+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 5.08 180)
+				(length 2.54)
+				(name "GPIO9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -5.08 180)
+				(length 2.54)
+				(name "GPIO18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -7.62 180)
+				(length 2.54)
+				(name "GPIO19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -10.16 180)
+				(length 2.54)
+				(name "GPIO20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -12.7 180)
+				(length 2.54)
+				(name "GPIO21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 33.02 270)
+				(length 2.54)
+				(name "3V3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -15.24 180)
+				(length 2.54)
+				(name "GPIO22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -17.78 180)
+				(length 2.54)
+				(name "GPIO23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -25.4 -12.7 0)
+				(length 2.54) hide
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 -2.54 180)
+				(length 2.54)
+				(name "GPIO15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 25.4 180)
+				(length 2.54)
+				(name "U0RXD/GPIO17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "24"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 27.94 27.94 180)
+				(length 2.54)
+				(name "U0TXD/GPIO16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "25"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 15.24 0)
+				(length 2.54)
+				(name "GPIO3/ADC1_CH3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "26"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 17.78 0)
+				(length 2.54)
+				(name "GPIO2/ADC1_CH2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "27"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -33.02 90)
+				(length 2.54) hide
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "28"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -33.02 90)
+				(length 2.54) hide
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "29"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -27.94 27.94 0)
+				(length 2.54)
+				(name "EN/CHIP_PU"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 7.62 0)
+				(length 2.54)
+				(name "MTMS/GPIO4/ADC1_CH4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 5.08 0)
+				(length 2.54)
+				(name "MTDI/GPIO5/ADC1_CH5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 2.54 0)
+				(length 2.54)
+				(name "MTCK/GPIO6/ADC1_CH6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 0 0)
+				(length 2.54)
+				(name "MTDO/GPIO7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 22.86 0)
+				(length 2.54)
+				(name "GPIO0/ADC1_CH0/XTAL_32K_P"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -27.94 20.32 0)
+				(length 2.54)
+				(name "GPIO1/ADC1_CH1/XTAL_32K_N"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+	))
+  (text "INTEGRATED ESP32-C6-WROOM-1-N8 / 8 MB FLASH" (at 15 15 0) (effects (font (size 1.9 1.9)) (justify left top)) (uuid "e6e2184b-08fe-5501-8bd5-add809ff123b"))
+  (text "Study circuit: USB serial/JTAG and ROM recovery; no battery circuitry or internal USB source port." (at 15 23 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "e88f82cf-cb58-5175-ae31-ae82e5e73671"))
+  (symbol
+  (lib_id "Motley:ESP32-C6-WROOM-1")
+  (at 139.7 95.25 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "e25b8a60-e7d8-5e88-812e-9486fdeab47e")
+  (property "Reference" "U10" (at 114.3 59.69 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "ESP32-C6-WROOM-1-N8 / C5366877" (at 114.3 62.23 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Motley:ESP32-C6-WROOM-1" (at 139.7 95.25 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "U10") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-009 MOT-SENS-005" (at 139.7 95.25 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 139.7 62.23) (xy 139.7 48.26)) (stroke (width 0) (type default)) (uuid "6e7268fa-b505-56b7-82e4-944dcacd21b4"))
+  (global_label "+3V3" (shape bidirectional) (at 139.7 48.26 180) (effects (font (size 1 1)) (justify right)) (uuid "ad35898d-9871-56b7-a427-28c71aff013c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 139.7 48.26 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 139.7 128.27) (xy 139.7 140.97)) (stroke (width 0) (type default)) (uuid "c7b58300-374e-56a2-ba1f-1953f62364fd"))
+  (global_label "GND" (shape bidirectional) (at 139.7 140.97 180) (effects (font (size 1 1)) (justify right)) (uuid "56cc5ecd-82a0-5c74-bdf4-859725693963") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 139.7 140.97 180) (effects (font (size 1 1)) (hide yes))))
+  (symbol
+  (lib_id "Device:C")
+  (at 185.42 50.8 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "2d50220e-3b4c-5142-b980-6943d6f05284")
+  (property "Reference" "C11" (at 189.42 45.8 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "10u / 10V" (at 189.42 48.3 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 185.42 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "C11") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 185.42 50.8 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 185.42 46.99) (xy 185.42 43.18)) (stroke (width 0) (type default)) (uuid "dcb3819c-59c7-5c64-9442-75b25115491a"))
+  (wire (pts (xy 185.42 54.61) (xy 185.42 58.42)) (stroke (width 0) (type default)) (uuid "6ea8a5f6-442e-5e8d-8fa4-da4ee7222f04"))
+  (symbol
+  (lib_id "Device:C")
+  (at 205.74 50.8 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "eee4d367-ba90-5bf8-855a-87f49a68c8dc")
+  (property "Reference" "C12" (at 209.74 45.8 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "100n / 10V" (at 209.74 48.3 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 205.74 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "C12") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 205.74 50.8 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 205.74 46.99) (xy 205.74 43.18)) (stroke (width 0) (type default)) (uuid "6f34380a-0638-57bc-b3de-4e73114114ea"))
+  (wire (pts (xy 205.74 54.61) (xy 205.74 58.42)) (stroke (width 0) (type default)) (uuid "2e33ed64-c4fa-5125-872e-9ab061dfbef3"))
+  (wire (pts (xy 139.7 48.26) (xy 139.7 43.18)) (stroke (width 0) (type default)) (uuid "a625e855-d975-5e5e-9bd4-4e40c569384d"))
+  (wire (pts (xy 139.7 43.18) (xy 185.42 43.18)) (stroke (width 0) (type default)) (uuid "d6b9266e-f185-53d3-bb0c-1bddc16e0c33"))
+  (wire (pts (xy 185.42 43.18) (xy 205.74 43.18)) (stroke (width 0) (type default)) (uuid "5415a2d2-1925-5d46-a21e-a8a1913e75aa"))
+  (wire (pts (xy 185.42 58.42) (xy 205.74 58.42)) (stroke (width 0) (type default)) (uuid "071792c9-d56f-54f8-9afa-11d593aa89ab"))
+  (global_label "GND" (shape bidirectional) (at 205.74 58.42 180) (effects (font (size 1 1)) (justify right)) (uuid "3d944615-c36c-54fa-ab15-70cdd40e3cbb") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 205.74 58.42 180) (effects (font (size 1 1)) (hide yes))))
+  (junction (at 185.42 43.18) (diameter 0) (color 0 0 0 0) (uuid "5611ab53-9b3d-5201-9e9e-9b7f84a7238c"))
+  (symbol
+  (lib_id "Device:R")
+  (at 66.04 50.8 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "7d64c80c-5aac-508c-a36d-ba8c4d5ac036")
+  (property "Reference" "R10" (at 70.04 45.8 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "10k" (at 70.04 48.3 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 66.04 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R10") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 66.04 50.8 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 66.04 46.99) (xy 66.04 40.64)) (stroke (width 0) (type default)) (uuid "92d02599-ca60-57f4-8464-47469c0e68ee"))
+  (global_label "+3V3" (shape bidirectional) (at 66.04 40.64 180) (effects (font (size 1 1)) (justify right)) (uuid "054fd2b8-c6b2-5627-b043-e556564dea07") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 40.64 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 66.04 54.61) (xy 66.04 67.31)) (stroke (width 0) (type default)) (uuid "947a0077-83bf-53ea-b91c-009fc5f9a493"))
+  (wire (pts (xy 66.04 67.31) (xy 111.76 67.31)) (stroke (width 0) (type default)) (uuid "8586fb39-a98c-5028-8fe5-ace743fed1e1"))
+  (global_label "ESP_EN" (shape bidirectional) (at 76.2 67.31 180) (effects (font (size 1 1)) (justify right)) (uuid "9ea03975-0ae6-576f-bd28-d6ffc0237b49") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 76.2 67.31 180) (effects (font (size 1 1)) (hide yes))))
+  (symbol
+  (lib_id "Device:C")
+  (at 66.04 83.82 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "1ee364a9-7aab-58c7-8c96-9efda9e4ab32")
+  (property "Reference" "C10" (at 70.04 78.82 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "1u / 10V" (at 70.04 81.32 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 66.04 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "C10") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 66.04 83.82 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 66.04 67.31) (xy 66.04 80.01)) (stroke (width 0) (type default)) (uuid "b858c37f-d7c1-5458-906d-de07d8d0a2d0"))
+  (wire (pts (xy 66.04 87.63) (xy 66.04 96.52)) (stroke (width 0) (type default)) (uuid "50ffe0b7-fa25-53fb-80e6-b45cbbec67cc"))
+  (global_label "GND" (shape bidirectional) (at 66.04 96.52 180) (effects (font (size 1 1)) (justify right)) (uuid "607ecdc1-ec31-50d8-909c-f17caa1babcc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 96.52 180) (effects (font (size 1 1)) (hide yes))))
+  (junction (at 66.04 67.31) (diameter 0) (color 0 0 0 0) (uuid "965a8dfc-66bf-55da-9e0d-6602d2251cea"))
+  (symbol
+  (lib_id "Switch:SW_Push")
+  (at 38.1 80.01 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "e5c889f2-9da2-54aa-b908-f7a79b2cfd8d")
+  (property "Reference" "SW1" (at 42.1 75.01 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "RESET" (at 42.1 77.51 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Button_Switch_SMD:SW_SPST_TL3305A" (at 38.1 80.01 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "SW1") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 38.1 80.01 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 33.02 80.01) (xy 27.94 80.01)) (stroke (width 0) (type default)) (uuid "e68abd4e-0f39-5eb4-937b-a70eeb5edbdb"))
+  (global_label "GND" (shape bidirectional) (at 27.94 80.01 180) (effects (font (size 1 1)) (justify right)) (uuid "3e184f61-1bea-5330-805a-cee13fa2227d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 27.94 80.01 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 43.18 80.01) (xy 50.8 80.01)) (stroke (width 0) (type default)) (uuid "0d7309d9-5881-5a76-9793-5e84d0a829fd"))
+  (wire (pts (xy 50.8 80.01) (xy 50.8 67.31)) (stroke (width 0) (type default)) (uuid "4c778f44-aef4-588f-a101-b5b2f15e2497"))
+  (wire (pts (xy 50.8 67.31) (xy 66.04 67.31)) (stroke (width 0) (type default)) (uuid "e1d02097-55f9-5693-9e11-b14e1fd663d0"))
+  (text "EN: 10k / 1u RC per Espressif starting circuit.\nHold BOOT, pulse RESET, release BOOT for ROM recovery." (at 15 108 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "3284a483-994c-5286-b6e2-cf7d7fe573bb"))
+  (wire (pts (xy 111.76 74.93) (xy 96.52 74.93)) (stroke (width 0) (type default)) (uuid "2b0ee1a3-2229-570e-a0fd-8c3784bcd6bb"))
+  (global_label "HEAT1_EN" (shape bidirectional) (at 96.52 74.93 180) (effects (font (size 1 1)) (justify right)) (uuid "13ff0e4d-6a6e-5b94-aa9c-62663b6381ef") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 74.93 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 111.76 77.47) (xy 96.52 77.47)) (stroke (width 0) (type default)) (uuid "155cf2c7-f638-5ab7-bc03-328242177e0a"))
+  (global_label "HEAT2_EN" (shape bidirectional) (at 96.52 77.47 180) (effects (font (size 1 1)) (justify right)) (uuid "b935a538-79e1-58bf-b6fa-d25f0ca36832") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 77.47 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 111.76 80.01) (xy 96.52 80.01)) (stroke (width 0) (type default)) (uuid "0a0d72cf-3425-5c34-9681-c51eca5fcc2e"))
+  (global_label "CUT1_EN" (shape bidirectional) (at 96.52 80.01 180) (effects (font (size 1 1)) (justify right)) (uuid "7d6d190a-cd24-5d27-91b3-a604e7126a1c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 80.01 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 111.76 72.39) (xy 96.52 72.39)) (stroke (width 0) (type default)) (uuid "c7628635-b6f0-5051-b5fd-3b5e3bc9e7bc"))
+  (global_label "CUT2_EN" (shape bidirectional) (at 96.52 72.39 180) (effects (font (size 1 1)) (justify right)) (uuid "b9692e01-9692-5eca-a074-55b932c42152") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 72.39 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 100.33) (xy 182.88 100.33)) (stroke (width 0) (type default)) (uuid "55f13c73-e9e9-59f2-a878-5e9db51409ff"))
+  (global_label "I2C_SCL" (shape bidirectional) (at 182.88 100.33 180) (effects (font (size 1 1)) (justify right)) (uuid "103326a0-8953-5597-95ba-9d63622ef093") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 100.33 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 102.87) (xy 182.88 102.87)) (stroke (width 0) (type default)) (uuid "b14cc1cb-1bde-54f2-8183-01ee1ddfb60e"))
+  (global_label "I2C_SDA" (shape bidirectional) (at 182.88 102.87 180) (effects (font (size 1 1)) (justify right)) (uuid "d44e761a-a9ec-5c97-94b3-4490de001fe4") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 102.87 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 95.25) (xy 182.88 95.25)) (stroke (width 0) (type default)) (uuid "66861af1-9813-5e6a-aefe-c785b4c8f1d7"))
+  (global_label "SENS_PWR_EN" (shape bidirectional) (at 182.88 95.25 180) (effects (font (size 1 1)) (justify right)) (uuid "7a9e3fd7-640c-5198-8fb8-6a7534af9f6b") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 95.25 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 107.95) (xy 182.88 107.95)) (stroke (width 0) (type default)) (uuid "919e1cb2-6f20-500b-ac0a-09c69199df4b"))
+  (global_label "MUX_RESET_N" (shape bidirectional) (at 182.88 107.95 180) (effects (font (size 1 1)) (justify right)) (uuid "12b949c1-26b1-5962-b926-53683f2e4b03") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 107.95 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 69.85) (xy 182.88 69.85)) (stroke (width 0) (type default)) (uuid "b3743a0d-2eb1-553b-80b1-9dd0cc63b9ee"))
+  (global_label "UART_RX" (shape bidirectional) (at 182.88 69.85 180) (effects (font (size 1 1)) (justify right)) (uuid "8d4e1be1-45a5-5728-958f-c6c2b320725a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 69.85 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 67.31) (xy 182.88 67.31)) (stroke (width 0) (type default)) (uuid "009c736b-ca9f-5066-9e60-10612c647b17"))
+  (global_label "UART_TX" (shape bidirectional) (at 182.88 67.31 180) (effects (font (size 1 1)) (justify right)) (uuid "fd5b5601-bfae-5a2c-9652-c8333ebb39dd") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 67.31 180) (effects (font (size 1 1)) (hide yes))))
+  (symbol
+  (lib_id "Device:R")
+  (at 198.12 77.47 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "90f8c214-f4f9-5004-928f-329f44482c52")
+  (property "Reference" "R13" (at 194.31 82.55 90) (effects (font (size 1.1 1.1))))
+  (property "Value" "22" (at 204.47 82.55 90) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 198.12 77.47 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R13") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 198.12 77.47 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 167.64 77.47) (xy 194.31 77.47)) (stroke (width 0) (type default)) (uuid "e44a618e-ce5e-5f1e-9f43-3ac4708aaafe"))
+  (wire (pts (xy 201.93 77.47) (xy 220.98 77.47)) (stroke (width 0) (type default)) (uuid "b6f0325c-6f9b-55d3-96d8-1e2249113a9b"))
+  (global_label "USB_DM" (shape bidirectional) (at 220.98 77.47 180) (effects (font (size 1 1)) (justify right)) (uuid "5c62852a-feac-5850-b0b0-c0add3b640b5") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 220.98 77.47 180) (effects (font (size 1 1)) (hide yes))))
+  (symbol
+  (lib_id "Device:R")
+  (at 198.12 74.93 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "2b779f3c-85b2-5964-a374-86dc03aa5cdb")
+  (property "Reference" "R14" (at 194.31 68.58 90) (effects (font (size 1.1 1.1))))
+  (property "Value" "22" (at 204.47 68.58 90) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 198.12 74.93 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R14") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 198.12 74.93 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 167.64 74.93) (xy 194.31 74.93)) (stroke (width 0) (type default)) (uuid "042264ce-49e0-5955-86e1-6234de255e36"))
+  (wire (pts (xy 201.93 74.93) (xy 220.98 74.93)) (stroke (width 0) (type default)) (uuid "7cb90072-9a83-5417-be4a-4f82efd93deb"))
+  (global_label "USB_DP" (shape bidirectional) (at 220.98 74.93 180) (effects (font (size 1 1)) (justify right)) (uuid "cf4184f8-8083-5d0f-b4d8-3bbcab1b8434") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 220.98 74.93 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 87.63) (xy 251.46 87.63)) (stroke (width 0) (type default)) (uuid "9396498a-6857-5181-8954-6cf560f17e8b"))
+  (symbol
+  (lib_id "Device:R")
+  (at 251.46 74.92999999999999 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "83cb5dea-338b-5fd4-8182-f0582b30fd8e")
+  (property "Reference" "R12" (at 255.46 69.92999999999999 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "10k" (at 255.46 72.42999999999999 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 251.46 74.92999999999999 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R12") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 251.46 74.92999999999999 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 251.46 78.74) (xy 251.46 87.63)) (stroke (width 0) (type default)) (uuid "cf688863-e146-5ece-83c1-ea6c4337edc6"))
+  (wire (pts (xy 251.46 71.11999999999999) (xy 251.46 64.77)) (stroke (width 0) (type default)) (uuid "698a64a6-9296-58b1-bc84-7c88ad0e34af"))
+  (global_label "+3V3" (shape bidirectional) (at 251.46 64.77 180) (effects (font (size 1 1)) (justify right)) (uuid "f5e7d761-c073-596e-afbf-bf9501d0055f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 251.46 64.77 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 90.17) (xy 276.86 90.17)) (stroke (width 0) (type default)) (uuid "15e35d65-f3ff-51e5-9cba-52a08f9d9de1"))
+  (symbol
+  (lib_id "Device:R")
+  (at 276.86 77.47 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "04f01691-9392-52da-8033-ccec700ad9d6")
+  (property "Reference" "R11" (at 280.86 72.47 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "10k" (at 280.86 74.97 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 276.86 77.47 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R11") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 276.86 77.47 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 276.86 81.28) (xy 276.86 90.17)) (stroke (width 0) (type default)) (uuid "e900d436-e53d-58c0-bf6a-ee8e2cb9bed7"))
+  (wire (pts (xy 276.86 73.66) (xy 276.86 67.31)) (stroke (width 0) (type default)) (uuid "444fff22-b449-5699-b91d-323e4970e5d8"))
+  (global_label "+3V3" (shape bidirectional) (at 276.86 67.31 180) (effects (font (size 1 1)) (justify right)) (uuid "48e927a4-c1e4-564c-ba39-80377d5f6bb7") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 276.86 67.31 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 276.86 90.17) (xy 297.18 90.17)) (stroke (width 0) (type default)) (uuid "09884470-4afa-52fb-9090-af3e2222cc23"))
+  (junction (at 276.86 90.17) (diameter 0) (color 0 0 0 0) (uuid "4cd7b267-86a4-599e-8674-ae9c2c904f5e"))
+  (symbol
+  (lib_id "Switch:SW_Push")
+  (at 302.26 90.17 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "3ac6aa5d-4aa8-580d-af36-46121d848f19")
+  (property "Reference" "SW2" (at 306.26 85.17 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "BOOT / GPIO9" (at 306.26 87.67 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Button_Switch_SMD:SW_SPST_TL3305A" (at 302.26 90.17 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "SW2") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 302.26 90.17 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 307.34 90.17) (xy 317.5 90.17)) (stroke (width 0) (type default)) (uuid "8b01a083-8eb7-5812-9e30-041888a400be"))
+  (global_label "GND" (shape bidirectional) (at 317.5 90.17 180) (effects (font (size 1 1)) (justify right)) (uuid "e83e8e67-1bc4-5d41-a30b-ab67f0e8b9b7") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 317.5 90.17 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 167.64 92.71) (xy 231.14 92.71)) (stroke (width 0) (type default)) (uuid "f9adf87e-4d04-503e-89f1-da97db6141bf"))
+  (wire (pts (xy 231.14 92.71) (xy 231.14 142.24)) (stroke (width 0) (type default)) (uuid "ea840fe1-1dce-594f-aafe-8cebf882c126"))
+  (symbol
+  (lib_id "Device:R")
+  (at 231.14 146.05 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "179adb23-6b89-59aa-8249-4a14206a9a41")
+  (property "Reference" "R15" (at 235.14 141.05 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "2k2" (at 235.14 143.55 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 231.14 146.05 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "R15") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 231.14 146.05 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (symbol
+  (lib_id "Device:LED")
+  (at 231.14 160.02 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "0abab924-e534-5c5f-aa19-341917e96b8a")
+  (property "Reference" "D10" (at 237.49 157.48 90) (effects (font (size 1.1 1.1))))
+  (property "Value" "STATUS" (at 237.49 160.02 90) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 231.14 160.02 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "D10") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 231.14 160.02 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 231.14 149.86) (xy 231.14 156.21)) (stroke (width 0) (type default)) (uuid "e83896b8-09cc-528f-9de6-ee1c2fce4d6b"))
+  (wire (pts (xy 231.14 163.83) (xy 231.14 172.72)) (stroke (width 0) (type default)) (uuid "c53f374f-0b63-5db4-bebb-e7b79e554c4b"))
+  (global_label "GND" (shape bidirectional) (at 231.14 172.72 180) (effects (font (size 1 1)) (justify right)) (uuid "3f16b5ff-26c1-5eb0-a249-e77e9aabf4cc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 231.14 172.72 180) (effects (font (size 1 1)) (hide yes))))
+  (text "LED: GPIO10, active HIGH.\nNo firmware behavior is added by this drawing." (at 243.84 139.7 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "03478ada-c063-5278-89b4-a5fd2ab11d44"))
+  (no_connect (at 111.76 87.63) (uuid "806152ba-880c-5f19-afb8-4c64a3634dd0"))
+  (no_connect (at 111.76 90.17) (uuid "0c2feece-921c-55dd-a9a3-bca0e07ddbe8"))
+  (no_connect (at 167.64 105.41) (uuid "371aa254-232a-567f-adb3-3fb7bf26b80e"))
+  (no_connect (at 167.64 110.49) (uuid "b589786f-8c4e-56b4-867c-b39a82a01886"))
+  (no_connect (at 167.64 113.03) (uuid "ed2b19b9-d65a-52b7-975e-0063bac34e35"))
+  (no_connect (at 114.3 107.95) (uuid "30c85c18-91df-550c-8c07-af34c000a732"))
+  (no_connect (at 167.64 97.79) (uuid "19acfcd2-e864-563d-a23b-5bc13a6626c2"))
+  (symbol
+  (lib_id "Connector_Generic:Conn_01x04")
+  (at 353.06 137.16 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "31207090-b9cd-51a0-91f2-3e0b722fd230")
+  (property "Reference" "J22" (at 340.36 123.19 0) (effects (font (size 1.1 1.1))))
+  (property "Value" "3V3 UART SERVICE / NO 5V" (at 325.12 125.73 0) (effects (font (size 1.1 1.1))))
+  (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (at 353.06 137.16 0) (effects (font (size 1.1 1.1)) (hide yes)))
+  (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (reference "J22") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004" (at 353.06 137.16 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 347.98 134.62) (xy 332.74 134.62)) (stroke (width 0) (type default)) (uuid "e86e65d0-e543-5d28-bca3-1b470e65f0e5"))
+  (global_label "GND" (shape bidirectional) (at 332.74 134.62 180) (effects (font (size 1 1)) (justify right)) (uuid "9f8517a5-f8d2-5706-ae52-9321d9021fa7") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 332.74 134.62 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 347.98 137.16) (xy 332.74 137.16)) (stroke (width 0) (type default)) (uuid "6be969f0-9d3c-5a42-a3cc-7bf368e75d2d"))
+  (global_label "+3V3" (shape bidirectional) (at 332.74 137.16 180) (effects (font (size 1 1)) (justify right)) (uuid "cef6147a-6e1a-5b4c-b199-b113bc3f98a6") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 332.74 137.16 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 347.98 139.70000000000002) (xy 332.74 139.70000000000002)) (stroke (width 0) (type default)) (uuid "abdac1c9-45c5-558f-8eb7-b20b0e7b4a8d"))
+  (global_label "UART_TX" (shape bidirectional) (at 332.74 139.70000000000002 180) (effects (font (size 1 1)) (justify right)) (uuid "2247c6c2-5005-5979-b383-30992cf4362c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 332.74 139.70000000000002 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 347.98 142.24) (xy 332.74 142.24)) (stroke (width 0) (type default)) (uuid "9ebb2cac-5079-5a9e-a21c-64d85eebfc2f"))
+  (global_label "UART_RX" (shape bidirectional) (at 332.74 142.24 180) (effects (font (size 1 1)) (justify right)) (uuid "0e11e747-c32c-5a3d-9284-1d17d729f7f6") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 332.74 142.24 180) (effects (font (size 1 1)) (hide yes))))
+  (text "GPIO MAP / PROVISIONAL" (at 15 162 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid "6d2560f9-524b-59e9-8187-b38cb76bcdcc"))
+  (text "GPIO1/2 = heat 1/2; GPIO3/0 = cutoff 1/2.\nGPIO18/19 = SCL/SDA; GPIO21 = open-drain mux RESET_N.\nGPIO11 enables the sensor regulator; local 10k holds EN LOW.\nGPIO12/13 = native USB D-/D+; GPIO10 = status LED." (at 15 170 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "ccf8688f-27fd-5c86-8735-b94c23910054"))
+  (text "SENSOR POWER DOMAIN" (at 155 192 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid "ad8963c8-ac53-5a2b-b0fd-929fb3980182"))
+  (text "Mux, upstream pull-ups and all probe ports run from +3V3_SENS.\nKeep SDA, SCL and RESET_N high impedance while that rail is OFF;\ndisable internal pull-ups, then enable power and wait before I2C.\nGPIO18/19/21 reset pulls remain an OPEN off-domain issue; qualify before build." (at 155 200 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "343f6f01-c4ff-5fd8-b228-c96470c18f4a"))
+  (text "PLACEMENT / QUALIFICATION" (at 15 220 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid "1b58b74c-903f-58ab-b323-ec78d98f24e0"))
+  (text "WROOM pin map and local footprint derive from Espressif library tag 3.0.1.\nKeep the antenna clear of copper, components, enclosure metal and cables.\nPower/thermal/USB budgets and recovery behavior require hardware validation.\nUnrouted exploratory drawing; no manufacturing or mains approval." (at 15 228 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "f8dfa7d7-d3a6-5e3e-81bb-6b3660dc47ad"))
+  (sheet_instances (path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894" (page "3")))
+  (wire (pts (xy 111.76 92.71) (xy 96.52 92.71)) (stroke (width 0) (type default)) (uuid "22ab2ba7-ea5c-5836-a611-5d84893b5920"))
+  (global_label "LP_I2C_SDA" (shape bidirectional) (at 96.52 92.71 180) (effects (font (size 1 1)) (justify right)) (uuid "28059455-e4ff-56aa-9f7f-5c7be5c18544") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 92.71 180) (effects (font (size 1 1)) (hide yes))))
+  (wire (pts (xy 111.76 95.25) (xy 96.52 95.25)) (stroke (width 0) (type default)) (uuid "c7628635-b6f0-5051-b5fd-3b5e3bc9e7bc"))
+  (global_label "LP_I2C_SCL" (shape bidirectional) (at 96.52 95.25 180) (effects (font (size 1 1)) (justify right)) (uuid "162bc3c8-0e5b-5d47-9bf2-71d965e747b0") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 95.25 180) (effects (font (size 1 1)) (hide yes))))
+  (text "LP QWIIC: GPIO6 SDA / GPIO7 SCL. Separate bus, switched sensor-rail pull-ups.\nUse USB Serial/JTAG; review MTCK/MTDO reset behavior before enabling this bus." (at 240 235 0) (effects (font (size 1.0 1.0)) (justify left top)) (uuid "812d825d-cb3e-5073-9426-ab963ff31d62")))

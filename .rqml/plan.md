@@ -1,5 +1,336 @@
 # Motley plan
 
+## Controller AC/DC module substitution, 2026-11-13
+
+**Readiness:** READY for the developer-approved exploratory substitution of
+RECOM RAC05-05SK with MEAN WELL IRM-05-5; retain the Omron G6DN-1A-L DC5.
+This is a component implementation detail, not a change to the isolated 5 V,
+1 A architecture, so no new ADR or electrical requirement is introduced.
+The scoped `MOT-PROC-001` study exception applies. Approved `MOT-HW-003`
+governs native trace integrity; draft `MOT-HW-001/004/005/007/008` continue to
+govern pin review, access, isolation inputs and the 100 mm size target.
+
+- [x] Replace the power-sheet symbol and carrier footprint with the stock
+  IRM-05 family, explicitly remap N/L/-V/+V pins and remove the obsolete NC.
+  Preserve stable component/sheet identities and requirements fields.
+- [x] Fit the larger module within the existing carrier outline, moving only
+  interfering placement groups as needed. Retain front-side parts/touches,
+  mains-priority/USB-backup behavior, raw-mains-only output-driver power and
+  zero routing. Update current part records and pin/source inventories.
+- [x] Independently reconcile every affected pin/net and unchanged circuitry,
+  run ERC, physical DRC and native trace checks, regenerate both PDFs and
+  inspect changed pages. Refresh only reviewed changed implementation edges;
+  run full pre-commit and standard RQML. Record remaining physical/thermal,
+  ripple, fuse/inrush and electrical qualification work without claiming tests.
+  Independent pad/net and UUID/path checks pass; output/sensor designs remain
+  byte-identical. Carrier ERC is clear; physical DRC is zero with the expected
+  212 unrouted items and two existing parity warnings. Native annotations and
+  all 15 trace fixtures pass. Both PDFs are refreshed and visually reviewed.
+  Full pre-commit passed; scoped formatting removed whitespace from the new
+  supply symbol, after which its reviewed hash/source inventory was refreshed.
+  Ripple, inrush/transfer and thermal/mains qualification remain future work.
+
+## Temporary JLC quotation-only export package, 2026-11-13
+
+**Readiness:** READY for the user-requested preliminary export under the
+existing `MOT-PROC-001` exploratory exception. No routing, maintained export
+capability, CAD changes, purchases or uploads are introduced by this task.
+
+- [x] Generate separate Gerber/drill ZIPs and BOM/CPL CSVs from each current
+  board using a shared origin for copper, drills and positions. Mark exports
+  UNROUTED / QUOTATION ONLY and preserve source hashes. Keep generated files
+  under ignored `hardware/controller/review/`, with temporary builders outside
+  the repository, consistent with the earlier temporary-CSV instruction.
+- [x] Match exact known components to catalog IDs, identify quote-only generic
+  passive candidates, and keep unresolved/hand-fit items and cost gaps explicit.
+  Exclude bare touch/probe/mechanical features from purchased-part assembly.
+  State one carrier, one mux and two identical output boards per complete unit.
+- [x] Reconcile every fitted component across upload/review/exclusion records,
+  match CPL designators/units/sides/positions with BOM and plotted origin, inspect
+  actual generated geometry and validate ZIP/CSV parsing. Record assumptions,
+  production limitations and observed checks; run repository/RQML checks.
+  Generated three Economic top-side SMT quotation jobs: 65 carrier, 16 output
+  and 72 mux placements, with matching catalog IDs; 32 non-SMT component records
+  per complete unit remain separately priced/hand-fit. Independent review
+  reconciled all 608 front-copper pad flashes and 119 drill centers to native
+  coordinates, all component dispositions, closed profiles and source hashes.
+  CSV/ZIP checks and geometry inspection pass. Full pre-commit, including
+  standard RQML, passes (exit 0); existing backlog remains 25 unverified and
+  19 unimplemented requirements. No JLC upload, price confirmation, production
+  centroid/rotation validation or routing was performed.
+
+## Multiple-mux addressing and chaining, 2026-11-13
+
+**Readiness:** READY for the user-accepted exploratory CAD extension under
+`MOT-PROC-001`. Update draft MOT-HW-009/010 and record MOT-HW-011/012 plus future
+MOT-SENS-006; ADR-0018 records the design. MOT-HW-001/003/004 and MOT-SENS-005
+continue to apply. No firmware implementation or hardware qualification here.
+
+- [x] Specify two carrier Qwiic sockets per bus, two upstream Qwiic and two
+  five-pin connectors per mux, three locally biased address switches and
+  independent upstream pull-up disconnects. Preserve reset pass-through.
+- [x] Update native schematics and sync only affected carrier/sensor PCB groups;
+  keep all components/touches on top, no routing, and each board within the
+  100 mm target. Reassess sensor common-area width and cut-down variants.
+- [x] Reconcile every new pin/contact and existing connectivity, all eight
+  address configurations, retained-board geometry, native requirements fields,
+  ERC/physical DRC, source hashes and trace links. Regenerate and visually inspect
+  both PDFs. Native checks pass for 17 files/203 footprints and 15 fixtures;
+  all address/pull configurations pass independent structural checks. ERC is
+  clear and physical DRC is zero, retaining expected unrouted/parity findings.
+  Full pre-commit/RQML passes; scoped checks cover new untracked files too.
+  Only the five reviewed changed native implementation baselines were refreshed.
+- [ ] Later implement and test global mux deselection, discovery/configuration,
+  shared-reset recovery and sensor-heater scheduling. Qualify combined pull-up,
+  capacitance, current/drop, rail-off, ESD and actual deployment/bench chains.
+
+## Optional Qwiic controller and mux bench access, 2026-11-13
+
+**Readiness:** READY for the explicitly requested exploratory CAD extension
+under `MOT-PROC-001`. Draft `MOT-HW-009/010` capture the interface request;
+ADR-0017 records power/pull-up and supported bench-use choices. Existing
+`MOT-HW-001/002/004` and `MOT-SENS-005` remain electrical design inputs;
+approved `MOT-HW-003` governs annotations, not electrical qualification.
+
+- [x] Record two independent carrier Qwiic ports, an additional mux upstream
+  Qwiic input and retention of the five-pin deployment/reset connection.
+- [x] Add a carrier bench sheet: main GPIO19 SDA/18 SCL, LP GPIO6 SDA/7 SCL,
+  switched sensor-rail power on both, local 10k/4k7 pull-up pairs respectively,
+  removable 0-ohm power links and local bidirectional connector TVSs. Extend
+  sensor root with Qwiic/power link; retain local mux pulls/reset and five pins.
+- [x] Synchronize only carrier/sensor boards, keep all parts/touch points on
+  top, original outlines, sensor three-through-eight-port cuts and zero routing.
+- [x] Reconcile pins, power/default/ESD dispositions, native fields/UUIDs and
+  netlist parity; inspect changed source, ERC and physical DRC. Regenerate and
+  inspect both PDFs, update documentation/source hashes and real trace edges.
+  Native checker and all 15 fixtures pass; full and changed-file pre-commit
+  pass, including standard RQML and implementation approval checks. ERC is
+  clear; physical DRC is zero with expected unrouted/parity findings. Reviewed
+  baselines were refreshed only for the five changed linked native sources.
+- [ ] Later qualify complete cable rise/LOW margin, LP/reset/off-domain states,
+  regulator/USB/combined current budgets, ESD and bench connection procedures.
+  No firmware driver or physical hardware test is implemented by this study.
+
+## Top-side handling touch points, 2026-11-13
+
+**Readiness:** READY for the requested top-side touch-pad correction under the
+existing `MOT-PROC-001` exploratory exception. Update draft `MOT-HW-005` to
+capture top/front access; approved `MOT-HW-003` governs native trace integrity.
+
+- [x] Move sensor TP1 and its LV-GND marking to the front, preserving 8 mm
+  exposed copper and space for a finger. Adjust nearby new TVS placements only
+  as needed. Keep the outline, three-through-eight-port cuts and zero routing.
+- [x] Verify every board's touch point is on top, with unchanged pad nets,
+  UUIDs and requirement fields. Run physical DRC and native annotation checks;
+  refresh and inspect the placement PDF without the obsolete back-view page.
+  update source hashes, the reviewed PCB baseline and documentation.
+- [x] Run full and changed-file pre-commit/RQML checks. No physical handling/ESD
+  test claimed.
+
+## Sensor front-only component assembly, 2026-11-13
+
+**Readiness:** READY for the user-requested placement correction under the
+existing `MOT-PROC-001` exploratory exception and ADR-0016. Preserve circuit,
+UUIDs, native requirement fields and zero routing. `MOT-HW-003` governs native
+trace integrity; draft `MOT-HW-004/005/006` remain design inputs. Honor the
+100 mm size target recorded in draft `MOT-HW-007/008`.
+
+- [x] Move D60/D61 to the front and widen the fixed common area behind three
+  connector positions, preserving the 80 x 44 mm envelope and all other parts.
+  Keep the bare back-side touch pad; it needs no component assembly.
+- [x] Remove the obsolete two-port cut marking and verify retained components
+  for every supported three-through-eight-port variant, including kerf allowance.
+- [x] Compare native pad nets, UUIDs, fields and unchanged footprint placement
+  against a pre-edit snapshot. Run native trace checks and physical DRC; export
+  and inspect both PDFs. Refresh only the inspected changed PCB trace baseline
+  and current source hashes. Update layout/cost documentation.
+- [x] Run complete and changed-file pre-commit checks, including standard RQML.
+
+## Preferred board-size envelope, 2026-11-13
+
+**Readiness:** READY to record the developer's 100 mm target and early-discussion
+trigger as draft `MOT-HW-007/008`, under `MOT-PROC-001`. No CAD resize, routing
+or automated size gate is introduced by this documentation change.
+
+- [x] **Specify:** distinguish the preferred maximum of 100 mm for each overall
+  board dimension from the obligation to discuss an anticipated overrun before
+  proceeding. Exactly 100 mm meets the target; larger boards may be agreed.
+- [x] **Record scope:** apply to each individual full board outline, including
+  the sensor common area, without imposing its aspect ratio or a panel size.
+  Current study outlines (100 x 85, 100 x 50 and 80 x 44 mm) meet the target.
+- [ ] **Future layout review:** compare proposed full outline dimensions with
+  the target during placement and routing planning. Raise expected overruns
+  immediately with dimensions, reasons and alternatives; record the agreed
+  decision before proceeding with enlargement. Recheck after outline changes.
+
+Files: `requirements.rqml`, this plan, `hardware/controller/README.md` and
+`docs/hardware-candidates.md`. Verification: RQML validation/lint/standard check
+and repository pre-commit; these check document integrity, not future layout
+compliance. Record goal relationships only; no implementation or verification
+coverage is claimed for these draft requirements.
+
+## Sensor common-area geometry clarification, 2026-11-13
+
+**Readiness:** READY to record the developer's clarified placement intent under
+the existing `MOT-PROC-001` exploratory exception. ADR-0016 supersedes the
+two-position core restriction in ADR-0011. No native CAD changes in this stage.
+
+- [x] Record that the connector row sets full board length while the common
+  circuitry can trade width along the row against depth behind it; no fixed
+  connector count constrains the common area. Update README and candidate record.
+- [x] Revisit the common area and place D60/D61 on the front. The corrected
+  29 mm-wide leg spans three positions, with the same depth and 80 x 44 mm
+  envelope; cuts retain three through eight ports. All other footprint positions
+  are preserved. Physical DRC and native field/net checks pass, zero routing is
+  retained, and both PDFs were regenerated and inspected. Geometry remains a
+  snapshot, not a fixed common-area aspect ratio.
+
+## Native traceability, ESD and service access, 2026-11-12
+
+**Readiness:** READY to implement the user-accepted MOT-HW-003 traceability
+approach and exploratory drawing changes under MOT-PROC-001; NOT READY for ESD
+or handling qualification. MOT-HW-004/005/006 capture the requested ESD, touch
+and economical probe obligations as drafts. ADR-0015 records the boundary.
+
+- [x] **Specify/design:** retain existing requirement IDs; record the native
+  traceability requirement and three electrical/access drafts. Read existing
+  bias/default/sensor requirements and impacts. User acceptance covers native
+  file links plus component/sheet fields, not electrical compliance.
+- [x] **Implement traceability:** annotate physical schematic symbols/sheets
+  and PCB footprints; add a native UUID/path-based consistency checker and
+  negative-case tests. Record real MOT-HW-003 implementation/verification links
+  only after observing the checks; use design-input relationships for drafts.
+- [x] **ESD/access study:** assess every connector and unused contact, select
+  normal-voltage-compatible clamps, preserve command blocking/default states,
+  add marked LV-GND touch pads and optional wire-loop test footprints. Keep
+  three outlines, sensor cut retention and zero routing; no mains clip points.
+- [x] **Verify/export:** ERC, fresh netlists, all-pad field/net/path parity,
+  DRC and repeated-placement/cut checks; regenerate both PDFs and visually
+  inspect changed pages. Update all-pin/ESD records and source hashes. Run
+  checker tests and complete repository checks with exact protected-file grants.
+  Native checker: 16 files/173 footprints; 15 fixture tests pass. ERC is clear
+  and physical DRC is zero on all three designs, with intentional unrouted
+  counts 164/56/150 and the same 2/5/0 footprint warnings. Both PDFs now contain
+  20 schematic and four placement pages, including a sensor back view. The
+  all-pin inventory is current at 163 components/463 logical pins. Complete
+  pre-commit passes; reviewed native/process baseline changes were refreshed
+  only after inspecting source and observing the structural checks. Electrical
+  qualifications remain open; the traceability test does not establish them.
+- [ ] **Qualify later:** ESD exposure levels/pass criteria, residual currents,
+  powered-off/partial-contact states, actual clip/touch mechanics and final
+  ground/return/shield layout. No test links may imply these have been executed.
+
+## Pin bias and hardware-default review, 2026-11-12
+
+**Readiness:** READY for requirements/design review; NOT READY to claim
+defined hardware defaults. Draft `MOT-HW-001` requires a disposition for every
+component pin/contact; draft `MOT-HW-002` requires the declared defaults when
+drivers are high impedance or absent. The developer requested requirements
+planning and an audit of the existing study, not corrective schematic edits.
+
+- [x] **Specify:** record the two requirements and `GOAL-MOT-HARDWARE` in
+  `requirements.rqml`, with explicit startup/reset/bootloader/brownout/off,
+  internal pulls, partial power, leakage/loading/coupling and removable-contact
+  acceptance criteria. Add only real goal links; no implementation/test traces.
+- [x] **Audit:** inspect controller, USB/power, output and mux/sensor circuits;
+  reconcile all 96 components / 322 symbol pins with dispositions in
+  `hardware/controller/pin-bias-review.md`. Record source hashes and distinguish
+  paths present from qualified limits. Preserve native CAD and both PDFs.
+- [x] **Incremental cost investigation:** identify the missing-ground return
+  through the other command's pull-down. Record two blocking diodes per output
+  board (four total), resistor substitutions and optional local filters as a
+  candidate, approximately $0.10-$0.20 additional components plus $0.01-$0.04
+  Economic joint charges per complete unit. Separate any $3.07 new Extended
+  type/batch fee. Actual parts, ON-drive/leakage/transient margins and live
+  contact sequences remain unqualified; no corrective CAD edits made.
+- [x] **Authorized study correction:** the developer accepted the incremental
+  protection cost and requested implementation. Extend the existing scoped
+  `MOT-PROC-001` exploratory exception to the output blocking/filter/bias
+  circuitry, its drive-margin corrections, CUT2 GPIO7-to-GPIO0 and sensor EN
+  GPIO20-to-GPIO11 substitutions, board synchronization and both PDFs. Preserve
+  the mains stage, snubber, interfaces, three outlines and zero routing. This
+  does not approve the full draft `MOT-HW-001/002` wording or claim hardware
+  qualification; sensor bus off-domain pulls and physical tests remain open.
+  The prototype retains MMBT3904s, uses Basic C81598 blocking diodes, local
+  10k/100n B-E networks and 470/150 ohm base resistors. Added parts/joints total
+  approximately $0.1304 per complete two-output unit at the recorded prices,
+  before attrition/tax/shipping. Existing placements/outlines, mains/snubber
+  connectivity and zero routing are preserved; evidence is in the CAD review.
+- [ ] **Review:** agree the exact requirement wording and live-unplug/contact
+  sequencing scope. The requirements remain draft until developer acceptance.
+- [ ] **Remaining design/qualification:** qualify the implemented GPIO11 EN
+  and output blocking/bias/filter corrections; resolve PB-02 sensor-domain
+  reset pulls, unused input/strap policies and external service/power
+  states. Choose actual transistor variants and a bounded disturbance envelope.
+  Use guaranteed limits/calculations and receiving-board bias that survives
+  disconnection. Record any significant architectural decision separately.
+- [ ] **Implement after design agreement:** update the affected schematic,
+  board, notes, audit dispositions and both PDFs; map maintained implementation
+  only after requirement approval and review. Re-run ERC/netlist/pad parity,
+  unrouted DRC, source-diff checks and visual PDF review. No baseline refresh
+  or hardware-acceptance claim follows automatically from these checks.
+- [ ] **Qualify:** test the agreed startup/reset/ROM/brownout/off and connector/
+  jumper states on hardware, including bounded disturbance injection, receiver
+  levels, unintended opto/coil drive and rail back-power. Record tested source
+  identities, timing/release limits and results; link actual verification only.
+
+## Latest exploratory hardware direction, 2026-11-12
+
+**Readiness:** READY for planning; NOT READY for fabrication. The accepted
+[ADR-0014](adr/0014-integrated-controller-and-switched-sensor-supply.md)
+supersedes the Feather/internal USB direction in the historical sections below.
+Under the existing `MOT-PROC-001` exploratory exception, use WROOM-N8 directly
+on the controller board, retain RECOM-priority/USB-backup selection and
+RECOM-only output drivers, and feed separate controller and enabled sensor
+3.3 V regulators in parallel from selected 5 V. Preserve `MOT-PLAT-004` USB
+serial behavior and draft `MOT-SENS-005` startup-readiness intent. Native CAD
+and both review PDFs now represent this integrated direction as an unrouted
+study, including automatic source selection and host-qualified USB data.
+No firmware changes, product implementation traces or baseline refreshes
+belong to this exploratory drawing update.
+
+- [x] Record integrated WROOM-N8 (C5366877, Economic assembly listed), omission
+  of Feather battery/accessory circuitry, and the separate switched AP2112
+  sensor regulator (C51118). Files: ADR-0014, candidate record, CAD README.
+- [x] Provisionally select Adafruit 6153 panel USB-C female to six-pin JST-PH
+  pigtail; record its built-in CC pull-downs and unshielded 175 mm harness in
+  `docs/hardware-candidates.md`; represent its mating header in CAD/PDFs with
+  actual harness pin order explicitly pending sample verification/repinning.
+- [ ] Revisit the unsatisfied preference for a more robust shielded USB
+  assembly, including defined shield/shell termination, data-pair construction,
+  strain relief and panel retention. Qualify the provisional harness pinout,
+  both plug orientations and USB operation during heater switching; confirm
+  sample panel fit before final enclosure/harness selection.
+- [x] Make the new schematic inputs concrete for review: WROOM-N8 with local
+  Espressif symbol/footprint, reset/boot/UART recovery, TPS2116 priority divider,
+  main and sensor AP2112 regulators, sensor EN (now GPIO11 after the bias
+  correction) and existing
+  five-pin sensor interface. Power the mux/pull-ups from switched 3V3_SENS;
+  fit mux R2/R3 at 4k7. Draw TS3USB221ERSER data gating with an independent
+  TLV3011BIDBVR raw-VBUS qualifier and USBLC6-2SC6 ESD starting circuit.
+- [x] Revise the exploratory controller/interface CAD and grouped placement;
+  preserve the single-output module and cuttable sensor geometry. Files:
+  controller/sensor sources, local libraries, README, verification record and
+  both combined PDFs. Verify ERC, pin/net maps, zero routing, DRC, PDF renders
+  and source hashes. These checks do not establish maintained-product coverage.
+- [ ] Complete regulator/load/thermal budgets, source-transfer and USB
+  current/inrush/suspend analysis, actual harness pin mapping and protection
+  qualification. Validate sensor off-state back-power paths and GPIO startup
+  sequencing before promoting the exploratory circuit to a buildable design.
+- [ ] Qualify source selection and sensor off/on/startup under mains-only,
+  USB-only, both and neither; measure heater/radio peaks, voltage drop and
+  temperatures, check absence of back-power, then verify ROM flashing and USB
+  serial/commissioning on actual hardware. Later sensing firmware must enable
+  the rail and meet startup conditions before I2C, under agreed requirements.
+
+Drawing verification is recorded in `hardware/controller/verification.md`.
+Independent pin/net review and schematic-to-pad review passed after correcting
+the fitted mux pull-up value labels. All three ERC reports have zero findings;
+the unrouted carrier/sensor boards have no physical DRC violations. Current
+source hashes accompany the checks. The output module and its mains/power
+sheet are unchanged. No physical hardware or firmware acceptance follows;
+the product backlog remains 13 unverified and seven unimplemented requirements.
+
 ## Readiness
 
 ### Next milestone: commissionable Matter device and firmware information
@@ -467,3 +798,166 @@ or completed verification to fill those fields before the decisions are made.
 Plan build and host-test evidence separately from physical-device verification.
 Keep hardware-dependent acceptance pending until exercised. Preserve completed
 stages when updating the implementation plan.
+
+## Exploratory three-board CAD revision, 2026-11-12
+
+**Readiness:** READY for the scoped unrouted drawing experiment; NOT READY for
+routing, fabrication or mains use. [ADR-0010](adr/0010-three-board-controller-study.md)
+records the developer's partition. `MOT-PROC-001` governs the exception; draft
+`MOT-SENS-005` is not implemented or approved by CAD work. Firmware stages above
+are unchanged. No product implementation or verification edges will be added for
+this experiment.
+
+- [x] Record three physical boards: Feather/AC input and supply, both AC outputs,
+  and mux with the trimmable L-shaped sensor-connector bank.
+- [x] Split the schematic and unrouted PCB into per-board projects under
+  `hardware/controller/`, preserving `heater-channel.kicad_sch` and
+  `sensor-port.kicad_sch` as canonical shared definitions. Add explicit matching
+  low-voltage and mains inter-board connections.
+- [x] Arrange the L-shaped sensor board with fixed mux/interface core, same-edge
+  connectors and seven cutting lanes; preserve per-port placement areas. Keep
+  all routing absent. Document future routing and trimming qualifications.
+- [x] Verify per-board ERC, netlists, schematic parity, footprint pad/net mapping,
+  original circuit reconstruction through the interfaces, shared instance
+  isolation, repeated geometry, board outlines and core/port retention for all
+  seven cuts. Export and visually inspect schematic/placement PDFs.
+- [x] Update `hardware/controller/README.md`, `verification.md` and
+  `docs/hardware-candidates.md`; run `mise exec -- pre-commit run --all-files`,
+  explicit checks of untracked hardware files, and standard RQML check. Record
+  actual results and unresolved provisional footprint/mains/thermal limitations.
+
+Execution evidence is in [hardware verification](../hardware/controller/verification.md).
+All per-board ERC and geometry/connectivity checks passed; DRC retains only the
+documented unrouted connections and twelve existing footprint-assignment warnings.
+Standard RQML and pre-commit on all 26 changed/new files passed. The required
+aggregate all-files run was attempted but cannot complete the end-of-file fixer
+on protected unrelated configuration in this sandbox; its broader write request
+was rejected automatically. The other initially restricted hooks passed in
+scoped reruns. No product verification or fabrication readiness is inferred.
+
+## Exploratory output-module and sensor-length revision, 2026-11-12
+
+**Readiness:** READY for the unrouted drawing experiment; NOT READY for routing,
+fabrication or mains use. [ADR-0011](adr/0011-single-output-modules-and-sensor-core.md)
+records the developer's clarification. `MOT-PROC-001` governs the same exception;
+firmware requirements, source and traces remain unchanged. Earlier completed
+stages above describe the preceding CAD revision.
+
+- [x] Record three designs / four physical boards: one carrier, two copies of a
+  single-output module, and one sensor board with its core behind the row.
+- [x] Revise carrier and AC-output schematics/PCBs, preserving the canonical
+  heater circuit. Give each module copy a four-signal control connection and
+  separate mains feed from the carrier. Verify two-copy assembly reconstruction.
+- [x] Shorten the L-board to connector-controlled length; retain a compact core
+  behind the first two positions and verify all remaining tail-cut variants.
+- [x] Regenerate both combined PDFs from all three designs; verify page counts,
+  bookmarks, circuit/placement rendering, per-board ERC/DRC and zero routing.
+- [x] Update README, candidate record and current verification evidence; run
+  applicable pre-commit and standard RQML checks. Preserve known qualification
+  gaps and the existing aggregate-hook sandbox limitation explicitly.
+
+Current evidence: one 100 x 85 mm carrier, two copies of the same 100 x 50 mm
+single-output module, and an 80 x 44 mm sensor board. The mux/core fits entirely
+behind the first two positions; six tail cuts preserve two through seven port
+positions. Both independent assembly audits reconstruct all 70 original parts,
+228 pin entries and 75 net groups. ERC passes; DRC retains only unrouted nets and
+seven provisional footprint warnings across three designs. Combined schematic
+and placement PDFs have 16 and three pages respectively, with board bookmarks.
+Standard RQML and pre-commit on all 27 changed/new files pass; the existing
+aggregate formatter sandbox limitation is unchanged.
+
+## Exploratory manual snubber configuration, 2026-11-12
+
+**Readiness:** READY for the requested placeholder; NOT READY for fabrication
+or mains use. This is an implementation detail within the existing
+`MOT-PROC-001` exploratory exception, not a new maintained hardware capability
+or a change to ADR-0011's board partition. No product traces will be added.
+
+- [x] Fit the provisional 100 Ohm / 10 nF X2 snubber parts and insert a 2x2
+  header in series with that branch on the canonical output module. Tie pins
+  1/3 to the capacitor side and 2/4 to triac A1. Two closed-top shunts across
+  1-2 and 3-4 enable the branch; rotating both across 1-3 and 2-4 disables it
+  while covering every pin. Default assembly is ON. Record two shunts per
+  module as assembly accessories, with no extra GPIO or interface change.
+- [x] Update the unrouted output placement, assembly/orientation labels,
+  README and candidate record. Keep header geometry, compatible short pin
+  length, shunt fit, voltage/transient ratings and mains spacing unqualified.
+  Configuration is only changed unplugged and discharged; coverage does not
+  establish a touch-safe rating.
+- [x] Verify ERC, every footprint pad/net and DNP state, ON/OFF connectivity,
+  preservation of the rest of the circuit, zero routing and physical DRC.
+  Refresh both combined PDFs, render changed pages, update verification
+  evidence and run applicable pre-commit plus standard RQML checks.
+
+## Historical automatic USB power and enclosure-port plan, 2026-11-12
+
+Superseded by ADR-0014 and the integrated-controller drawing update above.
+
+**Readiness:** READY for planning under the `MOT-PROC-001` exploratory exception;
+NOT READY for schematic implementation until the remaining electrical/harness
+choices below are resolved. [ADR-0012](adr/0012-automatic-usb-power-and-panel-port.md)
+records the original planning direction; [ADR-0013](adr/0013-usb-c-internal-feather-connection.md)
+replaces its internal A connection with USB-C and withdraws the old cost total.
+Preserve
+`MOT-PLAT-004`'s development USB serial interface; no firmware or product traces
+are added by this plan. At that stage the CAD/PDFs still contained manual JP1.
+
+- [x] Record RECOM priority, optional USB backup, return-to-RECOM behavior,
+  unmodified Feather, panel USB-C and separate RECOM-only output-driver power.
+- [x] Research panel/harness candidates, power mux and host-VBUS data gating;
+  record checked prices, mounting assumptions and validation gaps in ADR-0012
+  and `docs/hardware-candidates.md`. Update the CAD README's future-plan note.
+- [ ] **Resolve design inputs.** Confirm the Adafruit 6069's data/CC mapping in
+  every plug orientation, exact mounting drawing/sample, shielding and cable
+  bend space. Select a short data-capable C-to-C cable, carrier USB-C source
+  receptacle and source CC/attachment/VBUS switching/current protection;
+  no intermediate USB-A is permitted. Power source attachment logic from
+  selected 5 V independently of the Feather regulator to avoid startup deadlock.
+  Select host-VBUS detector/level translation, port protection and
+  USB-current restrictions/limiting. Select PR1 divider from worst-case RECOM,
+  Feather minimum voltage and TPS2116 reference tolerances; evaluate slow-ramp
+  chatter and any needed hysteresis. Files: candidate record and a superseding
+  ADR if the accepted architecture changes. Verification: supplier drawings,
+  circuit calculations and actual sample continuity/fit; do not infer testing.
+- [ ] **Revise the unrouted CAD.** Once the design inputs are sufficient, replace
+  the direct JP1 feed in `hardware/controller/controller.kicad_sch` with raw
+  RECOM/raw USB inputs and selected Feather power; add the USB data gate and
+  carrier connectors. Keep output drivers on raw RECOM. Update the carrier PCB
+  with a movable USB group and plug/harness clearance, without routing. Update
+  README and verification evidence. Verification: ERC, all pin/net/footprint and
+  source-path audits, source-state truth table, no bypass/backfeed paths, zero
+  routing, DRC and preservation of other board sources. No hardware product
+  trace edges until maintained requirements and actual implementations exist.
+- [ ] **Refresh review artifacts.** Export both combined PDFs, render changed
+  schematic/placement pages and inspect labels, connector roles and power
+  boundaries. Run `mise exec -- pre-commit run --all-files`, explicit checks of
+  changed/untracked files and standard RQML consistency. Record actual results
+  and the existing protected-config limitation if it persists.
+- [ ] **Qualify hardware later.** Measure source preference/failover/recovery,
+  output dips and upstream/inactive-source leakage; test mains-only, USB-only,
+  both, neither, USB insertion/removal and slow RECOM brownout. Test C-to-C and
+  A-to-C host cables in all orientations, USB suspend/inrush/current limits,
+  application serial and ROM flashing/JTAG. Verify data stays disconnected
+  without raw host VBUS. Check EMI/ESD, enclosure retention and mains separation.
+  These are future hardware acceptance checks, not completed CAD verification.
+
+Planning verification: independent read-only review found no blocking issue;
+all 20 native CAD hashes match the preceding snubber revision. Standard RQML
+passes with the unchanged backlog of 13 unverified and seven unimplemented
+requirements. Pre-commit on all 28 changed/new files passed, exit 0. The required
+aggregate run exited 1 only because the end-of-file fixer cannot open protected
+`.agents/plugins/marketplace.json` and `.codex/config.toml` for writing; every
+other aggregate hook passed, including Mergify, firmware metadata and RQML
+checks. No broader configuration-write retry was made after the earlier
+automatic approval rejection. No purchases, CAD edits or physical tests were
+performed for this plan.
+
+Correction: the completed initial research above included the now-rejected
+A-to-C connection. Reprice the C-to-C cable and Type-C source support before
+reusing a complete USB cost estimate. Adafruit 6370 is a 100 mm / $6.95
+packaging candidate, not the final cable selection. CAD and PDFs are unchanged.
+Correction checks: all 29 changed/new files passed pre-commit, exit 0; standard
+RQML passed with the same backlog. All 20 native CAD hashes still match. The
+aggregate run again exited 1 solely for the two protected formatter inputs;
+all other hooks passed. Source-side CC logic must start independently of the
+Feather's 3.3 V output; independent review confirmed that bootstrap constraint.
