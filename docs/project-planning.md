@@ -179,6 +179,41 @@ discusses repeated heater switching and the absence of contact wear. Exact
 load compatibility, operating limits, and the complete switching accessory
 remain to be evaluated. Neither a switching technology nor a period is selected.
 
+## Open hardware expansion ideas
+
+Recorded 2026-11-13 for later consideration. These are open proposals, not
+selected features, approved requirements, or additions to the current
+[controller board study](../hardware/controller/README.md). No bus, connector,
+pin assignment, display, or input device is selected here.
+
+| Idea | Questions to investigate |
+| --- | --- |
+| Bus-controlled output stages | Could an addressed bus replace or supplement individual GPIO command wires, allowing more flexible placement and a much higher output count? Compare shared I/O or PWM expanders with intelligent output modules; consider address selection, discovery/configuration, bus wiring and power, command timing, and fault containment. |
+| Bus-friendly AC feedback | Include I2C or another suitable digital readout when comparing voltage/current feedback hardware, so adding outputs does not consume separate controller ADC inputs for every channel. Distinguish measurement readout from line-synchronous triac firing; compare integrated meters with isolated sensors plus a local ADC/controller. See the [AC control investigation](hardware-candidates.md#ac-control-feedback-and-bus-investigation). |
+| Shared output cutoff | Consider replacing per-channel cutoff relays with one relay feeding all controlled outlets. Compare shutting down every output on a fault with retaining unaffected channels, combined current and lamp inrush, module independence, and cutoff operation during a control-bus failure. Keep this open; the current circuit retains per-channel relays. |
+| More exposed controller interfaces | Which otherwise available buses and GPIO would be useful on expansion headers? Consider SPI, UART, additional I2C access, analog inputs and PWM outputs where supported and available after existing assignments. Review pin multiplexing, boot/debug use, voltage levels and power budgets before choosing pins. |
+| Familiar expansion header layout | Would Feather/FeatherWing or another established header arrangement make accessories easier to reuse? Evaluate mechanical fit, actual pin/function compatibility, supply rails, clearance and enclosure access; similar header geometry alone would not establish compatibility. |
+| Display or multiple displays | Consider local temperature/humidity, setpoint, output-state and fault indication. Explore one shared display versus multiple displays, their location, interface and connector needs, and whether they belong on a separate board. |
+| Local control inputs | Consider buttons, rotary encoders, switches or analog controls for settings and operation. Define intended actions, startup/disconnection behavior, and how local commands interact with network commands and safety limits before selecting hardware. |
+| Optional user-interface board | Could displays and controls share an optional panel board, separate from the controller and mains output boards? Consider enclosure placement, mounting, cable/header choice and power; decide what remains usable when the board is absent or disconnected. |
+
+For bus-controlled outputs, preserve the discussed direction that temperature
+regulation runs in the device rather than Home Assistant. Decide whether a
+single local controller owns all loops or intelligent output modules own their
+loops. Network availability must not be required for continued regulation;
+loss of the internal control bus or stale commands needs a separate
+fault policy. Review output-off defaults, startup, reset, disconnected
+connectors and failed expansion modules against `MOT-HW-001` and `MOT-HW-002`
+when developing a concrete proposal.
+
+Existing dual-I2C Qwiic access is recorded separately in `MOT-HW-009`; this list
+asks what further expansion is worthwhile. Revisit these ideas before fixing
+the remaining pin allocation, board routing and enclosure interfaces, comparing
+incremental cost and space with the likely benefit. Any anticipated dimension
+above the 100 mm board target remains a discussion point under
+`MOT-HW-007` and `MOT-HW-008`. Promote an idea into requirements and an ADR only
+when its intent and architectural choice have actually been settled.
+
 ## Decisions to resolve
 
 | Decision | Question to settle | Destination |
