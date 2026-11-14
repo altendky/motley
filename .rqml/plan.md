@@ -1,5 +1,188 @@
 # Motley plan
 
+## Intelligent-output exploratory schematic and placement revision, 2026-11-14
+
+**Readiness:** Exploratory schematic and movable placement updated at the
+developer's request after the requirements discussion. This continues the scoped exploratory CAD
+exception under approved `MOT-PROC-001`, with approved `MOT-HW-003` governing
+native traceability. Draft electrical inputs remain design inputs, not claims
+of complete maintained-product implementation or qualification. Preserve the
+three-design partition, two physical output copies, single-sided assembly,
+top-side touch/probe access, 100 mm outline target and absence of routing.
+The sensor native design is outside the electrical revision.
+
+- [x] **Goal:** Set concrete provisional circuit interfaces before native edits.
+  **Inputs:** draft `MOT-AC-001` through `MOT-AC-015`, `MOT-ENG-010`,
+  `MOT-STOR-001`, applicable `MOT-HW-*`, proposed ADR-0020. Check actual MCU
+  pins, boot modes and storage geometry; choose shared reference, independent
+  voltage/current feedback and random-phase optotriac with stated limits.
+  **Files:** ADR-0020, output proposal and design review notes. Firmware fit,
+  option-byte persistence, detector timing/leakage/heat and mains qualification
+  remain explicit open work; higher-current exploration stays in issue #30.
+- [x] **Goal:** Revise the controller/output schematics and movable placement.
+  **Files:** controller/output native sheets, new control/sensing sheets and
+  required library/PCB sources. Replace direct two-channel GPIO links with
+  runtime I2C and shared line reference. Separate selected logic power from raw
+  actuator power for USB commissioning; retain both controller Qwiic buses and
+  review LP power/pull-up domain changes. Add local MCU/regulator, hardware
+  recovery, safe bias, watchdog documentation and feedback; keep the Omron
+  cutoff, configured snubber and initial 300 W target. Record genuine design-input
+  and annotation links using RQML; do not invent product implementation coverage.
+- [x] **Goal:** Verify and publish updated review artifacts.
+  **Files:** native sources, pin/ESD/verification notes and both combined PDFs.
+  **Verification:** fresh netlists and all pad/net/UUID/value/field reconciliation,
+  changed-circuit/default/power-domain reviews, ERC/DRC, front-only placement,
+  outline and zero-routing checks, unchanged sensor comparison, hardware trace
+  checker/fixtures and full pre-commit/RQML. Refresh only reviewed changed native
+  annotation baselines. Export and render both PDFs and inspect changed pages.
+  Record source hashes, execution results and unresolved electrical limits;
+  no purchasing, assembly or energization is part of this experiment.
+
+The structural audit reconciles 247 components / 706 symbol pins and all 257
+footprints, including connector/power maps and unchanged sensor sources. All
+boards remain front-only and unrouted, with zero physical DRC findings; expected
+unrouted/parity findings and the existing PS1 / manufacturer-directed TMCS ERC
+findings remain visible. Both combined PDFs were regenerated and rendered for
+review: 24 schematic pages and three placement pages. Annotation checks, all 15
+trace fixtures, full pre-commit and standard RQML pass (exit 0). Native source
+manifest SHA-256: `c9d850e7fb61cad55d144be6fe9e33a76b4b4a5bdf651cc5ca09022f772af6ce`; checked specification:
+`ea0a8782859f70d9940ea8996993b5fc8a60fc169862d6c5c1d71987a106d0fc`. Individual source/PDF hashes and open qualification gaps are in
+`hardware/controller/verification.md` and `intelligent-output-review.md`.
+Coverage backlog remains 36 unimplemented / 43 unverified requirements; no
+electrical product completion, firmware fit, recovery execution, watchdog tests,
+qualified sixteen-board fanout or mains/thermal/EMC approval is claimed.
+
+## Manual recovery, per-MCU watchdogs and deferred current study, 2026-11-14
+
+**Readiness:** READY for the requested specification/design clarification;
+electrical CAD and firmware implementation remain pending. Preserve global
+identity tracking and mixed-bus commissioning of one new default-address board.
+
+- [x] **Goal:** Record easy hardware recovery under `MOT-AC-011`, using a marked
+  RUN/RECOVERY DIP/jumper plus reset access. **Files:** specification, output
+  proposal and proposed ADR-0020. Verify candidate ST ROM immutability, pin/boot
+  options and lock limitations; preserve the `MOT-STOR-001` assessment of option
+  writes rather than claiming ROM availability proves safe recovery.
+- [x] **Goal:** Require watchdog health signals and responses on every MCU in
+  draft `MOT-ENG-010`, including progress-based refresh, bounded hardware expiry,
+  local off states and the main-ESP/communication-fallback distinction.
+  **Files:** specification, output proposal and proposed ADR-0020. Record real
+  goal/dependency links without claiming firmware or hardware implementation.
+- [x] **Goal:** Create and verify
+  [issue #30](https://github.com/altendky/motley/issues/30) for higher-current
+  plausibility. **Files:** candidate design inputs and plan notes. Retain the
+  initial 300 W target; remove higher-current investigation as a prerequisite
+  for initial CAD work. The issue records bottleneck, same-PCB variant and
+  incremental-cost questions without selecting a higher rating.
+- [ ] **Goal:** Select exact recovery controls, MCU pins and verified boot/reset
+  options; define watchdog activation, progress signals, expiry limits and reset
+  responses for the ESP and output MCU. **Inputs:** `MOT-AC-011/012/015`,
+  `MOT-ENG-010`, `MOT-HW-001/002`, `MOT-STOR-001`, proposed ADR-0020.
+  **Files:** later affected native CAD, MCU firmware and verification records.
+  **Verification:** corrupt-app jumper/reset recovery, identity-checked loader
+  writes with other normal-address boards present, option/power-loss behavior,
+  critical-task stall and interrupt-alive watchdog injection, local actuator
+  shutdown and configured fallback after ESP loss. Record actual traces then.
+
+Specification validation, strict lint, standard RQML and full pre-commit pass
+(exit 0); the untracked ADR and final plan bookkeeping are checked explicitly.
+Independent read-only review found no material blockers and confirmed the ROM,
+boot-lock and watchdog distinctions. Checked specification SHA-256:
+`9ea1a0cc08ed972281cc950a90f80c64b96867a21c8b9495a2c7568406118736`.
+There are 47 requirements, with 36 unimplemented and 43 unverified. No CAD,
+firmware or reviewed implementation baseline changes and no watchdog/recovery
+hardware execution are claimed.
+
+## Output identity and single-board commissioning clarification, 2026-11-14
+
+**Readiness:** READY for this specification/design clarification; electrical CAD
+remains pending. The developer requires global identity-based tracking of output
+configuration, faults and updates, permits one new board at the selected default
+address at a time for initial commissioning, and requests explicit factory/default
+address reservations. Already commissioned boards and other boards at
+nonconflicting addresses may remain on the same bus; no separate runtime path is
+required for them.
+No firmware or CAD implementation is added.
+
+- [x] **Goal:** Strengthen draft `MOT-AC-012`, preserve its IDs and add acceptance
+  for identity-keyed persistent records, address reuse and explicit replacement
+  rebinding. Extend `MOT-AC-011` with shared-bus, single-default-target
+  commissioning and UID-checked update/recovery. **Files:** `requirements.rqml`;
+  assess `MOT-STOR-001` as a
+  dependency without weakening its storage obligations.
+- [x] **Goal:** Record mandatory address-plan obligations in draft `MOT-AC-015`
+  and connect real goal/dependency edges through RQML. **Files:** specification,
+  `docs/ac-output-module.md`, proposed ADR-0020. Research NXP reserved ranges,
+  ST C011 loader `0x64`, TI mux range and Sensirion probe addresses. Distinguish
+  per-bus conflicts, protocol reservations and unselected application defaults.
+- [ ] **Goal:** Implement only after the remaining hardware/interface choices
+  are agreed. **Inputs:** `MOT-AC-009/011/012/015`, `MOT-STOR-001`, proposed
+  ADR-0020. Select the runtime pool and exact service wiring/loader, verify UID
+  readout without a working application, and define identity validation,
+  persistence and explicit replacement-role rebinding. **Verification:** later
+  exercise factory-blank, corrupt/recovery, address-change, address-reuse,
+  ESP-restart and reserved/conflicting-address cases. Include commissioning one
+  new default-address board while other boards remain connected at distinct
+  addresses; an ACK alone cannot prove that only one device responds at the
+  default. Record actual code/tests only then.
+
+Discussion-stage verification: schema validation, strict lint, standard RQML and
+full `mise exec -- pre-commit run --all-files` pass (exit 0). The proposed ADR and
+final plan bookkeeping are also checked explicitly because the ADR is untracked.
+Checked specification SHA-256:
+`d0b2f17a1651a7251b5f6de6cc5c47aa100f985508b2a1666dbccfeaa406c3ac`.
+There are 46 requirements, with 35 unimplemented and 42 unverified. No
+implementation baselines or hardware coverage are changed; no commissioning,
+identity or address-allocation code has been executed.
+
+## Intelligent-output requirements and architecture discussion, 2026-11-14
+
+**Readiness:** READY for requirements/design discussion; NOT READY for maintained
+electrical CAD implementation. The developer made sixteen outputs negotiable for
+cost/difficulty, requested ESP programming including initial commissioning,
+preferred stable identity and international AC support, and asked to assess
+inexpensive higher-load variants. Inductive-load discussion remains deferred.
+These clarify draft `MOT-AC-009` and add draft `MOT-AC-011/012/013/014`; they do
+not approve the complete electrical specification or select new hardware.
+
+- [x] **Goal:** Preserve these preferences and the initial 300 W / 120 V target.
+  **Files:** `requirements.rqml`, `docs/ac-output-module.md`. Preserve existing
+  IDs and record real goal/dependency edges through RQML. Review changed criteria
+  rather than treating a priority change as a coverage-only edit.
+- [x] **Goal:** Describe the recommended responsibility split and open choices.
+  **Files:** proposed ADR-0020 and the output-module proposal. Inspect ST factory
+  UID/loader documentation; identify fixed-ROM-address and boot-option issues.
+  No firmware, CAD, PDFs or implementation baselines are changed by this work.
+- [ ] **Goal:** Select programming and runtime interconnects under
+  `MOT-AC-007/009/011/012`, `MOT-STOR-001` and `MOT-HW-001/002/004`.
+  **Files:** ADR-0020 and output-module proposal; update requirement parameters
+  only after agreement. Compare shared-bus commissioning of one new default-address
+  board, recovery selection and ESP-driven SWD, including blank and corrupt targets,
+  option bytes, pin availability, storage erase geometry and incremental cost.
+  Define bus topology, addressing, wiring length, supported count, power budget
+  and sync distribution; assess the ESP LP-I2C block before selecting it.
+- [ ] **Goal:** Bound electrical choices under `MOT-AC-001/002/003/004/005/008/010/013/014`.
+  **Files:** requirement parameters, architecture and candidate record. Select
+  feedback/line-reference circuits and meaningful timing/current thresholds;
+  review universal-input variants and the initial 300 W thermal/current path
+  before fixing footprints. Higher-current plausibility is deferred to issue #30;
+  do not add general inductive-load promises.
+- [ ] **Goal:** After agreement, revise and verify native CAD and review PDFs.
+  **Files:** affected controller/output sheets, PCBs, libraries, verification
+  record and reviews. Follow the requirements-first workflow and native hardware
+  traceability; link actual implementation only after it exists. Verify netlist
+  parity, pin/default/ESD/insulation reviews, placement, ERC/DRC and the 100 mm
+  target, preserving the sensor design and unrouted status unless scope changes.
+
+Discussion-stage verification: schema validation, strict lint, standard RQML and
+full repository pre-commit pass (exit 0); the new untracked ADR also passes an
+explicit scoped pre-commit run. Independent read-only review found no blockers
+and confirmed the loader/address/boot-option limitations. Checked specification
+SHA-256: `fd4cb98ba78e2868c53676fbff53af4499ca19203f5c385037e20ad77da0e7c6`.
+There are 45 requirements, with 34 unimplemented and 41 unverified; no electrical
+implementation or verification coverage is claimed. Hardware/ESP-loader execution
+and product qualification remain unperformed.
+
 ## KiCad tool pin and native format migration, 2026-11-14
 
 **Readiness:** READY for the developer's request to manage KiCad through mise

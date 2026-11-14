@@ -5,7 +5,7 @@
 	(uuid "5552d3e1-3c6d-5a6b-990d-f1f6c60113f0")
 	(paper "A4")
 	(title_block
-		(title "Shared heater channel: zero-cross triac and cutoff")
+		(title "Shared heater channel: random-phase triac and cutoff")
 		(date "2026-11-11")
 		(rev "0.1")
 		(company "Motley")
@@ -1435,7 +1435,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Motley:MOC3063S_TA1"
+		(symbol "Motley:VO3053_X007T"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1452,7 +1452,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "MOC3063S-TA1"
+			(property "Value" "VO3053-X007T"
 				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1463,7 +1463,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_DIP:SMDIP-6_W7.62mm"
+			(property "Footprint" "Motley:VO3053_Option7_Study"
 				(at -5.08 -5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1476,7 +1476,7 @@
 					(justify left)
 				)
 			)
-			(property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/0840bd1cad2742139135cac60f4f70f5.pdf?productCode=C77950"
+			(property "Datasheet" "https://www.vishay.com/docs/83749/vo3052.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1488,7 +1488,7 @@
 					(justify left)
 				)
 			)
-			(property "Description" "Lite-On 600 V zero-cross optotriac, IFT 5 mA, SMD six-pin package"
+			(property "Description" "Vishay VO3053-X007T random-phase600V optotriac, IFTmax5mA; SMD6 option7. Dedicated datasheet-derived8.01mm padgap pattern; qualification pending."
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1499,7 +1499,29 @@
 					)
 				)
 			)
-			(property "ki_keywords" "Opto-Triac Opto Triac Zero Cross"
+			(property "LCSC" "C5241906"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "JLCPCB Assembly" "Unconfirmed"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "ki_keywords" "Vishay Opto Triac Random Phase"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1521,52 +1543,7 @@
 					)
 				)
 			)
-			(symbol "MOC3063S_TA1_0_0"
-				(rectangle
-					(start -0.381 -2.032)
-					(end 1.397 -3.048)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.524 -0.635) (xy 1.016 -1.016) (xy 1.016 -2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -2.54) (xy 1.397 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(text "ZCD"
-					(at 0.508 -2.54 0)
-					(effects
-						(font
-							(size 0.508 0.508)
-						)
-					)
-				)
-			)
-			(symbol "MOC3063S_TA1_0_1"
+			(symbol "VO3053_X007T_0_1"
 				(rectangle
 					(start -5.08 3.81)
 					(end 5.08 -3.81)
@@ -1745,7 +1722,7 @@
 					)
 				)
 			)
-			(symbol "MOC3063S_TA1_1_1"
+			(symbol "VO3053_X007T_1_1"
 				(pin passive line
 					(at -7.62 2.54 0)
 					(length 2.54)
@@ -2115,29 +2092,10 @@
 		)
 		(uuid "049831ff-5ad2-50df-aba7-937d73e8b3c1")
 	)
-	(text "D101/D102 block return into a LOW command if J14 GND opens first.\n100n B-E filters + 10k local pull-downs: nominal 1 ms decay.\nR102 470 / R106 150 restore base drive after diode drop.\nLoaded GPIO HIGH, hot leakage and unplug transients remain UNQUALIFIED."
-		(exclude_from_sim no)
-		(at 15 35.56 0)
-		(effects
-			(font
-				(size 1.05 1.05)
-			)
-			(justify left top)
-		)
-		(uuid "34eedc19-f815-5404-a2f4-8321bdc72446")
-	)
-	(text "Normally hold relay ON; triac modulates heat. Coil 5 V / about 36 mA.\nNormal relay changes with triac OFF; relay interrupts load after triac fault.\nGPIO commands HIGH = ON. Flyback diode delays release; verify timing."
-		(exclude_from_sim no)
-		(at 15 180 0)
-		(effects
-			(font
-				(size 1.1 1.1)
-			)
-			(justify left top)
-		)
-		(uuid "397cba46-1758-56ac-b6b4-343795e27753")
-	)
-	(text "LOW VOLTAGE: receiver-local blocking diodes, 10k B-E bias and 100n filters; qualification pending"
+	(text "Series current sensing: CUT_L_UNSENSED -> sensor -> OUTLET_L.\nRandom-phase drive and R101 270 / R104 430 / C102 1n remain preliminary.\nLamp inrush, EMI, heat and fault timing require qualification." (exclude_from_sim no) (at 15 192 0) (effects (font (size 1 1)) (justify left top)) (uuid "22d21fe0-4223-5441-8218-31fca1f969ac"))
+	(text "LOCAL MCU DRIVERS: blocking diodes; 10k B-E bias.\nGate filter 1n / relay filter 100n. R102 470 / R106 200.\nDefaults, drive and release timing remain UNQUALIFIED." (exclude_from_sim no) (at 15 32 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "34eedc19-f815-5404-a2f4-8321bdc72446"))
+	(text "Normally hold relay ON; triac modulates heat. Coil 5 V / about 36 mA.\nNormal relay changes with triac OFF; interrupt load after triac fault.\nCommands HIGH = ON; flyback delays release. Verify actual timing." (exclude_from_sim no) (at 15 180 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "397cba46-1758-56ac-b6b4-343795e27753"))
+	(text "LOW VOLTAGE: local MCU, blocking diodes, 10k B-E bias; gate 1n / relay 100n filters, unqualified"
 		(exclude_from_sim no)
 		(at 15 25 0)
 		(effects
@@ -2708,16 +2666,6 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 139.7) (xy 271.78 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a6bf790b-0bf6-51c8-a24a-2e922b468295")
-	)
-	(wire
-		(pts
 			(xy 124.46 128.27) (xy 124.46 135.89)
 		)
 		(stroke
@@ -2725,6 +2673,16 @@
 			(type default)
 		)
 		(uuid "ab6652fb-e47b-563f-b3fc-a5a32689e1fc")
+	)
+	(wire
+		(pts
+			(xy 259.08 139.7) (xy 271.78 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acee162e-50aa-5f08-91ff-0d16adad8c39")
 	)
 	(wire
 		(pts
@@ -3008,6 +2966,28 @@
 			)
 		)
 	)
+	(global_label "CUT_L_UNSENSED"
+		(shape bidirectional)
+		(at 229.87 139.7 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "2e35096b-3146-5a26-aece-939345f99f82")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 229.87 139.7 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
 	(global_label "AC_N"
 		(shape bidirectional)
 		(at 266.7 142.24 180)
@@ -3020,6 +3000,28 @@
 		(uuid "54e22a41-f677-5fc7-9f1f-6348e096b080")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 266.7 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "OUTLET_L"
+		(shape bidirectional)
+		(at 259.08 139.7 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "5ae188fb-7bf3-5f3a-ba9f-5c14ee6184d4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 259.08 139.7 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3245,16 +3247,6 @@
 			(uuid "76d88849-bead-5671-9259-16247ec99ed1")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R202")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R102")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R102")
@@ -3349,16 +3341,6 @@
 			(uuid "9a00d976-208f-546c-8355-62b626633d5f")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "Q203")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "Q103")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "Q103")
@@ -3390,7 +3372,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "270"
 			(at 83.01 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3452,16 +3434,6 @@
 			(uuid "a1ea0f22-57f9-5739-8d80-a36eedb1337d")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R201")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R101")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R101")
@@ -3471,7 +3443,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Motley:MOC3063S_TA1")
+		(lib_id "Motley:VO3053_X007T")
 		(at 115.57 58.42 0)
 		(unit 1)
 		(body_style 1)
@@ -3492,7 +3464,7 @@
 				)
 			)
 		)
-		(property "Value" "MOC3063S-TA1 / ZC"
+		(property "Value" "VO3053-X007T / RANDOM PHASE"
 			(at 115.57 48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3502,7 +3474,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-6_W7.62mm"
+		(property "Footprint" "Motley:VO3053_Option7_Study"
 			(at 115.57 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -3513,7 +3485,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/0840bd1cad2742139135cac60f4f70f5.pdf?productCode=C77950"
+		(property "Datasheet" "https://www.vishay.com/docs/83749/vo3052.pdf"
 			(at 115.57 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -3524,7 +3496,7 @@
 				)
 			)
 		)
-		(property "Description" "Lite-On 600 V zero-cross optotriac, IFT 5 mA, SMD six-pin package"
+		(property "Description" "Vishay VO3053-X007T random-phase600V optotriac, IFTmax5mA. Pin1A/2C/3NC/4MT1/5NC/6MT2. Option7 footprint independently derived from datasheet83749 page6."
 			(at 115.57 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -3535,7 +3507,7 @@
 				)
 			)
 		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 115.57 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -3543,6 +3515,28 @@
 			(effects
 				(font
 					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "LCSC" "C5241906"
+			(at 115.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "JLCPCB Assembly" "Unconfirmed"
+			(at 115.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3565,16 +3559,6 @@
 			(uuid "f609f33d-2c46-5ee6-8626-a152f5e5389a")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "U3")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "U2")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "U2")
@@ -3669,16 +3653,6 @@
 			(uuid "75d8503b-4b2f-5517-9e9e-7278c7771aa9")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "Q201")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "Q101")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "Q101")
@@ -3708,7 +3682,7 @@
 				)
 			)
 		)
-		(property "Value" "100n / 50V"
+		(property "Value" "1n / 50V"
 			(at 43.18 97.79 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3740,7 +3714,7 @@
 				)
 			)
 		)
-		(property "Description" "Yageo CC0805KRX7R9BB104 / C49678, X7R 10%; receiver-local base-emitter noise filter; 10k pull-down gives nominal 1ms decay time constant. Starting value, not a qualified immunity limit."
+		(property "Description" "Receiver-local B-E filter reduced to 1n for phase-angle gate timing. 10k bleed gives nominal 10us; actual command-off timing unqualified."
 			(at 50.8 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -3866,16 +3840,6 @@
 			(uuid "5ff79bce-0183-4353-9140-0070c6325531")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "K2")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "K1")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "K1")
@@ -3967,16 +3931,6 @@
 			(uuid "952e2b5e-3c70-5e40-9974-c007704941b7")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "D2")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "D1")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "D1")
@@ -4070,16 +4024,6 @@
 			(uuid "21bb6b8e-d945-5d29-afa0-0df54a1ae30a")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R203")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R103")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R103")
@@ -4273,16 +4217,6 @@
 			(uuid "acd688d9-1bca-40f4-95d2-5d0ce09c1bb6")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "K2")
-					(unit 2)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "K1")
-					(unit 2)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "K1")
@@ -4464,16 +4398,6 @@
 			(uuid "7c3761da-c584-56e2-b7e4-bd3ca3466964")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "C201")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "C101")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "C101")
@@ -4657,16 +4581,6 @@
 			(uuid "fff71dae-0142-5d5f-ba7f-388908ff54f5")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R205")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R105")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R105")
@@ -4758,16 +4672,6 @@
 			(uuid "851322f8-fbfa-5945-b80f-0740a1402483")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "F3")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "F2")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "F2")
@@ -4798,7 +4702,7 @@
 				)
 			)
 		)
-		(property "Value" "360 / pulse-rated"
+		(property "Value" "430 / pulse-rated"
 			(at 175.26 51 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4808,7 +4712,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 175.26 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -4830,7 +4734,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "430 ohm preliminary pulse-rated gate resistor; 2512 geometry placeholder; surge/pulse and firing margins require qualification."
 			(at 175.26 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -4859,16 +4763,6 @@
 			(uuid "294657a4-9fd8-50ec-8c49-24b2bcf7015e")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R204")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R104")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R104")
@@ -4960,16 +4854,6 @@
 			(uuid "88315198-56ab-575b-91f3-1168e6636c10")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R208")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R108")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R108")
@@ -5000,7 +4884,7 @@
 				)
 			)
 		)
-		(property "Value" "150"
+		(property "Value" "200 / 1%"
 			(at 73.66 141 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5032,7 +4916,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "200 ohm 1% local relay base resistor; 3.6V/198ohm gives conservative 18.2mA capacitor-charge bound below20mA GPIO absolute limit. Steady drive/temperature margin unqualified."
 			(at 73.66 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -5061,16 +4945,6 @@
 			(uuid "5dd8ed10-946b-5e0f-94e6-1863acecada7")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R206")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R106")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R106")
@@ -5165,16 +5039,6 @@
 			(uuid "e52624c0-3c85-54fb-be20-93ccda0f464d")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "J11")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "J10")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "J10")
@@ -5358,16 +5222,6 @@
 			(uuid "d534549a-913d-55ae-9e67-0ba98c398577")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "R207")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "R107")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "R107")
@@ -5462,16 +5316,6 @@
 			(uuid "9c55505d-3162-5647-beeb-440454ea83e0")
 		)
 		(instances
-			(project "motley-controller"
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
-					(reference "Q202")
-					(unit 1)
-				)
-				(path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
-					(reference "Q102")
-					(unit 1)
-				)
-			)
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
 					(reference "Q102")

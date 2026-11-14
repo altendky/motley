@@ -340,6 +340,27 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-ENG-010" type="FR" title="Per-MCU watchdog supervision and response" status="draft" priority="must">
+      <statement>Every Motley MCU SHALL have watchdog supervision with an explicit healthy-progress signal, a bounded expiry interval and a defined fault response that operates when the supervised application cannot execute normally.</statement>
+      <notes>This includes the main ESP, every output MCU and future MCUs. A hardware internal watchdog is acceptable when its clock, refresh path and response meet the declared failure model; a separate external watchdog pin or component is not prescribed. Healthy progress is evidence of the supervised work, not merely a periodic interrupt or incoming bus traffic. The selected physical or software feed/heartbeat signal and reset/inhibit path require explicit documentation.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-ENG-010-01">
+          <given>the complete MCU inventory and supported operating modes</given><when>watchdog coverage is reviewed</when><then>each MCU has a documented watchdog mechanism, counter/clock dependence, supervised critical work, feed/heartbeat source and progress conditions, maximum expiry/response time, activation point, reset or inhibition path and restart policy</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-010-02">
+          <given>an MCU with each supervised critical task stalled or deadlocked in turn, including cases where interrupts or other tasks continue</given><when>healthy progress stops</when><then>unrelated interrupt activity, stale progress flags or bus traffic do not indefinitely refresh the watchdog, and expiry invokes the declared response within the qualified bound without requiring the stalled work to cooperate</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-010-03">
+          <given>an output MCU whose watchdog expires while its output is active</given><when>the response and restart occur</when><then>local triac and relay actuation return to the defined hardware-off states within declared commutation/release bounds, retained electrical faults are not cleared by the restart, and actuation resumes only after valid control and timing are established</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-010-04">
+          <given>a main-ESP watchdog expiry while autonomous output boards remain operating</given><when>the ESP resets or stops refreshing valid commands</when><then>outputs follow their configured communication-failure policy under MOT-AC-007 and any higher-priority inhibits; ESP restart does not bypass fault rearm or generate an unintended actuation command</then>
+        </criterion>
+        <criterion id="AC-MOT-ENG-010-05">
+          <given>startup, factory-loader or recovery mode, firmware/storage updates, low-power operation and production debug settings</given><when>watchdog behavior is qualified</when><then>startup and intentional maintenance have explicit bounded policies with appropriate output inhibition, loader-managed refresh and legitimate long operations are accounted for, and maintenance/debug exceptions do not silently disable required production supervision</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-STOR-001" type="CR" title="Verified double-buffered persistence on every MCU" status="draft" priority="must">
       <statement>Updates to mutable persistent state on every Motley MCU, including state managed by dependencies or SDKs, SHALL use at least two persistent copies, preserve the currently committed copy while preparing another, and verify the newly stored copy before durably changing the active selector.</statement>
       <notes>This governs how state selected for persistence is stored; it does not decide which commands or measurements become persistent. The scope includes the main ESP, any output-module MCU and other future MCUs, with an inventory of application, SDK, boot/update and reset/migration storage paths. The active selector may be represented by protected commit metadata rather than a literal pointer. Native NVS, journaling, redundant records or API success are not by themselves evidence of conformance. Current Matter/Thread persistence is delegated to SDK storage and remains unassessed against this requirement; no firmware implementation or qualified storage layout is claimed.</notes>
@@ -664,18 +685,21 @@
         </criterion>
       </acceptance>
     </req>
-    <req id="MOT-AC-009" type="NFR" title="At least sixteen output boards on one control bus" status="draft" priority="must">
-      <statement>One Motley controller SHALL support at least 16 independently addressable single-output boards operating concurrently on one shared output-control bus within the declared wiring, power-distribution and communication envelope.</statement>
-      <notes>Sixteen is a minimum supported capacity, not a maximum board count or a requirement to populate sixteen boards in the initial two-output device. This does not increase the current rating of the selected mains input, distribution or controller supply. Bus selection, address assignment, topology, total wiring length, traffic rates and supply capacity remain design parameters to qualify for this count.</notes>
+    <req id="MOT-AC-009" type="NFR" title="Preferred output-board capacity" status="draft" priority="should">
+      <statement>One Motley controller SHOULD support at least 16 independently addressable single-output boards operating concurrently on one shared output-control bus within the declared wiring, power-distribution and communication envelope.</statement>
+      <notes>Sixteen is a preferred capacity, not a hard minimum or maximum, and the initial device still uses two output boards. A lower capacity may be agreed when sixteen adds significant cost or difficulty; greater capacity is desirable when inexpensive and straightforward. This does not increase the current rating of the mains input, distribution or controller supply. Bus selection, addressing, topology, wiring length, traffic rates and supply capacity remain design parameters to qualify. The criteria below test the declared supported count; an address-space calculation alone does not establish that count.</notes>
       <acceptance>
         <criterion id="AC-MOT-AC-009-01">
-          <given>16 instances of the supported single-output board on one output-control bus</given><when>their addresses are assigned and commands and status reads target each board</when><then>all 16 can be selected independently without address collisions or unintended changes to other boards, using the same supported board hardware and firmware with the documented address configuration</then>
+          <given>the declared supported count of single-output boards on one output-control bus</given><when>their addresses are assigned and commands and status reads target each board</when><then>every board can be selected independently without address collisions or unintended changes to other boards, using the same supported board hardware and firmware with the documented address configuration</then>
         </criterion>
         <criterion id="AC-MOT-AC-009-02">
-          <given>all 16 boards operating under the declared maximum normal command/status workload, including supported simultaneous modulation modes</given><when>the controller services the bus and refreshes command validity</when><then>the declared command, status and fault-reporting latency limits are met without unintended command expiry, and local firing and feedback continue to meet their timing limits</then>
+          <given>the declared supported count of boards operating under the declared maximum normal command/status workload, including supported simultaneous modulation modes</given><when>the controller services the bus and refreshes command validity</when><then>the declared command, status and fault-reporting latency limits are met without unintended command expiry, and local firing and feedback continue to meet their timing limits</then>
         </criterion>
         <criterion id="AC-MOT-AC-009-03">
-          <given>the proposed supported wiring and power arrangement populated with 16 boards</given><when>electrical and timing qualification is performed</when><then>bus loading and rise/LOW margins, supply voltage/current limits and line-reference distribution are qualified for the populated arrangement; available address space alone is not accepted as proof of sixteen-board operation</then>
+          <given>the proposed supported wiring and power arrangement populated with the declared supported count of boards</given><when>electrical and timing qualification is performed</when><then>bus loading and rise/LOW margins, supply voltage/current limits and line-reference distribution are qualified for the populated arrangement; available address space alone is not accepted as proof of operation at that count</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-009-04">
+          <given>a proposed output-bus architecture or capacity below sixteen</given><when>the supported count is selected</when><then>the cost and complexity of reaching sixteen and of inexpensive further expansion are recorded; any reduction below sixteen is discussed and agreed with the developer before being adopted, and the selected count is stated explicitly</then>
         </criterion>
       </acceptance>
     </req>
@@ -691,6 +715,87 @@
         </criterion>
         <criterion id="AC-MOT-AC-010-03">
           <given>an absent or open load, permitted snubber/detector leakage and the declared lamp/load inrush envelope</given><when>the current-sensing path is evaluated</when><then>its background signal and low-load margins are recorded, its electrical/thermal limits are respected, and any clipping or saturation is accounted for in diagnostic validity and recovery</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-011" type="FR" title="ESP-assisted output-board commissioning and programming" status="draft" priority="should">
+      <statement>The main ESP controller SHOULD be able to program and verify each output-board MCU from its factory-unprogrammed state and reprogram it subsequently without requiring an external programmer or a preinstalled custom output application or bootloader.</statement>
+      <notes>This is the expected capability unless significant cost or difficulty justifies an agreed alternative. A factory ROM loader or ESP-driven debug interface may satisfy it. Initial commissioning permits one new board responding at the selected default address at a time; already commissioned boards and other boards at nonconflicting addresses may remain connected to the same bus. The restriction is on responders at the selected default, not the total connected board count or commissioning status alone. The selected mechanism must account for loader addresses, boot options, independent board selection and recovery rather than relying only on working application firmware.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-011-01">
+          <given>a factory-unprogrammed output MCU and the documented commissioning connections</given><when>the ESP performs initial commissioning</when><then>it selects the intended board, programs and independently verifies the stored image, and starts the intended application without a separate programmer or previously installed custom code</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-02">
+          <given>an output board with an erased, corrupt or nonresponsive application, or an interrupted programming attempt</given><when>the documented recovery procedure is followed</when><then>the ESP can regain programming access and verify a valid replacement image without depending on execution of that application; required boot/reset controls, option settings and any service reconnection are documented</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-03">
+          <given>all supported board populations and programming states</given><when>one board is commissioned, updated or recovered</when><then>only the intended board is written, shared-loader address collisions cannot invalidate target identification or verification, and the affected output remains inhibited until valid application control is established</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-04">
+          <given>a proposed omission or restriction of ESP-assisted initial or subsequent programming</given><when>the design is selected</when><then>the cost or difficulty, viable alternatives and resulting tooling or service steps are presented to and agreed with the developer before the capability is reduced</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-05">
+          <given>one new output board responding at the selected commissioning/default address, with other supported boards present on the same bus at nonconflicting addresses</given><when>the new board is first commissioned using the documented procedure</when><then>commissioning succeeds without requiring the other boards to be disconnected, only the intended default-address target is programmed, its complete namespaced hardware identity is read and bound to its assigned runtime address, and the stored image and resulting runtime identity/address are verified; the procedure establishes that only one board responds at the selected default, since a shared-address ACK alone cannot prove that precondition</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-06">
+          <given>a firmware update or recovery request for a previously identified board, including a board without a working application</given><when>the ESP prepares a target-specific erase or write</when><then>the actual target identity is verified through the selected loader or debug mechanism against the requested board identity before modification; an address match or a shared product-type ID alone is insufficient, and unavailable or mismatched identity prevents a blind target-specific update</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-011-07">
+          <given>an output board with a corrupt or nonresponsive application</given><when>the documented recovery selector, such as a marked DIP switch or jumper, is set and reset or power-cycle is applied</when><then>the board enters its independent programming/recovery mechanism without application cooperation, remains inhibited and is accessible to the ESP; selector bias, shared-pin behavior and boot/reset/protection settings are reviewed and verified during initial commissioning, and the supported update procedure preserves recovery access rather than enabling incompatible irreversible locks</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-012" type="IR" title="Global output-board identity and tracking" status="draft" priority="must">
+      <statement>The ESP SHALL identify each output board by a stable globally unique hardware identity and associate its configuration, fault records and firmware-update lifecycle with that identity across restarts, firmware replacement and bus-address changes.</statement>
+      <notes>A manufacturer namespace and the complete factory silicon UID, with a documented uniqueness scope, are the preferred identity source without extra parts. Include any device-family or UID-scheme namespace needed to avoid collisions across supported hardware. Replacing the MCU establishes a new hardware identity. This identity is not an authentication secret or runtime address and does not itself implement address discovery. Controller-side identity bindings and persistent records remain subject to MOT-STOR-001.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-012-01">
+          <given>each supported output MCU and identity mechanism</given><when>identity support is reviewed</when><then>the namespace, complete identifier encoding, width, documented uniqueness scope and application/loader/debug readout are defined so identities distinguish supported hardware globally; a shared product-type ID, short display hash or bus address is not substituted for the complete board identity</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-012-02">
+          <given>multiple output boards with their recorded identities and associated configuration, fault and update records</given><when>boards restart, receive replacement firmware or change runtime bus address, or the ESP restarts</when><then>each board retains its identity and its existing records remain associated with that identity; the ESP revalidates the identity-to-endpoint mapping before applying per-board configuration or updates, and fault records remain attributable when a board is absent</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-012-03">
+          <given>a different board appearing at a previously used runtime address, or duplicate, unavailable or conflicting identity observations</given><when>the ESP reconciles connected boards</when><then>it reports the new, missing or ambiguous identity and does not silently transfer another board's configuration, clear its retained faults or redirect its update request; assigning a replacement board to a prior logical role requires an explicit rebind</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-013" type="CR" title="Preferred international mains compatibility" status="draft" priority="should">
+      <statement>The controller and AC-output PCB designs SHOULD support international household mains supplies using declared regional assembly and wiring variants rather than requiring separate PCB designs.</statement>
+      <notes>The preferred scope for assessment is nominal 100-240 VAC and 50/60 Hz; this is a proposed envelope, not a qualified rating. Actual tolerance bands, installation conditions and regional connectors/protection remain to be selected. The existing 120 VAC, 60 Hz device is the initial use case. International compliance or general inductive-load compatibility is not established by this preference.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-013-01">
+          <given>the proposed mains input, output stages, detectors and insulation boundary</given><when>regional support is selected</when><then>supported nominal voltages/frequencies and tolerance limits, load-current limits, component and wiring variants, detector behavior and protection/thermal/spacing assumptions are recorded; extra cost or complexity and exclusions from the preferred scope are reviewed before being adopted</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-013-02">
+          <given>each claimed regional configuration and its declared operating limits</given><when>the design is qualified</when><then>source operation, line timing, both modulation modes, feedback and cutoff meet their applicable requirements; connector voltage rating, conductor polarity assumptions and isolation are checked for that configuration rather than inferred from the AC/DC module's input range alone</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-014" type="NFR" title="Initial output-load capability" status="draft" priority="must">
+      <statement>Each AC-output board SHALL support a qualified resistive load of at least 300 W at nominal 120 VAC within its declared operating envelope.</statement>
+      <notes>This preserves the initial load target without limiting future capability to 300 W. Greater current capability is desirable when achievable through inexpensive component, cooling or assembly variants; a larger rating is not claimed until the complete path is qualified. Ratings at other voltages, lamp inrush, ambient/enclosure limits, heatsinking and total input capacity remain design parameters. Higher-current feasibility is deferred to https://github.com/altendky/motley/issues/30 and does not block the initial 300 W design; inductive-load support remains deferred.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-014-01">
+          <given>a complete output board, supported mains tolerance and declared cooling/enclosure/ambient conditions</given><when>a 300 W nominal-120-V resistive load is operated in the supported modes</when><then>the triac, relay, current sensor, conductors, connectors and protection remain within their declared electrical and thermal limits, including supported startup and fault-interruption cases</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-014-02">
+          <given>a proposed higher-current or higher-power configuration</given><when>its support is evaluated</when><then>the limiting components, PCB/cooling changes and incremental cost are recorded; any supported rating is stated by voltage, current and load/thermal conditions and does not uprate the common mains input or distribution</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-015" type="IR" title="Output-bus address allocation and service reservations" status="draft" priority="must">
+      <statement>The output-control interface SHALL maintain an explicit address plan that separates assigned runtime endpoints from protocol-reserved, factory-loader, commissioning-default and other conflicting device addresses for every supported topology.</statement>
+      <notes>For the proposed 7-bit I2C interface, addresses are recorded without the read/write bit. The STM32C011 candidate's ROM loader uses 0x64; reserve it from normal output-board allocation. Protocol reservations include 0x00-0x07 and 0x78-0x7F. Other supported devices and any application commissioning/discovery defaults require explicit entries with their bus/branch scope. A shared default is not a unique board identity, and a reservation does not establish safe multi-device discovery or commissioning.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-015-01">
+          <given>the selected output MCU, bus protocol, service mechanism and supported connected devices</given><when>the address plan is reviewed</when><then>it identifies the runtime allocation pool, excluded values/ranges, each factory and application default, the source and address encoding for each entry, and the bus/branch/topology in which conflicts can occur; unresolved defaults are resolved before the corresponding topology is claimed supported</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-015-02">
+          <given>commissioning, readdressing or recovery on a supported bus population</given><when>the ESP assigns or restores runtime addresses</when><then>it excludes reserved/conflicting/in-use endpoints, verifies the assigned address against the intended board identity, stores persistent bindings under MOT-STOR-001, and reports collisions or pool exhaustion without silently reusing another board's identity or endpoint</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-015-03">
+          <given>normal runtime discovery and control traffic, including startup with an unexpected device in a factory-loader mode</given><when>the ESP discovers or addresses output boards</when><then>normal allocation, discovery probes and output commands respect the address plan and do not treat reserved service endpoints as ordinary outputs; loader access occurs only through the documented explicit service procedure</then>
         </criterion>
       </acceptance>
     </req>
@@ -975,5 +1080,100 @@
     <edge id="E-IMPL-MOT-HW-003-31" type="implements" from="hardware/controller/Motley.pretty/TouchGround_8mm.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
     <edge id="E-IMPL-MOT-HW-003-32" type="implements" from="hardware/controller/Motley.pretty/WireLoop_P2.54.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
     <edge id="E-IMPL-MOT-HW-003-33" type="implements" from="hardware/controller/Motley.pretty/WirePost_1mm.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-011-GOAL-MOT-AC" type="satisfies" from="MOT-AC-011" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-012-GOAL-MOT-AC" type="satisfies" from="MOT-AC-012" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-013-GOAL-MOT-AC" type="satisfies" from="MOT-AC-013" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-014-GOAL-MOT-AC" type="satisfies" from="MOT-AC-014" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-011-MOT-HW-002" type="dependsOn" from="MOT-AC-011" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-011-MOT-AC-008" type="dependsOn" from="MOT-AC-011" to="MOT-AC-008" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-013-MOT-AC-008" type="dependsOn" from="MOT-AC-013" to="MOT-AC-008" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-014-MOT-AC-008" type="dependsOn" from="MOT-AC-014" to="MOT-AC-008" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-015-GOAL-MOT-AC" type="satisfies" from="MOT-AC-015" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-011-MOT-AC-012" type="dependsOn" from="MOT-AC-011" to="MOT-AC-012" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-011-MOT-AC-015" type="dependsOn" from="MOT-AC-011" to="MOT-AC-015" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-009-MOT-AC-015" type="dependsOn" from="MOT-AC-009" to="MOT-AC-015" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-012-MOT-STOR-001" type="dependsOn" from="MOT-AC-012" to="MOT-STOR-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-015-MOT-AC-012" type="dependsOn" from="MOT-AC-015" to="MOT-AC-012" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-ENG-010-GOAL-MOT-ENGINEERING" type="satisfies" from="MOT-ENG-010" to="GOAL-MOT-ENGINEERING" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-ENG-010-MOT-HW-002" type="dependsOn" from="MOT-ENG-010" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-ENG-010-MOT-AC-007" type="dependsOn" from="MOT-ENG-010" to="MOT-AC-007" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-34" type="implements" from="hardware/controller/line-reference.kicad_sch" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-35" type="implements" from="hardware/controller/output-control.kicad_sch" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-36" type="implements" from="hardware/controller/output-feedback.kicad_sch" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-37" type="implements" from="hardware/controller/OutputStudy.kicad_sym" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-38" type="implements" from="hardware/controller/Motley.pretty/ACPL_K37x_SSO8_Study.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-39" type="implements" from="hardware/controller/Motley.pretty/TMCS1123_DVG10_Study.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-40" type="implements" from="hardware/controller/Motley.pretty/VO3053_Option7_Study.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native annotation integrity and source drift for the authorized exploratory CAD revision only; not product electrical implementation or qualification.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-001" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-AC-001" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-002" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-AC-002" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-008" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-AC-008" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-001-18" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-002-11" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-004-17" type="dependsOn" from="hardware/controller/line-reference.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-011" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-AC-011" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-012" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-AC-012" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-ENG-010" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-ENG-010" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-001-19" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-002-12" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-006-7" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-HW-006" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-STOR-001" type="dependsOn" from="hardware/controller/output-control.kicad_sch" to="MOT-STOR-001" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-003" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-AC-003" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-004" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-AC-004" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-008-2" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-AC-008" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-010" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-AC-010" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-001-20" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-002-13" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml">
+      <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
+    </edge>
   </trace>
 </rqml>

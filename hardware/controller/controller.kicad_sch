@@ -1568,6 +1568,17 @@
 		)
 		(uuid "343f6f01-c4ff-5fd8-b228-c96470c18f4a")
 	)
+	(text "GPIO6/7 = output LP I2C SDA/SCL; GPIO1 = LINE_SYNC input through R87.\nGPIO18/19 = sensor SCL/SDA; GPIO21 = open-drain mux RESET_N.\nGPIO11 = sensor power EN, default LOW; GPIO4/2/3/0 are now NC.\nGPIO12/13 = native USB D-/D+; GPIO10 = status LED.\nOutput MCU owns gate timing, feedback and relay; no actuation firmware here."
+		(exclude_from_sim no)
+		(at 15 170 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left top)
+		)
+		(uuid "4dcc47cd-9ded-55dd-944e-191dd87defd1")
+	)
 	(text "GPIO MAP / PROVISIONAL"
 		(exclude_from_sim no)
 		(at 15 162 0)
@@ -1578,17 +1589,6 @@
 			(justify left top)
 		)
 		(uuid "6d2560f9-524b-59e9-8187-b38cb76bcdcc")
-	)
-	(text "LP QWIIC: GPIO6 SDA / GPIO7 SCL. Separate bus, switched sensor-rail pull-ups.\nUse USB Serial/JTAG; review MTCK/MTDO reset behavior before enabling this bus."
-		(exclude_from_sim no)
-		(at 240 235 0)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left top)
-		)
-		(uuid "812d825d-cb3e-5073-9426-ab963ff31d62")
 	)
 	(text "SENSOR POWER DOMAIN"
 		(exclude_from_sim no)
@@ -1601,16 +1601,16 @@
 		)
 		(uuid "ad8963c8-ac53-5a2b-b0fd-929fb3980182")
 	)
-	(text "GPIO1/2 = heat 1/2; GPIO3/0 = cutoff 1/2.\nGPIO18/19 = SCL/SDA; GPIO21 = open-drain mux RESET_N.\nGPIO11 enables the sensor regulator; local 10k holds EN LOW.\nGPIO12/13 = native USB D-/D+; GPIO10 = status LED."
+	(text "LP OUTPUT/QWIIC: GPIO6 SDA / GPIO7 SCL. Pull-ups and socket power use main +3V3.\nHP sensor bus stays switched. Use USB Serial/JTAG; assess LP reset and SDK support."
 		(exclude_from_sim no)
-		(at 15 170 0)
+		(at 240 235 0)
 		(effects
 			(font
-				(size 1.1 1.1)
+				(size 1 1)
 			)
 			(justify left top)
 		)
-		(uuid "ccf8688f-27fd-5c86-8735-b94c23910054")
+		(uuid "c201b4bd-6765-54c1-834c-a7dc25451f31")
 	)
 	(text "INTEGRATED ESP32-C6-WROOM-1-N8 / 8 MB FLASH"
 		(exclude_from_sim no)
@@ -1672,6 +1672,10 @@
 		(uuid "19acfcd2-e864-563d-a23b-5bc13a6626c2")
 	)
 	(no_connect
+		(at 111.76 72.39)
+		(uuid "1f24fbcb-b443-583a-9818-d5954e947c65")
+	)
+	(no_connect
 		(at 114.3 107.95)
 		(uuid "30c85c18-91df-550c-8c07-af34c000a732")
 	)
@@ -1680,12 +1684,20 @@
 		(uuid "371aa254-232a-567f-adb3-3fb7bf26b80e")
 	)
 	(no_connect
-		(at 111.76 87.63)
-		(uuid "806152ba-880c-5f19-afb8-4c64a3634dd0")
+		(at 111.76 77.47)
+		(uuid "9c3e0a0b-7e00-5e01-b1ef-1d9c749fd6f8")
+	)
+	(no_connect
+		(at 111.76 80.01)
+		(uuid "a42d163d-1832-5e91-ba55-78f1414a78c4")
 	)
 	(no_connect
 		(at 167.64 110.49)
 		(uuid "b589786f-8c4e-56b4-867c-b39a82a01886")
+	)
+	(no_connect
+		(at 111.76 87.63)
+		(uuid "ce91d7ac-2519-5a31-93aa-a3c76b643206")
 	)
 	(no_connect
 		(at 167.64 113.03)
@@ -1733,16 +1745,6 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 80.01) (xy 96.52 80.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0a0d72cf-3425-5c34-9681-c51eca5fcc2e")
-	)
-	(wire
-		(pts
 			(xy 43.18 80.01) (xy 50.8 80.01)
 		)
 		(stroke
@@ -1750,16 +1752,6 @@
 			(type default)
 		)
 		(uuid "0d7309d9-5881-5a76-9793-5e84d0a829fd")
-	)
-	(wire
-		(pts
-			(xy 111.76 77.47) (xy 96.52 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "155cf2c7-f638-5ab7-bc03-328242177e0a")
 	)
 	(wire
 		(pts
@@ -1780,16 +1772,6 @@
 			(type default)
 		)
 		(uuid "22ab2ba7-ea5c-5836-a611-5d84893b5920")
-	)
-	(wire
-		(pts
-			(xy 111.76 74.93) (xy 96.52 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2b0ee1a3-2229-570e-a0fd-8c3784bcd6bb")
 	)
 	(wire
 		(pts
@@ -2063,16 +2045,6 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 72.39) (xy 96.52 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c7628635-b6f0-5051-b5fd-3b5e3bc9e7bc")
-	)
-	(wire
-		(pts
 			(xy 111.76 95.25) (xy 96.52 95.25)
 		)
 		(stroke
@@ -2103,6 +2075,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 74.93) (xy 111.76 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d20500ad-ea1e-5601-a939-1a62e371d062")
+	)
+	(wire
+		(pts
 			(xy 139.7 43.18) (xy 185.42 43.18)
 		)
 		(stroke
@@ -2120,6 +2102,16 @@
 			(type default)
 		)
 		(uuid "dcb3819c-59c7-5c64-9442-75b25115491a")
+	)
+	(wire
+		(pts
+			(xy 95.25 74.93) (xy 83.82 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df4ff2ba-69d3-56f8-a30f-26c47974c4bd")
 	)
 	(wire
 		(pts
@@ -2279,28 +2271,6 @@
 		(uuid "12b949c1-26b1-5962-b926-53683f2e4b03")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 182.88 107.95 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "HEAT1_EN"
-		(shape bidirectional)
-		(at 96.52 74.93 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "13ff0e4d-6a6e-5b94-aa9c-62663b6381ef")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.52 74.93 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2553,28 +2523,6 @@
 			)
 		)
 	)
-	(global_label "CUT1_EN"
-		(shape bidirectional)
-		(at 96.52 80.01 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "7d6d190a-cd24-5d27-91b3-a604e7126a1c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.52 80.01 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
 	(global_label "UART_RX"
 		(shape bidirectional)
 		(at 182.88 69.85 180)
@@ -2663,40 +2611,18 @@
 			)
 		)
 	)
-	(global_label "HEAT2_EN"
+	(global_label "LINE_SYNC"
 		(shape bidirectional)
-		(at 96.52 77.47 180)
+		(at 83.82 74.93 180)
 		(effects
 			(font
 				(size 1 1)
 			)
 			(justify right)
 		)
-		(uuid "b935a538-79e1-58bf-b6fa-d25f0ca36832")
+		(uuid "bf700805-ca41-5e08-9376-05a1dc7847ce")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.52 77.47 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "CUT2_EN"
-		(shape bidirectional)
-		(at 96.52 72.39 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "b9692e01-9692-5eca-a074-55b932c42152")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.52 72.39 180)
+			(at 83.82 74.93 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3551,6 +3477,96 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 99.06 74.93 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5ae6f0ea-9b16-5d88-bcea-e8b3521c5a38")
+		(property "Reference" "R87"
+			(at 102.87 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 102.87 72.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 99.06 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "GPIO1 input series resistor for shared line-reference observation; timing/loading unqualified."
+			(at 99.06 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
+			(at 99.06 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "faeb43f9-4640-4ffb-8a42-310eb7a079aa")
+		)
+		(pin "2"
+			(uuid "e05aa621-486b-4e8f-a56a-4e9e7bae4a2c")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/4456415c-d802-5332-abe7-1e27beec2894"
+					(reference "R87")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 66.04 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -3875,7 +3891,7 @@
 				)
 			)
 		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-009 MOT-SENS-005"
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-009 MOT-SENS-005 MOT-ENG-010 MOT-AC-006 MOT-AC-009 MOT-AC-011 MOT-AC-012"
 			(at 139.7 95.25 0)
 			(hide yes)
 			(show_name no)

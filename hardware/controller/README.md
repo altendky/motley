@@ -1,27 +1,32 @@
 # Exploratory modular controller
 
-Status: unrouted design experiment, revised 2026-11-13; not a fabrication release.
+Status: unrouted design experiment, revised 2026-11-14; not a fabrication release.
 
-The [pin-bias review](pin-bias-review.md) records the authorized prototype
-corrections: output-command blocking diodes, stronger local base-emitter bias
-and filters, CUT2 moved to GPIO0 and sensor-enable moved to GPIO11 with a 10k
-pull-down. Reset pulls on the sensor bus still need off-domain review. Loaded
-GPIO drive, temperature/leakage limits and live contact-loss transients remain
-unqualified. The review records draft `MOT-HW-001/002`; structural checks do not
-close those requirements or qualify hardware defaults.
+The [intelligent-output review](intelligent-output-review.md) records the current
+pin, default-state, power and ESD assessments, including the complete fresh
+component/pin inventory. It supersedes the earlier direct-GPIO output portions
+of the [pin-bias review](pin-bias-review.md). Output boards now have local MCUs,
+isolated current/voltage observations and a shared buffered line reference.
+Sensor-enable remains GPIO11 with a local 10k pull-down; sensor-bus reset pulls
+still need off-domain review. Loaded drive, temperature/leakage, power budgets,
+timing and contact-loss transients remain unqualified. Structural checks do not
+close draft `MOT-HW-001/002` or qualify hardware defaults.
 
 Native files now have hidden `Requirements` fields and explicit RQML links.
-`uv run scripts/hardware_trace.py` checks 17 native source files and all 203
+`uv run scripts/hardware_trace.py` checks 20 native source files and all 257
 design footprints by hierarchical UUID identity. The fields record electrical
 design applicability; MOT-HW-003 file links cover annotation integrity and
 whole-file drift, not completion of the draft electrical requirements.
+The fresh schematic inventory is 247 components / 706 symbol-pin identities
+across the three designs; two output copies give 319 components / 897 pins per
+complete unit. The 257 PCB footprints include ten board-only mechanical items.
 
 The [ESD and access review](esd-access-review.md) records the added connector
 clamps, per-port 100 ohm series resistors, marked local-GND touch copper and
-optional wire-loop/post probe points. Their incremental fitted protection is
-about $3.31 per complete unit including the Qwiic TVSs, before
-loading/attrition/shipping and excluding sockets/bus pulls; bare access
-features require no purchased contacts. All fitted sensor components, including
+optional wire-loop/post probe points. Its previous $3.31 protection estimate is
+historical; the additional output bus/SYNC/power protection has not been requoted.
+Bare access features require no purchased contacts. All fitted sensor components,
+including
 upstream clamps D60/D61 and the bare touch pad, are on the front. All boards
 have top-side touch access, and assembly remains single-sided. System ESD,
 clamp coordination, panel CC/shield and touch/clip qualification remain open.
@@ -57,8 +62,8 @@ root schematic, netlist and PCB:
 
 | Project | Quantity per unit | Physical contents | Trial outline |
 | --- | ---: | --- | --- |
-| [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5 and inter-board connections | 100 x 85 mm |
-| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One heater channel: branch fuse, optotriac, triac, cutoff relay, drivers, manually configurable snubber, outlet connection and heatsink reservation | 100 x 50 mm |
+| [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5, shared isolated line reference and inter-board connections | 100 x 85 mm |
+| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation | 100 x 90 mm |
 | [motley-sensors.kicad_pro](motley-sensors.kicad_pro) | 1 | TCA9548A and support parts, upstream interface, eight QT sensor ports with pull-ups | L-shaped, 80 x 44 mm overall |
 
 The former `motley-controller` monolithic root/project/PCB is replaced by these
@@ -77,10 +82,11 @@ Draft `MOT-HW-007/008` record the target and review process respectively.
 
 All functional groups are unlocked. Hover an item and press **M** to move its
 native group; enter the group to move individual items. The sensor core and bank
-are grouped separately; the output module has one heater group and sheet-based
-placement rule area. The carrier keeps separate controller, USB/selection,
-regulator, input/supply and interface groups. Mounting locations and the WROOM antenna reserve are
-provisional. Isolation corridors are drawings, not qualified clearance rules.
+are grouped separately; the output module has separate power/MCU, heater,
+feedback and access groups. The carrier keeps separate controller, USB/selection,
+regulator, input/supply, shared line-reference and interface groups. Mounting
+locations and the WROOM antenna reserve are provisional. Isolation corridors are
+drawings, not qualified clearance rules.
 
 ## Inter-board connections
 
@@ -94,14 +100,21 @@ never use the signal-header interface.
 | Link | Mating references | Pin order |
 | --- | --- | --- |
 | Sensor low voltage | Carrier J13 to sensor J12 | 1 GND, 2 switched 3V3_SENS, 3 SDA, 4 SCL, 5 mux RESET_N (GPIO21) |
-| Output 1 low voltage | Carrier J15 to first output module J14 | 1 GND, 2 5V_SYS, 3 HEAT1_EN, 4 CUT1_EN |
-| Output 2 low voltage | Carrier J18 to second output module J14 | 1 GND, 2 5V_SYS, 3 HEAT2_EN, 4 CUT2_EN |
+| Output 1 low voltage | Carrier J15 to first output module J14 | 1 GND, 2 selected logic 5 V, 3 LP_I2C_SDA, 4 LP_I2C_SCL, 5 LINE_SYNC, 6 raw +5V_SYS |
+| Output 2 low voltage | Carrier J18 to second output module J14 | Same six shared signals as output 1 |
 | Output 1 mains | Carrier J16 to first output module J17 | 1 AC_L_FUSED, 2 AC_N, 3 PE |
 | Output 2 mains | Carrier J19 to second output module J17 | 1 AC_L_FUSED, 2 AC_N, 3 PE |
 
-Each module uses the same local references and generic `HEAT_EN`/`CUT_EN` nets.
-Its carrier connection determines the system channel. Each module's J10 is its
-own outlet connection; the physical copies are not separate schematic instances.
+Carrier contact 2 is `+5V_SELECTED`; the corresponding output net is `+5V_LOGIC`.
+It feeds the output's local `+3V3_OUT` regulator, permitting USB-powered logic
+commissioning without powering the raw 5 V relay/opto actuators. These two rails
+are not tied together on the output. All boards share low-voltage GND.
+Each module's MCU drives its own local `HEAT_EN`/`CUT_EN`; identity and a configured
+I2C address determine the logical output, rather than the chosen carrier socket.
+Each module's J10 is its own outlet; physical copies are not separate schematic
+instances. Shared LINE_SYNC requires the same AC source/phase at every output.
+Full and partial unplugging, missing GND and separately powered bus endpoints
+remain unqualified.
 
 The main fuse is on the carrier; each heater retains its branch fuse on the
 output board. Neutral and PE continue to both outlets. PE is not low-voltage
@@ -119,11 +132,12 @@ Six additional four-pin JST-SH sockets use standard Qwiic order:
 | Socket | Bus | Power contact |
 | --- | --- | --- |
 | Carrier J23/J25, HP pair | GPIO19 SDA / GPIO18 SCL, also used by J13 | Switched sensor rail through individual removable R44/R46 = 0 ohm; power OUT |
-| Carrier J24/J26, LP pair | GPIO6 SDA / GPIO7 SCL; independent low-power I2C controller | Same switched rail through individual removable R45/R47 = 0 ohm; power OUT |
+| Carrier J24/J26, LP pair | GPIO6 SDA / GPIO7 SCL; independent low-power I2C controller and shared output bus | Main +3V3 through individual removable R45/R47 = 0 ohm; power OUT |
 | Sensor J10/J11 | Parallel mux upstream SDA/SCL, also used by J12/J13 | Shared connector-side power enters through removable R50 = 0 ohm |
 
-Carrier-local pull-ups are 10k on the main bus and 4k7 on the LP bus, one pair
-per bus rather than per socket. The mux keeps its local 4k7 upstream pull-ups
+Carrier-local pull-ups are 10k on the HP sensor bus to switched `+3V3_SENS`
+and 4k7 on the LP bus to main `+3V3`, one pair per bus rather than per socket.
+The mux keeps its local 4k7 upstream pull-ups
 through separately removable R55/R56 = 0 ohm and retains its reset pull-up,
 so it can be used without the carrier. Carrier port TVSs protect each signal pair and power
 contact; the mux inputs share existing upstream protection. The farther J10
@@ -224,7 +238,7 @@ only demonstrates component retention, not electrical cut-down operation.
 
 - [heater-channel.kicad_sch](heater-channel.kicad_sch) is instantiated once in
   the AC-output design. Build two copies of that board for two outlets. Its
-  control inputs cross hierarchical ports; `TRIAC_A1` stays local.
+  local MCU supplies its `HEAT_EN`/`CUT_EN` controls; `TRIAC_A1` stays local.
 - [sensor-port.kicad_sch](sensor-port.kicad_sch) is instantiated eight times by
   [sensor-ports.kicad_sch](sensor-ports.kicad_sch). Each port has its own SDA/SCL
   pair and two pull-ups; power and ground are intentionally shared.
@@ -245,7 +259,7 @@ schematic changes its instances, but PCB placement only propagates when copied.
 ## Review exports and footprint limitations
 
 The two combined review files retain their original paths:
-`review/motley-controller.pdf` contains all three schematics (21 pages), and
+`review/motley-controller.pdf` contains all three schematics (24 pages), and
 `review/motley-controller-placement.pdf` contains the three front placements
 (three pages). Both use carrier, AC output, then sensor board order, with a
 bookmark for each board. These PDFs remain current even though the native
@@ -263,8 +277,8 @@ kicad-cli pcb export pdf hardware/controller/motley-carrier.kicad_pcb \
 ```
 
 Use the other project basenames for their exports. The PDFs omit the interactive
-ratsnest available in PCB Editor. The carrier schematic has six pages, the
-single-output module has three, and the sensor project has twelve, including eight
+ratsnest available in PCB Editor. The carrier schematic has seven pages, the
+single-output module has five, and the sensor project has twelve, including eight
 shared-port instances. The output design is shown once; build two copies.
 
 Seven blank schematic footprint fields still have board-only
@@ -295,23 +309,27 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   tube with 1 m factory lead. Eight connector positions provide expansion;
   eight probes are not a selected purchase quantity. The 7Semi wire-color map
   is unverified; terminate by signal, not an assumed color convention.
-- Proposed GPIOs: GPIO1/2 drive heater-channel optocoupler transistors;
-  GPIO3/0 drive cutoff relays; GPIO21 pulls mux reset low; GPIO18/19 are SCL/SDA.
-  These avoid the C6 strapping pins. GPIO11 enables the separate sensor rail;
+- Carrier GPIO1 / module pin 9 observes shared LINE_SYNC through R87=1k;
+  GPIO4 is an unused strap, and former direct output GPIO0/2/3 are NC.
+  GPIO6/7 carry LP output I2C; GPIO21 pulls mux reset low; GPIO18/19 are HP SCL/SDA.
+  GPIO11 enables the separate sensor rail;
   GPIO10 drives a status LED. GPIO12/13 are USB D-/D+. Reset/boot buttons,
   EN 10k/1u RC, GPIO8/9 pull-ups and a 3.3 V UART service header provide recovery
   access. No firmware behavior is added by these drawings.
 - The Feather and JP1 are removed. [usb-power.kicad_sch](usb-power.kicad_sch)
   shows TPS2116 selection with mains-derived 5 V at VIN1, USB at VIN2 and MODE tied to VIN1.
   The 316k/100k, 0.1% priority divider has an approximately 4.16 V typical
-  threshold; TI's reference tolerance alone spans about 3.82-4.50 V. Driver
-  interfaces remain on raw mains-derived 5 V, ahead of the selector. Source transfer,
+  threshold; TI's reference tolerance alone spans about 3.82-4.50 V. The
+  relay/opto supplies remain on raw mains-derived 5 V, ahead of the selector;
+  the output MCU/feedback logic receives selected 5 V separately. Source transfer,
   backfeed, current/inrush/suspend budgets and thermal behavior remain untested.
 - PS1 is now MEAN WELL IRM-05-5 / JLC C48603696, isolated 5 V at 1 A.
   The stock four-pin symbol/footprint replaces RECOM: 1 neutral, 2 fused line,
-  3 secondary GND, 4 raw 5 V. The 45.7 x 25.4 x 21.5 mm body fits the unchanged
-  100 x 85 mm outline after moving nearby bench-interface parts and H2.
-  Supply priority, power domains and the Omron G6DN-1A-L DC5 remain unchanged.
+  3 secondary GND, 4 raw 5 V. The 45.7 x 25.4 x 21.5 mm body fits the current
+  100 x 85 mm study outline. Mains-first supply priority and the
+  Omron G6DN-1A-L DC5 cutoff relay remain selected. The 1 A supply is not a
+  qualified sixteen-active-output power budget; two-output and USB-only logic
+  operation also need actual peak/current/inrush accounting.
   Ripple, inrush, fuse coordination and enclosed-temperature behavior need
   qualification. Earlier JLC quotation exports describe the previous supply
   and placement; regenerate them before relying on a new manufacturing quote.
@@ -343,25 +361,46 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   the switched sensor rail, replacing the Feather's upstream pull-ups.
   Verify actual probe pull-ups and the complete
   cable/bundle at the proposed 10 kHz; no cable length is qualified here.
-- Each MOC3063 LED uses about 11 mA through 330 Ohm from 5 V and a low-side NPN.
+- Each output uses an STM32C011F6P6 with a local AP2112 logic regulator,
+  accessible recovery shunt/reset/SWD, and the factory ROM I2C interface on
+  PB6/PB7 (7-bit default 0x64). The factory UID is distinct from runtime address.
+  ESP commissioning/programming, unique-ID tracking, watchdog policy, commands,
+  communications-loss response and verified double-buffered persistence are
+  future firmware. The 32 KB dual-image/configuration space plan is unproven;
+  mutable boot options can prevent recovery despite immutable ROM.
+- Each Vishay VO3053-X007T random-phase LED uses R101=270 ohm from raw 5 V
+  and a low-side NPN. The approximately 10-11 mA corner scenario and 5 mA
+  maximum trigger-current condition do not qualify all temperature/pulse cases.
   D101 blocks the reverse return into a LOW command during missing-ground
-  connection states; R102 is 470 Ohm, R103 is 10k, and C102 is 100n directly
+  connection states; R102 is 470 ohm, R103 is 10k, and C102 is now 1n directly
   base-to-emitter. These are receiver-local prototype protections, not a
-  qualified hot-plug interface.
-  The triac gate network starts with a 360 Ohm pulse-rated resistor and a
-  330 Ohm gate-to-A1 shunt. These are preliminary engineering values, not a
-  tested ST/Lite-On application implementation.
+  qualified six-contact hot-plug interface. The exact local option 7 footprint
+  follows Vishay's land pattern; JLC assembly availability remains unconfirmed.
+  The gate network uses a 430 ohm pulse-rated 2512 candidate and a
+  330 ohm gate-to-A1 shunt. Leading-edge phase-angle and zero-cross-aligned
+  whole-cycle burst control require local scheduling and qualified line timing;
+  neither firmware mode is implemented by this drawing.
 - Each 5 V relay coil is approximately 36 mA, driven by an MMBT3904 with
-  150 Ohm base resistor, a 10k base-emitter pull-down, 100n base-emitter filter,
+  200 ohm 1% base resistor, a 10k base-emitter pull-down, 100n base-emitter filter,
   series input blocking diode D102 and the existing coil flyback diode.
-  For both command diodes, anode faces J14 and cathode faces the base resistor.
-  Four diodes and four capacitors across two output boards add about $0.105
-  components and $0.0256 Economic joint charges at the recorded JLC prices;
-  selected diodes/capacitors are Basic types. Resistors replace existing parts.
-  Loaded GPIO HIGH and full-temperature margin still need qualification.
+  Both command diodes face from the local MCU toward the base resistor.
+  R106's conservative capacitor-charge bound is 18.18 mA; a pessimistic steady
+  base-current scenario gives 4.36 mA against approximately 42 mA coil current.
+  Loaded GPIO HIGH, cold-coil/full-temperature margin and contact-loss paths
+  still need qualification.
   Normal switching happens with the
   triac off; interruption after a triac fault and low-current contact behavior
   still need validation. Diode suppression delays relay release.
+- U30 TMCS1123B5AQDVGR senses series outlet current and drives separate current
+  and zero-current-reference ADC inputs. U31 ACPL-K370 observes outlet voltage
+  pulses with its own burden, including when no load is attached; low/high-line
+  regional resistor/shunt BOMs remain unqualified. U40 ACPL-K376 and U41
+  SN74LVC1G17 on the carrier distribute buffered LINE_SYNC. Threshold gaps need
+  a qualified timing model; these are not exact zero-voltage timestamps.
+  Current measurement/filtering, startup validity, leakage/no-load discrimination,
+  sixteen-board fanout, detector heat/surges and full insulation need validation.
+  U30's unused open-collector outputs retain TI-directed GND terminations and
+  two explicit ERC findings rather than incorrect symbol types.
 - Main T6.3 A and branch T3.15 A fuses are provisional. Final breaking capacity,
   inrush, interrupt energy, conductor/connector protection, surge protection,
   EMI, and leakage need assessment. The provisional 100 Ohm + 10 nF X2 snubber
@@ -387,10 +426,9 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   (at most 5.6 mm for the Harwin M7685-05 candidate), cap retention, coverage,
   transients and mains spacing. The previously discussed 6.1 mm header is too
   long for this closed cap. No insulating blank cap has been selected.
-- A Toshiba TBD62003A seven-channel DMOS driver array is a candidate replacement
-  for the four discrete MMBT3904 drivers. It accepts 3.3 V logic and provides
-  clamp diodes; LED current-setting resistors would remain. The placement keeps
-  the existing transistor circuit pending a separate circuit decision.
+- Each output retains two discrete MMBT3904 drivers. Driver-array alternatives
+  remain unselected; the earlier combined-board array discussion is not the
+  current modular circuit.
 - Triac heatsinks/clips, socket and mains connector footprints, mechanical
   access, antenna clearance, creepage/clearance, and enclosure protection have
   not been qualified. Study assignments do not resolve blank schematic items.
@@ -417,13 +455,18 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
 - [ST BTA08 datasheet](https://www.st.com/resource/en/datasheet/bta08.pdf)
   and [phototriac application note AN5114](https://www.st.com/resource/en/application_note/an5114-controlling-a-triac-with-a-phototriac-stmicroelectronics.pdf),
   plus [RC snubber guidance AN437](https://www.st.com/resource/en/application_note/an437-rc-snubber-circuit-design-for-triacs-stmicroelectronics.pdf).
-- [Lite-On MOC3063S-TA1 datasheet](https://datasheet.lcsc.com/datasheet/pdf/0840bd1cad2742139135cac60f4f70f5.pdf?productCode=C77950).
+- [Vishay VO3052/VO3053](https://www.vishay.com/docs/83749/vo3052.pdf),
+  [ST STM32C011](https://www.st.com/resource/en/datasheet/stm32c011d6.pdf),
+  [ROM loader AN2606](https://www.st.com/resource/en/application_note/an2606-.pdf),
+  [TI TMCS1123](https://www.ti.com/lit/ds/symlink/tmcs1123.pdf),
+  [Broadcom ACPL-K370/K376](https://docs.broadcom.com/doc/AV02-2153EN)
+  and [TI SN74LVC1G17](https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf).
 - [Omron G6DN datasheet](https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf).
 - [Toshiba TBD62003AFWG](https://toshiba.semicon-storage.com/us/semiconductor/product/general-purpose-logic-ics/detail.TBD62003AFWG.html).
 
 The local triac/optotriac graphics are adapted from KiCad's standard symbols,
-with the selected part's description and datasheet. The Feather and split relay
-symbols use the pin maps above. KiCad's standard symbol graphics retain their
+with the selected part's description and datasheet. The split relay symbol
+uses the pin map above. KiCad's standard symbol graphics retain their
 [upstream library license](https://gitlab.com/kicad/libraries/kicad-symbols/-/blob/master/LICENSE.md).
 
 ## Verification
