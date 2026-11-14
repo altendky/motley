@@ -50,8 +50,86 @@ changing repository inputs or publishing a successful build. Review its
 compatibility and changes, copy the accepted lock into `firmware/`, and rebuild
 normally. A lock pins transitive ranges as well as the direct exact release.
 
-The same hook runs in the firmware CI job. It is a manual-stage hook so ordinary
-repository checks do not require downloading the SDK image.
+The firmware CI job invokes the same runner directly (`uv run
+scripts/firmware.py`) so successful SDK output and phase timings are visible.
+The local hook remains manual-stage so ordinary repository checks do not require
+downloading the SDK image.
+
+## Compiler and download caches
+
+ESP-IDF's native ccache integration is enabled. The locked registry Matter
+package builds through IDF/CMake, whose compiler rules use ccache too.
+Ccache validates individual compilations against their
+inputs; GitHub's cache action only transports its database. The SDK image already
+contains ccache 4.9.1. The cache is bounded to 2 GB, checks compiler content and
+uses its normal correctness settings. The inspected current configuration has
+no precompiled-header compiler commands. If a later configuration enables them,
+some work may be uncacheable; no permissive sloppiness is enabled.
+
+Local builds keep native caches under the designated output directory's
+`cache/ccache` and `cache/components`. To share only compiler results and
+component-manager downloads between fresh output directories, set
+`MOTLEY_CACHE_DIR` to a separate directory outside the checkout and build output.
+That directory is mounted at `/cache`; compilation still has networking disabled
+and owned staged sources mounted read-only. No CMake/Ninja output, generated
+sdkconfig, staged dependency tree, receipts or firmware bundles are restored.
+
+CI restores downloads using the locked dependency/toolchain identity and restores
+compiler entries using compatible SDK/architecture keys, preferring matching
+dependency/configuration inputs. Compiler snapshots have a commit suffix because
+GitHub cache entries are immutable. Successful `main` pushes seed default-branch
+caches accessible to future PR and queue runs. A PR's own merge-ref cache is not
+assumed accessible to Mergify's separate queue PR. Cache misses retain the cold
+build path; each run still configures, links, verifies and publishes its own
+identity and receipt.
+
+Build output prints acquisition/configuration, compilation/linking and artifact
+verification durations plus cumulative ccache hit statistics. For a compilation
+reference without ccache, set `IDF_CCACHE_ENABLE=0`; download caching remains
+available. Compare fresh output directories and different commit identities
+before claiming cross-commit speedups. Same-commit reruns alone are insufficient.
+See [ADR-0019](../.rqml/adr/0019-compiler-aware-ci-cache.md).
+
+Local qualification on 2026-11-13 used empty output directories at two different
+Git commits, with identical executable inputs and only native caches shared:
+
+| Measurement | Cold cache | Warm cache, different commit |
+| --- | ---: | ---: |
+| Acquisition/configuration | 53.0 s | 45.3 s |
+| Compilation/linking | 609.6 s | 87.7 s |
+| Artifact verification | 9.8 s | 9.7 s |
+| Complete runner | 683.3 s | 151.7 s |
+| Compilation hits for this run | 0 / 1,921 | 1,916 / 1,921 |
+
+Both complete artifact checks passed with their respective full commit identities.
+An additional fresh-output build with an edited application string and changed
+main-task stack setting passed verification; the resulting image contained the
+new string and generated configuration held the new stack setting. It reused
+1,915 of 1,921 compilations and completed in 171.4 seconds.
+The native cache occupied about 0.3 GB. These are local measurements with the
+container already present, not predicted hosted-run times.
+
+The first hosted cache run exhausted runner disk space before it could retain
+build logs. The local Docker daemon reported an image size of 9.6 GB; the hosted
+daemon reported 5.27 GB, so the local value is not a portable unpacked-size
+measurement. The successful hosted pull reduced reported free disk space from
+32 GB to 18 GB. The firmware
+job frees its unused preinstalled host Android and .NET SDKs, reports free space,
+and explicitly times the ordinary registry image pull before building. This
+separates image acquisition from dependency/configuration time. No Docker image
+archive cache is introduced: it would require additional transfer, unpacking and
+disk space, and its benefit has not been demonstrated.
+
+Hosted run [43550224452](https://github.com/altendky/motley/actions/runs/43550224452)
+passed the complete build, artifact and checkout-identity checks. Cleanup raised
+reported free space from 15 GB to 32 GB in 63 seconds. The pinned image pull took
+193.17 seconds; dependency/configuration took 43.0 seconds, cold compilation and
+linking 1689.2 seconds, and artifact verification 7.1 seconds. All 1,921 calls
+missed the empty compiler cache. GitHub then saved 241,472,642 bytes of compiler
+cache and 22,295,147 bytes of component downloads under this PR's merge ref.
+This establishes cold execution and cache saving, not hosted warm-build speed.
+See the [PR validation notes](https://github.com/altendky/motley/pull/27) for
+subsequent hosted cache-restore and timing observations.
 
 Metadata and artifact failure fixtures run without Docker:
 
