@@ -107,16 +107,29 @@ main-task stack setting passed verification; the resulting image contained the
 new string and generated configuration held the new stack setting. It reused
 1,915 of 1,921 compilations and completed in 171.4 seconds.
 The native cache occupied about 0.3 GB. These are local measurements with the
-container already present, not predicted hosted-run times or evidence of GitHub
-cache transport. GitHub restore/save behavior remains to be observed after upload.
+container already present, not predicted hosted-run times.
 
 The first hosted cache run exhausted runner disk space before it could retain
-build logs. The pinned SDK image is approximately 9.6 GB unpacked. The firmware
+build logs. The local Docker daemon reported an image size of 9.6 GB; the hosted
+daemon reported 5.27 GB, so the local value is not a portable unpacked-size
+measurement. The successful hosted pull reduced reported free disk space from
+32 GB to 18 GB. The firmware
 job frees its unused preinstalled host Android and .NET SDKs, reports free space,
 and explicitly times the ordinary registry image pull before building. This
 separates image acquisition from dependency/configuration time. No Docker image
 archive cache is introduced: it would require additional transfer, unpacking and
 disk space, and its benefit has not been demonstrated.
+
+Hosted run [43550224452](https://github.com/altendky/motley/actions/runs/43550224452)
+passed the complete build, artifact and checkout-identity checks. Cleanup raised
+reported free space from 15 GB to 32 GB in 63 seconds. The pinned image pull took
+193.17 seconds; dependency/configuration took 43.0 seconds, cold compilation and
+linking 1689.2 seconds, and artifact verification 7.1 seconds. All 1,921 calls
+missed the empty compiler cache. GitHub then saved 241,472,642 bytes of compiler
+cache and 22,295,147 bytes of component downloads under this PR's merge ref.
+This establishes cold execution and cache saving, not hosted warm-build speed.
+See the [PR validation notes](https://github.com/altendky/motley/pull/27) for
+subsequent hosted cache-restore and timing observations.
 
 Metadata and artifact failure fixtures run without Docker:
 

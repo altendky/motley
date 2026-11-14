@@ -36,25 +36,36 @@ dependency and artifact checks. The separate pinout requirement is deferred.
   input fingerprint changed to
   `6e4681b956269b8f8802f3b74e5e78ffdf26336b9a6926efb3bd51f42c01fe16`,
   and all artifact checks passed (171.4 seconds, 1,915/1,921 cache hits).
-  Hosted cache transport and SDK lock-change runs remain unexecuted; existing
-  lock-mutation rejection fixtures pass. Temporary receipts and logs live under the owned
+  SDK lock-change runs remain unexecuted; existing lock-mutation rejection
+  fixtures pass. Hosted evidence follows below. Temporary receipts and logs live under the owned
   `firmware-cache-study` evidence directory, not in the repository.
   `mise exec -- uv run scripts/test_firmware.py` passed (exit 0, 33 tests) with
   runner SHA-256 `016aadd40f1a8acf3eaa6e6b863c8ec731aee27a7efe99f728d84cda92681faf`
   and fixture SHA-256 `9bcd5228330a16fc00c119ff1fa0c100ad395c9fae4cedfbf700258351bf3824`.
   The SDK study invoked that runner with `MOTLEY_CACHE_DIR=<study>/native-cache`
   and distinct `--build-dir` outputs; full runner exits were zero.
-- [ ] **Goal:** Qualify hosted disk headroom and isolate SDK pull time.
+- [x] **Goal:** Qualify hosted disk headroom and isolate SDK pull time.
   **Requirements:** `MOT-CI-001/002`, preserving `MOT-BUILD-001/002` and
   `MOT-PLAT-001`. **Files:** `.github/workflows/ci.yml`, build documentation.
   Hosted run 43549461704 failed with the runner annotation `No space left on
   device`, without build logs or diagnostics artifacts. The local pinned image
-  reports 9,606,072,451 unpacked bytes. Free only the unused preinstalled host
+  reports 9,606,072,451 bytes for image size. Free only the unused preinstalled host
   Android and .NET SDKs on this disposable firmware runner, print free space,
   and explicitly time the pinned registry pull. Keep Docker archive caching
   unimplemented unless measurement establishes a benefit. Refresh only the two
   reviewed workflow baselines; verify actionlint, full pre-commit/standard RQML,
   and the hosted job's free-space, pull, build and cache-save results.
+  Follow-up commit `c4dc76d72ecb47e8a3d3f4b7605a9aa8652a6968` passed full
+  pre-commit and hosted run 43550224452, including aggregate `all`. The SDK
+  built clean PR test-merge `cfa9598c9c810ab2256114d1d3fe08a1dd76f4dd` and
+  passed complete artifact checks. Cleanup raised reported free disk space
+  15 GB to 32 GB (63 s); the pull then left 18 GB free. The hosted Docker
+  daemon reports image size 5,274,582,696 bytes, distinct from the local report;
+  the earlier local value must not be treated as portable unpacked size.
+  Pull/configure/cold-compile/verification times were 193.17/43.0/1689.2/7.1 s.
+  GitHub saved both caches: compiler 241,472,642 bytes, downloads 22,295,147 bytes.
+  All 1,921 cold compiler calls missed. Later hosted warm-cache observations
+  belong in the PR validation notes; no warm hosted speedup is inferred here.
 
 ## Controller AC/DC module substitution, 2026-11-13
 
