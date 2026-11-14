@@ -1,5 +1,135 @@
 # Modular controller study verification
 
+## Intelligent-output revision, 2026-11-14
+
+This revision follows the developer's request to update the schematic and board
+after the architecture discussion. It continues the `MOT-PROC-001` exploratory
+CAD exception; approved `MOT-HW-003` governs annotation integrity. Electrical
+requirements remain draft. [ADR-0020](../../.rqml/adr/0020-intelligent-output-module-proposal.md)
+records the selected study direction, and the
+[pin/default review](intelligent-output-review.md) records every current
+component/pin disposition, including remaining qualification gaps.
+
+The carrier now supplies six-wire output interfaces with separate selected
+logic power and raw actuator power, LP I2C and buffered line timing. Each output
+has a STM32C011F6P6 with local regulation/recovery, a VO3053-X007T random-phase
+driver, ACPL-K370 voltage observation and TMCS1123B5 current/reference ADC
+signals. The MCU can be powered from USB while actuators remain on the raw
+mains-derived supply. This is a circuit connection, not completed commissioning,
+watchdog, fault-detection or power-loss-safe update firmware.
+
+| Unique design | Components / symbol pins | PCB footprints / reconciled numbered pads | Outline |
+| --- | ---: | ---: | --- |
+| Carrier | 95 / 291 | 99 / 319 | 100×85 mm |
+| Single AC output | 72 / 191 | 76 / 204 | 100×90 mm |
+| Sensor mux | 80 / 224 | 82 / 246 | 80×44 mm, L-shaped |
+
+All 247 schematic components, 706 symbol pins and 257 footprints were enumerated.
+One carrier, two outputs and one sensor board comprise 319 components, 897
+symbol pins and 333 footprints. Counts include DNP and bare test features;
+power flags and mechanical-only holes are not schematic components. Existing
+symbol/sheet/footprint UUID identities remain intact. Obsolete instances belonging
+to the retired monolithic project were removed so standalone KiCad projects
+retain their current references. All sensor sheets and the sensor PCB are
+byte-identical to the pre-revision snapshot. Project settings are unchanged;
+default-only `.kicad_pro` serialization emitted by checks was discarded.
+
+Independent fresh XML/native inspection reconciles all pad nets, component
+values and `Requirements` fields, verifies the series relay/current-sensor/outlet
+path, both connector pin maps, MCU functions, LP/HP power domains, default
+pull-downs and fitted/DNP snubber/region options. All assembly footprints and
+touch pads are on the front. Outlines remain within 100 mm; there are zero
+tracks, vias or copper pours. Placement groups remain movable. There is no
+clearance qualification simply because the unrouted geometry passes DRC.
+
+KiCad CLI 10.0.8 ERC reports the existing carrier PS1 stock-symbol mismatch
+warning (exit 5), two output open-collector-to-power-output findings (exit 5),
+and no sensor findings (exit 0). Both output findings are the TMCS1123 ALERT/OC
+pins deliberately grounded as TI directs when unused. Their electrical pin
+types and connections are retained; no new global severity suppression was
+introduced. KiCad DRC reports zero physical violations on all three boards.
+The intentional unrouted items are 238/147/175 and parity findings are 49/53/70
+for carrier/output/sensors respectively (all DRC exits 5). Parity comprises
+47/48/70 metadata differences and 2/5/0 footprint-assignment differences;
+independent reconciliation checks actual pin-net/value/requirement consistency.
+The inherited blank mains footprint assignments remain provisional.
+
+The new Broadcom SSO8, TI DVG10 and Vishay option-7 land patterns follow their
+manufacturer package drawings and remain study footprints. The Vishay pattern
+has 9.53 mm pad-column spacing with 1.52×1.78 mm pads; the former generic SMDIP
+assignment did not match option 7. Package drills/copper/paste tolerances,
+assembly rules and all mains isolation geometry still need final qualification.
+
+The combined schematic has 24 pages (carrier 7, output 5, sensors 12); the
+placement PDF has three pages. Both retain the three design bookmarks and
+stable review paths. Rendered changed schematic pages and both changed
+placements were inspected; no routing or manufacturing files are generated.
+
+`uv run scripts/hardware_trace.py` passes 20 annotated files and 257
+footprints; `uv run scripts/test_hardware_trace.py` passes all 15 fixtures.
+Both exit 0. Full `mise exec -- pre-commit run --all-files` passes (exit 0),
+including RQML validation, strict lint, standard consistency/drift and the
+mapped-implementation approval gate. Standard RQML passes with zero drift,
+dangling references or premature implementations; backlog remains 36
+unimplemented and 43 unverified requirements. Seven new native annotation
+links and nineteen draft design-input relationships were recorded. Only
+reviewed changed MOT-HW-003 source baselines were refreshed after inspection
+and observed checks; electrical product requirements were not self-approved.
+
+Checked specification SHA-256: `ea0a8782859f70d9940ea8996993b5fc8a60fc169862d6c5c1d71987a106d0fc`.
+The sorted 37-file native manifest uses one UTF-8 line per source:
+`<sha256>  hardware/controller/<path>\n`; manifest SHA-256:
+`c9d850e7fb61cad55d144be6fe9e33a76b4b4a5bdf651cc5ca09022f772af6ce`. The individual source identities are below.
+
+| Review artifact | Pages / design bookmarks | Bytes | SHA-256 |
+| --- | ---: | ---: | --- |
+| motley-controller.pdf | 24 / 3 | 1262406 | `812161efe4d9868a625034ee66352d1a6a07119eec9b0c40f05e684f048b48d6` |
+| motley-controller-placement.pdf | 3 / 3 | 374730 | `6d1d34bb8a63d0da7c923c238ea8ab2e420815ee4d69d505959b18516553dcd3` |
+
+| Native source in hardware/controller | SHA-256 |
+| --- | --- |
+| Motley.kicad_sym | `d9d6ca992a29e81e175f22a552f8037b1ccb1a66c59547328a992aa2fa835ef7` |
+| Motley.pretty/ACPL_K37x_SSO8_Study.kicad_mod | `c57159dff22577fd6172392067cd1699a87c76798f3c92270c4541ff89bc8dc9` |
+| Motley.pretty/ESP32-C6-WROOM-1.kicad_mod | `568d88bd414795e7fee4fea1d61174a9d6d23ba423ae406e2bc2714e1afe86d8` |
+| Motley.pretty/Mechanical_Pin_PTH_Study.kicad_mod | `ad0353acad0927d098dd80da87b866cc53b4edfe5d556dca7dbe43f464af4c2e` |
+| Motley.pretty/Relay_G6DN_1A_L_DC5_Study.kicad_mod | `a14222197bff677d00e25ed0438f4dde523effc991f1c7062ecd6404135d94ee` |
+| Motley.pretty/TMCS1123_DVG10_Study.kicad_mod | `bda118ef04ae4147e97b9d21ea8b6837f01e37087b90307fc735f685b80a6d4d` |
+| Motley.pretty/TouchGround_8mm.kicad_mod | `a4f1bceba6230a1cf6ab3a760d1e9f0644200b8ccd8a630eb2ef7ad6eae7a01e` |
+| Motley.pretty/VO3053_Option7_Study.kicad_mod | `e26ffb5473b2371e8e2f2c261b1750df94ee7d9b4587fc2b6b6117b9ac7f4a9a` |
+| Motley.pretty/WireLoop_P2.54.kicad_mod | `5e996c3e0f85643e4c05bb1f5be4595ae655e9e0e4784fea24bb30c001ce2f24` |
+| Motley.pretty/WirePost_1mm.kicad_mod | `9e02ddc7191c62da1f43e54aaf771540dcca8549262ac5bb448101201ffebab6` |
+| MotleyPower.kicad_sym | `bf28a07f77bd20c7c8371bdf4ba95a4375b76814ade88128ead2ada544763a77` |
+| OutputStudy.kicad_sym | `96a6df360fc81ca8e7046ab59c3d13d4b7c463f1fe5541e99537afe40049b77e` |
+| carrier-access.kicad_sch | `dbe47a24ad12d904e34c7cf2341076cdd1da339988a6937e4a414a8fa4eaee6f` |
+| controller.kicad_sch | `7c032913cc82a5f5d96be21f257bcb2a53b0cc2b1c8d64ab1e979fb1be8897f2` |
+| fp-lib-table | `f0f5afca0c428d0f7597f0c641acdcb8c96b46196be6e57898d4ab6b0d60019f` |
+| heater-channel.kicad_sch | `5b98aaeb02cb063978511e033c108e442a1ec0cf1449027e181a7d142d948dde` |
+| line-reference.kicad_sch | `965c8ad358ab401b95b5e3d77e89f900adbc1ddd2d68fa544ea83e860944ac1f` |
+| motley-ac-output.kicad_pcb | `87f13d10a94d2772ba8939c93f4052f6c7ed514e8ebde44d099c8e90cfbab93f` |
+| motley-ac-output.kicad_pro | `e7f1284a2a56f64884d80ee2d9c7f5cd17d4b8881d7d1fb9b48631d5caa094e5` |
+| motley-ac-output.kicad_sch | `3791fcf357078839c2231731bad698f74fad84b23b21d8a9bd42048df777991c` |
+| motley-carrier.kicad_pcb | `3da00dbcfd5c6912e2c08bed98404128813633da536bc64515d99df10d5744b5` |
+| motley-carrier.kicad_pro | `31bbd4990d03d0c164afeed26713d3cc113a59b6d10c1993abb459209e5e807f` |
+| motley-carrier.kicad_sch | `d4a4cf29ee0bfc62cd36710af7ee206b1c27c2485a8f5c5e79b20e3627161087` |
+| motley-sensors.kicad_pcb | `af74c2913611de4850fb9a778f3831dd866d297b93d7b107bcc8880e75bf403f` |
+| motley-sensors.kicad_pro | `ce8f50b8cfd251904732c6868ff9ba98d9a917059801e3d7280df4472ba5f527` |
+| motley-sensors.kicad_sch | `094068119528af7bceffbec44416b2534b57b864b613df85b36ff5c96c10bab7` |
+| mux.kicad_sch | `6dd91ad68cb5755d44177572707d2621f7c347350751870c1b6f85a4f307207a` |
+| output-access.kicad_sch | `693d926250d33eeab33842e2c29704d05205c0cead5adc9c3cef90c45c72f1cf` |
+| output-control.kicad_sch | `969a97dbf4979b3c6dcc47d9dc87960af91b085fc622198849520e8c17d29c41` |
+| output-feedback.kicad_sch | `001c93a0b98a8cadf061cbf20304d7ab1f16e0711b5ace13f13acbc8a906ce4f` |
+| power.kicad_sch | `6cd9d8044a37ad4dca0260642186068023377936b5f91a0adc924ea6faf951da` |
+| qwiic-bench.kicad_sch | `539bb81c6afaa753bd1886c222bd9d1d134cf11d903e3b06898473c89dd65f3e` |
+| sensor-access.kicad_sch | `9f07f41b2d45bd4808527aef9496c8bb2c8ae9149a504d833aa5382612ebcf72` |
+| sensor-port.kicad_sch | `b652997cbde8b72b54122874582927edd8dfbaf3e050c52e4004383da2b02f9e` |
+| sensor-ports.kicad_sch | `8fa5f00bb87bd6688f1db4c40904b14a3071bf15ba2798e3dfd40507f9360db0` |
+| sym-lib-table | `b7863c50299d29f52a8e1614e53dfafbb27d175b6c5195e0857b4121f8898dcb` |
+| usb-power.kicad_sch | `76084cdecf17fc2dd15f87dd98dcfc0f4edc6bcc5416a53331f6f5b3a2a6fafd` |
+
+Earlier dated sections describe their own historical snapshots.
+
+## Historical verification records
+
 Date: 2026-11-13. Tools: KiCad CLI and pcbnew 9.0.8; pypdf for combined PDFs.
 
 Scope: structural verification of the exploratory exception described in
@@ -554,7 +684,7 @@ two configuration files, the complete `pre-commit run --all-files` passed
 SHA-256 checks before and after confirm both configuration files were unchanged.
 No formatter wrapper or repository exclusion was needed.
 
-## Current checked source SHA-256 identities
+## Pre-intelligent-output checked source SHA-256 identities
 
 | File | SHA-256 |
 | --- | --- |

@@ -1,5 +1,12 @@
 # Pin bias and default-state review
 
+**Revision note, 2026-11-14:** the
+[intelligent-output review](intelligent-output-review.md) supersedes the changed
+carrier/output assessments below: local MCU, six-contact power/bus link,
+random-phase driver, feedback and LP power domain. This document retains the
+earlier analysis and the unchanged sensor assessment; its direct-GPIO pin map
+and old driver values are historical.
+
 Review date: 2026-11-13. Scope: the current unrouted three-design study,
 including both physical copies of the AC-output module. Governing proposals:
 `MOT-HW-001` (complete assessment) and `MOT-HW-002` (defined hardware defaults).

@@ -189,17 +189,26 @@ heater channels, each capable of at least 300 W. At 300 W per channel, nominal
 current is 2.5 A each and 5 A combined. Earlier 25–30 W heaters remain relevant
 as small loads; they do not define the desired output capacity.
 
-Each proposed channel has a zero-cross optotriac driving a power triac for
-frequent modulation, plus a normally open mechanical relay in series for an
-additional cutoff. The relay stays energized through normal modulation.
+The 2026-11-14 exploratory direction gives each output a local MCU, random-phase
+optotriac, isolated current/voltage feedback and a normally open mechanical relay
+in series for an additional cutoff. It supports investigating both phase-angle
+lamp control and complete-cycle heater bursts; the earlier direct-control
+MOC3063 zero-cross circuit is historical. The relay stays energized through normal modulation.
 Normal relay changes would occur with the triac off, while the relay must still
 interrupt full load if the triac fails short. A modulation window around
 10 seconds is an initial thermal-control idea, not a settled timing requirement.
+The initial load target remains 300 W at 120 VAC. Higher-current plausibility is
+deferred to [issue #30](https://github.com/altendky/motley/issues/30); no larger
+rating is selected or required before the current CAD revision.
+
+The following table preserves earlier component and price snapshots. Retained
+power-stage candidates are identified alongside the historical driver; these
+prices are not a quote for the new MCU/feedback design described below.
 
 | Function | Preliminary part | Quantity per complete two-output controller | Package and sourcing snapshot |
 | --- | --- | ---: | --- |
 | Power triac | [ST BTA08-600SWRG](https://www.st.com/resource/en/datasheet/cd00002266.pdf) | 2 | Insulated-tab TO-220 through-hole; 8 A / 600 V device. JLC C153058, $0.6824 at 1–9. Current rating alone does not establish enclosed-board load capability. |
-| Zero-cross optotriac | [Lite-On MOC3063S-TA1](https://jlcpcb.com/partdetail/LiteOn-MOC3063STA1/C77950) | 2 | SMT six-pin package; MOC3063-family candidate. JLC C77950, $0.2101 at 1–49. |
+| Historical zero-cross optotriac | [Lite-On MOC3063S-TA1](https://jlcpcb.com/partdetail/LiteOn-MOC3063STA1/C77950) | 2 in preceding design | Superseded in the intelligent-output direction by a random-phase part; this JLC C77950 / $0.2101 at 1–49 snapshot is not the current driver price. |
 | Series cutoff relay | [Omron G6DN-1A-L DC5](https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf) | 2 | Through-hole, normally open, 5 A / 250 VAC resistive rating; 5 V, approximately 36 mA coil. Mouser price discussed: $2.38. JLC C6624853 listed $2.0110 at 1–9 but had zero available stock. |
 | Small transistor driver lead | MMBT3904 | Circuit-dependent | JLC C20526 was priced as a possible driver component, not selected for a finished circuit. |
 | Flyback diode lead | 1N4148W | Circuit-dependent | JLC C81598 was considered for relay-coil suppression; suitability and circuit remain to be finalized. |
@@ -325,14 +334,109 @@ clearances, enclosure, and final schematic are incomplete.
 
 ### AC control, feedback and bus investigation
 
-Discussion direction, 2026-11-13; hardware selection and circuit changes remain
-pending. Investigate both leading-edge phase-angle control for compatible lamps
-and zero-cross, whole-cycle burst-fire/time-proportional control for heaters.
-The current BTA08 power triac remains a candidate for both. The existing
-MOC3063 zero-cross optotriac cannot provide phase-angle triggering; compare a
-non-zero-cross driver plus isolated mains timing. Gate drive, lamp inrush and
-EMI filtering need review before changing the circuit. See
+Exploratory CAD direction, 2026-11-14; these choices make the discussion concrete
+without claiming tested hardware or final manufacturing availability. Keep one
+MCU per output for leading-edge phase-angle and whole-cycle burst timing,
+voltage/current observation, cutoff and command-expiry handling. The ESP retains
+temperature regulation, networking and configuration. A short internal I2C bus
+and separate shared line-reference signal are the starting interconnect; the
+existing two-output assembly remains the initial population. Sixteen modules is
+a cost-sensitive capacity target, not a qualified load/power or wiring rating.
+
+| Function | Exploratory candidate | Quantity per complete two-output controller | Selection evidence and remaining checks |
+| --- | --- | ---: | --- |
+| Output MCU | [ST STM32C011F6P6](https://www.st.com/resource/en/datasheet/stm32c011f6.pdf), [JLC C5456198](https://jlcpcb.com/partdetail/C5456198) | 2 | TSSOP-20 candidate, 32 KB flash / 6 KB RAM, factory UID, independent watchdog and I2C ROM loader. Exact orderable/stock, pin allocation, double-buffered storage layout, update/boot-option recovery and service procedure remain to qualify; a listing is not proof of an assembled or functioning programmer. |
+| Output local 3.3 V supply | AP2112K-3.3TRG1 and decoupling from selected +5V_LOGIC | 2 | Supplies each output MCU and low-voltage sensing; raw mains-derived 5 V separately powers actuators. Regulator stability, startup, discharge/back-power, current budget and thermal behavior need assessment. No added regulated-supply current allowance is claimed for sixteen modules. |
+| Isolated current observation | [TI TMCS1123B5AQDVGR](https://www.ti.com/lit/ds/symlink/tmcs1123.pdf) | 2 | DVG 10-pin Hall sensor candidate; 150 mV/A, 1.65 V reference output, approximately +/-10.3 A linear range at 3.3 V. Family specifies reinforced isolation and 8 mm minimum creepage/clearance. The local study land pattern follows TI's DVG0010A HV example; exact orderable/JLC supply and actual assembly/isolation still require review. VREF is an output, not an external reference input. |
+| Per-outlet voltage pulses | [Broadcom ACPL-K370-500E](https://docs.broadcom.com/doc/AV02-2153EN), [LCSC C2977813](https://www.lcsc.com/product-detail/C2977813.html) | 2 | Predictable current/voltage thresholds, internal AC bridge, hysteresis and open-collector output; SSO-8. The -500E orderable has UL 1577 recognition; do not assume the separate -560E/-060E IEC option is included. Exact isolation option, sourcing and leakage/threshold/timing qualification remain open. |
+| Shared mains timing pulses | [Broadcom ACPL-K376-500E](https://docs.broadcom.com/doc/AV02-2153EN), [LCSC C17366541](https://www.lcsc.com/product-detail/C17366541.html) | 1 on carrier | Lower-current threshold version, same SSO-8 study land pattern. Four 17k series resistors give 68k total, no input shunt; this is a waveform reference to characterize, not an ideal zero-cross timestamp. Exact orderable/isolation option/JLC availability remain open. |
+| Shared reference buffer | [TI SN74LVC1G17DBVR](https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf) | 1 on carrier | 3.3 V Schmitt buffer candidate with source series resistance for the shared timing line. Fanout, cable loading, input/output power states, threshold delay and source protection remain unqualified. |
+| Random-phase optotriac | [Vishay VO3053-X007T](https://www.vishay.com/docs/83749/vo3052.pdf), [LCSC C5241906](https://www.lcsc.com/product-detail/C5241906.html) | 2 | SMD-6 option 7, 600 V random-phase candidate; 5 mA maximum trigger current at 25 C. Same electrical pin assignment as the preceding six-pin driver: 1 anode, 2 cathode, 3/5 NC, 4 MT1, 6 MT2. UL/cUL option, minimum 7 mm package creepage/clearance; 4420 Vrms isolation withstand for one minute. The separate -X017T VDE option is not implied. Current listings support small-quantity sourcing; JLC assembly availability, option-7 land pattern and drive/temperature margins remain to qualify. |
+
+The onsemi MOC3053SR2M considered earlier is an obsolete sourcing direction.
+Vishay's current product family and distributor listings support VO3053-X007T
+as its provisional replacement. A 2026-11-14 LCSC screen showed 12 pieces at
+about $0.78 each, while a [Mouser series listing](https://www.mouser.jp/en/c/optoelectronics/optocouplers-photocouplers/triac-scr-output-optocouplers/?m=Vishay&series=VO305x)
+offered cut tape with minimum one. These are availability leads, not reserved
+stock or a JLC quote. Lite-On MOC3053S-TA1-A was less practical at Mouser's
+displayed 6000-piece minimum/non-stocked offering. Do not inherit another
+manufacturer's trigger/off-time guarantees merely from a similar part number.
+The placement uses local `Motley:VO3053_Option7_Study`, following Vishay's
+option-7 drawing: 9.53 mm between pad columns, 2.54 mm pitch and 1.52×1.78 mm
+pads. The earlier 7.62 mm pad-column footprint does not match this variant.
+Package tolerance, soldering and isolation review remain open.
+
+The BTA08-600SWRG and Omron G6DN remain provisional power-stage choices. The
+600 V optotriac/triac ratings do not by themselves qualify the high-line surge
+envelope. Gate-pulse width/current, optotriac commutation and rearming time,
+gate-network pulse ratings, lamp inrush and EMI still need review. The roughly
+10-11 mA LED drive is provisional; temperature and short-pulse trigger behavior
+need checking against the selected Vishay part. See
 [ST AN5114](https://www.st.com/resource/en/application_note/an5114-controlling-a-triac-with-a-phototriac-stmicroelectronics.pdf).
+
+#### Provisional voltage-detector regional assemblies
+
+Both assemblies use four series mains-resistor positions and an optional 3k9
+shunt across the K370 AC-input pins. They share a PCB footprint arrangement;
+they are **different regional BOMs**, not one demonstrated universal BOM.
+
+| Detector assembly | Series network | Input shunt | Calculated series-resistor heat |
+| --- | --- | --- | --- |
+| Initial low-line 90-132 VAC | Four 8k2, 1%, 2512 / 1 W positions; 32.8k total | DNP | About 0.44 W total at 120 V, 0.53 W at 132 V |
+| High-line study, 180-264 VAC | Four 12k, 1%, 2512 / 1 W positions; 48k total | Fit 3k9 | About 1.20 W total at 240 V, 1.45 W at 264 V |
+
+These are conservative `V_rms^2/R` estimates before the detector's clamp drop,
+not temperature measurements. Resistor voltage/surge ratings, temperature
+derating, PCB heating and complete detector input power still need selection
+and review. The K370 is supplied from 5 V through 240 ohm with local 100n/10n
+bypass; its output uses a 4k7 pull-up to the local 3.3 V rail. Using 5 V avoids
+assuming that 3.3 V minus the worst-case filter-resistor drop remains inside
+the datasheet's 3-5.5 V electrical-specification range. Do not smooth away the
+individual voltage pulses required for timing comparisons.
+
+The leakage screen uses the Broadcom threshold limits and ST's hot-triac
+leakage bound. At 60 Hz, a 12 nF snubber (+20% on nominal 10 nF) gives a peak
+capacitive-current bound of about 0.845 mA at 132 V and 1.689 mA at 264 V.
+Adding the BTA08's 1 mA limit at 125 C gives 1.845/2.689 mA respectively.
+The low-line K370 minimum turn-on current is 1.96 mA; the high-line shunt raises
+the estimated minimum total input turn-on current to approximately
+`1.96 mA + 4.23 V / 3.9k = 3.04 mA`. Using maximum threshold terms gives
+approximately 108 V instantaneous turn-on for low-line and 222 V for high-line,
+below the corresponding minimum-line peaks of 127/255 V. These calculations
+support a candidate to test; they do not close tolerance, transient, hysteresis,
+stored-charge or pulse-duration qualification. The high threshold also limits
+which small/late phase-cut waveforms can be reliably observed.
+
+The carrier K376 input network dissipates about 0.21 W at 120 V and 1.03 W at
+264 V. Its missing-pulse gap supplies a reference from which firmware can
+estimate line crossings, but hysteresis, supply amplitude, propagation delay
+and fanout produce timing offsets. Their actual bounds and any compensation
+need measurement before claiming firing accuracy. The input resistor heat and
+both output-detector networks must be included with triac/LDO/supply losses in
+the enclosure budget.
+
+The regional detector assemblies do not qualify every other mains component.
+In particular, the earlier Harwin M7685-05 snubber shunt's stated 250 V DC/AC
+peak working rating is below 264 VAC's approximately 373 V peak; it cannot be
+carried into a high-line assembly without a different rated configuration.
+Fuses, inlet/outlet wiring, mains connectors, snubber parts, PCB spacing and
+surge protection remain separate regional-design checks. No high-line whole-unit
+rating is claimed.
+
+The TMCS sensor's time-resolved output and its reference are brought to MCU ADC
+inputs, initially through 100 ohm / 1 nF filters. Current-sensor linear range is
+not its permitted inrush range: sensor clipping, noise, offset, ADC bandwidth,
+sampling/filter phase delay and current-path thermal limits still require
+qualification, including low-power heaters. No RMS-current accuracy, power
+metering accuracy or new total-unit quote is claimed by this candidate table.
+The TI current sensor alone draws about 11 mA typical, with a 14.5 mA maximum
+over the specified temperature range (electrical table at 5.5 V); sixteen
+sensors therefore account for roughly 176 mA typical / 232 mA at that bound
+before MCUs and other sensing. Its startup-valid interval also needs inclusion
+in firmware initialization. The existing power budget must be revisited before
+claiming sixteen populated modules are supported. TI explicitly recommends
+grounding unused ALERT/OC open-drain outputs and tying unused VOC to VS;
+grounding these outputs is intentional in the exploratory circuit.
 
 The feedback objective is to compare actual conduction with commanded
 conduction, including unexpected delivery while commanded off. Investigate
@@ -343,8 +447,8 @@ snubber leakage thresholds, minimum detectable load, absent-load/latching
 limitations, and detection before versus after the cutoff contact. Zero current
 alone cannot distinguish an unplugged load from a non-firing output stage.
 
-Bus connectivity is now a hardware-selection consideration, without selecting
-I2C or committing to bus-controlled firing. Candidate approaches:
+The following alternatives remain historical research leads, rather than the
+current local-MCU candidate direction:
 
 | Approach | Evidence and selection questions |
 | --- | --- |
@@ -443,7 +547,8 @@ Omron G6DN-1A-L DC5 cutoff relays. Native PS1 now uses the stock IRM-05 symbol
 and footprint: pin 1 neutral, 2 fused line, 3 secondary GND and 4 raw 5 V.
 This is a four-pin replacement, not a renaming of the five-pin RECOM pattern.
 The larger body is accommodated by rearranging the carrier study within its
-existing 100 x 85 mm outline. Both output boards remain unchanged.
+existing 100 x 85 mm outline. That supply substitution did not change the
+output boards; the later intelligent-output revision is described above.
 
 The [MEAN WELL datasheet](https://www.meanwell.eu/Upload/PDF/IRM-05/IRM-05-SPEC.PDF)
 documents safety approvals, Class II construction, 200 mVpp maximum ripple and
@@ -503,6 +608,12 @@ and mux reset must remain high impedance without internal pull-ups while the
 sensor rail is off; actual back-power and startup behavior remain unverified.
 
 ### Receiver-local output-command protection
+
+Historical direct-control prototype, before the intelligent-output revision:
+the external HEAT/CUT commands and carrier GPIO allocation described below are
+not the new local-MCU interface, and the incremental budget is not the current
+MCU/feedback budget. Reassess bias/filter values against local MCU drive and
+phase-angle pulse timing; preserve the default-off objective.
 
 The developer accepted this inexpensive prototype correction on 2026-11-12.
 Each output board now has two **ST(Semtech) 1N4148W, JLC C81598** blocking
@@ -668,12 +779,14 @@ use SMT parts even when through-hole alternatives exist. JLCPCB assembly is
 another option; the through-hole triacs, relays, and daughterboard sockets need
 the appropriate assembly process or manual installation.
 
-At the discussed price tiers, the mux, eight horizontal SH sockets, two triacs,
+Historical pre-local-MCU estimate: at the discussed price tiers, the mux, eight horizontal SH sockets, two triacs,
 two optotriacs, two relays, and two Feather socket strips total approximately
 $8.70 per board for a two-board batch, or $8.01 per board for a five-board
 batch. These are component-price calculations per complete controller, now
 distributed across three boards, not purchasable complete assemblies:
-relay stock was unavailable and the supporting parts remain incomplete.
+relay stock was unavailable and the supporting parts remain incomplete. It
+excludes the new output MCUs/regulators, current and voltage sensing, line
+reference/buffer and random-phase driver sourcing; it is not a current budget.
 
 An earlier planning allowance of roughly $60–100 for two populated carriers
 before shipping/tax excluded Feather modules, heatsinks, and enclosures and was

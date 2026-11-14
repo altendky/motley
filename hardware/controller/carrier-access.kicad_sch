@@ -534,17 +534,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "D30/31: sensor link. D32/33: UART service. D34/35: output commands.\nD36/37: raw5V at output connectors; D38: raw host VBUS. Existing USB data protection remains.\nPanel CC/shield/harness assumptions and mains transient measures are separate open assessments."
-		(exclude_from_sim no)
-		(at 15 199.39 0)
-		(effects
-			(font
-				(size 1.1 1.1)
-			)
-			(justify left top)
-		)
-		(uuid "60b88684-58cb-531d-afe4-0a1af0e565fb")
-	)
 	(text "Unrouted exploratory protection; residual clamp, powered-off behavior and system immunity remain UNQUALIFIED."
 		(exclude_from_sim no)
 		(at 15 24 0)
@@ -578,9 +567,24 @@
 		)
 		(uuid "a5c63c96-6998-5115-a112-6e8b24cce73d")
 	)
+	(text "D34: LP output SDA/SCL. D35: LINE_SYNC; unused second branch NC.\nD36: raw actuator 5 V. D37: selected logic 5 V. D38: raw host VBUS.\nSensor, UART and Qwiic protection retained; clamp geometry and complete bus loading remain unqualified."
+		(exclude_from_sim no)
+		(at 15 199.39 0)
+		(effects
+			(font
+				(size 1.05 1.05)
+			)
+			(justify left top)
+		)
+		(uuid "d59d5b96-b274-5990-b700-5ec3579cb3d8")
+	)
 	(no_connect
 		(at 63.5 129.54)
 		(uuid "dc94ffa0-4563-5993-87b3-0dff2f992fa3")
+	)
+	(no_connect
+		(at 287.02 129.54)
+		(uuid "fc68e034-077b-5102-9b8f-9369bb6e1087")
 	)
 	(wire
 		(pts
@@ -872,16 +876,6 @@
 		)
 		(uuid "ec075cd9-b53e-5660-b565-b9a85e7f99c2")
 	)
-	(wire
-		(pts
-			(xy 287.02 129.54) (xy 279.4 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ed9e5de1-7903-59b8-8e7a-4265cbee1a28")
-	)
 	(global_label "GND"
 		(shape bidirectional)
 		(at 187.96 81.28 180)
@@ -1058,7 +1052,7 @@
 			)
 		)
 	)
-	(global_label "CUT1_EN"
+	(global_label "LP_I2C_SCL"
 		(shape bidirectional)
 		(at 167.64 129.54 180)
 		(effects
@@ -1190,7 +1184,7 @@
 			)
 		)
 	)
-	(global_label "+5V_SYS"
+	(global_label "+5V_SELECTED"
 		(shape bidirectional)
 		(at 187.96 170.18 180)
 		(effects
@@ -1344,7 +1338,7 @@
 			)
 		)
 	)
-	(global_label "HEAT2_EN"
+	(global_label "LINE_SYNC"
 		(shape bidirectional)
 		(at 279.4 124.46 180)
 		(effects
@@ -1388,29 +1382,7 @@
 			)
 		)
 	)
-	(global_label "CUT2_EN"
-		(shape bidirectional)
-		(at 279.4 129.54 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "b017c9b2-03ca-5190-bb90-49d9758ecb8e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.4 129.54 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "HEAT1_EN"
+	(global_label "LP_I2C_SDA"
 		(shape bidirectional)
 		(at 167.64 124.46 180)
 		(effects

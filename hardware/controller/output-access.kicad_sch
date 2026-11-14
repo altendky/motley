@@ -534,6 +534,17 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "D110: output-bus SDA/SCL. D112: LINE_SYNC, unused second branch NC.\nD111: raw actuator 5 V. D113: selected logic 5 V.\nTP4/TP5 now probe local MCU gate/relay commands, not inter-board command wires."
+		(exclude_from_sim no)
+		(at 15 199.39 0)
+		(effects
+			(font
+				(size 1.05 1.05)
+			)
+			(justify left top)
+		)
+		(uuid "1b24f417-3f85-5771-92bc-8f735c586012")
+	)
 	(text "OUTPUT: ESD CANDIDATES AND LOW-VOLTAGE ACCESS"
 		(exclude_from_sim no)
 		(at 15 15 0)
@@ -567,16 +578,9 @@
 		)
 		(uuid "a5c63c96-6998-5115-a112-6e8b24cce73d")
 	)
-	(text "D110 is CONNECTOR-SIDE of D101/D102. Bidirectional topology preserves missing-ground blocking.\nD111 protects only the5V supply; no logic TVS is connected to AC line, neutral or PE."
-		(exclude_from_sim no)
-		(at 15 199.39 0)
-		(effects
-			(font
-				(size 1.1 1.1)
-			)
-			(justify left top)
-		)
-		(uuid "f5600c6b-37c9-5cef-be08-c7dea697ae81")
+	(no_connect
+		(at 175.26 66.04)
+		(uuid "f76d18b2-ab8a-59da-a6e4-2f8186658e90")
 	)
 	(wire
 		(pts
@@ -587,6 +591,16 @@
 			(type default)
 		)
 		(uuid "06233774-97c7-5817-9be4-66f7c9270ba9")
+	)
+	(wire
+		(pts
+			(xy 175.26 60.96) (xy 167.64 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2118b1d6-3e0a-57df-9692-f481bf711a64")
 	)
 	(wire
 		(pts
@@ -650,6 +664,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.96 176.53) (xy 187.96 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f99e941-ff0f-576d-a56d-ca07fc08aabe")
+	)
+	(wire
+		(pts
 			(xy 63.5 66.04) (xy 55.88 66.04)
 		)
 		(stroke
@@ -678,6 +702,48 @@
 		)
 		(uuid "be7bd0fe-20c2-5a7b-b13e-6c08dd17929e")
 	)
+	(wire
+		(pts
+			(xy 187.96 76.2) (xy 187.96 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3f25145-5e57-5849-9f7e-e03ad5a98745")
+	)
+	(wire
+		(pts
+			(xy 187.96 184.15) (xy 187.96 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcad0f89-0731-5924-9f6b-2d6e01e27f7d")
+	)
+	(global_label "LINE_SYNC"
+		(shape bidirectional)
+		(at 167.64 60.96 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "1c3de591-8597-5729-a606-bdae3fd033cb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 167.64 60.96 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
 	(global_label "GND"
 		(shape bidirectional)
 		(at 76.2 190.5 180)
@@ -690,6 +756,28 @@
 		(uuid "2de365ea-515a-58bb-938e-f1fcde57377f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 76.2 190.5 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+5V_LOGIC"
+		(shape bidirectional)
+		(at 187.96 170.18 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "43080f68-5218-5935-b5f9-c756381c434f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.96 170.18 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -722,7 +810,7 @@
 			)
 		)
 	)
-	(global_label "HEAT_EN"
+	(global_label "OUT_SDA"
 		(shape bidirectional)
 		(at 55.88 60.96 180)
 		(effects
@@ -744,7 +832,7 @@
 			)
 		)
 	)
-	(global_label "CUT_EN"
+	(global_label "OUT_SCL"
 		(shape bidirectional)
 		(at 55.88 66.04 180)
 		(effects
@@ -898,6 +986,50 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 187.96 190.5 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "f220b0de-6413-5a5c-859b-40f3d3acb536")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.96 190.5 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 187.96 81.28 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "f676bbe4-4cd6-5584-b7c5-01194bf07de3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.96 81.28 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:D_Zener")
 		(at 76.2 180.34 270)
@@ -989,6 +1121,96 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_Zener")
+		(at 187.96 180.34 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "383e0dc6-d6e3-5baf-9862-3356fa0ec6d9")
+		(property "Reference" "D113"
+			(at 191.77 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "ESD5Z6.0T1G"
+			(at 191.77 177.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-523"
+			(at 187.96 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/esd5z2.5t1-d.pdf"
+			(at 187.96 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Selected logic 5 V connector ESD candidate, 6 V standoff; not continuous overvoltage protection."
+			(at 187.96 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004"
+			(at 187.96 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ccc00cde-3cb6-4c0d-ae43-8cb3a2231bf0")
+		)
+		(pin "1"
+			(uuid "cdcef6f9-2da3-40b9-a4b4-ffb76eca0823")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "D113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 86.36 228.6 0)
 		(unit 1)
@@ -1070,6 +1292,81 @@
 			(project "motley-ac-output"
 				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
 					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 187.96 63.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9a9a386c-0526-54e7-9648-bc912fc1d25d")
+		(property "Reference" "D112" (at 191.77 45.72 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+		(property "Value" "PESD5V0S2BT,215" (at 191.77 48.26 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bidirectional connector-side LINE_SYNC TVS candidate; second branch unused; loading/clamp coordination unqualified."
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-008"
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9a12e8b8-9410-42b5-a463-a7280bb008ad")
+		)
+		(pin "1"
+			(uuid "ef6bea4f-2cb4-45e8-980c-8d4b2eb0bc0c")
+		)
+		(pin "3"
+			(uuid "4d3b4388-771d-4588-87e6-911477e9c5cc")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "D112")
 					(unit 1)
 				)
 			)
