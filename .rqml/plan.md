@@ -44,6 +44,17 @@ dependency and artifact checks. The separate pinout requirement is deferred.
   and fixture SHA-256 `9bcd5228330a16fc00c119ff1fa0c100ad395c9fae4cedfbf700258351bf3824`.
   The SDK study invoked that runner with `MOTLEY_CACHE_DIR=<study>/native-cache`
   and distinct `--build-dir` outputs; full runner exits were zero.
+- [ ] **Goal:** Qualify hosted disk headroom and isolate SDK pull time.
+  **Requirements:** `MOT-CI-001/002`, preserving `MOT-BUILD-001/002` and
+  `MOT-PLAT-001`. **Files:** `.github/workflows/ci.yml`, build documentation.
+  Hosted run 43549461704 failed with the runner annotation `No space left on
+  device`, without build logs or diagnostics artifacts. The local pinned image
+  reports 9,606,072,451 unpacked bytes. Free only the unused preinstalled host
+  Android and .NET SDKs on this disposable firmware runner, print free space,
+  and explicitly time the pinned registry pull. Keep Docker archive caching
+  unimplemented unless measurement establishes a benefit. Refresh only the two
+  reviewed workflow baselines; verify actionlint, full pre-commit/standard RQML,
+  and the hosted job's free-space, pull, build and cache-save results.
 
 ## Controller AC/DC module substitution, 2026-11-13
 

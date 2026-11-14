@@ -55,10 +55,22 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - name: Free firmware runner disk space
+        run: |
+          df -h /
+          # This job uses the container SDK, not these preinstalled host SDKs.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          df -h /
       - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5
         with:
           version: 2026.11.4
           install_args: --locked
+      - name: Pull pinned firmware SDK
+        run: |
+          sdk_image="$(python -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("firmware/toolchain.toml").read_text())["image"])')"
+          /usr/bin/time -f 'SDK image pull: %e seconds' docker pull "$sdk_image"
+          docker image inspect "$sdk_image" --format 'SDK image size: {{.Size}} bytes'
+          df -h /
       - name: Restore component-manager downloads
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:

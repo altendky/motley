@@ -110,6 +110,14 @@ The native cache occupied about 0.3 GB. These are local measurements with the
 container already present, not predicted hosted-run times or evidence of GitHub
 cache transport. GitHub restore/save behavior remains to be observed after upload.
 
+The first hosted cache run exhausted runner disk space before it could retain
+build logs. The pinned SDK image is approximately 9.6 GB unpacked. The firmware
+job frees its unused preinstalled host Android and .NET SDKs, reports free space,
+and explicitly times the ordinary registry image pull before building. This
+separates image acquisition from dependency/configuration time. No Docker image
+archive cache is introduced: it would require additional transfer, unpacking and
+disk space, and its benefit has not been demonstrated.
+
 Metadata and artifact failure fixtures run without Docker:
 
 ```sh
