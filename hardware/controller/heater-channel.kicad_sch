@@ -1,0 +1,3082 @@
+(kicad_sch
+  (version 20250114)
+  (generator eeschema)
+  (generator_version "9.0")
+  (uuid "5552d3e1-3c6d-5a6b-990d-f1f6c60113f0")
+  (paper "A4")
+  (title_block
+    (title "Shared heater channel: zero-cross triac and cutoff")
+    (date "2026-11-11")
+    (rev "0.1")
+    (company "Motley")
+    (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
+  (lib_symbols
+    (symbol "Motley:MOC3063S_TA1"
+      (property "Reference" "U"
+        (at -5.08 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "MOC3063S-TA1"
+        (at 0 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" "Package_DIP:SMDIP-6_W7.62mm"
+        (at -5.08 -5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            (italic yes))
+          (justify left)
+          (hide yes)))
+      (property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/0840bd1cad2742139135cac60f4f70f5.pdf?productCode=C77950"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)
+          (hide yes)))
+      (property "Description" "Lite-On 600 V zero-cross optotriac, IFT 5 mA, SMD six-pin package"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "Opto-Triac Opto Triac Zero Cross"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "DIP*W7.62mm* SMDIP*W9.53mm* DIP*W10.16mm*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (symbol "MOC3063S_TA1_0_0"
+        (rectangle
+          (start -0.381 -2.032)
+          (end 1.397 -3.048)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.524 -0.635)
+            (xy 1.016 -1.016)
+            (xy 1.016 -2.032))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 2.286 -2.54)
+            (xy 1.397 -2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (text "ZCD"
+          (at 0.508 -2.54 0)
+          (effects
+            (font
+              (size 0.508 0.508)))))
+      (symbol "MOC3063S_TA1_0_1"
+        (rectangle
+          (start -5.08 3.81)
+          (end 5.08 -3.81)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (polyline
+          (pts
+            (xy -5.08 2.54)
+            (xy -2.54 2.54)
+            (xy -2.54 -2.54)
+            (xy -5.08 -2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -3.175 -0.635)
+            (xy -1.905 -0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.54 -0.635)
+            (xy -3.175 0.635)
+            (xy -1.905 0.635)
+            (xy -2.54 -0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.143 0.508)
+            (xy 0.127 0.508)
+            (xy -0.254 0.381)
+            (xy -0.254 0.635)
+            (xy 0.127 0.508))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.143 -0.508)
+            (xy 0.127 -0.508)
+            (xy -0.254 -0.635)
+            (xy -0.254 -0.381)
+            (xy 0.127 -0.508))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0.889 -0.635)
+            (xy 3.683 -0.635)
+            (xy 3.048 0.635)
+            (xy 2.413 -0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.524 -0.635)
+            (xy 1.524 0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 2.286 2.54)
+            (xy 0.508 2.54)
+            (xy 0.508 -2.032))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (circle
+          (center 2.286 2.54)
+          (radius 0.127)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 2.286 0.635)
+            (xy 2.286 2.54)
+            (xy 5.08 2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 2.286 -0.635)
+            (xy 2.286 -2.54)
+            (xy 5.08 -2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (circle
+          (center 2.286 -2.54)
+          (radius 0.127)
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 3.048 0.635)
+            (xy 3.048 -0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 3.683 0.635)
+            (xy 0.889 0.635)
+            (xy 1.524 -0.635)
+            (xy 2.159 0.635))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "MOC3063S_TA1_1_1"
+        (pin passive line
+          (at -7.62 2.54 0)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at -7.62 -2.54 0)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin no_connect line
+          (at -5.08 0 0)
+          (length 2.54)
+          (hide yes)
+          (name "NC"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin no_connect line
+          (at 5.08 0 180)
+          (length 2.54)
+          (hide yes)
+          (name "NC"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "5"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 7.62 2.54 180)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "6"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 7.62 -2.54 180)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Device:R"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "R"
+        (at 0 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Description" "Resistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "R_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Transistor_BJT:MMBT3904"
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "MMBT3904"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            (italic yes))
+          (justify left)
+          (hide yes)))
+      (property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)
+          (hide yes)))
+      (property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "NPN Transistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "SOT?23*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (pin_names
+        (offset 0)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Sim.Device" "NPN"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Sim.Pins" "1=B 2=E 3=C"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "MMBT3904_0_1"
+        (polyline
+          (pts
+            (xy -2.54 0)
+            (xy 0.635 0))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "MMBT3904_1_1"
+        (polyline
+          (pts
+            (xy 0.635 0.635)
+            (xy 2.54 2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0.635 -0.635)
+            (xy 2.54 -2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 -1.778)
+            (xy 1.778 -1.27)
+            (xy 2.286 -2.286)
+            (xy 1.27 -1.778))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type outline)))
+        (pin input line
+          (at -5.08 0 0)
+          (length 2.54)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Device:Fuse"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "F"
+        (at 2.032 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "Fuse"
+        (at -1.905 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Description" "Fuse"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "fuse"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "*Fuse*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "Fuse_0_1"
+        (rectangle
+          (start -0.762 -2.54)
+          (end 0.762 2.54)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0 2.54)
+            (xy 0 -2.54))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "Fuse_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Motley:BTA08_600SWRG"
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "BTA08-600SWRG"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            (italic yes))
+          (justify left)
+          (hide yes)))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/bta08.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)
+          (hide yes)))
+      (property "Description" "8 A / 600 V snubberless triac, insulated TO-220 tab, IGT 10 mA"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "Triac"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "TO?220*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (pin_names
+        (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (symbol "BTA08_600SWRG_0_1"
+        (polyline
+          (pts
+            (xy -2.54 1.27)
+            (xy 2.54 1.27))
+          (stroke
+            (width 0.2032)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.54 1.27)
+            (xy -1.27 -1.27)
+            (xy 0 1.27))
+          (stroke
+            (width 0.2032)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.54 -1.27)
+            (xy 2.54 -1.27))
+          (stroke
+            (width 0.2032)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.27 -2.54)
+            (xy -0.635 -1.27))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0 -1.27)
+            (xy 1.27 1.27)
+            (xy 2.54 -1.27))
+          (stroke
+            (width 0.2032)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "BTA08_600SWRG_1_1"
+        (pin input line
+          (at -3.81 -2.54 0)
+          (length 2.54)
+          (name "G"
+            (effects
+              (font
+                (size 0.635 0.635))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.54)
+          (name "A2"
+            (effects
+              (font
+                (size 0.635 0.635))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.54)
+          (name "A1"
+            (effects
+              (font
+                (size 0.635 0.635))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Motley:G6DN_1A_L_DC5"
+      (pin_names
+        (offset 0.5)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "K"
+        (at 0 25 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Value" "G6DN_1A_L_DC5"
+        (at 0 22 0)
+        (effects
+          (font
+            (size 1.0 1.0))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.0 1.0))
+          (hide yes)))
+      (property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.0 1.0))
+          (hide yes)))
+      (symbol "G6DN_1A_L_DC5_1_1"
+        (rectangle
+          (start -1.27 3.81)
+          (end 1.27 -3.81)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (pin passive line
+          (at 0 7.62 270)
+          (length 3.81)
+          (name "COIL"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "1"
+            (effects
+              (font
+                (size 0.9 0.9)))))
+        (pin passive line
+          (at 0 -7.62 90)
+          (length 3.81)
+          (name "COIL"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "2"
+            (effects
+              (font
+                (size 0.9 0.9))))))
+      (symbol "G6DN_1A_L_DC5_2_1"
+        (polyline
+          (pts
+            (xy 0 -5.08)
+            (xy 0 -2.54)
+            (xy -2.54 2.54))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 0 5.08)
+            (xy 0 2.54))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (pin passive line
+          (at 0 7.62 270)
+          (length 2.54)
+          (name "NO"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "5"
+            (effects
+              (font
+                (size 0.9 0.9)))))
+        (pin passive line
+          (at 0 -7.62 90)
+          (length 2.54)
+          (name "COM"
+            (effects
+              (font
+                (size 1.0 1.0))))
+          (number "8"
+            (effects
+              (font
+                (size 0.9 0.9)))))))
+    (symbol "Connector_Generic:Conn_01x03"
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "Conn_01x03"
+        (at 0 -5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "connector"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "Connector*:*_1x??_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "Conn_01x03_1_1"
+        (rectangle
+          (start -1.27 3.81)
+          (end 1.27 -3.81)
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background)))
+        (rectangle
+          (start -1.27 2.667)
+          (end 0 2.413)
+          (stroke
+            (width 0.1524)
+            (type default))
+          (fill
+            (type none)))
+        (rectangle
+          (start -1.27 0.127)
+          (end 0 -0.127)
+          (stroke
+            (width 0.1524)
+            (type default))
+          (fill
+            (type none)))
+        (rectangle
+          (start -1.27 -2.413)
+          (end 0 -2.667)
+          (stroke
+            (width 0.1524)
+            (type default))
+          (fill
+            (type none)))
+        (pin passive line
+          (at -5.08 2.54 0)
+          (length 3.81)
+          (name "Pin_1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at -5.08 0 0)
+          (length 3.81)
+          (name "Pin_2"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at -5.08 -2.54 0)
+          (length 3.81)
+          (name "Pin_3"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Device:C"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "C_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762))
+          (stroke
+            (width 0.508)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+    (symbol "Device:D"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 0 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "D"
+        (at 0 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Description" "Diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Sim.Device" "D"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "Sim.Pins" "1=K 2=A"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_keywords" "diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (hide yes)))
+      (symbol "D_0_1"
+        (polyline
+          (pts
+            (xy -1.27 1.27)
+            (xy -1.27 -1.27))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 1.27)
+            (xy 1.27 -1.27)
+            (xy -1.27 0)
+            (xy 1.27 1.27))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 0)
+            (xy -1.27 0))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "D_1_1"
+        (pin passive line
+          (at -3.81 0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 3.81 0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
+(symbol "Connector_Generic:Conn_02x02_Odd_Even"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 1.27 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_02x02_Odd_Even"
+			(at 1.27 -5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x02, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_2x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_02x02_Odd_Even_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 3.81 -3.81)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start 3.81 0.127)
+				(end 2.54 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start 3.81 -2.413)
+				(end 2.54 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 0 180)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 -2.54 180)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+  (text "04.1  HEATER CHANNEL - 120 VAC RESISTIVE LOAD, 300 W TARGET"
+    (at 15 15 0)
+    (effects
+      (font
+        (size 1.9 1.9)
+        (bold yes))
+      (justify left top))
+    (uuid "049831ff-5ad2-50df-aba7-937d73e8b3c1"))
+  (text "LOW VOLTAGE: receiver-local blocking diodes, 10k B-E bias and 100n filters; qualification pending"
+    (at 15 25 0)
+    (effects
+      (font
+        (size 1.15 1.15))
+      (justify left top))
+    (uuid "4910f2ea-569a-5736-872d-35de555ce392"))
+  (symbol
+  (lib_id "Motley:MOC3063S_TA1")
+  (at 115.57 58.42 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "1a3701c4-1352-5b1a-a48b-807fa3b53418")
+  (property "Reference" "U2"
+      (at 115.57 45 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "MOC3063S-TA1 / ZC"
+      (at 115.57 48 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Package_DIP:SMDIP-6_W7.62mm"
+      (at 115.57 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/0840bd1cad2742139135cac60f4f70f5.pdf?productCode=C77950"
+      (at 115.57 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Lite-On 600 V zero-cross optotriac, IFT 5 mA, SMD six-pin package"
+      (at 115.57 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "57974512-81fe-5736-88fe-937a0d83e47b"))
+  (pin "2"
+      (uuid "cc70d844-79fe-52a2-86e6-d74c83b154cf"))
+  (pin "3"
+      (uuid "60604772-91f9-57d6-a1df-38fa066ea9bb"))
+  (pin "5"
+      (uuid "804f0a40-7968-5665-b59f-1ce61c087fb6"))
+  (pin "6"
+      (uuid "1f69cc1e-8118-50b2-86e4-df9e6564b0b5"))
+  (pin "4"
+      (uuid "f609f33d-2c46-5ee6-8626-a152f5e5389a"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "U2")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "U3")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "U2")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 115.57 58.42 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (no_connect
+    (at 110.49 58.42)
+    (uuid "c302750b-6fb6-500f-8af6-b3aa5028c91f"))
+  (no_connect
+    (at 120.65 58.42)
+    (uuid "1ef63516-14ca-51b7-b546-288b6a790b64"))
+  (symbol
+  (lib_id "Device:R")
+  (at 80.01 40.64 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "18936e29-bc33-5a51-9f8e-4eff212e9a02")
+  (property "Reference" "R101"
+      (at 83.01 37.64 0)
+      (effects
+        (font
+          (size 1.1 1.1))
+        (justify left)))
+  (property "Value" "330"
+      (at 83.01 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 80.01 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 80.01 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 80.01 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "189d0405-f268-5101-b68c-4eb396e7b94e"))
+  (pin "2"
+      (uuid "a1ea0f22-57f9-5739-8d80-a36eedb1337d"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R101")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R201")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R101")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 80.01 40.64 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 80.01 36.83)
+      (xy 80.01 31.75))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f8089791-68dc-56ed-b4b9-c74abbb08f54"))
+  (global_label "+5V_SYS"
+    (shape bidirectional)
+    (at 80.01 31.75 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid "16ff89a9-a581-55e8-a2bd-4e71813ce97e")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 80.01 31.75 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (wire
+    (pts
+      (xy 80.01 44.45)
+      (xy 80.01 55.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "21178425-2abc-5a96-abf5-c93de30b29ec"))
+  (wire
+    (pts
+      (xy 80.01 55.88)
+      (xy 107.95 55.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b541f234-3752-5556-9e77-80a6a7851089"))
+  (symbol
+  (lib_id "Transistor_BJT:MMBT3904")
+  (at 77.47 81.28 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "22dc1240-2ada-5cc5-92e4-9ae8b5bf907c")
+  (property "Reference" "Q101"
+      (at 93 80 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "MMBT3904"
+      (at 96 83 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+      (at 77.47 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://www.onsemi.com/pdf/datasheet/mmbt3904lt1-d.pdf"
+      (at 77.47 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+      (at 77.47 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "10e3a910-f447-50fe-b930-dd1ff0bb1669"))
+  (pin "3"
+      (uuid "d3bf9434-d937-5004-8fac-9be24f12c3f2"))
+  (pin "2"
+      (uuid "75d8503b-4b2f-5517-9e9e-7278c7771aa9"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q101")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "Q201")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q101")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 77.47 81.28 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 107.95 60.96)
+      (xy 80.01 60.96))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ad3dea83-40cf-52c2-a420-b82cd5430c23"))
+  (wire
+    (pts
+      (xy 80.01 60.96)
+      (xy 80.01 76.2))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f97807b5-f826-53dd-b4e0-0a73eab185c9"))
+  (symbol
+  (lib_id "Device:R")
+  (at 50.8 81.28 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "060ac312-cd09-5458-9096-28fbb320c3e2")
+  (property "Reference" "R102"
+      (at 50.8 74 90)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "470"
+      (at 50.8 77 90)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 50.8 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 50.8 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 50.8 81.28 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "cba5919c-ed61-5c91-aef0-fcb057ab5fb2"))
+  (pin "2"
+      (uuid "76d88849-bead-5671-9259-16247ec99ed1"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R102")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R202")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R102")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 50.8 81.28 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (hierarchical_label "HEAT_EN"
+    (shape input)
+    (at 36.83 81.28 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "9ea19852-7e47-5bf6-bf2d-2e878f349f49"))
+  (wire
+    (pts
+      (xy 54.61 81.28)
+      (xy 63.5 81.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "8b4d1448-ebe5-5108-86d8-9cc430102f31"))
+  (wire
+    (pts
+      (xy 63.5 81.28)
+      (xy 72.39 81.28))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "150e774b-7358-5adb-9e4f-0f53eeb2d027"))
+  (symbol
+  (lib_id "Device:R")
+  (at 63.5 96.52 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "53c3a60e-4c83-5a8d-87dd-54037dd5b3ed")
+  (property "Reference" "R103"
+      (at 66.5 93.52 0)
+      (effects
+        (font
+          (size 1.1 1.1))
+        (justify left)))
+  (property "Value" "10k"
+      (at 66.5 96.52 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 63.5 96.52 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 63.5 96.52 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 63.5 96.52 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "ec7bfa58-1528-5b4c-ac21-3164e93d96a6"))
+  (pin "2"
+      (uuid "21bb6b8e-d945-5d29-afa0-0df54a1ae30a"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R103")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R203")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R103")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 63.5 96.52 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (junction
+    (at 63.5 81.28)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "ae133b98-09ed-50a7-a2b0-f673aca0dc4b"))
+  (wire
+    (pts
+      (xy 63.5 100.33)
+      (xy 63.5 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "de6ae28f-e426-5542-8fc2-0a5763cf29f9"))
+  (wire
+    (pts
+      (xy 63.5 106.68)
+      (xy 80.01 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "57015efe-35c2-598b-a678-1c6f80ea4d40"))
+  (wire
+    (pts
+      (xy 80.01 106.68)
+      (xy 80.01 86.36))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "578dcb30-bdd2-5cb7-97f5-4817f531cfa2"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 80.01 106.68 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid "76dc68af-108e-5ac7-94ff-93bbe038e048")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 80.01 106.68 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (symbol
+  (lib_id "Device:Fuse")
+  (at 200.66 40.64 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "9c4b1e6b-1a22-542b-aeed-f8f2be296304")
+  (property "Reference" "F2"
+      (at 200.66 32 90)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "T3.15A provisional"
+      (at 200.66 35 90)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 200.66 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 200.66 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Fuse"
+      (at 200.66 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "1b2087c6-4539-5880-9afa-97f37ef44b29"))
+  (pin "2"
+      (uuid "851322f8-fbfa-5945-b80f-0740a1402483"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "F2")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "F3")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "F2")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 200.66 40.64 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 196.85 40.64)
+      (xy 184.15 40.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "9b410688-58b8-5bc2-bd25-3eba672d87f5"))
+  (global_label "AC_L_FUSED"
+    (shape bidirectional)
+    (at 184.15 40.64 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "7ecd220c-c2f1-5bef-8d5e-f1a3539392eb")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 184.15 40.64 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (symbol
+  (lib_id "Motley:BTA08_600SWRG")
+  (at 229.87 69.85 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "e52544a7-778e-5083-8d40-a594dfc2a288")
+  (property "Reference" "Q102"
+      (at 246 69 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "BTA08-600SWRG"
+      (at 249 72 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+      (at 229.87 69.85 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://www.st.com/resource/en/datasheet/bta08.pdf"
+      (at 229.87 69.85 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "8 A / 600 V snubberless triac, insulated TO-220 tab, IGT 10 mA"
+      (at 229.87 69.85 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "3"
+      (uuid "18f0a036-4231-5df2-ab41-75a4110794b5"))
+  (pin "2"
+      (uuid "af456c23-3fa3-5d00-beb0-7d5450b9ea88"))
+  (pin "1"
+      (uuid "9c55505d-3162-5647-beeb-440454ea83e0"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q102")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "Q202")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q102")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 229.87 69.85 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 204.47 40.64)
+      (xy 229.87 40.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "26fc85a7-caac-5b2b-9630-94d188d44111"))
+  (wire
+    (pts
+      (xy 229.87 40.64)
+      (xy 229.87 55.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "5513d4b0-3fee-5ea7-bcdd-809aec52805a"))
+  (wire
+    (pts
+      (xy 229.87 55.88)
+      (xy 229.87 66.04))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "2124a212-0579-5cc8-9c96-d6a175b19c74"))
+  (symbol
+  (lib_id "Device:R")
+  (at 175.26 55.88 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "ad015636-933f-518e-964c-7cd67bed6fbf")
+  (property "Reference" "R104"
+      (at 175.26 48 90)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "360 / pulse-rated"
+      (at 175.26 51 90)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+      (at 175.26 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 175.26 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 175.26 55.88 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "81ae4d3d-cab8-5de9-9989-4d3dfe790c3a"))
+  (pin "2"
+      (uuid "294657a4-9fd8-50ec-8c49-24b2bcf7015e"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R104")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R204")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R104")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 175.26 55.88 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 123.19 55.88)
+      (xy 171.45 55.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "15cdbaf4-f33d-5463-bbc9-cecadc9df82a"))
+  (wire
+    (pts
+      (xy 179.07 55.88)
+      (xy 229.87 55.88))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "7ad1cb7b-91cb-57e5-9c5e-09aad632945a"))
+  (junction
+    (at 229.87 55.88)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "2cbbd637-e929-5e43-82e4-dffe8ab1e966"))
+  (wire
+    (pts
+      (xy 123.19 60.96)
+      (xy 162.56 60.96))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "957f59c1-3808-5de6-a89d-93632339347a"))
+  (wire
+    (pts
+      (xy 162.56 60.96)
+      (xy 162.56 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "c16d1efe-4aa2-5612-9845-8591551366e6"))
+  (wire
+    (pts
+      (xy 162.56 72.39)
+      (xy 190.5 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "2e5d05ae-08ba-5e4e-a96c-e2f5174ac7df"))
+  (wire
+    (pts
+      (xy 190.5 72.39)
+      (xy 226.06 72.39))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b65ab62b-f02b-570b-a36d-7390333aa1ee"))
+  (symbol
+  (lib_id "Device:R")
+  (at 190.5 91.44 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "8f428458-083c-5f29-b37c-4330f9b39e7c")
+  (property "Reference" "R105"
+      (at 193.5 88.44 0)
+      (effects
+        (font
+          (size 1.1 1.1))
+        (justify left)))
+  (property "Value" "330"
+      (at 193.5 91.44 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 190.5 91.44 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 190.5 91.44 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 190.5 91.44 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "15b755e9-5a3a-55ba-ad31-2ae3b2d0fe79"))
+  (pin "2"
+      (uuid "fff71dae-0142-5d5f-ba7f-388908ff54f5"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R105")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R205")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R105")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 190.5 91.44 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 190.5 72.39)
+      (xy 190.5 87.63))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "decde9f2-4052-5e5c-b775-46acd63dff18"))
+  (junction
+    (at 190.5 72.39)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "55cffd87-7a29-5e3f-ad32-464213f0c8b1"))
+  (wire
+    (pts
+      (xy 190.5 95.25)
+      (xy 190.5 104.14))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b0cc5e50-6038-52c7-b54c-69803ac404e0"))
+  (wire
+    (pts
+      (xy 190.5 104.14)
+      (xy 229.87 104.14))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "3755edf7-ac33-5100-b3d6-995d1aa0b72c"))
+  (symbol
+  (lib_id "Motley:G6DN_1A_L_DC5")
+  (at 229.87 124.46 0)
+  (unit 2)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "5989b11d-522d-5bc4-acef-5b1d01ed0f75")
+  (property "Reference" "K1"
+      (at 246 119 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "G6DN-1A-L DC5"
+      (at 251 122 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 229.87 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf"
+      (at 229.87 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" ""
+      (at 229.87 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "5"
+      (uuid "725c8189-e1b1-5580-9ba0-33a649906a5a"))
+  (pin "8"
+      (uuid "809a22ba-3b54-5706-b561-0f86ed195269"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "K1")
+          (unit 2))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "K2")
+          (unit 2)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "K1")
+          (unit 2))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 229.87 124.46 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 229.87 73.66)
+      (xy 229.87 104.14))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "387e87df-6f77-568c-bf66-9b4aaadd3cd2"))
+  (wire
+    (pts
+      (xy 229.87 104.14)
+      (xy 229.87 116.84))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "f6b3e3e9-0831-5391-9ddb-c6d254b696b8"))
+  (junction
+    (at 229.87 104.14)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "6cd27277-ae13-56b4-b542-03ee03edff66"))
+  (label "TRIAC_A1"
+    (at 229.87 104.14 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid "15369445-66a7-5188-91d6-5401dd7ec0cb"))
+  (symbol
+  (lib_id "Connector_Generic:Conn_01x03")
+  (at 276.86 142.24 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "bafc8646-e1ad-5d1e-809f-e3595df4c1b7")
+  (property "Reference" "J10"
+      (at 272 128 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "Qualtek 738W-X2/03 (wired)"
+      (at 255 131 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 276.86 142.24 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 276.86 142.24 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+      (at 276.86 142.24 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "3afde283-b8f6-5d88-860b-4469b5152e28"))
+  (pin "2"
+      (uuid "4c393047-8cba-5ab6-a724-a7f1cb432bd9"))
+  (pin "3"
+      (uuid "e52624c0-3c85-54fb-be20-93ccda0f464d"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "J10")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "J11")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "J10")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004" (at 276.86 142.24 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 229.87 132.08)
+      (xy 229.87 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "5c84f21b-56f9-5eb5-8ea8-c555ee67595f"))
+  (wire
+    (pts
+      (xy 229.87 139.7)
+      (xy 271.78 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "a6bf790b-0bf6-51c8-a24a-2e922b468295"))
+  (wire
+    (pts
+      (xy 271.78 142.24)
+      (xy 266.7 142.24))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "97cf00db-82f7-5a7e-9176-5ffcdb7d3753"))
+  (global_label "AC_N"
+    (shape bidirectional)
+    (at 266.7 142.24 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "54e22a41-f677-5fc7-9f1f-6348e096b080")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 266.7 142.24 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (wire
+    (pts
+      (xy 271.78 144.78)
+      (xy 266.7 144.78))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "d02ccd17-58fb-5b1f-b293-49b927dc6c5a"))
+  (global_label "PE"
+    (shape bidirectional)
+    (at 266.7 144.78 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "a45bd7e8-2137-59ca-bab9-8f2c6df053c9")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 266.7 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (symbol
+  (lib_id "Device:R")
+  (at 269.24 58.42 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "b6f14d32-d760-5b7e-bdd4-226b7a37e6f6")
+  (property "Reference" "R108"
+      (at 269.24 49 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "100"
+      (at 269.24 52 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 269.24 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 269.24 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 269.24 58.42 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "1e6ac45e-799f-55de-9d90-734511d3f678"))
+  (pin "2"
+      (uuid "88315198-56ab-575b-91f3-1168e6636c10"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R108")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R208")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R108")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 269.24 58.42 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (symbol
+  (lib_id "Device:C")
+  (at 269.24 88.9 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "6aa4b9a7-a432-5c4a-8d63-c32ba0c9c035")
+  (property "Reference" "C101"
+      (at 269.24 80 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "10n X2"
+      (at 269.24 83 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 269.24 88.9 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 269.24 88.9 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Unpolarized capacitor"
+      (at 269.24 88.9 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "a674f418-b9e0-519d-b9ae-07a1787b0f29"))
+  (pin "2"
+      (uuid "7c3761da-c584-56e2-b7e4-bd3ca3466964"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "C101")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "C201")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "C101")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 269.24 88.9 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 269.24 54.61)
+      (xy 269.24 40.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "d7d24902-6aaa-58ce-8b3b-f23bf340e0bc"))
+  (wire
+    (pts
+      (xy 269.24 40.64)
+      (xy 229.87 40.64))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "07bca55e-b40b-5579-baf6-0ea090b29095"))
+  (junction
+    (at 229.87 40.64)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "7adc80dc-0bfe-552a-88f6-fe698eec1c4a"))
+  (wire
+    (pts
+      (xy 269.24 62.23)
+      (xy 269.24 85.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "c5edfb9a-fd3f-59de-8be5-ac3d8b0ead2d"))
+  (text "MAINS / ISOLATION\nA1 is live, never low-voltage GND.\nHeatsink and clip on insulated tab.\nRC fitted; J20 sets ON/OFF. Values provisional."
+    (at 160 151 0)
+    (effects
+      (font
+        (size 1.15 1.15))
+      (justify left top))
+    (uuid "e1c49d33-331a-520f-88bf-d418a72c5641"))
+  (symbol
+  (lib_id "Motley:G6DN_1A_L_DC5")
+  (at 105.41 124.46 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "3a5c19fe-bcae-5d3f-a58c-a059269cdc22")
+  (property "Reference" "K1"
+      (at 90 119 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "G6DN-1A-L DC5"
+      (at 86 122 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" ""
+      (at 105.41 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf"
+      (at 105.41 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" ""
+      (at 105.41 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "cbede138-0012-52da-a100-c8e62c9deacf"))
+  (pin "2"
+      (uuid "3c315576-0517-5045-ac11-8b8053054b7b"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "K1")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "K2")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "K1")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 105.41 124.46 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 105.41 116.84)
+      (xy 105.41 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b6196350-064b-545a-af5c-214212bf8f54"))
+  (wire
+    (pts
+      (xy 105.41 109.22)
+      (xy 124.46 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "de481832-09a4-54d1-a1b8-d40f9731e8e3"))
+  (global_label "+5V_SYS"
+    (shape bidirectional)
+    (at 105.41 109.22 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "afaf52d4-a8ff-525d-a502-5a55f1f9ceeb")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 105.41 109.22 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (symbol
+  (lib_id "Transistor_BJT:MMBT3904")
+  (at 102.87 144.78 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "0bbf6122-9a85-543a-ae2f-72acd5b2c51b")
+  (property "Reference" "Q103"
+      (at 119 144 0)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "MMBT3904"
+      (at 121 147 0)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+      (at 102.87 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "https://www.onsemi.com/pdf/datasheet/mmbt3904lt1-d.pdf"
+      (at 102.87 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+      (at 102.87 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "9c703b70-b9a9-5eea-92a7-fc44e68a3ce5"))
+  (pin "3"
+      (uuid "24687b03-5dc2-5f75-a1f9-0bbdd69c476f"))
+  (pin "2"
+      (uuid "9a00d976-208f-546c-8355-62b626633d5f"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q103")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "Q203")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "Q103")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 102.87 144.78 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 105.41 132.08)
+      (xy 105.41 135.89))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b63cd49c-ae12-5371-a208-7c3294c0356a"))
+  (wire
+    (pts
+      (xy 105.41 135.89)
+      (xy 105.41 139.7))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "d72dd6ae-eb74-52e6-b143-425bdc89c439"))
+  (symbol
+  (lib_id "Device:D")
+  (at 124.46 124.46 270)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "3a687616-ac72-5c94-b40a-bc9e09164f1b")
+  (property "Reference" "D1"
+      (at 134 123 90)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "1N4148W"
+      (at 135 126 90)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Diode_SMD:D_SOD-123"
+      (at 124.46 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 124.46 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Diode"
+      (at 124.46 124.46 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "cfa2ae08-e2cb-5ecc-927a-3ccf0cd6af56"))
+  (pin "2"
+      (uuid "952e2b5e-3c70-5e40-9974-c007704941b7"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "D1")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "D2")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "D1")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 124.46 124.46 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire
+    (pts
+      (xy 124.46 120.65)
+      (xy 124.46 109.22))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "1c3c8747-bffd-5dcb-857b-9239c8217502"))
+  (wire
+    (pts
+      (xy 124.46 128.27)
+      (xy 124.46 135.89))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ab6652fb-e47b-563f-b3fc-a5a32689e1fc"))
+  (wire
+    (pts
+      (xy 124.46 135.89)
+      (xy 105.41 135.89))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "9f7e61f3-584a-5efb-ac52-cda5be718d15"))
+  (junction
+    (at 105.41 135.89)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "d318efe9-4156-5fce-9988-11e4c4f72d02"))
+  (symbol
+  (lib_id "Device:R")
+  (at 73.66 144.78 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "b7c22230-b5b1-5d42-b01a-bfe4a1d40d84")
+  (property "Reference" "R106"
+      (at 73.66 138 90)
+      (effects
+        (font
+          (size 1.1 1.1))))
+  (property "Value" "150"
+      (at 73.66 141 90)
+      (effects
+        (font
+          (size 1.0 1.0))))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 73.66 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 73.66 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 73.66 144.78 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "51c7fe97-f0cd-5a2a-ac38-b23cc747487f"))
+  (pin "2"
+      (uuid "5dd8ed10-946b-5e0f-94e6-1863acecada7"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R106")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R206")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R106")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 73.66 144.78 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (hierarchical_label "CUT_EN"
+    (shape input)
+    (at 59.69 144.78 180)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify right))
+    (uuid "0bb54fca-2487-513e-9dee-b9148a0b1610"))
+  (wire
+    (pts
+      (xy 77.47 144.78)
+      (xy 86.36 144.78))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "95824daa-c0d7-5460-8256-4658c356f709"))
+  (wire
+    (pts
+      (xy 86.36 144.78)
+      (xy 97.79 144.78))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "70262600-fb43-5bdb-9a36-7bc5f35dbc96"))
+  (symbol
+  (lib_id "Device:R")
+  (at 86.36 157.48 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (fields_autoplaced)
+  (uuid "dad2fe2f-32c8-5841-9b7c-4f97cbc98e16")
+  (property "Reference" "R107"
+      (at 89.36 154.48 0)
+      (effects
+        (font
+          (size 1.1 1.1))
+        (justify left)))
+  (property "Value" "10k"
+      (at 89.36 157.48 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (justify left)))
+  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+      (at 86.36 157.48 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Datasheet" "~"
+      (at 86.36 157.48 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (property "Description" "Resistor"
+      (at 86.36 157.48 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes)))
+  (pin "1"
+      (uuid "2553037c-3163-5901-b670-995a5e1b05d0"))
+  (pin "2"
+      (uuid "d534549a-913d-55ae-9e67-0ba98c398577"))
+  (instances
+  (project "motley-controller"
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R107")
+          (unit 1))
+        (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+          (reference "R207")
+          (unit 1)))
+  (project "motley-ac-output"
+  (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154"
+          (reference "R107")
+          (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 86.36 157.48 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (junction
+    (at 86.36 144.78)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "15d9fd09-614e-5ea0-994d-f58573f5a303"))
+  (wire
+    (pts
+      (xy 86.36 161.29)
+      (xy 86.36 168.91))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "5e754d60-fa4e-5519-99b8-cc90124c5ab5"))
+  (wire
+    (pts
+      (xy 86.36 168.91)
+      (xy 105.41 168.91))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "76527b5e-0b99-508f-89ec-593a689c4ba7"))
+  (wire
+    (pts
+      (xy 105.41 168.91)
+      (xy 105.41 149.86))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ee04f65d-f5ea-5eb7-a1cc-9cac99756648"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 105.41 168.91 0)
+    (effects
+      (font
+        (size 1.0 1.0))
+      (justify left))
+    (uuid "f1864ab7-8f8d-51a7-948e-2fc2a21a4beb")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+      (at 105.41 168.91 0)
+      (effects
+        (font
+          (size 1.0 1.0))
+        (hide yes))))
+  (text "Normally hold relay ON; triac modulates heat. Coil 5 V / about 36 mA.\nNormal relay changes with triac OFF; relay interrupts load after triac fault.\nGPIO commands HIGH = ON. Flyback diode delays release; verify timing."
+    (at 15 180 0)
+    (effects
+      (font
+        (size 1.1 1.1))
+      (justify left top))
+    (uuid "397cba46-1758-56ac-b6b4-343795e27753"))
+  (sheet_instances
+    (path "/5e4be167-9778-594e-8893-42fa6488e9ce/e60bee3a-0434-582c-b7d2-ce2253b93154"
+      (page "13"))
+    (path "/5e4be167-9778-594e-8893-42fa6488e9ce/6c817cff-c1bb-58a9-baa8-3eb66434865c"
+      (page "14")))
+  (embedded_fonts no)
+  (symbol
+  (lib_id "Connector_Generic:Conn_02x02_Odd_Even")
+  (at 264.16 110.49 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "57e2bd71-70f6-5636-80a7-626c85370620")
+  (property "Reference" "J20" (at 265.43 100.33 0) (effects (font (size 1 1))))
+  (property "Value" "SNUBBER CONFIG" (at 265.43 102.87 0) (effects (font (size 1 1))))
+  (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical" (at 264.16 110.49 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Datasheet" "" (at 264.16 110.49 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Description" "PROVISIONAL 2x2 header; 1/3 capacitor side, 2/4 triac A1. Two closed-top shunts: ON 1-2 + 3-4; OFF 1-3 + 2-4. Default ON; no touch-safe qualification." (at 264.16 110.49 0) (effects (font (size 1 1)) (hide yes)))
+  (pin "1" (uuid "414a1393-1eeb-5c78-975b-c9d8b1c5cc14"))
+  (pin "2" (uuid "3a7a6712-093a-57e9-b4f4-b1d1435c2ae0"))
+  (pin "3" (uuid "9e502225-4aba-5cae-8c2e-4061c908b002"))
+  (pin "4" (uuid "449cde9f-e5b3-5241-bc49-6ed8e4ac4ac0"))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "J20") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004" (at 264.16 110.49 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 269.24 92.71) (xy 254 92.71)) (stroke (width 0) (type default)) (uuid "e8d7d01c-c25a-5b50-9db9-41ad5f43b161"))
+  (wire (pts (xy 254 92.71) (xy 254 110.49)) (stroke (width 0) (type default)) (uuid "105ceecc-369f-5a46-9652-d15e9a69f29d"))
+  (wire (pts (xy 254 110.49) (xy 254 113.03)) (stroke (width 0) (type default)) (uuid "d2c49a4c-0810-5884-b08e-ac1e002f68b3"))
+  (wire (pts (xy 254 110.49) (xy 259.08 110.49)) (stroke (width 0) (type default)) (uuid "1a35769d-3708-5fcf-bc32-efd6fd6ac4ba"))
+  (wire (pts (xy 254 113.03) (xy 259.08 113.03)) (stroke (width 0) (type default)) (uuid "a087a8fd-36c9-55aa-92f8-92bd72ff352f"))
+  (wire (pts (xy 271.78 110.49) (xy 279.4 110.49)) (stroke (width 0) (type default)) (uuid "43340539-8756-5094-9751-544d367253de"))
+  (wire (pts (xy 271.78 113.03) (xy 279.4 113.03)) (stroke (width 0) (type default)) (uuid "801d8e69-e7f4-56d6-a8d1-a995c9ba5072"))
+  (wire (pts (xy 279.4 110.49) (xy 279.4 113.03)) (stroke (width 0) (type default)) (uuid "56e1526f-1fa2-5ca3-ad85-1f458f7e94ad"))
+  (wire (pts (xy 279.4 113.03) (xy 279.4 118.11)) (stroke (width 0) (type default)) (uuid "25d08ba1-0f82-5788-b45d-6ecc736663d6"))
+  (wire (pts (xy 279.4 118.11) (xy 243.84 118.11)) (stroke (width 0) (type default)) (uuid "6ef35928-c956-5d1a-9ed0-dfdda761fbde"))
+  (wire (pts (xy 243.84 118.11) (xy 243.84 104.14)) (stroke (width 0) (type default)) (uuid "89975052-06d7-5a34-8601-80ead9c7432e"))
+  (wire (pts (xy 243.84 104.14) (xy 229.87 104.14)) (stroke (width 0) (type default)) (uuid "1f19f99f-777b-5672-817a-4bd7bc5c8457"))
+  (junction (at 254 110.49) (diameter 0) (color 0 0 0 0) (uuid "a8de815a-caf7-5c0c-b13e-a871e9b4195c"))
+  (junction (at 279.4 113.03) (diameter 0) (color 0 0 0 0) (uuid "5025d272-e9a3-5b83-8c6b-c595f70f259e"))
+  (text "J20: TWO CLOSED-TOP SHUNTS (DEFAULT ON)\nON: 1-2 + 3-4; OFF: 1-3 + 2-4\nBoth caps stay fitted; rotate BOTH by 90 degrees.\nUnplug and discharge before changing.\nHeader / shunt fit and mains spacing provisional." (at 210.82 149.86 0) (effects (font (size 1.0 1.0)) (justify left top)) (uuid "b88bd669-cff7-5350-ae15-9a4b84293b73"))
+  (symbol
+  (lib_id "Device:D")
+  (at 41.91 81.28 180)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "623bf62d-241f-5aa9-b906-b7a116511af2")
+  (property "Reference" "D101" (at 41.91 67.31 0) (effects (font (size 1 1))))
+  (property "Value" "1N4148W" (at 41.91 69.85000000000001 0) (effects (font (size 1 1))))
+  (property "Footprint" "Diode_SMD:D_SOD-123" (at 41.91 81.28 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Datasheet" "https://datasheet.lcsc.com/lcsc/1811061725_ST-Semtech-1N4148W_C81598.pdf" (at 41.91 81.28 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Description" "ST(Semtech) C81598; anode toward command, cathode toward local base resistor. Missing-ground return blocking; hot leakage/transients require qualification." (at 41.91 81.28 0) (effects (font (size 1 1)) (hide yes)))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "D101") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 41.91 81.28 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (symbol
+  (lib_id "Device:D")
+  (at 64.77 144.78 180)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "6e4ebeb1-989e-50e5-91cc-80b2b3b16fcd")
+  (property "Reference" "D102" (at 64.77 130.81 0) (effects (font (size 1 1))))
+  (property "Value" "1N4148W" (at 64.77 133.35 0) (effects (font (size 1 1))))
+  (property "Footprint" "Diode_SMD:D_SOD-123" (at 64.77 144.78 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Datasheet" "https://datasheet.lcsc.com/lcsc/1811061725_ST-Semtech-1N4148W_C81598.pdf" (at 64.77 144.78 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Description" "ST(Semtech) C81598; anode toward command, cathode toward local base resistor. Missing-ground return blocking; hot leakage/transients require qualification." (at 64.77 144.78 0) (effects (font (size 1 1)) (hide yes)))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "D102") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 64.77 144.78 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (symbol
+  (lib_id "Device:C")
+  (at 50.8 96.52 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "23f2e689-3106-59a4-a480-8bcba0520642")
+  (property "Reference" "C102" (at 43.18 95.25 0) (effects (font (size 1 1))))
+  (property "Value" "100n / 50V" (at 43.18 97.79 0) (effects (font (size 1 1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 50.8 96.52 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Datasheet" "" (at 50.8 96.52 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Description" "Yageo CC0805KRX7R9BB104 / C49678, X7R 10%; receiver-local base-emitter noise filter; 10k pull-down gives nominal 1ms decay time constant. Starting value, not a qualified immunity limit." (at 50.8 96.52 0) (effects (font (size 1 1)) (hide yes)))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "C102") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 50.8 96.52 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (symbol
+  (lib_id "Device:C")
+  (at 73.66 157.48 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "cc15721b-b881-5b18-a6b6-db35fc535b88")
+  (property "Reference" "C103" (at 63.5 156.20999999999998 0) (effects (font (size 1 1))))
+  (property "Value" "100n / 50V" (at 63.5 158.74999999999997 0) (effects (font (size 1 1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 73.66 157.48 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Datasheet" "" (at 73.66 157.48 0) (effects (font (size 1 1)) (hide yes)))
+  (property "Description" "Yageo CC0805KRX7R9BB104 / C49678, X7R 10%; receiver-local base-emitter noise filter; 10k pull-down gives nominal 1ms decay time constant. Starting value, not a qualified immunity limit." (at 73.66 157.48 0) (effects (font (size 1 1)) (hide yes)))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "C103") (unit 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 73.66 157.48 0) (effects (font (size 0.8 0.8)) (hide yes))))
+  (wire (pts (xy 36.83 81.28) (xy 38.1 81.28)) (stroke (width 0) (type default)) (uuid "3e1b6578-0668-5ff1-8ca4-b8ba10bf2216"))
+  (wire (pts (xy 45.72 81.28) (xy 46.99 81.28)) (stroke (width 0) (type default)) (uuid "332ca6a3-c949-5941-b6c4-1a459cd31bd9"))
+  (wire (pts (xy 59.69 144.78) (xy 60.96 144.78)) (stroke (width 0) (type default)) (uuid "387ef14d-3b6c-52f8-8eff-9c07647ba225"))
+  (wire (pts (xy 68.58 144.78) (xy 69.85 144.78)) (stroke (width 0) (type default)) (uuid "b3d64182-89c1-5f16-b3f4-71a7b9311438"))
+  (wire (pts (xy 63.5 81.28) (xy 63.5 87.63)) (stroke (width 0) (type default)) (uuid "b344773d-5942-5734-aba0-c5af5e2a8ffe"))
+  (wire (pts (xy 63.5 87.63) (xy 63.5 92.71)) (stroke (width 0) (type default)) (uuid "0d960111-2223-573e-813d-92799e80fee5"))
+  (wire (pts (xy 63.5 87.63) (xy 50.8 87.63)) (stroke (width 0) (type default)) (uuid "3e37b750-590f-5db3-bbaf-f40b6df83432"))
+  (wire (pts (xy 50.8 87.63) (xy 50.8 92.71)) (stroke (width 0) (type default)) (uuid "cf79d826-5adc-5d7b-8674-cb867d9729d1"))
+  (wire (pts (xy 50.8 100.33) (xy 50.8 106.68)) (stroke (width 0) (type default)) (uuid "e9afc168-2038-5163-8edb-7fefc985a621"))
+  (wire (pts (xy 50.8 106.68) (xy 63.5 106.68)) (stroke (width 0) (type default)) (uuid "3c279651-a4e8-573a-be06-550372f55a7d"))
+  (wire (pts (xy 86.36 144.78) (xy 86.36 149.86)) (stroke (width 0) (type default)) (uuid "db576ac0-0d82-541d-8d5a-54bcb2b08066"))
+  (wire (pts (xy 86.36 149.86) (xy 86.36 153.67)) (stroke (width 0) (type default)) (uuid "930ff919-b230-5f1c-9805-975868838eaf"))
+  (wire (pts (xy 86.36 149.86) (xy 73.66 149.86)) (stroke (width 0) (type default)) (uuid "8ddacc84-2520-5877-9378-a777d3d84934"))
+  (wire (pts (xy 73.66 149.86) (xy 73.66 153.67)) (stroke (width 0) (type default)) (uuid "18668295-b8d4-5d69-940a-b5e0c8a92365"))
+  (wire (pts (xy 73.66 161.29) (xy 73.66 168.91)) (stroke (width 0) (type default)) (uuid "0a13a461-44a3-56d1-8912-b1930ea4e239"))
+  (wire (pts (xy 73.66 168.91) (xy 86.36 168.91)) (stroke (width 0) (type default)) (uuid "69795970-888d-59c1-8153-0470b1f0725e"))
+  (junction (at 63.5 87.63) (diameter 0) (color 0 0 0 0) (uuid "41e23c06-6f06-530e-ae0a-4b70fb6dc6fb"))
+  (junction (at 63.5 106.68) (diameter 0) (color 0 0 0 0) (uuid "5be511ec-0d9b-5e4a-ae50-b588fcce593c"))
+  (junction (at 86.36 149.86) (diameter 0) (color 0 0 0 0) (uuid "a2ab6ae8-3834-57c4-98b3-d7536210e57e"))
+  (junction (at 86.36 168.91) (diameter 0) (color 0 0 0 0) (uuid "2b6118ae-d134-5447-91e7-61b885e13782"))
+  (text "D101/D102 block return into a LOW command if J14 GND opens first.\n100n B-E filters + 10k local pull-downs: nominal 1 ms decay.\nR102 470 / R106 150 restore base drive after diode drop.\nLoaded GPIO HIGH, hot leakage and unplug transients remain UNQUALIFIED." (at 15 35.56 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "34eedc19-f815-5404-a2f4-8321bdc72446")))

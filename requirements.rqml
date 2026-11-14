@@ -8,7 +8,7 @@
   <meta>
     <title>Motley requirements</title>
     <system>motley</system>
-    <summary>Motley requirements under development. The engineering requirements capture the agreed portable-core and typed-result directions; product behavior and verification remain to be developed.</summary>
+    <summary>Motley requirements under development. The engineering requirements capture the portable-core and typed-result directions; draft hardware requirements address complete pin-state review and defined defaults. Product behavior and verification remain to be developed.</summary>
   </meta>
   <goals>
     <goal id="GOAL-MOT-PLATFORM" title="Matter device foundation" priority="must" status="draft">
@@ -30,6 +30,18 @@
     <goal id="GOAL-MOT-SENSING" title="Wired sensing" priority="must" status="draft">
       <statement>Provide remote temperature and humidity measurements using wired sensor heads in later application milestones.</statement>
       <rationale>Sensing remains future work after the Matter device foundation; its requirements can be recorded before implementation.</rationale>
+    </goal>
+    <goal id="GOAL-MOT-HARDWARE" title="Predictable hardware states" priority="must" status="draft">
+      <statement>Make hardware behavior predictable when signal drivers are high impedance, supplies change state, or removable connections are absent.</statement>
+      <rationale>The developer requested consideration of pull-up and pull-down needs for every component pin, including startup states of MCUs and other chips and disconnected low-voltage connectors or jumpers.</rationale>
+    </goal>
+    <goal id="GOAL-MOT-AC" title="Locally controlled and monitored AC outputs" priority="must" status="draft">
+      <statement>Control compatible AC heaters and lamps locally, identify output behavior inconsistent with commands, and interrupt unintended power delivery.</statement>
+      <rationale>The developer wants both lamp dimming and slow heater modulation, including identification of a shorted triac on each output with or without an attached load.</rationale>
+    </goal>
+    <goal id="GOAL-MOT-PERSISTENCE" title="Recoverable persistent state on every MCU" priority="must" status="draft">
+      <statement>Retain a complete committed persistent state through interrupted updates, restarts and power cycles on every Motley MCU.</statement>
+      <rationale>The developer requires double-buffered persistent storage with verification before changing the active pointer.</rationale>
     </goal>
   </goals>
   <requirements>
@@ -313,14 +325,357 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-STOR-001" type="CR" title="Verified double-buffered persistence on every MCU" status="draft" priority="must">
+      <statement>Updates to mutable persistent state on every Motley MCU, including state managed by dependencies or SDKs, SHALL use at least two persistent copies, preserve the currently committed copy while preparing another, and verify the newly stored copy before durably changing the active selector.</statement>
+      <notes>This governs how state selected for persistence is stored; it does not decide which commands or measurements become persistent. The scope includes the main ESP, any output-module MCU and other future MCUs, with an inventory of application, SDK, boot/update and reset/migration storage paths. The active selector may be represented by protected commit metadata rather than a literal pointer. Native NVS, journaling, redundant records or API success are not by themselves evidence of conformance. Current Matter/Thread persistence is delegated to SDK storage and remains unassessed against this requirement; no firmware implementation or qualified storage layout is claimed.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-STOR-001-01">
+          <given>every MCU's writable persistent-storage inventory and storage layout</given><when>an update erases or writes an inactive copy</when><then>the committed copy and its recoverable activation metadata remain intact in independently erasable storage regions or an explicitly qualified equivalent failure domain; two addresses that are lost in the same erase operation do not establish double buffering</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-02">
+          <given>a proposed new persistent transaction</given><when>its inactive copy has been written and durability operations have completed</when><then>verification reads the stored bytes with documented cache/coherency guarantees and checks the complete payload and required length, generation, schema and integrity metadata before activation; an API success, RAM-only checksum or cached copy of the write buffer is insufficient</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-03">
+          <given>a failed erase, write, readback or verification before activation</given><when>the update result is handled</when><then>the new copy is not selected, the previous committed state remains usable, and the failure is reported rather than acknowledged as persisted</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-04">
+          <given>reset or power loss injected during inactive-copy erase/write, verification, selector update or subsequent reclamation</given><when>the MCU recovers</when><then>it selects a complete committed old or new transaction according to the durable activation state, never mixed data or a merely verified but uncommitted candidate; torn or corrupt selector metadata does not destroy recoverability of the prior commit</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-05">
+          <given>settings or records whose consistency depends on one another</given><when>they are updated, migrated, deleted or intentionally reset</when><then>they are committed as one recoverable logical transaction, rather than independently activating incompatible generations; recovery respects a committed deletion/reset instead of resurrecting its superseded state</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-06">
+          <given>startup with corrupt, incomplete or unsupported stored data or commit metadata</given><when>persistent state is restored</when><then>only a valid committed compatible copy is used; if none is usable, storage unavailability is reported and applicable defined safe defaults apply without silently formatting storage, activating an uncommitted candidate or treating arbitrary bytes as configuration</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-07">
+          <given>a request to acknowledge an update as persistent</given><when>success is reported to its caller or controller</when><then>both the data verification and durable, verified activation commit have completed, and a subsequent ordinary restart restores that committed transaction</then>
+        </criterion>
+        <criterion id="AC-MOT-STOR-001-08">
+          <given>a persistent-storage backend or dependency claimed to satisfy this requirement</given><when>its verification evidence is reviewed</when><then>the affected MCU, storage geometry, readback/durability contract, transaction and selector protocol, failure-injection cases and observed recovery results are identified, including SDK-owned paths; host simulations alone do not establish real flash power-loss behavior</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-SENS-005" type="FR" title="Sensor power readiness" status="draft" priority="must">
       <statement>Before communicating with a supported sensor, Motley SHALL enable any required board-controlled sensor power and wait until the sensor's documented supply and startup conditions are met.</statement>
-      <notes>The Adafruit ESP32-C6 Feather #5933 uses active-high GPIO20 to enable its STEMMA QT supply, shared with NeoPixel power. ESP-IDF board initialization needs this mapping. Source: https://learn.adafruit.com/adafruit-esp32-c6-feather/pinouts . This reminder belongs to future sensing work; no fixed startup delay has been selected.</notes>
+      <notes>The earlier Adafruit ESP32-C6 Feather #5933 direction used active-high GPIO20 for its STEMMA QT supply (https://learn.adafruit.com/adafruit-esp32-c6-feather/pinouts). The integrated-controller study supersedes that mapping: active-high GPIO11 enables its separate AP2112 sensor regulator, with a receiver-local 10k pull-down. Future board initialization must use the selected hardware revision's mapping. Sensor-bus off-domain/reset-pull behavior and startup qualification remain open; no fixed startup delay or sensing firmware implementation has been selected.</notes>
       <acceptance>
         <criterion id="AC-MOT-SENS-005-01">
           <given>a supported sensor on a board-controlled power rail that is initially disabled</given>
           <when>sensing is initialized</when>
           <then>the rail is enabled and the sensor's documented supply and startup conditions are met before the first bus transaction to that sensor</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-001" type="PR" title="Complete pin bias and state review" status="draft" priority="must">
+      <statement>Every hardware revision SHALL have a documented assessment of the need for pull-up, pull-down or other state-defining measures for every component pin and connector, switch or jumper contact.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-001-01">
+          <given>the schematic, component pin definitions and supported assembly variants of a hardware revision</given>
+          <when>its pin review is reconciled with those sources</when>
+          <then>every reference and pin or contact has a traceable disposition, including unused pins, unpopulated parts, connector and jumper contacts; equivalent passive pins and repeated circuits may share an explicit assessment without leaving pins unaccounted for</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-001-02">
+          <given>a pin or contact whose voltage or current can affect circuit behavior</given>
+          <when>its state-defining measures are assessed</when>
+          <then>the assessment identifies its electrical function, required states and relevant driver states during normal operation, startup, reset, bootloader operation, brownout, shutdown, partial power, high impedance and removable-connection states, using manufacturer evidence and recording unresolved assumptions</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-001-03">
+          <given>a proposed external bias or an explicit decision to omit one</given>
+          <when>the disposition is reviewed</when>
+          <then>it records the existing internal or external state-defining path, its power domain and physical location, whether the path survives disconnection, and applicable threshold, leakage, internal-pull, loading, tolerance, transient-coupling and unpowered-injection limits; a justified no-additional-bias disposition is permitted and unknown limits remain open findings</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-001-04">
+          <given>a claimed closed pin-review finding</given>
+          <when>its evidence is inspected</when>
+          <then>the source revision, required state, relevant worst-case calculation or measurement and applicable limits are recorded; typical values, schematic connectivity and a clean ERC alone do not establish a guaranteed default or noise margin</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-002" type="CR" title="Defined hardware defaults without active control" status="draft" priority="must">
+      <statement>Hardware state-sensitive nets SHALL attain their declared default states without application-firmware initialization whenever their intended drivers are high impedance or absent in the supported power, reset and removable-connection states.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-002-01">
+          <given>heater and cutoff controls whose MCU is unpowered, resetting, starting, in the bootloader or otherwise high impedance</given>
+          <when>the supported supply sequences and voltage limits are exercised</when>
+          <then>opto-triac LED and relay-coil drive remain within declared non-actuation current and pulse-duration limits, allowing declared triac commutation and relay-release times after a previously active command; an explicit intentional command is needed to energize either actuator</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-002-02">
+          <given>a receiving board or circuit with a removable low-voltage connector, switch or jumper in its control path</given>
+          <when>each supported unplugged, open, missing-shunt and configuration state is evaluated</when>
+          <then>the required default is established by paths that remain with the receiving circuit; a bias path available only through the removed item is not credited, and intermediate contact-loss or connection-order cases are either qualified or explicitly excluded from the supported connection procedure</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-002-03">
+          <given>power-enable, source-selection, reset, boot-configuration and interface-control nets</given>
+          <when>their drivers are high impedance or absent in each applicable state</when>
+          <then>their declared defaults account for internal pulls and reset behavior; the sensor supply defaults disabled, source selection follows the declared priority, and USB data attachment remains disconnected without valid host VBUS</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-002-04">
+          <given>a required default across powered and unpowered domains</given>
+          <when>bias strength and the declared disturbance envelope are checked over the supported tolerances, temperatures and supply states</when>
+          <then>receiver thresholds and unpowered-pin or injection limits are respected without excessive driver loading, unintended back-power or an unsafe control pulse; additional filtering or isolation is used where a resistor alone cannot meet those limits</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-003" type="PR" title="Traceable native hardware design" status="approved" priority="must">
+      <statement>Native hardware design sources SHALL identify their applicable requirements through explicit RQML file relationships and requirement fields on relevant schematic symbols or sheets and corresponding PCB footprints.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-003-01">
+          <given>the native schematic hierarchy and PCB designs</given><when>their traceability is checked</when><then>all annotated native files have explicit RQML relationships; included sheets are covered individually rather than inferred from the root, and applicable requirement identifiers exist in the governing specification</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-003-02">
+          <given>schematic symbols represented by PCB footprints, including repeated sheets and multi-unit parts</given><when>their requirement fields are reconciled</when><then>the fields agree using stable source UUID and hierarchical instance identity, with no dependency on reference designators remaining unchanged</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-003-03">
+          <given>the traceability report and RQML links</given><when>they are reviewed</when><then>design-input applicability, implementation coverage and verification evidence remain distinguishable; annotation or file-drift checks do not claim circuit correctness, native KiCad navigation or interpretation of component fragments by RQML</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-004" type="CR" title="External-interface ESD assessment" status="draft" priority="must">
+      <statement>Every externally accessible electrical interface SHALL have a documented ESD assessment and appropriate protective measures for its declared exposure and operating states.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-004-01">
+          <given>external and service connectors, including mains and unused contacts</given><when>the interface inventory is reviewed</when><then>each contact has a protection or justified no-additional-device disposition covering signal/power domain, normal voltage, powered-off behavior, capacitance/leakage, discharge return and enclosure or shield assumptions</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-004-02">
+          <given>proposed ESD devices and their placement</given><when>their integration is checked</when><then>protection preserves isolation, PE continuity and required default states, does not create unintended partial-contact or back-power paths, and records residual clamp, layout and return-path limitations</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-004-03">
+          <given>a claim of system ESD immunity</given><when>it is accepted</when><then>the exposure levels, setup, operating states, pass criteria and observed tests are recorded; component ratings or ERC alone are not accepted as system immunity evidence</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-005" type="IR" title="Board handling touch reference" status="draft" priority="must">
+      <statement>Each PCB design SHALL provide a clearly marked finger-contact point on its top/front side for equalizing potential with its local low-voltage ground during supported handling.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-005-01">
+          <given>each complete or supported trimmed board</given><when>its handling point is inspected</when><then>an exposed ground contact on the board's top/front side remains accessible in the low-voltage region, clear of mains and required antenna or insulation reserves, and its ground identity is documented</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-005-02">
+          <given>an isolated or floating low-voltage ground</given><when>the handling feature is described or qualified</when><then>local potential equalization is distinguished from earth discharge; no PE-to-logic-ground bond or safe energized-mains handling claim is introduced by the feature</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-006" type="IR" title="Low-cost clip probe access" status="draft" priority="should">
+      <statement>Each PCB design SHOULD provide documented clip-compatible probe access to local low-voltage ground, supply rails and selected diagnostic signals with a stated incremental cost.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-006-01">
+          <given>the proposed probe-point set</given><when>its implementation is reviewed</when><then>net names, clip or optional loop attachment, polarity/ground references and fitted versus bare-PCB cost are explicit, and retained-board points survive supported trimming</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-006-02">
+          <given>probe-point placement in a mixed-voltage design</given><when>clearance and access are assessed</when><then>added clip points remain on the low-voltage side with room for the intended clip; no mains clip point or permission to defeat isolation with grounded test equipment is implied</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-007" type="CR" title="Preferred PCB outline envelope" status="draft" priority="should">
+      <statement>Each individual PCB design SHOULD have an overall outline width and height no greater than 100 mm.</statement>
+      <rationale>The developer set 100 mm as a strong per-board target while retaining the option to agree a larger board. This applies to the full untrimmed outline, including the sensor board's common circuitry; it does not fix that circuitry's aspect ratio or the size of a manufacturing panel.</rationale>
+      <acceptance>
+        <criterion id="AC-MOT-HW-007-01">
+          <given>an individual PCB outline, including any L-shaped or other nonrectangular shape</given><when>its overall dimensions are reviewed</when><then>the maximum extents along the board's defined width and height axes are compared with 100 mm; exactly 100 mm meets the target, and exceeding it is a deviation to discuss under MOT-HW-008 rather than an absolute prohibition</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-008" type="PR" title="Discuss anticipated PCB size overruns" status="draft" priority="must">
+      <statement>When either overall outline dimension of an individual PCB is expected to exceed 100 mm, the proposed size and relevant tradeoffs SHALL be discussed with the developer before proceeding with the enlargement.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-008-01">
+          <given>placement, connector, routing, thermal or other design work indicating that a board may need more than 100 mm in either dimension</given><when>the potential overrun is recognized</when><then>it is raised for discussion with the developer at that point, with the expected dimensions, reasons and practical alternatives, rather than deferred until the oversized design is complete</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-008-02">
+          <given>a proposed dimension greater than 100 mm</given><when>the discussion concludes</when><then>the agreed size decision is recorded; a larger board may proceed when agreed, and the 100 mm target remains applicable to other boards</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-009" type="IR" title="Separate Qwiic access to both controller I2C ports" status="draft" priority="must">
+      <statement>The controller board SHALL expose each of its two hardware I2C controllers through a pair of parallel four-contact 3.3 V Qwiic-compatible connectors for flexible peripheral and bench use.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-009-01">
+          <given>the controller's general-purpose and low-power I2C controllers</given><when>their connector pin mappings are reviewed</when><then>each has two sockets with contacts 1 GND, 2 3.3 V, 3 SDA and 4 SCL, with the bus identity and supported power source documented; duplicates within a pair share that bus, while the two controllers remain distinct buses</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-009-02">
+          <given>any socket used without a multiplexer board</given><when>its bus is powered and configured</when><then>appropriate local pull-ups and connector protection are present, and disconnected, unpowered and externally powered cases have explicit supported-use limits</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-010" type="IR" title="Optional mux Qwiic upstream bench input" status="draft" priority="must">
+      <statement>The multiplexer board SHALL provide two parallel four-contact 3.3 V Qwiic-compatible upstream connectors and two parallel five-contact deployment connectors for chaining, retaining the deployment reset signal.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-010-01">
+          <given>the complete or any supported trimmed multiplexer board</given><when>its upstream interfaces are inspected</when><then>both Qwiic connectors expose GND, 3.3 V, SDA and SCL in standard order; both five-contact connectors retain those signals and shared mux reset, and every upstream connector remains in the retained common area</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-010-02">
+          <given>standalone bench operation through Qwiic</given><when>the supported connection procedure is followed</when><then>the mux has configurable local bus pull-ups and retained reset bias, deployment connections to another controlling host or supply are disconnected, and one supply and one controlling host serve the bus; optional power-link changes are not represented as signal isolation or automatic source selection</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-011" type="IR" title="Switch-selectable mux address" status="draft" priority="must">
+      <statement>Each multiplexer board SHALL provide three address switches selecting its TCA9548A address from 0x70 through 0x77.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-011-01">
+          <given>the powered mux board with address switches configured before operation</given><when>the switch truth table is reviewed</when><then>OFF defines zero and ON defines one for A0, A1 and A2, with address 0x70 plus their binary value; all switches OFF selects 0x70, and physical switch positions and address weights are documented</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-011-02">
+          <given>open address-switch contacts on a complete or supported trimmed board</given><when>address-pin state-defining paths are inspected</when><then>each address input has a local pull-down that survives cable removal and supported trimming; no address pin relies on an open switch or another board for its defined LOW state</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-012" type="IR" title="Disconnectable mux upstream pull-ups" status="draft" priority="must">
+      <statement>Each multiplexer board SHALL permit its upstream SDA and SCL pull-ups to be independently disconnected for shared-bus configurations.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-012-01">
+          <given>multiple boards sharing an upstream bus</given><when>the documented pull-up configuration is applied</when><then>either board-local pull-up can be removed from its signal without coupling SDA to SCL through a shared floating resistor supply, changing reset bias or removing required upstream connector signals</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-SENS-006" type="FR" title="Exclusive sensor visibility across multiplexers" status="draft" priority="must">
+      <statement>The sensor-bus scheduler SHALL maintain at most one connected downstream channel across all multiplexers on a shared upstream bus while accessing sensors whose I2C addresses conflict.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-SENS-006-01">
+          <given>a transition between sensors on different addressed multiplexers</given><when>the next sensor is accessed</when><then>the previously selected channel is deselected before enabling the next, rather than assuming that writing a different multiplexer clears the previous device's selection</then>
+        </criterion>
+        <criterion id="AC-MOT-SENS-006-02">
+          <given>startup, reset or recovery with unknown multiplexer selection state</given><when>sensor access resumes</when><then>the scheduler establishes a known deselected state on the relevant bus before selecting a sensor; this does not imply that a previously started sensor-heater pulse has stopped</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-001" type="FR" title="Leading-edge phase-angle control" status="draft" priority="must">
+      <statement>Each AC output SHALL support configurable leading-edge phase-angle control synchronized to the AC line for qualified compatible loads.</statement>
+      <notes>Firing resolution, timing error, command-to-power mapping, supported load types and minimum controllable load remain design parameters to settle before implementation. This does not select central timing, a local MCU or a dedicated firing controller.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-001-01">
+          <given>a qualified load and supported mains conditions</given><when>off, full-on and intermediate phase-angle commands are exercised</when><then>observed positive and negative half-cycle firing follows the configured command within declared timing tolerances, without an unintended persistent polarity imbalance</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-001-02">
+          <given>startup, a mode change or a missing or invalid line-timing reference</given><when>phase-angle operation is requested</when><then>firing remains inhibited until timing is qualified; a later loss of valid timing stops firing within the declared timeout</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-002" type="FR" title="Whole-cycle heater modulation" status="draft" priority="must">
+      <statement>Each AC output SHALL support configurable time-proportional heater control using zero-cross-aligned bursts of complete AC cycles.</statement>
+      <notes>Modulation periods, duty resolution and permissible switching error remain open parameters. Whole-cycle scheduling is distinct from free-running PWM and from phase-angle control.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-002-01">
+          <given>a qualified resistive heater and a configured modulation period</given><when>zero, full and intermediate duty commands are exercised</when><then>observed delivery follows the commanded complete-cycle allocation within declared rounding and timing limits, including matched positive and negative half-cycles</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-002-02">
+          <given>an operating output</given><when>its modulation mode or duty command changes</when><then>the transition follows a declared cycle-boundary policy without an unintended on pulse or persistent half-cycle imbalance</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-002-03">
+          <given>startup, a mode change or a missing or invalid line-timing reference</given><when>whole-cycle burst operation is requested</when><then>firing remains inhibited until timing is qualified; a later loss of valid timing stops firing within the declared timeout</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-003" type="FR" title="Per-output shorted-triac identification without a load dependency" status="draft" priority="must">
+      <statement>Motley SHALL identify the affected output when its triac has failed short circuit during a gate-off diagnostic interval, both with a supported load attached and with no external load attached.</statement>
+      <notes>A simulated main-terminal short establishes the required failure coverage; the reported diagnosis can be unexpected energization consistent with a shorted triac because sensing alone may not uniquely distinguish all wiring or driver faults. Observation requires an available mains source and a conductive path to the triac. Continuous identification behind an open cutoff is not implied. A healthy unloaded triac need not latch, so absence of normal no-load firing is not by itself a failure. Detection during full-on or near-full-on operation without a sufficiently long natural off interval is deferred. Inserting diagnostic off intervals remains an optional future software policy, subject to the sensing circuit's timing limits.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-003-01">
+          <given>available mains at the triac and a simulated short across one output triac's main terminals</given><when>gate drive is disabled and the declared observation interval elapses</when><then>the affected output is reported faulty in separate tests with no external load, the minimum supported load and the maximum supported load; a healthy neighboring output is not attributed the fault</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-003-02">
+          <given>a healthy gate-off output with each supported snubber configuration and no external load</given><when>leakage, residual charge, supply variation, tolerances and switching transients are exercised over the declared operating envelope</when><then>the shorted-triac diagnosis is not asserted solely from permitted leakage or transient detector activity</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-003-03">
+          <given>missing mains, an open upstream cutoff, unavailable feedback or no qualified gate-off observation since startup</given><when>triac diagnostic status is reported</when><then>the current observation is unavailable or not yet tested rather than healthy, while any earlier fault and its output attribution remain reported; restoring observation does not automatically clear the fault or authorize re-energization solely to repeat a test</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-003-04">
+          <given>the proposed detection circuit and normal modulation behavior</given><when>the design is qualified</when><then>numeric detection thresholds, hysteresis or debounce, minimum usable gate-off observation duration and maximum detection latency measured from the start of a qualifying off interval are recorded and tested; full-on and near-full-on conditions without a qualifying interval are reported as currently unobservable rather than healthy, without requiring inserted diagnostic off intervals</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-004" type="FR" title="Measured delivery agrees with output commands" status="draft" priority="must">
+      <statement>Motley SHALL compare independently observed per-output electrical delivery with the commanded conduction pattern and report mismatches within declared detection limits.</statement>
+      <notes>The current full-feature proposal combines per-output voltage-presence feedback with current observations under MOT-AC-010; the final detector and sensor circuits remain open. Accurate RMS voltage, real watts, energy and nominal-voltage power estimates remain optional proposals, not required metering features. Shared line timing or voltage measurement is compatible with this requirement; a separate voltage ADC per output is not prescribed.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-004-01">
+          <given>a connected qualified load within the declared detectable range</given><when>missing firing, firing at the wrong phase or unintended delivery in a commanded-off interval is injected in either modulation mode</when><then>the affected output and mismatch are reported within declared latency and timing thresholds; an averaged duty value or a gate command echo alone is not accepted as evidence of correct conduction timing</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-004-02">
+          <given>an unplugged load, an open load, a load below the detectable range or unavailable or stale observations</given><when>delivery status is evaluated</when><then>the result distinguishes absent or unverified delivery from a proven failed triac, and missing observations are not presented as successful operation or proof of a de-energized outlet</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-005" type="FR" title="Cutoff and retained diagnosis after unintended delivery" status="draft" priority="must">
+      <statement>Detection of unintended output energization SHALL inhibit firing and command a second cutoff actuator to interrupt that output's supply, retaining the fault until an explicit qualified rearm.</statement>
+      <notes>This draft proposes latched handling for review. Per-output versus shared cutoff, interruption latency, fault-retention behavior across a power cycle and rearm conditions remain open. A second actuator is not by itself an independent controller or protection temperature sensor.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-005-01">
+          <given>a detected shorted-triac or other unintended-delivery fault</given><when>fault handling executes</when><then>gate drive is inhibited and the cutoff is commanded open within the declared reaction time; with a functional cutoff, delivered power is interrupted within the declared total time even though the triac remains shorted</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-005-02">
+          <given>a fault followed by cutoff opening, bus reconnection or restored feedback</given><when>ordinary operation is requested</when><then>the original output identity and fault remain available, loss of voltage caused by cutoff is not treated as triac recovery, and an ordinary power command does not bypass the qualified rearm procedure</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-006" type="FR" title="Device-local thermal regulation" status="draft" priority="must">
+      <statement>Thermal regulation and output-fault handling SHALL execute within the device without depending on Home Assistant, a cloud service or an available external network.</statement>
+      <notes>Loop ownership between a main controller and optional intelligent output modules remains open. Sensor-loss policy, setpoint persistence and thermal protection beyond electrical output-fault handling still need separate definition.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-006-01">
+          <given>valid local sensor input and an established control configuration</given><when>external network and supervisory services become unavailable</when><then>local regulation and electrical fault detection/cutoff continue according to that configuration without external timing or control decisions</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-007" type="FR" title="Configurable output response to communication failure" status="draft" priority="must">
+      <statement>An autonomous output module receiving actuation commands from another controller SHALL apply its per-output configured communication-failure response when command validity expires, supporting off, on, hold latest and hold set.</statement>
+      <notes>This is conditional on selecting an autonomous module architecture; it does not require a bus or an additional MCU. Off means zero output with cutoff requested; on means full output; hold latest retains the last valid commanded modulation mode and level; hold set uses a separately configured fallback mode and level. Holding a level continues its normal modulation rather than freezing an instantaneous gate or relay state. These are runtime responses of a powered, operating module and do not override hardware default-off states, invalid line-timing inhibition or retained electrical faults. Bus type, refresh/expiry limits, configuration persistence and cutoff ownership remain design questions.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-007-01">
+          <given>a powered module executing a valid command with a configured communication-failure response</given><when>its command source stalls, disconnects or sends invalid traffic without a valid refresh</when><then>within the declared expiry deadline the output transitions to zero with cutoff requested for off, full output for on, the last valid commanded mode and level for hold latest, or the separately configured fallback mode and level for hold set, subject to higher-priority inhibits; invalid traffic does not refresh validity</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-007-02">
+          <given>startup or reset before any valid actuation command, or runtime operation under a communication-failure response</given><when>communication becomes available</when><then>startup/reset output remains off until a valid actuation command is received, and runtime fallback is replaced only by a fresh valid actuation command rather than mere bus activity, subject to retained faults and rearm conditions</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-007-03">
+          <given>independently configured outputs and each supported modulation mode</given><when>response policy, command-expiry interval or hold-set fallback settings are configured</when><then>each output supports all four responses with validated settings; absent or invalid response configuration uses off, and changing one output's response does not change another output's response</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-007-04">
+          <given>any communication-failure response, including on or either hold response</given><when>an electrical fault or invalid line-timing condition requires inhibition</when><then>the applicable firing inhibition and cutoff/rearm behavior take precedence over fallback; the cutoff remains operable with a stalled command bus, and selecting or entering fallback does not clear a retained fault</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-007-05">
+          <given>a module whose command validity has expired</given><when>its diagnostic state is inspected through an available interface</when><then>the module identifies communication failure, the selected response, the effective fallback mode and level, and any higher-priority inhibit rather than representing fallback as a fresh controller command</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-007-06">
+          <given>a communication-failure policy that changes the requested output, including on following a zero normal command</given><when>fallback becomes active</when><then>conduction feedback is compared against the effective local target after fallback and higher-priority inhibits are applied; delivery matching that target does not itself trigger an unintended-energization diagnosis, while mismatches remain subject to MOT-AC-004</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-008" type="CR" title="Isolated AC sensing and control boundary" status="draft" priority="must">
+      <statement>AC sensing and control SHALL preserve the declared mains-to-accessible-low-voltage isolation boundary across all supported power and external-interface configurations.</statement>
+      <notes>This includes USB, Qwiic, debugging, probe access and any output-control bus. Isolated current sensing alone does not qualify a resistor-based voltage channel or its supply/data paths. Required insulation classification, working voltage, surge envelope and spacing remain to be selected for the product before circuit qualification.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-008-01">
+          <given>all mains-connected sensing, drive, supply and communication paths</given><when>the isolation design and supported connected/unpowered states are reviewed and qualified</when><then>every crossing has documented component ratings and PCB spacing meeting the selected insulation and working-voltage criteria; connecting grounded external equipment does not bypass the boundary</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-009" type="NFR" title="At least sixteen output boards on one control bus" status="draft" priority="must">
+      <statement>One Motley controller SHALL support at least 16 independently addressable single-output boards operating concurrently on one shared output-control bus within the declared wiring, power-distribution and communication envelope.</statement>
+      <notes>Sixteen is a minimum supported capacity, not a maximum board count or a requirement to populate sixteen boards in the initial two-output device. This does not increase the current rating of the selected mains input, distribution or controller supply. Bus selection, address assignment, topology, total wiring length, traffic rates and supply capacity remain design parameters to qualify for this count.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-009-01">
+          <given>16 instances of the supported single-output board on one output-control bus</given><when>their addresses are assigned and commands and status reads target each board</when><then>all 16 can be selected independently without address collisions or unintended changes to other boards, using the same supported board hardware and firmware with the documented address configuration</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-009-02">
+          <given>all 16 boards operating under the declared maximum normal command/status workload, including supported simultaneous modulation modes</given><when>the controller services the bus and refreshes command validity</when><then>the declared command, status and fault-reporting latency limits are met without unintended command expiry, and local firing and feedback continue to meet their timing limits</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-009-03">
+          <given>the proposed supported wiring and power arrangement populated with 16 boards</given><when>electrical and timing qualification is performed</when><then>bus loading and rise/LOW margins, supply voltage/current limits and line-reference distribution are qualified for the populated arrangement; available address space alone is not accepted as proof of sixteen-board operation</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-AC-010" type="FR" title="Per-output current observation referenced to line timing" status="draft" priority="must">
+      <statement>Each autonomous output board SHALL provide time-resolved load-current observations to its local MCU, preserving mains isolation and permitting correlation of current conduction with the shared line-timing reference.</statement>
+      <notes>The developer restored current sensing to the full-feature proposal before considering later simplification. An isolated Hall sensor plus MCU ADC and a digital current-sensing device remain alternatives. Voltage-presence feedback remains necessary for the unloaded shorted-triac case. Current phase observation does not establish general inductive-load compatibility or a real-power measurement; supported load behavior, measurement limits and processing/reporting interfaces remain to be qualified.</notes>
+      <acceptance>
+        <criterion id="AC-MOT-AC-010-01">
+          <given>a qualified load and supported modulation mode</given><when>load current is observed alongside the line reference and gate commands</when><then>the local MCU has observations with declared current range, minimum detectable signal, noise/offset limits, bandwidth and timing uncertainty sufficient to distinguish the supported current-conduction intervals; a slow RMS or averaged value alone does not establish current-phase observation</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-010-02">
+          <given>representative resistive and inductive test cases within the declared safe qualification envelope</given><when>current timing and polarity are compared with an independent measurement</when><then>the declared measurement tolerances are met, including supported delayed current zero crossings and phase-cut waveforms; an ambiguous or below-range observation is identified as such rather than reported as a reliable phase value</then>
+        </criterion>
+        <criterion id="AC-MOT-AC-010-03">
+          <given>an absent or open load, permitted snubber/detector leakage and the declared lamp/load inrush envelope</given><when>the current-sensing path is evaluated</when><then>its background signal and low-load margins are recorded, its electrical/thermal limits are respected, and any clipping or saturation is accounted for in diagnostic validity and recovery</then>
         </criterion>
       </acceptance>
     </req>
@@ -448,5 +803,142 @@
       <notes>Host fixtures verify staged input/lock/dependency integrity, acquisition versus offline mount policy, and rejection of incompatible effective configuration. Actual SDK compilation and hardware behavior are separate evidence.</notes>
     </edge>
     <edge id="E-SAT-MOT-SENS-005-GOAL-MOT-SENSING" type="satisfies" from="MOT-SENS-005" to="GOAL-MOT-SENSING" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-001-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-001" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-002-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-002" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-003-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-003" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-004-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-004" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-005-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-005" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-006-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-006" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003" type="implements" from="hardware/controller/carrier-access.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001" type="dependsOn" from="hardware/controller/carrier-access.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004" type="dependsOn" from="hardware/controller/carrier-access.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005" type="dependsOn" from="hardware/controller/carrier-access.kicad_sch" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006" type="dependsOn" from="hardware/controller/carrier-access.kicad_sch" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-2" type="implements" from="hardware/controller/controller.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-2" type="dependsOn" from="hardware/controller/controller.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002" type="dependsOn" from="hardware/controller/controller.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-2" type="dependsOn" from="hardware/controller/controller.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005" type="dependsOn" from="hardware/controller/controller.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-3" type="implements" from="hardware/controller/heater-channel.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-3" type="dependsOn" from="hardware/controller/heater-channel.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-2" type="dependsOn" from="hardware/controller/heater-channel.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-3" type="dependsOn" from="hardware/controller/heater-channel.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-4" type="implements" from="hardware/controller/motley-ac-output.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-4" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-3" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-4" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-5" type="implements" from="hardware/controller/motley-carrier.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-5" type="dependsOn" from="hardware/controller/motley-carrier.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-4" type="dependsOn" from="hardware/controller/motley-carrier.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-5" type="dependsOn" from="hardware/controller/motley-carrier.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-6" type="implements" from="hardware/controller/motley-sensors.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-6" type="dependsOn" from="hardware/controller/motley-sensors.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-5" type="dependsOn" from="hardware/controller/motley-sensors.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-6" type="dependsOn" from="hardware/controller/motley-sensors.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-7" type="implements" from="hardware/controller/mux.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-7" type="dependsOn" from="hardware/controller/mux.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-3" type="dependsOn" from="hardware/controller/mux.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-8" type="implements" from="hardware/controller/output-access.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-8" type="dependsOn" from="hardware/controller/output-access.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-6" type="dependsOn" from="hardware/controller/output-access.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-7" type="dependsOn" from="hardware/controller/output-access.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005-2" type="dependsOn" from="hardware/controller/output-access.kicad_sch" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006-2" type="dependsOn" from="hardware/controller/output-access.kicad_sch" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-9" type="implements" from="hardware/controller/power.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-9" type="dependsOn" from="hardware/controller/power.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-8" type="dependsOn" from="hardware/controller/power.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-10" type="implements" from="hardware/controller/sensor-access.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-10" type="dependsOn" from="hardware/controller/sensor-access.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-9" type="dependsOn" from="hardware/controller/sensor-access.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005-3" type="dependsOn" from="hardware/controller/sensor-access.kicad_sch" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006-3" type="dependsOn" from="hardware/controller/sensor-access.kicad_sch" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-4" type="dependsOn" from="hardware/controller/sensor-access.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-11" type="implements" from="hardware/controller/sensor-port.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-11" type="dependsOn" from="hardware/controller/sensor-port.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-10" type="dependsOn" from="hardware/controller/sensor-port.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-5" type="dependsOn" from="hardware/controller/sensor-port.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-12" type="implements" from="hardware/controller/sensor-ports.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-12" type="dependsOn" from="hardware/controller/sensor-ports.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-7" type="dependsOn" from="hardware/controller/sensor-ports.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-11" type="dependsOn" from="hardware/controller/sensor-ports.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-6" type="dependsOn" from="hardware/controller/sensor-ports.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-13" type="implements" from="hardware/controller/usb-power.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-13" type="dependsOn" from="hardware/controller/usb-power.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-8" type="dependsOn" from="hardware/controller/usb-power.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-12" type="dependsOn" from="hardware/controller/usb-power.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-7" type="dependsOn" from="hardware/controller/usb-power.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-14" type="implements" from="hardware/controller/motley-ac-output.kicad_pcb" fromKind="pcb" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-14" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pcb" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-9" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pcb" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-13" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pcb" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005-4" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pcb" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006-4" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pcb" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-15" type="implements" from="hardware/controller/motley-carrier.kicad_pcb" fromKind="pcb" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-15" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-002-10" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-14" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005-5" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006-5" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-8" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-16" type="implements" from="hardware/controller/motley-sensors.kicad_pcb" fromKind="pcb" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-001-16" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-15" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-005-6" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-006-6" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-006" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-9" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-17" type="implements" from="scripts/hardware_trace.py#check" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-VER-MOT-HW-003" type="verifiedBy" from="MOT-HW-003" to="scripts/test_hardware_trace.py" toKind="test" status="draft" createdBy="rqml"/>
+    <edge id="E-VER-MOT-HW-003-2" type="verifiedBy" from="MOT-HW-003" to="scripts/hardware_trace.py#check" toKind="test" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-18" type="implements" from="docs/tooling.md" fromKind="doc" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-19" type="implements" from="./.pre-commit-config.yaml" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Runs the native annotation checker and its fixture tests on hardware/spec/tool changes; retains the existing consistency and approval gates.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-HW-007-GOAL-MOT-PROCESS" type="satisfies" from="MOT-HW-007" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml">
+      <notes>Records the developer's preferred per-board envelope for incremental hardware layout decisions.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-HW-008-GOAL-MOT-PROCESS" type="satisfies" from="MOT-HW-008" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml">
+      <notes>Requires early discussion of expected size overruns while permitting agreed larger boards.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-HW-009-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-009" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-010-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-010" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-20" type="implements" from="hardware/controller/qwiic-bench.kicad_sch" fromKind="schematic" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Native requirement fields and explicit source trace for the carrier's optional Qwiic leaf; not electrical completion.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-001-17" type="dependsOn" from="hardware/controller/qwiic-bench.kicad_sch" to="MOT-HW-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-004-16" type="dependsOn" from="hardware/controller/qwiic-bench.kicad_sch" to="MOT-HW-004" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-009" type="dependsOn" from="hardware/controller/qwiic-bench.kicad_sch" to="MOT-HW-009" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-SENS-005-10" type="dependsOn" from="hardware/controller/qwiic-bench.kicad_sch" to="MOT-SENS-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-009-2" type="dependsOn" from="hardware/controller/controller.kicad_sch" to="MOT-HW-009" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-009-3" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-009" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-009-4" type="dependsOn" from="hardware/controller/motley-carrier.kicad_sch" to="MOT-HW-009" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-010" type="dependsOn" from="hardware/controller/motley-sensors.kicad_sch" to="MOT-HW-010" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-010-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-010" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-011-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-011" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-012-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-012" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-SENS-006-GOAL-MOT-SENSING" type="satisfies" from="MOT-SENS-006" to="GOAL-MOT-SENSING" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-011" type="dependsOn" from="hardware/controller/mux.kicad_sch" to="MOT-HW-011" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-012" type="dependsOn" from="hardware/controller/mux.kicad_sch" to="MOT-HW-012" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-011-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-011" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-012-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-012" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-001-GOAL-MOT-AC" type="satisfies" from="MOT-AC-001" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-002-GOAL-MOT-AC" type="satisfies" from="MOT-AC-002" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-003-GOAL-MOT-AC" type="satisfies" from="MOT-AC-003" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-004-GOAL-MOT-AC" type="satisfies" from="MOT-AC-004" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-005-GOAL-MOT-AC" type="satisfies" from="MOT-AC-005" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-006-GOAL-MOT-AC" type="satisfies" from="MOT-AC-006" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-007-GOAL-MOT-AC" type="satisfies" from="MOT-AC-007" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-008-GOAL-MOT-AC" type="satisfies" from="MOT-AC-008" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-007-MOT-HW-002" type="dependsOn" from="MOT-AC-007" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-007-MOT-AC-001" type="dependsOn" from="MOT-AC-007" to="MOT-AC-001" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-007-MOT-AC-002" type="dependsOn" from="MOT-AC-007" to="MOT-AC-002" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-007-MOT-AC-005" type="dependsOn" from="MOT-AC-007" to="MOT-AC-005" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-STOR-001-GOAL-MOT-PERSISTENCE" type="satisfies" from="MOT-STOR-001" to="GOAL-MOT-PERSISTENCE" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-STOR-001-MOT-ENG-005" type="dependsOn" from="MOT-STOR-001" to="MOT-ENG-005" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-STOR-001-MOT-HW-002" type="dependsOn" from="MOT-STOR-001" to="MOT-HW-002" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-009-GOAL-MOT-AC" type="satisfies" from="MOT-AC-009" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-AC-010-GOAL-MOT-AC" type="satisfies" from="MOT-AC-010" to="GOAL-MOT-AC" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-010-MOT-AC-008" type="dependsOn" from="MOT-AC-010" to="MOT-AC-008" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-AC-004-MOT-AC-010" type="dependsOn" from="MOT-AC-004" to="MOT-AC-010" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>

@@ -1,0 +1,4 @@
+review/
+*-backups/
+*.kicad_prl
+~*.lck

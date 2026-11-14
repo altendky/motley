@@ -55,6 +55,29 @@ require a special Codex launcher.
 
 ## Traceability boundaries
 
+Native KiCad traceability is checked without requiring KiCad or generated
+netlists in the repository check environment:
+
+```sh
+uv run scripts/hardware_trace.py
+uv run scripts/hardware_trace.py --json
+uv run scripts/test_hardware_trace.py
+```
+
+The hidden `Requirements` field contains space-separated requirement IDs on
+schematic symbols/sheet symbols and PCB footprints. The checker traverses all
+three root designs and their included sheets, validates IDs and explicit RQML
+file relationships, and reconciles fields using root/sheet/symbol UUID paths.
+Repeated sheets and multi-unit components retain their native identities;
+board-only mechanics are explicitly distinguished from circuit components.
+
+`MOT-HW-003` implementation links provide whole-file drift checking for native
+annotation sources. Other `dependsOn` links and component fields identify
+design inputs, including draft electrical requirements; they do not establish
+those requirements' implementation or verification. RQML does not interpret
+KiCad UUID fragments or automatically scan source comments. The native checker
+tests annotation integrity only, not circuit correctness, PCB routing or ESD.
+
 - Impact follows declared relationships. Inspect actual source dependencies and
   applicable constraints as well.
 - Start meaningful maintained implementation from agreed requirements. Review
