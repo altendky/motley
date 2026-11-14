@@ -1,728 +1,1923 @@
 (kicad_sch
-  (version 20250114)
-  (generator eeschema)
-  (generator_version "9.0")
-  (uuid "8b1d1b3f-74e1-53f2-9814-0452f66468bd")
-  (paper "A4")
-  (title_block
-    (title "Shared sensor port: QT connector and branch pull-ups")
-    (date "2026-11-11")
-    (rev "0.1")
-    (company "Motley")
-    (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
-  (lib_symbols
-    (symbol "Connector_Generic:Conn_01x04"
-      (pin_names
-        (offset 1.016)
-        (hide yes))
-      (exclude_from_sim no)
-      (in_bom yes)
-      (on_board yes)
-      (property "Reference" "J"
-        (at 0 5.08 0)
-        (effects
-          (font
-            (size 1.27 1.27))))
-      (property "Value" "Conn_01x04"
-        (at 0 -7.62 0)
-        (effects
-          (font
-            (size 1.27 1.27))))
-      (property "Footprint" ""
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "Datasheet" "~"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "ki_keywords" "connector"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "ki_fp_filters" "Connector*:*_1x??_*"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (symbol "Conn_01x04_1_1"
-        (rectangle
-          (start -1.27 3.81)
-          (end 1.27 -6.35)
-          (stroke
-            (width 0.254)
-            (type default))
-          (fill
-            (type background)))
-        (rectangle
-          (start -1.27 2.667)
-          (end 0 2.413)
-          (stroke
-            (width 0.1524)
-            (type default))
-          (fill
-            (type none)))
-        (rectangle
-          (start -1.27 0.127)
-          (end 0 -0.127)
-          (stroke
-            (width 0.1524)
-            (type default))
-          (fill
-            (type none)))
-        (rectangle
-          (start -1.27 -2.413)
-          (end 0 -2.667)
-          (stroke
-            (width 0.1524)
-            (type default))
-          (fill
-            (type none)))
-        (rectangle
-          (start -1.27 -4.953)
-          (end 0 -5.207)
-          (stroke
-            (width 0.1524)
-            (type default))
-          (fill
-            (type none)))
-        (pin passive line
-          (at -5.08 2.54 0)
-          (length 3.81)
-          (name "Pin_1"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "1"
-            (effects
-              (font
-                (size 1.27 1.27)))))
-        (pin passive line
-          (at -5.08 0 0)
-          (length 3.81)
-          (name "Pin_2"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "2"
-            (effects
-              (font
-                (size 1.27 1.27)))))
-        (pin passive line
-          (at -5.08 -2.54 0)
-          (length 3.81)
-          (name "Pin_3"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "3"
-            (effects
-              (font
-                (size 1.27 1.27)))))
-        (pin passive line
-          (at -5.08 -5.08 0)
-          (length 3.81)
-          (name "Pin_4"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "4"
-            (effects
-              (font
-                (size 1.27 1.27))))))
-      (embedded_fonts no))
-    (symbol "Device:R"
-      (pin_numbers
-        (hide yes))
-      (pin_names
-        (offset 0))
-      (exclude_from_sim no)
-      (in_bom yes)
-      (on_board yes)
-      (property "Reference" "R"
-        (at 2.032 0 90)
-        (effects
-          (font
-            (size 1.27 1.27))))
-      (property "Value" "R"
-        (at 0 0 90)
-        (effects
-          (font
-            (size 1.27 1.27))))
-      (property "Footprint" ""
-        (at -1.778 0 90)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "Datasheet" "~"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "Description" "Resistor"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "ki_keywords" "R res resistor"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (property "ki_fp_filters" "R_*"
-        (at 0 0 0)
-        (effects
-          (font
-            (size 1.27 1.27))
-          (hide yes)))
-      (symbol "R_0_1"
-        (rectangle
-          (start -1.016 -2.54)
-          (end 1.016 2.54)
-          (stroke
-            (width 0.254)
-            (type default))
-          (fill
-            (type none))))
-      (symbol "R_1_1"
-        (pin passive line
-          (at 0 3.81 270)
-          (length 1.27)
-          (name "~"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "1"
-            (effects
-              (font
-                (size 1.27 1.27)))))
-        (pin passive line
-          (at 0 -3.81 90)
-          (length 1.27)
-          (name "~"
-            (effects
-              (font
-                (size 1.27 1.27))))
-          (number "2"
-            (effects
-              (font
-                (size 1.27 1.27))))))
-      (embedded_fonts no))
-(symbol "Motley:PESD5V0S2BT" (pin_names (offset 0.5)) (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "D" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Value" "PESD5V0S2BT" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails." (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (symbol "PESD5V0S2BT_0_1" (polyline (pts (xy -10.16 2.54) (xy -6.35 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 2.54) (xy 0 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -10.16 -2.54) (xy -6.35 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 -2.54) (xy 0 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0 2.54) (xy 0 -10.16)) (stroke (width 0.254) (type default)) (fill (type none)))) (symbol "PESD5V0S2BT_1_1" (pin passive line (at -12.7 2.54 0) (length 2.54) (name "IO1" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1))))) (pin passive line (at -12.7 -2.54 0) (length 2.54) (name "IO2" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1))))) (pin passive line (at 0 -12.7 90) (length 2.54) (name "REF" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1))))))))
-  (symbol
-  (lib_id "Connector_Generic:Conn_01x04")
-  (at 129.54 80.01 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (fields_autoplaced)
-  (uuid "4a4c2429-86e6-5b6a-a4cc-d3c00e6f9b23")
-  (property "Reference" "J2"
-      (at 130 68.99 0)
-      (effects
-        (font
-          (size 1.1 1.1))))
-  (property "Value" "JST-SH 4p"
-      (at 130 71.99 0)
-      (effects
-        (font
-          (size 1.0 1.0))))
-  (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
-      (at 130 80 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Datasheet" "~"
-      (at 130 80 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-      (at 130 80 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (pin "1"
-      (uuid "fb7c8a97-889a-50c6-a32b-699281a1a41f"))
-  (pin "2"
-      (uuid "46d6c0a3-ba22-5e11-88d7-1e1a550326a1"))
-  (pin "3"
-      (uuid "1875b033-3cf4-5589-9b98-c93a6cdd3f84"))
-  (pin "4"
-      (uuid "d404cf26-f475-57a7-8162-d6606d38e9ea"))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
-          (reference "J2")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
-          (reference "J3")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
-          (reference "J4")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
-          (reference "J5")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
-          (reference "J6")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
-          (reference "J7")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
-          (reference "J8")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
-          (reference "J9")
-          (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 129.54 80.01 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (symbol
-  (lib_id "Device:R")
-  (at 80.01 64.77 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (fields_autoplaced)
-  (uuid "2842cdd6-96d1-54c8-9509-6c3037e560ef")
-  (property "Reference" "R10"
-      (at 83 62 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Value" "2k2"
-      (at 83 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (justify left)))
-  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-      (at 80 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Datasheet" "~"
-      (at 80 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Description" "Resistor"
-      (at 80 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (pin "1"
-      (uuid "ed98fb5d-eec4-579b-a2af-ac0bfb8983c4"))
-  (pin "2"
-      (uuid "7ce5d58d-664e-5962-ba75-eb597d87772c"))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
-          (reference "R10")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
-          (reference "R12")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
-          (reference "R14")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
-          (reference "R16")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
-          (reference "R18")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
-          (reference "R20")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
-          (reference "R22")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
-          (reference "R24")
-          (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005" (at 80.01 64.77 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (symbol
-  (lib_id "Device:R")
-  (at 100.33 64.77 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (fields_autoplaced)
-  (uuid "93aea98d-116b-5275-844e-9e36f8139cef")
-  (property "Reference" "R11"
-      (at 103 62 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Value" "2k2"
-      (at 103 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (justify left)))
-  (property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-      (at 100 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Datasheet" "~"
-      (at 100 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (property "Description" "Resistor"
-      (at 100 65 0)
-      (effects
-        (font
-          (size 1.0 1.0))
-        (hide yes)))
-  (pin "1"
-      (uuid "3fda75f6-1030-5e39-ab96-da36043d3006"))
-  (pin "2"
-      (uuid "7daba4e4-776a-5d8f-9035-33e57b06f720"))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
-          (reference "R11")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
-          (reference "R13")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
-          (reference "R15")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
-          (reference "R17")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
-          (reference "R19")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
-          (reference "R21")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
-          (reference "R23")
-          (unit 1))
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
-          (reference "R25")
-          (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005" (at 100.33 64.77 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (text "SHARED SENSOR PORT / SHT45 AT 0x44"
-    (at 30 25 0)
-    (effects
-      (font
-        (size 1.8 1.8))
-      (justify left))
-    (uuid "509e5f62-628b-5279-9068-4ef6ace9794d"))
-  (text "JST-SH 1 mm / 3.3 V / one selected mux channel"
-    (at 30 34 0)
-    (effects
-      (font
-        (size 1.2 1.2))
-      (justify left))
-    (uuid "1b58850a-260f-5c80-9aa9-d3d317cc9264"))
-  (wire
-    (pts
-      (xy 80.01 60.96)
-      (xy 80.01 54.61))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "cb37556c-b545-5ec6-a3a4-f74961a05311"))
-  (wire
-    (pts
-      (xy 80.01 54.61)
-      (xy 90.17 54.61))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "2c24142b-c00a-52bf-8089-a9249d6bcef2"))
-  (wire
-    (pts
-      (xy 90.17 54.61)
-      (xy 100.33 54.61))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "388415a2-37f1-5fbe-b366-21be72fd33e9"))
-  (wire
-    (pts
-      (xy 90.17 49.53)
-      (xy 90.17 54.61))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "0177bcbd-9368-502b-b6d7-0477b1628d95"))
-  (wire
-    (pts
-      (xy 100.33 54.61)
-      (xy 115.57 54.61))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "5303d425-f046-5e48-bad9-a901060ca745"))
-  (wire
-    (pts
-      (xy 100.33 54.61)
-      (xy 100.33 60.96))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "343f68ba-5d1f-5285-a236-8de31ee8b8fd"))
-  (wire
-    (pts
-      (xy 115.57 54.61)
-      (xy 115.57 80.01))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "c2751a13-0e4c-507e-affd-bcbddf0065e5"))
-  (wire
-    (pts
-      (xy 115.57 80.01)
-      (xy 124.46 80.01))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "5e0169b3-91d4-5a4c-97e3-c0b5a184364a"))
-  (wire
-    (pts
-      (xy 80.01 68.58)
-      (xy 80.01 82.55))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "683aa9cd-0030-5bb4-bad7-19ceb3e077ed"))
-  (wire
-    (pts
-      (xy 49.53 82.55)
-      (xy 80.01 82.55))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "59dc8a42-024e-5d97-a06d-4e1a4cd22eb3"))
-  (wire
-    (pts
-      (xy 100.33 68.58)
-      (xy 100.33 85.09))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "770f123f-92b7-506e-bc2f-acbee25df6bf"))
-  (wire
-    (pts
-      (xy 49.53 85.09)
-      (xy 100.33 85.09))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "d255f2da-d052-5210-aa24-6a31dee1125e"))
-  (wire
-    (pts
-      (xy 119.38 73.66)
-      (xy 119.38 77.47))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "5b1b5305-a782-5e8c-a2cb-8fe4d6102d49"))
-  (wire
-    (pts
-      (xy 119.38 77.47)
-      (xy 124.46 77.47))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "bfe4453c-adf2-57a1-9a06-6c8e64e46e5f"))
-  (junction
-    (at 90.17 54.61)
-    (diameter 0)
-    (color 0 0 0 0)
-    (uuid "67102de9-714a-5eea-84c1-f3d780dba044"))
-  (junction
-    (at 100.33 54.61)
-    (diameter 0)
-    (color 0 0 0 0)
-    (uuid "1b7ebb2f-3364-5e81-8fb7-b3fe7cf88d19"))
-  (junction
-    (at 80.01 82.55)
-    (diameter 0)
-    (color 0 0 0 0)
-    (uuid "c638fce1-5153-5e9d-82df-f8ee5b6cbdef"))
-  (junction
-    (at 100.33 85.09)
-    (diameter 0)
-    (color 0 0 0 0)
-    (uuid "f4eec394-09fc-53b4-b4a1-f7edaa04137e"))
-  (global_label "+3V3_SENS"
-    (shape bidirectional)
-    (at 90.17 49.53 0)
-    (effects
-      (font
-        (size 1 1))
-      (justify left))
-    (uuid "e76756c1-0172-5d8f-8991-7fdc4928926d"))
-  (global_label "GND"
-    (shape bidirectional)
-    (at 119.38 73.66 0)
-    (effects
-      (font
-        (size 1 1))
-      (justify left))
-    (uuid "6eeccadb-5649-5157-b9ae-9033de940614"))
-  (hierarchical_label "SDA"
-    (shape bidirectional)
-    (at 49.53 82.55 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "09ff2d00-9a6b-5ec9-9a2c-2802ce272b39"))
-  (hierarchical_label "SCL"
-    (shape bidirectional)
-    (at 49.53 85.09 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "c8e7e879-4bc8-557f-847e-d111ac4e0b12"))
-  (text "Connector pins: 1 GND, 2 3V3, 3 SDA, 4 SCL. Verify probe wire colors.\nConnector-side bidirectional TVS +100ohm data resistors; protection and cable performance unqualified.\n7Semi ES-12289 is external to this board; only its connector is shown."
-    (at 30 110 0)
-    (effects
-      (font
-        (size 1.2 1.2))
-      (justify left))
-    (uuid "1c60a40f-d260-5d3a-bf5e-d4716863727d"))
-  (sheet_instances
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
-      (page "4"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
-      (page "5"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
-      (page "6"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
-      (page "7"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
-      (page "8"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
-      (page "9"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
-      (page "10"))
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
-      (page "11")))
-  (embedded_fonts no)
-  (symbol
-  (lib_id "Device:R")
-  (at 110.49 82.55 90)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "79d27c01-d88a-5d9c-a5ee-2341d3669b81")
-  (property "Reference" "R30" (at 110.49 73.66 90) (effects (font (size 1 1))))
-  (property "Value" "100" (at 110.49 76.2 90) (effects (font (size 1 1))))
-  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 110.49 82.55 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 110.49 82.55 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "100ohm connector-to-mux series impedance; ESD pulse and I2C low/rise margins require qualification." (at 110.49 82.55 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-sensors" (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b" (reference "R30") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af" (reference "R32") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e" (reference "R34") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499" (reference "R36") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30" (reference "R38") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e" (reference "R40") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b" (reference "R42") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d" (reference "R44") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 110.49 82.55 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (symbol
-  (lib_id "Device:R")
-  (at 110.49 85.09 90)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "d2dd448f-0dd0-5f72-ae7a-df19e9d67dc7")
-  (property "Reference" "R31" (at 110.49 91.44 90) (effects (font (size 1 1))))
-  (property "Value" "100" (at 110.49 93.98 90) (effects (font (size 1 1))))
-  (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 110.49 85.09 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 110.49 85.09 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "100ohm connector-to-mux series impedance; ESD pulse and I2C low/rise margins require qualification." (at 110.49 85.09 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-sensors" (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b" (reference "R31") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af" (reference "R33") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e" (reference "R35") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499" (reference "R37") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30" (reference "R39") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e" (reference "R41") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b" (reference "R43") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d" (reference "R45") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 110.49 85.09 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 80.01 82.55) (xy 106.68 82.55)) (stroke (width 0) (type default)) (uuid "53c8febe-9a47-5091-b1dd-037228469a51"))
-  (wire (pts (xy 114.3 82.55) (xy 124.46 82.55)) (stroke (width 0) (type default)) (uuid "0315d882-55e8-528d-a524-027efa0c08a4"))
-  (wire (pts (xy 100.33 85.09) (xy 106.68 85.09)) (stroke (width 0) (type default)) (uuid "30734168-fccf-5b94-be10-05268c0fb1ff"))
-  (wire (pts (xy 114.3 85.09) (xy 124.46 85.09)) (stroke (width 0) (type default)) (uuid "1151a5f2-bd09-5a2e-845e-d27388ce5edf"))
-  (label "SDA_CABLE" (at 119.38 82.55 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "3e9c69d2-e49b-54e1-aed9-2ab0891dd293"))
-  (label "SCL_CABLE" (at 119.38 85.09 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "84f168d7-74fb-5143-896b-e26ecc949212"))
-  (symbol
-  (lib_id "Motley:PESD5V0S2BT")
-  (at 180.34 64.77 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "29f77df0-32d2-501f-b083-17bace97e17c")
-  (property "Reference" "D40" (at 184.15 46.989999999999995 0) (effects (font (size 1 1))))
-  (property "Value" "PESD5V0S2BT,215" (at 184.15 49.529999999999994 0) (effects (font (size 1 1))))
-  (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 180.34 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 180.34 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified." (at 180.34 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-sensors" (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b" (reference "D40") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af" (reference "D42") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e" (reference "D44") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499" (reference "D46") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30" (reference "D48") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e" (reference "D50") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b" (reference "D52") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d" (reference "D54") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 180.34 64.77 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 167.64 62.23) (xy 160.02 62.23)) (stroke (width 0) (type default)) (uuid "0990e893-6625-574d-b60d-4d33cf690f96"))
-  (label "SDA_CABLE" (at 160.02 62.23 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "5b7623f9-c468-5ec0-acf1-239d020e7827"))
-  (wire (pts (xy 167.64 67.31) (xy 160.02 67.31)) (stroke (width 0) (type default)) (uuid "fbea8bd7-0d52-56e7-a55f-ee168483bbf3"))
-  (label "SCL_CABLE" (at 160.02 67.31 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "81cba8c7-7a54-5fe0-90d8-fd1a83d3bd09"))
-  (wire (pts (xy 180.34 77.47) (xy 180.34 82.55)) (stroke (width 0) (type default)) (uuid "49425a7e-e697-5891-abe9-51b83e6d33a7"))
-  (global_label "GND" (shape bidirectional) (at 180.34 82.55 180) (effects (font (size 1 1)) (justify right)) (uuid "4812adaa-eee0-5b1d-b69f-0ef1beea2716") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 180.34 82.55 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Motley:PESD5V0S2BT")
-  (at 241.3 64.77 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "6260af79-3f1e-53bb-b70a-f5ad12bd783c")
-  (property "Reference" "D41" (at 245.11 46.989999999999995 0) (effects (font (size 1 1))))
-  (property "Value" "PESD5V0S2BT,215" (at 245.11 49.529999999999994 0) (effects (font (size 1 1))))
-  (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 241.3 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 241.3 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified." (at 241.3 64.77 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-sensors" (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b" (reference "D41") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af" (reference "D43") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e" (reference "D45") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499" (reference "D47") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30" (reference "D49") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e" (reference "D51") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b" (reference "D53") (unit 1)) (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d" (reference "D55") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 241.3 64.77 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 228.6 62.23) (xy 220.98 62.23)) (stroke (width 0) (type default)) (uuid "c36a0528-0de9-5c10-bfe7-23194351b1d0"))
-  (global_label "+3V3_SENS" (shape bidirectional) (at 220.98 62.23 180) (effects (font (size 1 1)) (justify right)) (uuid "3e953a58-f7de-5ff1-84a4-6b6491c3eda6") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 220.98 62.23 180) (effects (font (size 1 1)) (hide yes))))
-  (no_connect (at 228.6 67.31) (uuid "706b558e-3176-57c5-893b-98ee97b10865"))
-  (wire (pts (xy 241.3 77.47) (xy 241.3 82.55)) (stroke (width 0) (type default)) (uuid "ae2f0a5c-505f-5cf0-bcde-9287792500bd"))
-  (global_label "GND" (shape bidirectional) (at 241.3 82.55 180) (effects (font (size 1 1)) (justify right)) (uuid "fdae37a1-c24c-5b13-a72e-edb031d1dfd0") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 241.3 82.55 180) (effects (font (size 1 1)) (hide yes))))
-  (text "Each port: Nexperia C49338 /45pF max per protected line; no rail-steering back-power path.\n100ohm resistors retain pull-ups on the mux side. Clamp coordination and powered-off states need tests.\nThe TVS array protects this board entry; it does not qualify the remote purchased probe." (at 30 136 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "f0055faf-24a0-5542-a4c9-a0d5835820a7")))
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "8b1d1b3f-74e1-53f2-9814-0452f66468bd")
+	(paper "A4")
+	(title_block
+		(title "Shared sensor port: QT connector and branch pull-ups")
+		(date "2026-11-11")
+		(rev "0.1")
+		(company "Motley")
+		(comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE")
+	)
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Motley:PESD5V0S2BT"
+			(pin_names
+				(offset 0.5)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Value" "PESD5V0S2BT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_0_1"
+				(polyline
+					(pts
+						(xy -10.16 2.54) (xy -6.35 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10.16 -2.54) (xy -6.35 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 2.54) (xy 0 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -10.16)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_1_1"
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "IO1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "IO2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "REF"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "JST-SH 1 mm / 3.3 V / one selected mux channel"
+		(exclude_from_sim no)
+		(at 30 34 0)
+		(effects
+			(font
+				(size 1.2 1.2)
+			)
+			(justify left)
+		)
+		(uuid "1b58850a-260f-5c80-9aa9-d3d317cc9264")
+	)
+	(text "Connector pins: 1 GND, 2 3V3, 3 SDA, 4 SCL. Verify probe wire colors.\nConnector-side bidirectional TVS +100ohm data resistors; protection and cable performance unqualified.\n7Semi ES-12289 is external to this board; only its connector is shown."
+		(exclude_from_sim no)
+		(at 30 110 0)
+		(effects
+			(font
+				(size 1.2 1.2)
+			)
+			(justify left)
+		)
+		(uuid "1c60a40f-d260-5d3a-bf5e-d4716863727d")
+	)
+	(text "SHARED SENSOR PORT / SHT45 AT 0x44"
+		(exclude_from_sim no)
+		(at 30 25 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left)
+		)
+		(uuid "509e5f62-628b-5279-9068-4ef6ace9794d")
+	)
+	(text "Each port: Nexperia C49338 /45pF max per protected line; no rail-steering back-power path.\n100ohm resistors retain pull-ups on the mux side. Clamp coordination and powered-off states need tests.\nThe TVS array protects this board entry; it does not qualify the remote purchased probe."
+		(exclude_from_sim no)
+		(at 30 136 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "f0055faf-24a0-5542-a4c9-a0d5835820a7")
+	)
+	(junction
+		(at 100.33 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1b7ebb2f-3364-5e81-8fb7-b3fe7cf88d19")
+	)
+	(junction
+		(at 90.17 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67102de9-714a-5eea-84c1-f3d780dba044")
+	)
+	(junction
+		(at 80.01 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c638fce1-5153-5e9d-82df-f8ee5b6cbdef")
+	)
+	(junction
+		(at 100.33 85.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4eec394-09fc-53b4-b4a1-f7edaa04137e")
+	)
+	(no_connect
+		(at 228.6 67.31)
+		(uuid "706b558e-3176-57c5-893b-98ee97b10865")
+	)
+	(wire
+		(pts
+			(xy 90.17 49.53) (xy 90.17 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0177bcbd-9368-502b-b6d7-0477b1628d95")
+	)
+	(wire
+		(pts
+			(xy 114.3 82.55) (xy 124.46 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0315d882-55e8-528d-a524-027efa0c08a4")
+	)
+	(wire
+		(pts
+			(xy 167.64 62.23) (xy 160.02 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0990e893-6625-574d-b60d-4d33cf690f96")
+	)
+	(wire
+		(pts
+			(xy 114.3 85.09) (xy 124.46 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1151a5f2-bd09-5a2e-845e-d27388ce5edf")
+	)
+	(wire
+		(pts
+			(xy 80.01 54.61) (xy 90.17 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c24142b-c00a-52bf-8089-a9249d6bcef2")
+	)
+	(wire
+		(pts
+			(xy 100.33 85.09) (xy 106.68 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30734168-fccf-5b94-be10-05268c0fb1ff")
+	)
+	(wire
+		(pts
+			(xy 100.33 54.61) (xy 100.33 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "343f68ba-5d1f-5285-a236-8de31ee8b8fd")
+	)
+	(wire
+		(pts
+			(xy 90.17 54.61) (xy 100.33 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "388415a2-37f1-5fbe-b366-21be72fd33e9")
+	)
+	(wire
+		(pts
+			(xy 180.34 77.47) (xy 180.34 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49425a7e-e697-5891-abe9-51b83e6d33a7")
+	)
+	(wire
+		(pts
+			(xy 100.33 54.61) (xy 115.57 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5303d425-f046-5e48-bad9-a901060ca745")
+	)
+	(wire
+		(pts
+			(xy 80.01 82.55) (xy 106.68 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53c8febe-9a47-5091-b1dd-037228469a51")
+	)
+	(wire
+		(pts
+			(xy 49.53 82.55) (xy 80.01 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59dc8a42-024e-5d97-a06d-4e1a4cd22eb3")
+	)
+	(wire
+		(pts
+			(xy 119.38 73.66) (xy 119.38 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b1b5305-a782-5e8c-a2cb-8fe4d6102d49")
+	)
+	(wire
+		(pts
+			(xy 115.57 80.01) (xy 124.46 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e0169b3-91d4-5a4c-97e3-c0b5a184364a")
+	)
+	(wire
+		(pts
+			(xy 80.01 68.58) (xy 80.01 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "683aa9cd-0030-5bb4-bad7-19ceb3e077ed")
+	)
+	(wire
+		(pts
+			(xy 100.33 68.58) (xy 100.33 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "770f123f-92b7-506e-bc2f-acbee25df6bf")
+	)
+	(wire
+		(pts
+			(xy 241.3 77.47) (xy 241.3 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae2f0a5c-505f-5cf0-bcde-9287792500bd")
+	)
+	(wire
+		(pts
+			(xy 119.38 77.47) (xy 124.46 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfe4453c-adf2-57a1-9a06-6c8e64e46e5f")
+	)
+	(wire
+		(pts
+			(xy 115.57 54.61) (xy 115.57 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2751a13-0e4c-507e-affd-bcbddf0065e5")
+	)
+	(wire
+		(pts
+			(xy 228.6 62.23) (xy 220.98 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c36a0528-0de9-5c10-bfe7-23194351b1d0")
+	)
+	(wire
+		(pts
+			(xy 80.01 60.96) (xy 80.01 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb37556c-b545-5ec6-a3a4-f74961a05311")
+	)
+	(wire
+		(pts
+			(xy 49.53 85.09) (xy 100.33 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d255f2da-d052-5210-aa24-6a31dee1125e")
+	)
+	(wire
+		(pts
+			(xy 167.64 67.31) (xy 160.02 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbea8bd7-0d52-56e7-a55f-ee168483bbf3")
+	)
+	(label "SDA_CABLE"
+		(at 119.38 82.55 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e9c69d2-e49b-54e1-aed9-2ab0891dd293")
+	)
+	(label "SDA_CABLE"
+		(at 160.02 62.23 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "5b7623f9-c468-5ec0-acf1-239d020e7827")
+	)
+	(label "SCL_CABLE"
+		(at 160.02 67.31 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "81cba8c7-7a54-5fe0-90d8-fd1a83d3bd09")
+	)
+	(label "SCL_CABLE"
+		(at 119.38 85.09 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "84f168d7-74fb-5143-896b-e26ecc949212")
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 220.98 62.23 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "3e953a58-f7de-5ff1-84a4-6b6491c3eda6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 220.98 62.23 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 180.34 82.55 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "4812adaa-eee0-5b1d-b69f-0ef1beea2716")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 82.55 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 119.38 73.66 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "6eeccadb-5649-5157-b9ae-9033de940614")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 119.38 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 90.17 49.53 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "e76756c1-0172-5d8f-8991-7fdc4928926d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 90.17 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 241.3 82.55 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "fdae37a1-c24c-5b13-a72e-edb031d1dfd0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 241.3 82.55 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "SDA"
+		(shape bidirectional)
+		(at 49.53 82.55 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "09ff2d00-9a6b-5ec9-9a2c-2802ce272b39")
+	)
+	(hierarchical_label "SCL"
+		(shape bidirectional)
+		(at 49.53 85.09 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "c8e7e879-4bc8-557f-847e-d111ac4e0b12")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 80.01 64.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2842cdd6-96d1-54c8-9509-6c3037e560ef")
+		(property "Reference" "R10"
+			(at 83 62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k2"
+			(at 83 65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 80 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 80 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
+			(at 80.01 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ed98fb5d-eec4-579b-a2af-ac0bfb8983c4")
+		)
+		(pin "2"
+			(uuid "7ce5d58d-664e-5962-ba75-eb597d87772c")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "R22")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "R10")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "R24")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "R12")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "R18")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "R14")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "R20")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 180.34 64.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "29f77df0-32d2-501f-b083-17bace97e17c")
+		(property "Reference" "D40"
+			(at 184.15 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 184.15 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 180.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 180.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified."
+			(at 180.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 180.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "c6daed35-ebf9-4054-9042-4c9f0467b5c1")
+		)
+		(pin "1"
+			(uuid "75d5e777-643c-427b-bfde-b1b6b01245d0")
+		)
+		(pin "2"
+			(uuid "9a13ca2d-ff4b-47f5-babc-fe372cb6a9c0")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "D52")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "D40")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "D54")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "D42")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "D48")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "D44")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "D50")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "D46")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 129.54 80.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4a4c2429-86e6-5b6a-a4cc-d3c00e6f9b23")
+		(property "Reference" "J2"
+			(at 130 68.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+			)
+		)
+		(property "Value" "JST-SH 4p"
+			(at 130 71.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+			(at 130 80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130 80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 130 80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 129.54 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fb7c8a97-889a-50c6-a32b-699281a1a41f")
+		)
+		(pin "2"
+			(uuid "46d6c0a3-ba22-5e11-88d7-1e1a550326a1")
+		)
+		(pin "3"
+			(uuid "1875b033-3cf4-5589-9b98-c93a6cdd3f84")
+		)
+		(pin "4"
+			(uuid "d404cf26-f475-57a7-8162-d6606d38e9ea")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "J8")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "J2")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "J9")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "J3")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "J6")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "J4")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "J7")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 241.3 64.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6260af79-3f1e-53bb-b70a-f5ad12bd783c")
+		(property "Reference" "D41"
+			(at 245.11 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 245.11 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 241.3 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 241.3 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified."
+			(at 241.3 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 241.3 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "8aafd6f2-e3c8-4667-b6b9-ef781b5fac2d")
+		)
+		(pin "1"
+			(uuid "3ee58cdf-485a-42dc-a3c8-522ec007092e")
+		)
+		(pin "2"
+			(uuid "49978770-a3dd-4872-8b53-08ecebcb2efe")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "D53")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "D41")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "D55")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "D43")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "D49")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "D45")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "D51")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "D47")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 110.49 82.55 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "79d27c01-d88a-5d9c-a5ee-2341d3669b81")
+		(property "Reference" "R30"
+			(at 110.49 73.66 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 110.49 76.2 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 110.49 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "100ohm connector-to-mux series impedance; ESD pulse and I2C low/rise margins require qualification."
+			(at 110.49 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 110.49 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bcd4b8f8-702e-4c12-9c28-ad50af5f585b")
+		)
+		(pin "2"
+			(uuid "88376a29-5012-4508-a76e-424b5af55b2b")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "R42")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "R30")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "R44")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "R32")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "R38")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "R34")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "R40")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "R36")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 100.33 64.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "93aea98d-116b-5275-844e-9e36f8139cef")
+		(property "Reference" "R11"
+			(at 103 62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k2"
+			(at 103 65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 100 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 100 65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
+			(at 100.33 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3fda75f6-1030-5e39-ab96-da36043d3006")
+		)
+		(pin "2"
+			(uuid "7daba4e4-776a-5d8f-9035-33e57b06f720")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "R23")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "R11")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "R25")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "R13")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "R19")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "R15")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "R21")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 110.49 85.09 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d2dd448f-0dd0-5f72-ae7a-df19e9d67dc7")
+		(property "Reference" "R31"
+			(at 110.49 91.44 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 110.49 93.98 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 110.49 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "100ohm connector-to-mux series impedance; ESD pulse and I2C low/rise margins require qualification."
+			(at 110.49 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 110.49 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "85a3da60-0763-4494-a4a9-b64fc18a79dc")
+		)
+		(pin "1"
+			(uuid "3b447c89-84cd-4963-9731-f80690d701a7")
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/0846646c-ac36-5de6-85c1-cddb0d25bb7b"
+					(reference "R43")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/3a27ca88-161c-5e97-b139-dbfd1c87b88b"
+					(reference "R31")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/5da42fdb-4471-5eea-867e-4cfbdead675d"
+					(reference "R45")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/854ce72c-225e-5632-a9e2-323a0c24b3af"
+					(reference "R33")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/d8a11693-e3ab-50cf-804e-df605f04fa30"
+					(reference "R39")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/de12cc83-d897-5974-be11-b38e6bd1926e"
+					(reference "R35")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/e0dc7795-7a6c-5816-bbc7-72bdadff2c9e"
+					(reference "R41")
+					(unit 1)
+				)
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e/fc33b3b3-1cc3-5610-b265-64cb71d7a499"
+					(reference "R37")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

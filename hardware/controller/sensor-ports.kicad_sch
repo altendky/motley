@@ -1,598 +1,1152 @@
 (kicad_sch
-  (version 20250114)
-  (generator eeschema)
-  (generator_version "9.0")
-  (uuid "361ee22c-48a3-506f-8145-c21c9de2337d")
-  (paper "A4")
-  (title_block
-    (title "Eight instances of the shared sensor port")
-    (date "2026-11-11")
-    (rev "0.1")
-    (company "Motley")
-    (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
-  (sheet_instances
-    (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-      (page "3")))
-  (lib_symbols)
-  (embedded_fonts no)
-  (text "EIGHT SHARED SENSOR PORT INSTANCES"
-    (at 15 16 0)
-    (effects
-      (font
-        (size 2 2))
-      (justify left))
-    (uuid "829e80fe-9925-5696-b20f-de15bcefc3f2"))
-  (text "Each port has its own mux SDA/SCL pair; 3V3 and GND are shared."
-    (at 15 25 0)
-    (effects
-      (font
-        (size 1.2 1.2))
-      (justify left))
-    (uuid "3bd80400-8985-5bf7-a4df-2f25380dce9d"))
-  (wire
-    (pts
-      (xy 33.02 48.26)
-      (xy 44.45 48.26))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "196e7ffe-02c6-5833-92f5-4021ab9ff0e8"))
-  (global_label "SDA0"
-    (shape bidirectional)
-    (at 33.02 48.26 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "956b52e1-67a8-5eed-939a-21d9bb2f5db8"))
-  (wire
-    (pts
-      (xy 33.02 55.88)
-      (xy 44.45 55.88))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "c1a59af1-6477-5996-9a03-4ffacf371584"))
-  (global_label "SCL0"
-    (shape bidirectional)
-    (at 33.02 55.88 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "d9ebd36b-2984-5405-ad21-8ee782e0ddb3"))
-  (sheet
-  (at 44.45 39.37)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "3a27ca88-161c-5e97-b139-dbfd1c87b88b")
-  (property "Sheetname" "Port 0"
-      (at 45 38 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 45 66 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "4"))))
-  (pin "SDA" bidirectional
-      (at 44.45 48.26 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "c63bd629-3a31-550d-a9de-ede81383e53d"))
-  (pin "SCL" bidirectional
-      (at 44.45 55.88 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "630a73e7-6b43-5ae0-8630-c02dbbbaa266"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 44.45 39.37 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 157.48 48.26)
-      (xy 170.18 48.26))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "7ec9f738-068e-5188-84bd-df360bfa6a4c"))
-  (global_label "SDA1"
-    (shape bidirectional)
-    (at 157.48 48.26 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "0d5a6118-31c6-5709-8a66-f31b94298e12"))
-  (wire
-    (pts
-      (xy 157.48 55.88)
-      (xy 170.18 55.88))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "8170d447-a41c-5995-89e0-2d6646702682"))
-  (global_label "SCL1"
-    (shape bidirectional)
-    (at 157.48 55.88 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "8663ef78-23bb-55e2-97eb-81c31d63e8b1"))
-  (sheet
-  (at 170.18 39.37)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "854ce72c-225e-5632-a9e2-323a0c24b3af")
-  (property "Sheetname" "Port 1"
-      (at 170 38 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 170 66 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "5"))))
-  (pin "SDA" bidirectional
-      (at 170.18 48.26 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "035405b8-ed04-526b-a377-dcf08d543523"))
-  (pin "SCL" bidirectional
-      (at 170.18 55.88 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "4076fff3-ff76-5a93-9d24-37c5efbb8d72"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 170.18 39.37 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 33.02 81.28)
-      (xy 44.45 81.28))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "9d15a2d6-3328-57fb-8eac-b8a259cba50a"))
-  (global_label "SDA2"
-    (shape bidirectional)
-    (at 33.02 81.28 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "961bf5bb-9a6a-50bf-8112-d1b77f8a603a"))
-  (wire
-    (pts
-      (xy 33.02 88.9)
-      (xy 44.45 88.9))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "3d52d152-36ea-5841-9078-6da408617937"))
-  (global_label "SCL2"
-    (shape bidirectional)
-    (at 33.02 88.9 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "6659ef15-dea5-59ad-85f8-3a4385830423"))
-  (sheet
-  (at 44.45 72.39)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "de12cc83-d897-5974-be11-b38e6bd1926e")
-  (property "Sheetname" "Port 2"
-      (at 45 71 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 45 99 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "6"))))
-  (pin "SDA" bidirectional
-      (at 44.45 81.28 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "fd59d17e-59dc-5aa2-8677-528d07ce7282"))
-  (pin "SCL" bidirectional
-      (at 44.45 88.9 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "bcf42ed3-1873-5055-af5b-942c1b3d4681"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 44.45 72.39 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 157.48 81.28)
-      (xy 170.18 81.28))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "9cf84a64-b90b-5a75-ac77-dc12e95c99d0"))
-  (global_label "SDA3"
-    (shape bidirectional)
-    (at 157.48 81.28 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "6a68cc81-99d8-5758-9478-ee64fc2dcb46"))
-  (wire
-    (pts
-      (xy 157.48 88.9)
-      (xy 170.18 88.9))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "ccce65ee-d675-5ac2-aa47-6f34453b9d4b"))
-  (global_label "SCL3"
-    (shape bidirectional)
-    (at 157.48 88.9 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "93516afb-3755-5123-a2a4-117cbb58001e"))
-  (sheet
-  (at 170.18 72.39)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "fc33b3b3-1cc3-5610-b265-64cb71d7a499")
-  (property "Sheetname" "Port 3"
-      (at 170 71 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 170 99 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "7"))))
-  (pin "SDA" bidirectional
-      (at 170.18 81.28 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "57873e1d-c59b-5eb1-a960-6b2780bcd9dc"))
-  (pin "SCL" bidirectional
-      (at 170.18 88.9 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "ed4798ec-c8ca-5361-bc2c-9631f565ce20"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 170.18 72.39 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 33.02 114.3)
-      (xy 44.45 114.3))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "f1ba243a-28ed-5aa3-8fd7-ae9d2aec78fe"))
-  (global_label "SDA4"
-    (shape bidirectional)
-    (at 33.02 114.3 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "6056d245-8941-5a9a-95ed-6bac1069716d"))
-  (wire
-    (pts
-      (xy 33.02 121.92)
-      (xy 44.45 121.92))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "b08aee41-d82c-51d5-bc6c-9a1218263cc2"))
-  (global_label "SCL4"
-    (shape bidirectional)
-    (at 33.02 121.92 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "e728cb18-1589-5873-b9d3-0b7b6429fd72"))
-  (sheet
-  (at 44.45 105.41)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "d8a11693-e3ab-50cf-804e-df605f04fa30")
-  (property "Sheetname" "Port 4"
-      (at 45 104 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 45 132 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "8"))))
-  (pin "SDA" bidirectional
-      (at 44.45 114.3 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "bed839fa-607a-5a86-a5fe-bd892ea91056"))
-  (pin "SCL" bidirectional
-      (at 44.45 121.92 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "f440f963-4a84-500b-9596-53d333ac65ec"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 44.45 105.41 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 157.48 114.3)
-      (xy 170.18 114.3))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "ae2be1b4-4675-52d0-9f51-02ab8512392c"))
-  (global_label "SDA5"
-    (shape bidirectional)
-    (at 157.48 114.3 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "6e83254a-5e00-555e-b46a-a5910e8127f4"))
-  (wire
-    (pts
-      (xy 157.48 121.92)
-      (xy 170.18 121.92))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "d369d140-28e4-5f58-a997-8c8612e440be"))
-  (global_label "SCL5"
-    (shape bidirectional)
-    (at 157.48 121.92 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "0ff4e200-d7e4-50c0-8eee-07bbe5588568"))
-  (sheet
-  (at 170.18 105.41)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "e0dc7795-7a6c-5816-bbc7-72bdadff2c9e")
-  (property "Sheetname" "Port 5"
-      (at 170 104 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 170 132 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "9"))))
-  (pin "SDA" bidirectional
-      (at 170.18 114.3 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "f4a92828-0da7-5064-a418-0879a5b78d45"))
-  (pin "SCL" bidirectional
-      (at 170.18 121.92 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "5a722ee8-194e-5f83-9596-0037d5d1b76c"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 170.18 105.41 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 33.02 147.32)
-      (xy 44.45 147.32))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "aa9a0488-ae4a-557a-82b2-0781eb08a9a6"))
-  (global_label "SDA6"
-    (shape bidirectional)
-    (at 33.02 147.32 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "a658a4d0-65a3-5123-ad98-73affebe6d69"))
-  (wire
-    (pts
-      (xy 33.02 154.94)
-      (xy 44.45 154.94))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "098d84aa-f4f0-5c20-8c51-72ea4ed2c0c1"))
-  (global_label "SCL6"
-    (shape bidirectional)
-    (at 33.02 154.94 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "037e39a9-83bc-5553-acfb-8cfe08ebe9c8"))
-  (sheet
-  (at 44.45 138.43)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "0846646c-ac36-5de6-85c1-cddb0d25bb7b")
-  (property "Sheetname" "Port 6"
-      (at 45 137 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 45 165 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "10"))))
-  (pin "SDA" bidirectional
-      (at 44.45 147.32 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "a696967c-ff92-5dba-b9a5-e0db2b909049"))
-  (pin "SCL" bidirectional
-      (at 44.45 154.94 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "7eb53fc7-75de-56d5-9349-fc7154a86310"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 44.45 138.43 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire
-    (pts
-      (xy 157.48 147.32)
-      (xy 170.18 147.32))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "4207cea2-cf84-508a-b9d2-ddb8cbc0c015"))
-  (global_label "SDA7"
-    (shape bidirectional)
-    (at 157.48 147.32 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "ed42a103-58be-5be8-ae9d-9a91f2070bf6"))
-  (wire
-    (pts
-      (xy 157.48 154.94)
-      (xy 170.18 154.94))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "dc0b82a1-24f5-546a-a5cc-4f480b5a6827"))
-  (global_label "SCL7"
-    (shape bidirectional)
-    (at 157.48 154.94 180)
-    (effects
-      (font
-        (size 1 1))
-      (justify right))
-    (uuid "7c2f8425-22f7-5be7-92ea-5463fa0c7d12"))
-  (sheet
-  (at 170.18 138.43)
-  (size 90 24)
-  (stroke
-      (width 0.254)
-      (type solid))
-  (fill
-      (color 0 0 0 0))
-  (uuid "5da42fdb-4471-5eea-867e-4cfbdead675d")
-  (property "Sheetname" "Port 7"
-      (at 170 137 0)
-      (effects
-        (font
-          (size 1.1 1.1))
-        (justify left)))
-  (property "Sheetfile" "sensor-port.kicad_sch"
-      (at 170 165 0)
-      (effects
-        (font
-          (size 1 1))
-        (justify left)))
-  (instances
-      (project "motley-sensors"
-        (path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
-          (page "11"))))
-  (pin "SDA" bidirectional
-      (at 170.18 147.32 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "2916fb65-69c3-5d2a-b457-04003ee9e1ee"))
-  (pin "SCL" bidirectional
-      (at 170.18 154.94 180)
-      (effects
-        (font
-          (size 1 1)))
-      (uuid "ddb9b029-625b-5b56-9e07-5a60169b4283"))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005" (at 170.18 138.43 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (text "Probe heaters: schedule no more than one at a time. Check regulator headroom and cable drop.\nKeep detachable joints dry; this drawing does not qualify environmental protection."
-    (at 15 186 0)
-    (effects
-      (font
-        (size 1.1 1.1))
-      (justify left))
-    (uuid "4f84b681-a1f3-5ebb-b6ed-59913fc9070c")))
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "361ee22c-48a3-506f-8145-c21c9de2337d")
+	(paper "A4")
+	(title_block
+		(title "Eight instances of the shared sensor port")
+		(date "2026-11-11")
+		(rev "0.1")
+		(company "Motley")
+		(comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE")
+	)
+	(lib_symbols)
+	(text "Each port has its own mux SDA/SCL pair; 3V3 and GND are shared."
+		(exclude_from_sim no)
+		(at 15 25 0)
+		(effects
+			(font
+				(size 1.2 1.2)
+			)
+			(justify left)
+		)
+		(uuid "3bd80400-8985-5bf7-a4df-2f25380dce9d")
+	)
+	(text "Probe heaters: schedule no more than one at a time. Check regulator headroom and cable drop.\nKeep detachable joints dry; this drawing does not qualify environmental protection."
+		(exclude_from_sim no)
+		(at 15 186 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "4f84b681-a1f3-5ebb-b6ed-59913fc9070c")
+	)
+	(text "EIGHT SHARED SENSOR PORT INSTANCES"
+		(exclude_from_sim no)
+		(at 15 16 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left)
+		)
+		(uuid "829e80fe-9925-5696-b20f-de15bcefc3f2")
+	)
+	(wire
+		(pts
+			(xy 33.02 154.94) (xy 44.45 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "098d84aa-f4f0-5c20-8c51-72ea4ed2c0c1")
+	)
+	(wire
+		(pts
+			(xy 33.02 48.26) (xy 44.45 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "196e7ffe-02c6-5833-92f5-4021ab9ff0e8")
+	)
+	(wire
+		(pts
+			(xy 33.02 88.9) (xy 44.45 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d52d152-36ea-5841-9078-6da408617937")
+	)
+	(wire
+		(pts
+			(xy 157.48 147.32) (xy 170.18 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4207cea2-cf84-508a-b9d2-ddb8cbc0c015")
+	)
+	(wire
+		(pts
+			(xy 157.48 48.26) (xy 170.18 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ec9f738-068e-5188-84bd-df360bfa6a4c")
+	)
+	(wire
+		(pts
+			(xy 157.48 55.88) (xy 170.18 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8170d447-a41c-5995-89e0-2d6646702682")
+	)
+	(wire
+		(pts
+			(xy 157.48 81.28) (xy 170.18 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cf84a64-b90b-5a75-ac77-dc12e95c99d0")
+	)
+	(wire
+		(pts
+			(xy 33.02 81.28) (xy 44.45 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d15a2d6-3328-57fb-8eac-b8a259cba50a")
+	)
+	(wire
+		(pts
+			(xy 33.02 147.32) (xy 44.45 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa9a0488-ae4a-557a-82b2-0781eb08a9a6")
+	)
+	(wire
+		(pts
+			(xy 157.48 114.3) (xy 170.18 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae2be1b4-4675-52d0-9f51-02ab8512392c")
+	)
+	(wire
+		(pts
+			(xy 33.02 121.92) (xy 44.45 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b08aee41-d82c-51d5-bc6c-9a1218263cc2")
+	)
+	(wire
+		(pts
+			(xy 33.02 55.88) (xy 44.45 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1a59af1-6477-5996-9a03-4ffacf371584")
+	)
+	(wire
+		(pts
+			(xy 157.48 88.9) (xy 170.18 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ccce65ee-d675-5ac2-aa47-6f34453b9d4b")
+	)
+	(wire
+		(pts
+			(xy 157.48 121.92) (xy 170.18 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d369d140-28e4-5f58-a997-8c8612e440be")
+	)
+	(wire
+		(pts
+			(xy 157.48 154.94) (xy 170.18 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc0b82a1-24f5-546a-a5cc-4f480b5a6827")
+	)
+	(wire
+		(pts
+			(xy 33.02 114.3) (xy 44.45 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1ba243a-28ed-5aa3-8fd7-ae9d2aec78fe")
+	)
+	(global_label "SCL6"
+		(shape bidirectional)
+		(at 33.02 154.94 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "037e39a9-83bc-5553-acfb-8cfe08ebe9c8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA1"
+		(shape bidirectional)
+		(at 157.48 48.26 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "0d5a6118-31c6-5709-8a66-f31b94298e12")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL5"
+		(shape bidirectional)
+		(at 157.48 121.92 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "0ff4e200-d7e4-50c0-8eee-07bbe5588568")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA4"
+		(shape bidirectional)
+		(at 33.02 114.3 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6056d245-8941-5a9a-95ed-6bac1069716d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL2"
+		(shape bidirectional)
+		(at 33.02 88.9 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6659ef15-dea5-59ad-85f8-3a4385830423")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA3"
+		(shape bidirectional)
+		(at 157.48 81.28 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6a68cc81-99d8-5758-9478-ee64fc2dcb46")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA5"
+		(shape bidirectional)
+		(at 157.48 114.3 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6e83254a-5e00-555e-b46a-a5910e8127f4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL7"
+		(shape bidirectional)
+		(at 157.48 154.94 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "7c2f8425-22f7-5be7-92ea-5463fa0c7d12")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL1"
+		(shape bidirectional)
+		(at 157.48 55.88 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "8663ef78-23bb-55e2-97eb-81c31d63e8b1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL3"
+		(shape bidirectional)
+		(at 157.48 88.9 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "93516afb-3755-5123-a2a4-117cbb58001e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA0"
+		(shape bidirectional)
+		(at 33.02 48.26 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "956b52e1-67a8-5eed-939a-21d9bb2f5db8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA2"
+		(shape bidirectional)
+		(at 33.02 81.28 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "961bf5bb-9a6a-50bf-8112-d1b77f8a603a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA6"
+		(shape bidirectional)
+		(at 33.02 147.32 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "a658a4d0-65a3-5123-ad98-73affebe6d69")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL0"
+		(shape bidirectional)
+		(at 33.02 55.88 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "d9ebd36b-2984-5405-ad21-8ee782e0ddb3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL4"
+		(shape bidirectional)
+		(at 33.02 121.92 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "e728cb18-1589-5873-b9d3-0b7b6429fd72")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA7"
+		(shape bidirectional)
+		(at 157.48 147.32 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "ed42a103-58be-5be8-ae9d-9a91f2070bf6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.48 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 138.43)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "0846646c-ac36-5de6-85c1-cddb0d25bb7b")
+		(property "Sheetname" "Port 6"
+			(at 45 137 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 45 165 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 44.45 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 44.45 147.32 180)
+			(uuid "a696967c-ff92-5dba-b9a5-e0db2b909049")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 44.45 154.94 180)
+			(uuid "7eb53fc7-75de-56d5-9349-fc7154a86310")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "10")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 39.37)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3a27ca88-161c-5e97-b139-dbfd1c87b88b")
+		(property "Sheetname" "Port 0"
+			(at 45 38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 45 66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 44.45 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 44.45 48.26 180)
+			(uuid "c63bd629-3a31-550d-a9de-ede81383e53d")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 44.45 55.88 180)
+			(uuid "630a73e7-6b43-5ae0-8630-c02dbbbaa266")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 170.18 138.43)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "5da42fdb-4471-5eea-867e-4cfbdead675d")
+		(property "Sheetname" "Port 7"
+			(at 170 137 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 170 165 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 170.18 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 170.18 147.32 180)
+			(uuid "2916fb65-69c3-5d2a-b457-04003ee9e1ee")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 170.18 154.94 180)
+			(uuid "ddb9b029-625b-5b56-9e07-5a60169b4283")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "11")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 170.18 39.37)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "854ce72c-225e-5632-a9e2-323a0c24b3af")
+		(property "Sheetname" "Port 1"
+			(at 170 38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 170 66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 170.18 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 170.18 48.26 180)
+			(uuid "035405b8-ed04-526b-a377-dcf08d543523")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 170.18 55.88 180)
+			(uuid "4076fff3-ff76-5a93-9d24-37c5efbb8d72")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 105.41)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "d8a11693-e3ab-50cf-804e-df605f04fa30")
+		(property "Sheetname" "Port 4"
+			(at 45 104 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 45 132 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 44.45 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 44.45 114.3 180)
+			(uuid "bed839fa-607a-5a86-a5fe-bd892ea91056")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 44.45 121.92 180)
+			(uuid "f440f963-4a84-500b-9596-53d333ac65ec")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 72.39)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "de12cc83-d897-5974-be11-b38e6bd1926e")
+		(property "Sheetname" "Port 2"
+			(at 45 71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 45 99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 44.45 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 44.45 81.28 180)
+			(uuid "fd59d17e-59dc-5aa2-8677-528d07ce7282")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 44.45 88.9 180)
+			(uuid "bcf42ed3-1873-5055-af5b-942c1b3d4681")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 170.18 105.41)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e0dc7795-7a6c-5816-bbc7-72bdadff2c9e")
+		(property "Sheetname" "Port 5"
+			(at 170 104 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 170 132 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 170.18 114.3 180)
+			(uuid "f4a92828-0da7-5064-a418-0879a5b78d45")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 170.18 121.92 180)
+			(uuid "5a722ee8-194e-5f83-9596-0037d5d1b76c")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 170.18 72.39)
+		(size 90 24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "fc33b3b3-1cc3-5610-b265-64cb71d7a499")
+		(property "Sheetname" "Port 3"
+			(at 170 71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Sheetfile" "sensor-port.kicad_sch"
+			(at 170 99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
+			(at 170.18 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 170.18 81.28 180)
+			(uuid "57873e1d-c59b-5eb1-a960-6b2780bcd9dc")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "SCL" bidirectional
+			(at 170.18 88.9 180)
+			(uuid "ed4798ec-c8ca-5361-bc2c-9631f565ce20")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(instances
+			(project "motley-sensors"
+				(path "/99a5f91f-96dd-503f-a24a-b36baea51cb1/6303cb29-069e-519a-b8d9-fedd9559591e"
+					(page "7")
+				)
+			)
+		)
+	)
+)

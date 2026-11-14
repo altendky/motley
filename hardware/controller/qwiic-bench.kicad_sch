@@ -1,529 +1,4329 @@
 (kicad_sch
-  (version 20250114)
-  (generator eeschema)
-  (generator_version "9.0")
-  (uuid "be781dd5-816e-590b-94bd-9113feeff31b")
-  (paper "A2")
-  (title_block (title "Independent I2C Qwiic bench access") (date "2026-11-13") (rev "0.2") (company "Motley") (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
-  (lib_symbols
-  (symbol "Connector_Generic:Conn_01x04"
-		(pin_names
-			(offset 1.016)
-			(hide yes)
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "be781dd5-816e-590b-94bd-9113feeff31b")
+	(paper "A2")
+	(title_block
+		(title "Independent I2C Qwiic bench access")
+		(date "2026-11-13")
+		(rev "0.2")
+		(company "Motley")
+		(comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE")
+	)
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
 		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Motley:PESD5V0S2BT"
+			(pin_names
+				(offset 0.5)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Value" "PESD5V0S2BT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_0_1"
+				(polyline
+					(pts
+						(xy -10.16 2.54) (xy -6.35 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10.16 -2.54) (xy -6.35 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 2.54) (xy 0 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -10.16)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_1_1"
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "IO1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "IO2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "REF"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "LP I2C: GPIO6 SDA / GPIO7 SCL - SECOND SOCKET (parallel)"
+		(exclude_from_sim no)
+		(at 296.86 217.8 0)
+		(effects
+			(font
+				(size 1.3 1.3)
+			)
+			(justify left top)
+		)
+		(uuid "51f549be-64e4-54be-b8e0-41a12537cf34")
+	)
+	(text "R44-R47 independently disconnect socket power, NOT SDA/SCL. Do not connect another powered host or drive signals into an unpowered board."
+		(exclude_from_sim no)
+		(at 15 378 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "61f6dc6d-0a02-5f58-98a8-46d81f745831")
+	)
+	(text "One pull-up pair per bus: main 10k, LP 4k7. Configure aggregate pulls when chaining muxes; check LOW current, rise time and cable power drop."
+		(exclude_from_sim no)
+		(at 15 394 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "6566bbe5-4c60-5051-be13-43113151dd1c")
+	)
+	(text "MAIN I2C: GPIO19 SDA / GPIO18 SCL - FIRST SOCKET / LOCAL PULL-UPS"
+		(exclude_from_sim no)
+		(at 20 40 0)
+		(effects
+			(font
+				(size 1.3 1.3)
+			)
+			(justify left top)
+		)
+		(uuid "66d98d61-c56c-5758-8d79-3acc742c4eac")
+	)
+	(text "Each horizontal pair shares one bus. Main and LP controllers remain independent. All four sockets source switched +3V3_SENS."
+		(exclude_from_sim no)
+		(at 15 25 0)
+		(effects
+			(font
+				(size 1.15 1.15)
+			)
+			(justify left top)
+		)
+		(uuid "955c1cf1-3536-501f-9fe1-e17a80eebda1")
+	)
+	(text "CARRIER: TWO I2C BUSES, TWO QWIIC SOCKETS PER BUS"
+		(exclude_from_sim no)
+		(at 15 15 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left top)
+		)
+		(uuid "aa8a6f36-fcc1-59dd-8c5d-d885ebe1e9c6")
+	)
+	(text "MAIN I2C: GPIO19 SDA / GPIO18 SCL - SECOND SOCKET (parallel)"
+		(exclude_from_sim no)
+		(at 296.86 40 0)
+		(effects
+			(font
+				(size 1.3 1.3)
+			)
+			(justify left top)
+		)
+		(uuid "c8aaf4ac-025e-5111-ad3c-3e52606c00b2")
+	)
+	(text "Five-pin deployment/reset link retained. LP GPIO6/7 preserve USB-JTAG policy. No firmware, hot-plug or ESD-immunity qualification is claimed."
+		(exclude_from_sim no)
+		(at 15 402 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "dfcdff88-79d3-5914-94ac-7738bbb66945")
+	)
+	(text "SUPPORTED BENCH USE: 3.3 V OUT only; one host and one supply per connected bus. Avoid loops between parallel sockets, chains and branches."
+		(exclude_from_sim no)
+		(at 15 370 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "eb37c970-424f-5b25-a371-5d0a57c68933")
+	)
+	(text "Enable +3V3_SENS before I2C. All sockets share its current budget. At most one SHT45 heater pulse; deselecting a branch does not stop its pulse."
+		(exclude_from_sim no)
+		(at 15 386 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "f9df6b5e-04cf-5efd-8cac-ee9aa19111db")
+	)
+	(text "LP I2C: GPIO6 SDA / GPIO7 SCL - FIRST SOCKET / LOCAL PULL-UPS"
+		(exclude_from_sim no)
+		(at 20 217.8 0)
+		(effects
+			(font
+				(size 1.3 1.3)
+			)
+			(justify left top)
+		)
+		(uuid "fe802584-2624-54ef-b47d-f7df916e9e2c")
+	)
+	(junction
+		(at 116.84 297.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "027838fb-7b84-56e6-a6f3-8700c92552fb")
+	)
+	(junction
+		(at 93.98 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "04f4ef2f-d65c-5959-a1a6-445d176435aa")
+	)
+	(junction
+		(at 342.9 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17ac08c6-bf87-52cf-bfc0-88620fc5568a")
+	)
+	(junction
+		(at 149.86 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "29303ac5-29c6-57b8-9616-b5e5269ab33b")
+	)
+	(junction
+		(at 426.72 266.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2dff0aaf-30de-52f2-9ec7-df016409f4b4")
+	)
+	(junction
+		(at 149.86 266.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "310d0bac-80df-5240-aedb-e312235bf940")
+	)
+	(junction
+		(at 93.98 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d1aa7dc-8b5a-5d71-99d1-3662fe440262")
+	)
+	(junction
+		(at 342.9 284.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6eca32db-8695-5ee7-ba40-f40a83483242")
+	)
+	(junction
+		(at 71.12 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "724d9c4d-3579-520d-b6e0-e8594ff68a1a")
+	)
+	(junction
+		(at 426.72 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8705159c-fb7b-5d34-8e2b-243816cdd503")
+	)
+	(junction
+		(at 66.04 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "874c7f03-eb77-5226-8b3a-e1b3a6c1b294")
+	)
+	(junction
+		(at 116.84 238.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a28f2933-d935-5e63-98e0-1a82dfd5b6d8")
+	)
+	(junction
+		(at 66.04 284.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a4384bc4-b0c9-5a4a-93c6-e0a8d8f01938")
+	)
+	(junction
+		(at 347.98 297.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aedf6945-f88f-5aeb-9e4c-a1e3885545f3")
+	)
+	(junction
+		(at 116.84 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b46d9ba2-9434-50e5-88b8-41cdcbf9c358")
+	)
+	(junction
+		(at 93.98 284.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b6f3aa8c-42c8-5543-b320-6604bf527099")
+	)
+	(junction
+		(at 71.12 297.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb49a5e9-fc0e-5fb8-8bd8-acf4b5948606")
+	)
+	(junction
+		(at 116.84 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f3fa8bb5-ffcc-52f7-bc2d-43bdd831015f")
+	)
+	(junction
+		(at 347.98 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fa6d9012-5455-5aec-8926-9547afdb220f")
+	)
+	(junction
+		(at 93.98 238.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ffa04378-915e-5d8c-be9b-f6fb066ceb55")
+	)
+	(no_connect
+		(at 414.02 154.94)
+		(uuid "dd4a8900-224e-5ff9-9117-50c8bc84712b")
+	)
+	(no_connect
+		(at 414.02 332.74)
+		(uuid "e52a2141-272c-51c9-9c02-f081da755940")
+	)
+	(no_connect
+		(at 137.16 332.74)
+		(uuid "f3482658-e096-5e7d-812c-7933c32c9617")
+	)
+	(no_connect
+		(at 137.16 154.94)
+		(uuid "fea249e7-c1b2-5617-8e77-58b1aead1aee")
+	)
+	(wire
+		(pts
+			(xy 452.12 86.36) (xy 447.04 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "037c0069-f1d4-5387-8883-a0f94d887dc3")
+	)
+	(wire
+		(pts
+			(xy 71.12 332.74) (xy 76.2 332.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04c57b38-9f93-50a4-a772-e0848e840035")
+	)
+	(wire
+		(pts
+			(xy 93.98 92.71) (xy 93.98 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c43a3ff-8b54-59b7-aa8e-75c48c13f043")
+	)
+	(wire
+		(pts
+			(xy 393.7 119.38) (xy 444.5 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fdd7eab-3b39-5434-bee5-55b1d4f28339")
+	)
+	(wire
+		(pts
+			(xy 452.12 264.16) (xy 447.04 264.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10e9f39f-9872-56e9-871e-fa7f8110baf5")
+	)
+	(wire
+		(pts
+			(xy 347.98 119.38) (xy 393.7 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "131c4ea1-045d-5b46-ab1c-622e62312544")
+	)
+	(wire
+		(pts
+			(xy 134.62 266.7) (xy 149.86 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "173f6bdb-a57a-5034-bca0-e7a0a73a0566")
+	)
+	(wire
+		(pts
+			(xy 347.98 297.18) (xy 393.7 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1817d79b-099f-5a64-830d-b36e5623435b")
+	)
+	(wire
+		(pts
+			(xy 71.12 297.18) (xy 116.84 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a0a7e0b-648d-51ea-8980-4a6336859c0f")
+	)
+	(wire
+		(pts
+			(xy 116.84 60.96) (xy 116.84 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c56b096-7b12-5efd-a8dc-7954e5232c23")
+	)
+	(wire
+		(pts
+			(xy 411.48 266.7) (xy 426.72 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "229a834b-5943-5076-8485-dc6a57c1f079")
+	)
+	(wire
+		(pts
+			(xy 342.9 327.66) (xy 353.06 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24645d26-9c6b-5ead-a578-d46576d98458")
+	)
+	(wire
+		(pts
+			(xy 71.12 297.18) (xy 71.12 332.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2aba3357-b4af-56bb-96bd-36315161f6d0")
+	)
+	(wire
+		(pts
+			(xy 66.04 149.86) (xy 76.2 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ad9622b-5d8e-5548-aa61-4cd3c9e35b4f")
+	)
+	(wire
+		(pts
+			(xy 426.72 88.9) (xy 452.12 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2af3c6a8-6573-5490-8ede-80fbfef28167")
+	)
+	(wire
+		(pts
+			(xy 66.04 284.48) (xy 66.04 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31441f08-c87c-5e3a-b968-09c408595a7c")
+	)
+	(wire
+		(pts
+			(xy 393.7 60.96) (xy 426.72 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "322e8d7c-3b3f-53f3-b37e-5c60f7f331db")
+	)
+	(wire
+		(pts
+			(xy 93.98 238.76) (xy 93.98 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "329af4b2-98dc-5a7f-8dcf-ad18b8c66523")
+	)
+	(wire
+		(pts
+			(xy 157.48 91.44) (xy 175.26 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "329ec406-392a-596c-b97f-1c85960366ca")
+	)
+	(wire
+		(pts
+			(xy 93.98 270.51) (xy 93.98 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34488848-0d48-556e-96c0-c931edd1da44")
+	)
+	(wire
+		(pts
+			(xy 426.72 77.47) (xy 426.72 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36591aeb-666d-5a3a-b38e-cb96da1d7cd8")
+	)
+	(wire
+		(pts
+			(xy 411.48 149.86) (xy 411.48 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bb64a62-2269-5e33-8e36-a6119230345d")
+	)
+	(wire
+		(pts
+			(xy 444.5 271.78) (xy 452.12 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bf2e939-16d3-56f9-bb8b-3fbead013d62")
+	)
+	(wire
+		(pts
+			(xy 116.84 270.51) (xy 116.84 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d80a5cc-b821-5754-b9a7-d9a9e36bfa0c")
+	)
+	(wire
+		(pts
+			(xy 71.12 119.38) (xy 116.84 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e5b443e-2426-5801-a67c-cd8e72cfff98")
+	)
+	(wire
+		(pts
+			(xy 66.04 106.68) (xy 66.04 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41dabae3-1a64-5156-9046-b8ed92c032cc")
+	)
+	(wire
+		(pts
+			(xy 149.86 60.96) (xy 149.86 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "457d6ef1-ead8-523e-a847-c73573f71c39")
+	)
+	(wire
+		(pts
+			(xy 426.72 165.1) (xy 426.72 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46fdf50a-4fff-51d2-beb4-05badbfa4a16")
+	)
+	(wire
+		(pts
+			(xy 434.34 269.24) (xy 452.12 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4717a0e6-bbe7-597b-bdd4-d3051e95e63a")
+	)
+	(wire
+		(pts
+			(xy 411.48 327.66) (xy 411.48 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "471df9a7-1426-5e33-8725-a86690abcc57")
+	)
+	(wire
+		(pts
+			(xy 50.8 297.18) (xy 71.12 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aa87359-7bfa-54f9-aca0-e39489dac090")
+	)
+	(wire
+		(pts
+			(xy 393.7 238.76) (xy 426.72 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56d369b7-08ab-587e-a273-8fbf7a86abc0")
+	)
+	(wire
+		(pts
+			(xy 167.64 93.98) (xy 175.26 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58f614e6-86d7-5c9e-8ef5-561dcc132818")
+	)
+	(wire
+		(pts
+			(xy 116.84 119.38) (xy 167.64 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a3f798a-8b75-5c70-9706-a4efa977f288")
+	)
+	(wire
+		(pts
+			(xy 426.72 255.27) (xy 426.72 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b8b9ba8-3feb-587b-9f48-2cd5644f7a89")
+	)
+	(wire
+		(pts
+			(xy 365.76 342.9) (xy 365.76 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bb6f215-6612-5b8f-b590-52cfd83a7660")
+	)
+	(wire
+		(pts
+			(xy 370.84 284.48) (xy 434.34 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dc5a748-bfcd-5d27-a81d-490c3ee59933")
+	)
+	(wire
+		(pts
+			(xy 134.62 88.9) (xy 149.86 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e7f2923-4882-57d2-b8f4-12c5a7c0180e")
+	)
+	(wire
+		(pts
+			(xy 149.86 77.47) (xy 149.86 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "616629ec-993b-5593-9ed8-54648823f887")
+	)
+	(wire
+		(pts
+			(xy 414.02 149.86) (xy 411.48 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62ae028b-372c-5d42-a9b6-cd9db7b47052")
+	)
+	(wire
+		(pts
+			(xy 342.9 106.68) (xy 370.84 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63726f93-b86b-552a-906f-d5bcbb668bc0")
+	)
+	(wire
+		(pts
+			(xy 444.5 93.98) (xy 452.12 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6597de08-3263-5e16-801d-9c50cb9ee387")
+	)
+	(wire
+		(pts
+			(xy 365.76 355.6) (xy 426.72 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6618206d-9177-512d-85cd-d1334b810442")
+	)
+	(wire
+		(pts
+			(xy 167.64 271.78) (xy 175.26 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c13f7c9-e466-56b0-af75-2d0cd4f1b7a8")
+	)
+	(wire
+		(pts
+			(xy 175.26 86.36) (xy 170.18 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "707351f0-7e2d-50cb-b749-b8628e9a3f8e")
+	)
+	(wire
+		(pts
+			(xy 347.98 154.94) (xy 353.06 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "726faca5-a8ae-5d28-b63a-42722492dc88")
+	)
+	(wire
+		(pts
+			(xy 93.98 106.68) (xy 157.48 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75a70159-f925-56d6-9810-097b2839303f")
+	)
+	(wire
+		(pts
+			(xy 393.7 297.18) (xy 444.5 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78a73f27-73ed-5189-9d49-b149863a6219")
+	)
+	(wire
+		(pts
+			(xy 426.72 238.76) (xy 426.72 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ba4cbe0-de1e-543c-b142-7a87e095f7cc")
+	)
+	(wire
+		(pts
+			(xy 149.86 88.9) (xy 175.26 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "812bfa40-565f-55e9-bd0e-78d99d3f871d")
+	)
+	(wire
+		(pts
+			(xy 157.48 269.24) (xy 175.26 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83767331-71f9-5fed-9dab-11daf55f4cf8")
+	)
+	(wire
+		(pts
+			(xy 149.86 165.1) (xy 149.86 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86788980-4b6e-50da-b3b8-3a23be43833b")
+	)
+	(wire
+		(pts
+			(xy 434.34 284.48) (xy 434.34 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "888ee763-c10c-5927-92a3-a0866a4508e0")
+	)
+	(wire
+		(pts
+			(xy 88.9 165.1) (xy 88.9 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "889ab347-2b79-552f-b87f-eea8c74f4de6")
+	)
+	(wire
+		(pts
+			(xy 365.76 177.8) (xy 426.72 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88a1f6fb-c279-559e-a4c4-48e9aaec3e98")
+	)
+	(wire
+		(pts
+			(xy 93.98 238.76) (xy 116.84 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8918cade-4599-5fe1-b1be-beaa5eba8975")
+	)
+	(wire
+		(pts
+			(xy 50.8 119.38) (xy 71.12 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d95419e-f105-5aa3-9266-bd3ff2093dfd")
+	)
+	(wire
+		(pts
+			(xy 137.16 327.66) (xy 134.62 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f6ba01a-18b4-5ac5-9822-8dda36ed0269")
+	)
+	(wire
+		(pts
+			(xy 116.84 238.76) (xy 116.84 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9016f912-a4cf-5113-97e3-4570d6601fcf")
+	)
+	(wire
+		(pts
+			(xy 71.12 154.94) (xy 76.2 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "989874b1-3fe5-597e-bd97-bf3794f6b424")
+	)
+	(wire
+		(pts
+			(xy 137.16 149.86) (xy 134.62 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cb727bb-231d-5dfd-8f16-7a1e7309ef7b")
+	)
+	(wire
+		(pts
+			(xy 93.98 60.96) (xy 93.98 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f5b4b0f-c0d6-5ff6-9cd7-bef3e8925dcb")
+	)
+	(wire
+		(pts
+			(xy 66.04 284.48) (xy 93.98 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a037aed1-f8e7-5a71-8a49-3a6c3d261e9e")
+	)
+	(wire
+		(pts
+			(xy 342.9 149.86) (xy 353.06 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a26f4a4b-a016-5e43-a8ea-4a11cebc51c8")
+	)
+	(wire
+		(pts
+			(xy 342.9 106.68) (xy 342.9 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2ee4fe3-db4a-5af6-8c17-39ce9ab2dc9e")
+	)
+	(wire
+		(pts
+			(xy 116.84 92.71) (xy 116.84 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9a134aa-3fdd-5d37-a255-51e3913963c9")
+	)
+	(wire
+		(pts
+			(xy 50.8 284.48) (xy 66.04 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae7c5082-e15a-5791-a3de-cbbb343b2e23")
+	)
+	(wire
+		(pts
+			(xy 426.72 266.7) (xy 452.12 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae92c561-dde5-5bd8-b91f-52e31d7907f0")
+	)
+	(wire
+		(pts
+			(xy 327.66 119.38) (xy 347.98 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aed4a3ef-138e-5fdb-b266-f1aff4371901")
+	)
+	(wire
+		(pts
+			(xy 327.66 297.18) (xy 347.98 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0723eb9-a11c-56ba-93bb-9d87ea886618")
+	)
+	(wire
+		(pts
+			(xy 342.9 284.48) (xy 370.84 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2d39dfb-297a-5839-bcf9-626937ac4b02")
+	)
+	(wire
+		(pts
+			(xy 149.86 266.7) (xy 175.26 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b596e7d9-2575-54e5-886d-7e00cc190aa2")
+	)
+	(wire
+		(pts
+			(xy 370.84 60.96) (xy 393.7 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b71f6c51-d90f-59ef-860b-e31a09f8c5a9")
+	)
+	(wire
+		(pts
+			(xy 327.66 106.68) (xy 342.9 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba55aeaa-a5ac-580b-9acf-255579761c14")
+	)
+	(wire
+		(pts
+			(xy 370.84 238.76) (xy 393.7 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3e55eac-868d-5525-b561-c472ac1231ba")
+	)
+	(wire
+		(pts
+			(xy 93.98 284.48) (xy 157.48 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4389c5d-8116-5d6c-a816-8f8a16bc0524")
+	)
+	(wire
+		(pts
+			(xy 134.62 149.86) (xy 134.62 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c546faf3-38ea-578d-a854-f6e86562d18a")
+	)
+	(wire
+		(pts
+			(xy 60.96 60.96) (xy 93.98 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c549f951-6ca2-588e-b967-cdbde4d29cc7")
+	)
+	(wire
+		(pts
+			(xy 434.34 106.68) (xy 434.34 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5c2d08d-8fc3-564f-b567-b36619632a38")
+	)
+	(wire
+		(pts
+			(xy 167.64 297.18) (xy 167.64 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c70a8cf8-7d78-5fe9-a1fb-362d07e9c0b3")
+	)
+	(wire
+		(pts
+			(xy 347.98 332.74) (xy 353.06 332.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7ab1de3-53df-5b6a-9d00-21afa93a8b18")
+	)
+	(wire
+		(pts
+			(xy 444.5 297.18) (xy 444.5 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8a7b99f-4710-57e9-baf4-8380384868c3")
+	)
+	(wire
+		(pts
+			(xy 88.9 342.9) (xy 88.9 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9445e7f-d7ce-54ae-9c1c-d6e7b987b7d0")
+	)
+	(wire
+		(pts
+			(xy 327.66 284.48) (xy 342.9 284.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c97e8f61-b04b-560d-a1eb-b3314675f347")
+	)
+	(wire
+		(pts
+			(xy 149.86 342.9) (xy 149.86 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d15a3994-ddf3-56b6-b3f8-b5a3a08eac89")
+	)
+	(wire
+		(pts
+			(xy 365.76 165.1) (xy 365.76 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d195e6bc-f201-5f9d-8141-6abf4002fc31")
+	)
+	(wire
+		(pts
+			(xy 149.86 238.76) (xy 149.86 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2570a9d-7e83-5b14-bd0a-568328a799ae")
+	)
+	(wire
+		(pts
+			(xy 342.9 284.48) (xy 342.9 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2affdf6-efdb-55d8-b08f-cd39f13f8e4d")
+	)
+	(wire
+		(pts
+			(xy 157.48 284.48) (xy 157.48 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d53d0b2f-ff18-5fc4-8816-03221092f1ec")
+	)
+	(wire
+		(pts
+			(xy 116.84 60.96) (xy 149.86 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5645022-f016-512f-aa9c-c2fd569a546f")
+	)
+	(wire
+		(pts
+			(xy 71.12 119.38) (xy 71.12 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5e9724b-e3ae-5b4e-915d-dee0caa5e64a")
+	)
+	(wire
+		(pts
+			(xy 370.84 106.68) (xy 434.34 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6f442fb-0409-59be-97d3-26a38352177a")
+	)
+	(wire
+		(pts
+			(xy 88.9 177.8) (xy 149.86 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d847607c-f81b-57b2-beae-891360b87c39")
+	)
+	(wire
+		(pts
+			(xy 66.04 327.66) (xy 76.2 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db7323c4-af3b-5dab-912a-ab5e47e5e4dd")
+	)
+	(wire
+		(pts
+			(xy 88.9 355.6) (xy 149.86 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0b9390f-6220-5f75-9c93-35742c6dd263")
+	)
+	(wire
+		(pts
+			(xy 116.84 297.18) (xy 167.64 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e15b10c1-284e-5fad-8a33-ae9469c01c6b")
+	)
+	(wire
+		(pts
+			(xy 157.48 106.68) (xy 157.48 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1708969-2688-5c03-886a-643e689d2d8d")
+	)
+	(wire
+		(pts
+			(xy 60.96 238.76) (xy 93.98 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1bf44c2-ba67-5b06-8aaa-711f655b45df")
+	)
+	(wire
+		(pts
+			(xy 167.64 119.38) (xy 167.64 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e264d0db-a6cb-5698-b34d-1d165d37f43a")
+	)
+	(wire
+		(pts
+			(xy 337.82 60.96) (xy 370.84 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e972ca41-63e2-5706-a34f-f5214efd6dd4")
+	)
+	(wire
+		(pts
+			(xy 426.72 60.96) (xy 426.72 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e99a5e24-fb23-5975-8e6d-aac9f5090f54")
+	)
+	(wire
+		(pts
+			(xy 347.98 119.38) (xy 347.98 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9a28d60-8cc3-5fde-a824-c91d0c7e8e71")
+	)
+	(wire
+		(pts
+			(xy 414.02 327.66) (xy 411.48 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec5827fd-abad-5b8b-afe8-468b8bcb6ca4")
+	)
+	(wire
+		(pts
+			(xy 434.34 91.44) (xy 452.12 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "edaba442-394e-5849-8a9c-9ab0a03cff2c")
+	)
+	(wire
+		(pts
+			(xy 347.98 297.18) (xy 347.98 332.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "efb85fd7-2109-5181-b640-eaa02eb28e37")
+	)
+	(wire
+		(pts
+			(xy 149.86 255.27) (xy 149.86 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f06110c4-989d-52e8-9c62-8ef88811be09")
+	)
+	(wire
+		(pts
+			(xy 411.48 88.9) (xy 426.72 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2186e17-a922-5816-a9ff-bef8cdc80bfd")
+	)
+	(wire
+		(pts
+			(xy 175.26 264.16) (xy 170.18 264.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5b25a86-c278-562f-8449-87daefcae795")
+	)
+	(wire
+		(pts
+			(xy 93.98 60.96) (xy 116.84 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6215f32-c326-5ae4-ba79-349138deacc0")
+	)
+	(wire
+		(pts
+			(xy 444.5 119.38) (xy 444.5 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6625308-e622-5243-a84e-705c8da79653")
+	)
+	(wire
+		(pts
+			(xy 426.72 342.9) (xy 426.72 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8f4c7d8-cda5-5dc1-8254-48ad209bf02f")
+	)
+	(wire
+		(pts
+			(xy 50.8 106.68) (xy 66.04 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9ef011c-44eb-5b2a-bf21-c0f4994d2668")
+	)
+	(wire
+		(pts
+			(xy 134.62 327.66) (xy 134.62 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc0d6acd-b41d-5382-91eb-679e0b3b16d9")
+	)
+	(wire
+		(pts
+			(xy 66.04 106.68) (xy 93.98 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc24f411-6a9b-5899-8ee4-3c0be30ff406")
+	)
+	(wire
+		(pts
+			(xy 116.84 238.76) (xy 149.86 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe9c2929-7d84-5422-be4f-ae84d1245829")
+	)
+	(wire
+		(pts
+			(xy 337.82 238.76) (xy 370.84 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff3f8c89-bffc-5f75-95b3-676d2b7ac98e")
+	)
+	(label "QWIIC_HP_3V3"
+		(at 149.86 88.9 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "0351cc30-86c3-5cb1-90ce-c79412553a69")
+	)
+	(label "QWIIC_LP2_3V3"
+		(at 426.72 266.7 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "9242a08c-39b3-533f-be67-56532273761d")
+	)
+	(label "QWIIC_LP_3V3"
+		(at 149.86 266.7 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "bd601f93-96e9-572f-83cf-4082dad07c10")
+	)
+	(label "QWIIC_HP2_3V3"
+		(at 426.72 88.9 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "fbf277f6-f308-5357-b104-81f111933005")
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 365.76 355.6 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "059d136b-c8c0-50a7-96e9-e9704505634d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 365.76 355.6 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 170.18 264.16 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "1efcd687-7de3-58c1-b9da-fde01a34fdc3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.18 264.16 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 88.9 177.8 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "28a3bbfc-9f45-520a-842f-7fd7f16b1330")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 88.9 177.8 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 337.82 238.76 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "2b6f584d-3e08-5d5b-9585-d6081488ce28")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 337.82 238.76 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "LP_I2C_SCL"
+		(shape bidirectional)
+		(at 327.66 297.18 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "2de6d0ee-2b35-5e1c-bf7c-aff551f7616f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 327.66 297.18 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 60.96 238.76 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "3288ec37-862f-5878-8125-cdf17f797792")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 60.96 238.76 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "LP_I2C_SDA"
+		(shape bidirectional)
+		(at 327.66 284.48 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6369f529-5dc8-5923-bc29-428f6e52d8b2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 327.66 284.48 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 447.04 264.16 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "64b73099-3c3e-585c-bc5e-7eda97abf101")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 447.04 264.16 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 337.82 60.96 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "698bc678-96e3-5269-a060-ebeee23ea7f2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 337.82 60.96 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 88.9 355.6 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "6a17abd8-55e0-5c6e-9119-8739e020b235")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 88.9 355.6 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "I2C_SCL"
+		(shape bidirectional)
+		(at 50.8 119.38 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "757f2e6f-d895-5c66-b3d8-bafb5f661d68")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 119.38 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+3V3_SENS"
+		(shape bidirectional)
+		(at 60.96 60.96 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "7c83f90e-bbdf-5d67-a898-03bbd63457f2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 60.96 60.96 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 365.76 177.8 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "96cefc4e-b7a9-5bb7-ab48-49c967d4a064")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 365.76 177.8 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 447.04 86.36 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "a7f12825-7cd9-54f2-beeb-80b2e2cefc14")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 447.04 86.36 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "I2C_SDA"
+		(shape bidirectional)
+		(at 327.66 106.68 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "cda2867d-588e-58a5-8264-dad727659a5a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 327.66 106.68 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 170.18 86.36 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "d139f228-55d6-51ec-a0a0-dd2a53046a55")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.18 86.36 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "I2C_SCL"
+		(shape bidirectional)
+		(at 327.66 119.38 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "de30fd02-4822-54bd-a7f1-d1e5bab97f59")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 327.66 119.38 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "I2C_SDA"
+		(shape bidirectional)
+		(at 50.8 106.68 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "ee2d3a66-ecf3-5bb3-9f90-ead86ac38999")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 106.68 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "LP_I2C_SDA"
+		(shape bidirectional)
+		(at 50.8 284.48 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "ef52db08-a7a8-57de-af14-bee04d3d4bb2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 284.48 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "LP_I2C_SCL"
+		(shape bidirectional)
+		(at 50.8 297.18 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "f12a83bf-494f-587e-859b-0b326b7aa550")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 297.18 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 149.86 251.46 0)
+		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "J"
-			(at 0 5.08 0)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0533821d-091d-5bed-9531-888cbab023d2")
+		(property "Reference" "R45"
+			(at 153.67 241.3 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
 			)
 		)
-		(property "Value" "Conn_01x04"
-			(at 0 -7.62 0)
+		(property "Value" "0"
+			(at 153.67 243.84 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "connector"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "Connector*:*_1x??_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "Conn_01x04_1_1"
-			(rectangle
-				(start -1.27 3.81)
-				(end 1.27 -6.35)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(rectangle
-				(start -1.27 2.667)
-				(end 0 2.413)
-				(stroke
-					(width 0.1524)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(rectangle
-				(start -1.27 0.127)
-				(end 0 -0.127)
-				(stroke
-					(width 0.1524)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(rectangle
-				(start -1.27 -2.413)
-				(end 0 -2.667)
-				(stroke
-					(width 0.1524)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(rectangle
-				(start -1.27 -4.953)
-				(end 0 -5.207)
-				(stroke
-					(width 0.1524)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin passive line
-				(at -5.08 2.54 0)
-				(length 3.81)
-				(name "Pin_1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -5.08 0 0)
-				(length 3.81)
-				(name "Pin_2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -5.08 -2.54 0)
-				(length 3.81)
-				(name "Pin_3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -5.08 -5.08 0)
-				(length 3.81)
-				(name "Pin_4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-  (symbol "Device:R"
-		(pin_numbers
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 149.86 251.46 0)
 			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
 		)
-		(pin_names
-			(offset 0)
+		(property "Datasheet" ""
+			(at 149.86 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
 		)
+		(property "Description" ""
+			(at 149.86 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 149.86 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d5e0cfe1-15fe-45be-be4c-d25c069421cb")
+		)
+		(pin "2"
+			(uuid "20c2a59d-cfb8-4431-86fa-d23858cf85fc")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R45")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 426.72 251.46 0)
+		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "R"
-			(at 2.032 0 90)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1568a741-cbe5-571c-8ff6-d38e0b2a172e")
+		(property "Reference" "R47"
+			(at 430.53 241.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 430.53 243.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 426.72 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 426.72 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 0 0 90)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 426.72 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at -1.778 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "1"
+			(uuid "59d12f50-6d8c-4d59-9a8f-847f60043d16")
 		)
-		(property "Datasheet" "~"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "2"
+			(uuid "664c06da-52a4-4613-8f47-68cd8a4b649d")
 		)
-		(property "Description" "Resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "R res resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "R_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "R_0_1"
-			(rectangle
-				(start -1.016 -2.54)
-				(end 1.016 2.54)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R47")
+					(unit 1)
 				)
 			)
 		)
-		(symbol "R_1_1"
-			(pin passive line
-				(at 0 3.81 270)
-				(length 1.27)
-				(name "~"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -3.81 90)
-				(length 1.27)
-				(name "~"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
 	)
-  (symbol "Motley:PESD5V0S2BT" (pin_names (offset 0.5)) (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "D" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Value" "PESD5V0S2BT" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails." (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (symbol "PESD5V0S2BT_0_1" (polyline (pts (xy -10.16 2.54) (xy -6.35 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 2.54) (xy 0 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -10.16 -2.54) (xy -6.35 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 -2.54) (xy 0 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0 2.54) (xy 0 -10.16)) (stroke (width 0.254) (type default)) (fill (type none)))) (symbol "PESD5V0S2BT_1_1" (pin passive line (at -12.7 2.54 0) (length 2.54) (name "IO1" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1))))) (pin passive line (at -12.7 -2.54 0) (length 2.54) (name "IO2" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1))))) (pin passive line (at 0 -12.7 90) (length 2.54) (name "REF" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1))))))))
-  (text "CARRIER: TWO I2C BUSES, TWO QWIIC SOCKETS PER BUS" (at 15 15 0) (effects (font (size 1.8 1.8)) (justify left top)) (uuid "aa8a6f36-fcc1-59dd-8c5d-d885ebe1e9c6"))
-  (text "Each horizontal pair shares one bus. Main and LP controllers remain independent. All four sockets source switched +3V3_SENS." (at 15 25 0) (effects (font (size 1.15 1.15)) (justify left top)) (uuid "955c1cf1-3536-501f-9fe1-e17a80eebda1"))
-  (text "MAIN I2C: GPIO19 SDA / GPIO18 SCL - FIRST SOCKET / LOCAL PULL-UPS" (at 20 40.0 0) (effects (font (size 1.3 1.3)) (justify left top)) (uuid "66d98d61-c56c-5758-8d79-3acc742c4eac"))
-  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 180.34 88.9 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e2d0f66c-60c5-57eb-a6da-b978240a281c") (property "Reference" "J23" (at 177.8 73.66 0) (effects (font (size 1 1)))) (property "Value" "QWIIC MAIN / 3V3 OUT" (at 177.8 76.2 0) (effects (font (size 1 1)))) (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" (at 180.34 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf" (at 180.34 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 180.34 88.9 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "J23") (unit 1)))))
-  (global_label "+3V3_SENS" (shape bidirectional) (at 60.96 60.96 180) (effects (font (size 1 1)) (justify right)) (uuid "7c83f90e-bbdf-5d67-a898-03bbd63457f2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 60.96 60.96 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 60.96 60.96) (xy 93.98 60.96)) (stroke (width 0) (type default)) (uuid "c549f951-6ca2-588e-b967-cdbde4d29cc7"))
-  (wire (pts (xy 93.98 60.96) (xy 116.84 60.96)) (stroke (width 0) (type default)) (uuid "f6215f32-c326-5ae4-ba79-349138deacc0"))
-  (wire (pts (xy 116.84 60.96) (xy 149.86 60.96)) (stroke (width 0) (type default)) (uuid "d5645022-f016-512f-aa9c-c2fd569a546f"))
-  (symbol (lib_id "Device:R") (at 93.98 88.9 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "56d9d1e9-d2cb-587d-bc7e-06b72c65a8ad") (property "Reference" "R40" (at 97.79 86.36 0) (effects (font (size 1 1)))) (property "Value" "10k" (at 97.79 88.9 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 93.98 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 93.98 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 93.98 88.9 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R40") (unit 1)))))
-  (wire (pts (xy 93.98 60.96) (xy 93.98 85.09)) (stroke (width 0) (type default)) (uuid "9f5b4b0f-c0d6-5ff6-9cd7-bef3e8925dcb"))
-  (wire (pts (xy 93.98 92.71) (xy 93.98 106.68)) (stroke (width 0) (type default)) (uuid "0c43a3ff-8b54-59b7-aa8e-75c48c13f043"))
-  (junction (at 93.98 60.96) (diameter 0) (color 0 0 0 0) (uuid "04f4ef2f-d65c-5959-a1a6-445d176435aa"))
-  (junction (at 93.98 106.68) (diameter 0) (color 0 0 0 0) (uuid "3d1aa7dc-8b5a-5d71-99d1-3662fe440262"))
-  (symbol (lib_id "Device:R") (at 116.84 88.9 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4532f6e2-2763-556e-8a81-4e90837909c5") (property "Reference" "R41" (at 120.65 86.36 0) (effects (font (size 1 1)))) (property "Value" "10k" (at 120.65 88.9 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 116.84 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 116.84 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 116.84 88.9 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R41") (unit 1)))))
-  (wire (pts (xy 116.84 60.96) (xy 116.84 85.09)) (stroke (width 0) (type default)) (uuid "1c56b096-7b12-5efd-a8dc-7954e5232c23"))
-  (wire (pts (xy 116.84 92.71) (xy 116.84 119.38)) (stroke (width 0) (type default)) (uuid "a9a134aa-3fdd-5d37-a255-51e3913963c9"))
-  (junction (at 116.84 60.96) (diameter 0) (color 0 0 0 0) (uuid "f3fa8bb5-ffcc-52f7-bc2d-43bdd831015f"))
-  (junction (at 116.84 119.38) (diameter 0) (color 0 0 0 0) (uuid "b46d9ba2-9434-50e5-88b8-41cdcbf9c358"))
-  (symbol (lib_id "Device:R") (at 149.86 73.66 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cfaabf66-8a2c-5d33-9a48-8b984a07f279") (property "Reference" "R44" (at 153.67 63.5 0) (effects (font (size 1 1)))) (property "Value" "0" (at 153.67 66.04 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 149.86 73.66 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 149.86 73.66 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 149.86 73.66 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R44") (unit 1)))))
-  (wire (pts (xy 149.86 60.96) (xy 149.86 69.85)) (stroke (width 0) (type default)) (uuid "457d6ef1-ead8-523e-a847-c73573f71c39"))
-  (wire (pts (xy 149.86 77.47) (xy 149.86 88.9)) (stroke (width 0) (type default)) (uuid "616629ec-993b-5593-9ed8-54648823f887"))
-  (wire (pts (xy 149.86 88.9) (xy 175.26 88.9)) (stroke (width 0) (type default)) (uuid "812bfa40-565f-55e9-bd0e-78d99d3f871d"))
-  (label "QWIIC_HP_3V3" (at 149.86 88.9 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "0351cc30-86c3-5cb1-90ce-c79412553a69"))
-  (wire (pts (xy 175.26 86.36) (xy 170.18 86.36)) (stroke (width 0) (type default)) (uuid "707351f0-7e2d-50cb-b749-b8628e9a3f8e"))
-  (global_label "GND" (shape bidirectional) (at 170.18 86.36 180) (effects (font (size 1 1)) (justify right)) (uuid "d139f228-55d6-51ec-a0a0-dd2a53046a55") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 170.18 86.36 180) (effects (font (size 1 1)) (hide yes))))
-  (global_label "I2C_SDA" (shape bidirectional) (at 50.8 106.68 180) (effects (font (size 1 1)) (justify right)) (uuid "ee2d3a66-ecf3-5bb3-9f90-ead86ac38999") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.8 106.68 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 50.8 106.68) (xy 66.04 106.68)) (stroke (width 0) (type default)) (uuid "f9ef011c-44eb-5b2a-bf21-c0f4994d2668"))
-  (wire (pts (xy 66.04 106.68) (xy 93.98 106.68)) (stroke (width 0) (type default)) (uuid "fc24f411-6a9b-5899-8ee4-3c0be30ff406"))
-  (wire (pts (xy 93.98 106.68) (xy 157.48 106.68)) (stroke (width 0) (type default)) (uuid "75a70159-f925-56d6-9810-097b2839303f"))
-  (wire (pts (xy 157.48 106.68) (xy 157.48 91.44)) (stroke (width 0) (type default)) (uuid "e1708969-2688-5c03-886a-643e689d2d8d"))
-  (wire (pts (xy 157.48 91.44) (xy 175.26 91.44)) (stroke (width 0) (type default)) (uuid "329ec406-392a-596c-b97f-1c85960366ca"))
-  (junction (at 66.04 106.68) (diameter 0) (color 0 0 0 0) (uuid "874c7f03-eb77-5226-8b3a-e1b3a6c1b294"))
-  (global_label "I2C_SCL" (shape bidirectional) (at 50.8 119.38 180) (effects (font (size 1 1)) (justify right)) (uuid "757f2e6f-d895-5c66-b3d8-bafb5f661d68") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.8 119.38 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 50.8 119.38) (xy 71.12 119.38)) (stroke (width 0) (type default)) (uuid "8d95419e-f105-5aa3-9266-bd3ff2093dfd"))
-  (wire (pts (xy 71.12 119.38) (xy 116.84 119.38)) (stroke (width 0) (type default)) (uuid "3e5b443e-2426-5801-a67c-cd8e72cfff98"))
-  (wire (pts (xy 116.84 119.38) (xy 167.64 119.38)) (stroke (width 0) (type default)) (uuid "5a3f798a-8b75-5c70-9706-a4efa977f288"))
-  (wire (pts (xy 167.64 119.38) (xy 167.64 93.98)) (stroke (width 0) (type default)) (uuid "e264d0db-a6cb-5698-b34d-1d165d37f43a"))
-  (wire (pts (xy 167.64 93.98) (xy 175.26 93.98)) (stroke (width 0) (type default)) (uuid "58f614e6-86d7-5c9e-8ef5-561dcc132818"))
-  (junction (at 71.12 119.38) (diameter 0) (color 0 0 0 0) (uuid "724d9c4d-3579-520d-b6e0-e8594ff68a1a"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 88.9 152.4 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "aa20426e-dc62-5046-a3e7-68de5bacb904") (property "Reference" "D40" (at 92.71 137.16 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 92.71 139.7 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 88.9 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 88.9 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 88.9 152.4 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D40") (unit 1)))))
-  (wire (pts (xy 88.9 165.1) (xy 88.9 177.8)) (stroke (width 0) (type default)) (uuid "889ab347-2b79-552f-b87f-eea8c74f4de6"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 149.86 152.4 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c4db088b-333c-5191-864a-d2c2a906c352") (property "Reference" "D41" (at 153.67 137.16 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 153.67 139.7 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 149.86 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 149.86 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 149.86 152.4 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D41") (unit 1)))))
-  (wire (pts (xy 149.86 165.1) (xy 149.86 177.8)) (stroke (width 0) (type default)) (uuid "86788980-4b6e-50da-b3b8-3a23be43833b"))
-  (wire (pts (xy 66.04 106.68) (xy 66.04 149.86)) (stroke (width 0) (type default)) (uuid "41dabae3-1a64-5156-9046-b8ed92c032cc"))
-  (wire (pts (xy 66.04 149.86) (xy 76.2 149.86)) (stroke (width 0) (type default)) (uuid "2ad9622b-5d8e-5548-aa61-4cd3c9e35b4f"))
-  (wire (pts (xy 71.12 119.38) (xy 71.12 154.94)) (stroke (width 0) (type default)) (uuid "d5e9724b-e3ae-5b4e-915d-dee0caa5e64a"))
-  (wire (pts (xy 71.12 154.94) (xy 76.2 154.94)) (stroke (width 0) (type default)) (uuid "989874b1-3fe5-597e-bd97-bf3794f6b424"))
-  (wire (pts (xy 88.9 177.8) (xy 149.86 177.8)) (stroke (width 0) (type default)) (uuid "d847607c-f81b-57b2-beae-891360b87c39"))
-  (global_label "GND" (shape bidirectional) (at 88.9 177.8 180) (effects (font (size 1 1)) (justify right)) (uuid "28a3bbfc-9f45-520a-842f-7fd7f16b1330") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 88.9 177.8 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 137.16 149.86) (xy 134.62 149.86)) (stroke (width 0) (type default)) (uuid "9cb727bb-231d-5dfd-8f16-7a1e7309ef7b"))
-  (wire (pts (xy 134.62 149.86) (xy 134.62 88.9)) (stroke (width 0) (type default)) (uuid "c546faf3-38ea-578d-a854-f6e86562d18a"))
-  (wire (pts (xy 134.62 88.9) (xy 149.86 88.9)) (stroke (width 0) (type default)) (uuid "5e7f2923-4882-57d2-b8f4-12c5a7c0180e"))
-  (junction (at 149.86 88.9) (diameter 0) (color 0 0 0 0) (uuid "29303ac5-29c6-57b8-9616-b5e5269ab33b"))
-  (no_connect (at 137.16 154.94) (uuid "fea249e7-c1b2-5617-8e77-58b1aead1aee"))
-  (text "MAIN I2C: GPIO19 SDA / GPIO18 SCL - SECOND SOCKET (parallel)" (at 296.86 40.0 0) (effects (font (size 1.3 1.3)) (justify left top)) (uuid "c8aaf4ac-025e-5111-ad3c-3e52606c00b2"))
-  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 457.2 88.9 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c6a473d8-4e65-56fb-9b9f-7550a432fac1") (property "Reference" "J25" (at 454.66 73.66 0) (effects (font (size 1 1)))) (property "Value" "QWIIC MAIN / 3V3 OUT" (at 454.66 76.2 0) (effects (font (size 1 1)))) (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" (at 457.2 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf" (at 457.2 88.9 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 457.2 88.9 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "J25") (unit 1)))))
-  (global_label "+3V3_SENS" (shape bidirectional) (at 337.82 60.96 180) (effects (font (size 1 1)) (justify right)) (uuid "698bc678-96e3-5269-a060-ebeee23ea7f2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 337.82 60.96 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 337.82 60.96) (xy 370.84 60.96)) (stroke (width 0) (type default)) (uuid "e972ca41-63e2-5706-a34f-f5214efd6dd4"))
-  (wire (pts (xy 370.84 60.96) (xy 393.7 60.96)) (stroke (width 0) (type default)) (uuid "b71f6c51-d90f-59ef-860b-e31a09f8c5a9"))
-  (wire (pts (xy 393.7 60.96) (xy 426.72 60.96)) (stroke (width 0) (type default)) (uuid "322e8d7c-3b3f-53f3-b37e-5c60f7f331db"))
-  (symbol (lib_id "Device:R") (at 426.72 73.66 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "455a61a4-1e95-5a59-b209-9f5c3506f6e8") (property "Reference" "R46" (at 430.53 63.5 0) (effects (font (size 1 1)))) (property "Value" "0" (at 430.53 66.04 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 426.72 73.66 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 426.72 73.66 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 426.72 73.66 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R46") (unit 1)))))
-  (wire (pts (xy 426.72 60.96) (xy 426.72 69.85)) (stroke (width 0) (type default)) (uuid "e99a5e24-fb23-5975-8e6d-aac9f5090f54"))
-  (wire (pts (xy 426.72 77.47) (xy 426.72 88.9)) (stroke (width 0) (type default)) (uuid "36591aeb-666d-5a3a-b38e-cb96da1d7cd8"))
-  (wire (pts (xy 426.72 88.9) (xy 452.12 88.9)) (stroke (width 0) (type default)) (uuid "2af3c6a8-6573-5490-8ede-80fbfef28167"))
-  (label "QWIIC_HP2_3V3" (at 426.72 88.9 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "fbf277f6-f308-5357-b104-81f111933005"))
-  (wire (pts (xy 452.12 86.36) (xy 447.04 86.36)) (stroke (width 0) (type default)) (uuid "037c0069-f1d4-5387-8883-a0f94d887dc3"))
-  (global_label "GND" (shape bidirectional) (at 447.04 86.36 180) (effects (font (size 1 1)) (justify right)) (uuid "a7f12825-7cd9-54f2-beeb-80b2e2cefc14") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 447.04 86.36 180) (effects (font (size 1 1)) (hide yes))))
-  (global_label "I2C_SDA" (shape bidirectional) (at 327.66 106.68 180) (effects (font (size 1 1)) (justify right)) (uuid "cda2867d-588e-58a5-8264-dad727659a5a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 106.68 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 327.66 106.68) (xy 342.9 106.68)) (stroke (width 0) (type default)) (uuid "ba55aeaa-a5ac-580b-9acf-255579761c14"))
-  (wire (pts (xy 342.9 106.68) (xy 370.84 106.68)) (stroke (width 0) (type default)) (uuid "63726f93-b86b-552a-906f-d5bcbb668bc0"))
-  (wire (pts (xy 370.84 106.68) (xy 434.34 106.68)) (stroke (width 0) (type default)) (uuid "d6f442fb-0409-59be-97d3-26a38352177a"))
-  (wire (pts (xy 434.34 106.68) (xy 434.34 91.44)) (stroke (width 0) (type default)) (uuid "c5c2d08d-8fc3-564f-b567-b36619632a38"))
-  (wire (pts (xy 434.34 91.44) (xy 452.12 91.44)) (stroke (width 0) (type default)) (uuid "edaba442-394e-5849-8a9c-9ab0a03cff2c"))
-  (junction (at 342.9 106.68) (diameter 0) (color 0 0 0 0) (uuid "17ac08c6-bf87-52cf-bfc0-88620fc5568a"))
-  (global_label "I2C_SCL" (shape bidirectional) (at 327.66 119.38 180) (effects (font (size 1 1)) (justify right)) (uuid "de30fd02-4822-54bd-a7f1-d1e5bab97f59") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 119.38 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 327.66 119.38) (xy 347.98 119.38)) (stroke (width 0) (type default)) (uuid "aed4a3ef-138e-5fdb-b266-f1aff4371901"))
-  (wire (pts (xy 347.98 119.38) (xy 393.7 119.38)) (stroke (width 0) (type default)) (uuid "131c4ea1-045d-5b46-ab1c-622e62312544"))
-  (wire (pts (xy 393.7 119.38) (xy 444.5 119.38)) (stroke (width 0) (type default)) (uuid "0fdd7eab-3b39-5434-bee5-55b1d4f28339"))
-  (wire (pts (xy 444.5 119.38) (xy 444.5 93.98)) (stroke (width 0) (type default)) (uuid "f6625308-e622-5243-a84e-705c8da79653"))
-  (wire (pts (xy 444.5 93.98) (xy 452.12 93.98)) (stroke (width 0) (type default)) (uuid "6597de08-3263-5e16-801d-9c50cb9ee387"))
-  (junction (at 347.98 119.38) (diameter 0) (color 0 0 0 0) (uuid "fa6d9012-5455-5aec-8926-9547afdb220f"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 365.76 152.4 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ef63dd48-4db5-5a25-aa03-80337d4d62b7") (property "Reference" "D44" (at 369.57 137.16 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 369.57 139.7 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 365.76 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 365.76 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 365.76 152.4 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D44") (unit 1)))))
-  (wire (pts (xy 365.76 165.1) (xy 365.76 177.8)) (stroke (width 0) (type default)) (uuid "d195e6bc-f201-5f9d-8141-6abf4002fc31"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 426.72 152.4 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4c248c6e-20e4-58c5-9c79-7d866a6220cb") (property "Reference" "D45" (at 430.53 137.16 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 430.53 139.7 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 426.72 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 426.72 152.4 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 426.72 152.4 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D45") (unit 1)))))
-  (wire (pts (xy 426.72 165.1) (xy 426.72 177.8)) (stroke (width 0) (type default)) (uuid "46fdf50a-4fff-51d2-beb4-05badbfa4a16"))
-  (wire (pts (xy 342.9 106.68) (xy 342.9 149.86)) (stroke (width 0) (type default)) (uuid "a2ee4fe3-db4a-5af6-8c17-39ce9ab2dc9e"))
-  (wire (pts (xy 342.9 149.86) (xy 353.06 149.86)) (stroke (width 0) (type default)) (uuid "a26f4a4b-a016-5e43-a8ea-4a11cebc51c8"))
-  (wire (pts (xy 347.98 119.38) (xy 347.98 154.94)) (stroke (width 0) (type default)) (uuid "e9a28d60-8cc3-5fde-a824-c91d0c7e8e71"))
-  (wire (pts (xy 347.98 154.94) (xy 353.06 154.94)) (stroke (width 0) (type default)) (uuid "726faca5-a8ae-5d28-b63a-42722492dc88"))
-  (wire (pts (xy 365.76 177.8) (xy 426.72 177.8)) (stroke (width 0) (type default)) (uuid "88a1f6fb-c279-559e-a4c4-48e9aaec3e98"))
-  (global_label "GND" (shape bidirectional) (at 365.76 177.8 180) (effects (font (size 1 1)) (justify right)) (uuid "96cefc4e-b7a9-5bb7-ab48-49c967d4a064") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 365.76 177.8 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 414.02 149.86) (xy 411.48 149.86)) (stroke (width 0) (type default)) (uuid "62ae028b-372c-5d42-a9b6-cd9db7b47052"))
-  (wire (pts (xy 411.48 149.86) (xy 411.48 88.9)) (stroke (width 0) (type default)) (uuid "3bb64a62-2269-5e33-8e36-a6119230345d"))
-  (wire (pts (xy 411.48 88.9) (xy 426.72 88.9)) (stroke (width 0) (type default)) (uuid "f2186e17-a922-5816-a9ff-bef8cdc80bfd"))
-  (junction (at 426.72 88.9) (diameter 0) (color 0 0 0 0) (uuid "8705159c-fb7b-5d34-8e2b-243816cdd503"))
-  (no_connect (at 414.02 154.94) (uuid "dd4a8900-224e-5ff9-9117-50c8bc84712b"))
-  (text "LP I2C: GPIO6 SDA / GPIO7 SCL - FIRST SOCKET / LOCAL PULL-UPS" (at 20 217.8 0) (effects (font (size 1.3 1.3)) (justify left top)) (uuid "fe802584-2624-54ef-b47d-f7df916e9e2c"))
-  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 180.34 266.7 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ccadf4bb-90b3-5a32-b632-5fd33752a795") (property "Reference" "J24" (at 177.8 251.46 0) (effects (font (size 1 1)))) (property "Value" "QWIIC LP / 3V3 OUT" (at 177.8 254.0 0) (effects (font (size 1 1)))) (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" (at 180.34 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf" (at 180.34 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 180.34 266.7 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "J24") (unit 1)))))
-  (global_label "+3V3_SENS" (shape bidirectional) (at 60.96 238.76 180) (effects (font (size 1 1)) (justify right)) (uuid "3288ec37-862f-5878-8125-cdf17f797792") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 60.96 238.76 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 60.96 238.76) (xy 93.98 238.76)) (stroke (width 0) (type default)) (uuid "e1bf44c2-ba67-5b06-8aaa-711f655b45df"))
-  (wire (pts (xy 93.98 238.76) (xy 116.84 238.76)) (stroke (width 0) (type default)) (uuid "8918cade-4599-5fe1-b1be-beaa5eba8975"))
-  (wire (pts (xy 116.84 238.76) (xy 149.86 238.76)) (stroke (width 0) (type default)) (uuid "fe9c2929-7d84-5422-be4f-ae84d1245829"))
-  (symbol (lib_id "Device:R") (at 93.98 266.7 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4d898fe9-0fc9-5ab3-9c1a-7750c69beeb3") (property "Reference" "R42" (at 97.79 264.16 0) (effects (font (size 1 1)))) (property "Value" "4k7" (at 97.79 266.7 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 93.98 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 93.98 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 93.98 266.7 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R42") (unit 1)))))
-  (wire (pts (xy 93.98 238.76) (xy 93.98 262.89)) (stroke (width 0) (type default)) (uuid "329af4b2-98dc-5a7f-8dcf-ad18b8c66523"))
-  (wire (pts (xy 93.98 270.51) (xy 93.98 284.48)) (stroke (width 0) (type default)) (uuid "34488848-0d48-556e-96c0-c931edd1da44"))
-  (junction (at 93.98 238.76) (diameter 0) (color 0 0 0 0) (uuid "ffa04378-915e-5d8c-be9b-f6fb066ceb55"))
-  (junction (at 93.98 284.48) (diameter 0) (color 0 0 0 0) (uuid "b6f3aa8c-42c8-5543-b320-6604bf527099"))
-  (symbol (lib_id "Device:R") (at 116.84 266.7 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7ce7dd98-c825-5fe6-ac7b-3dbd873c6db0") (property "Reference" "R43" (at 120.65 264.16 0) (effects (font (size 1 1)))) (property "Value" "4k7" (at 120.65 266.7 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 116.84 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 116.84 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 116.84 266.7 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R43") (unit 1)))))
-  (wire (pts (xy 116.84 238.76) (xy 116.84 262.89)) (stroke (width 0) (type default)) (uuid "9016f912-a4cf-5113-97e3-4570d6601fcf"))
-  (wire (pts (xy 116.84 270.51) (xy 116.84 297.18)) (stroke (width 0) (type default)) (uuid "3d80a5cc-b821-5754-b9a7-d9a9e36bfa0c"))
-  (junction (at 116.84 238.76) (diameter 0) (color 0 0 0 0) (uuid "a28f2933-d935-5e63-98e0-1a82dfd5b6d8"))
-  (junction (at 116.84 297.18) (diameter 0) (color 0 0 0 0) (uuid "027838fb-7b84-56e6-a6f3-8700c92552fb"))
-  (symbol (lib_id "Device:R") (at 149.86 251.46 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0533821d-091d-5bed-9531-888cbab023d2") (property "Reference" "R45" (at 153.67 241.3 0) (effects (font (size 1 1)))) (property "Value" "0" (at 153.67 243.84 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 149.86 251.46 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 149.86 251.46 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 149.86 251.46 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R45") (unit 1)))))
-  (wire (pts (xy 149.86 238.76) (xy 149.86 247.65)) (stroke (width 0) (type default)) (uuid "d2570a9d-7e83-5b14-bd0a-568328a799ae"))
-  (wire (pts (xy 149.86 255.27) (xy 149.86 266.7)) (stroke (width 0) (type default)) (uuid "f06110c4-989d-52e8-9c62-8ef88811be09"))
-  (wire (pts (xy 149.86 266.7) (xy 175.26 266.7)) (stroke (width 0) (type default)) (uuid "b596e7d9-2575-54e5-886d-7e00cc190aa2"))
-  (label "QWIIC_LP_3V3" (at 149.86 266.7 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "bd601f93-96e9-572f-83cf-4082dad07c10"))
-  (wire (pts (xy 175.26 264.16) (xy 170.18 264.16)) (stroke (width 0) (type default)) (uuid "f5b25a86-c278-562f-8449-87daefcae795"))
-  (global_label "GND" (shape bidirectional) (at 170.18 264.16 180) (effects (font (size 1 1)) (justify right)) (uuid "1efcd687-7de3-58c1-b9da-fde01a34fdc3") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 170.18 264.16 180) (effects (font (size 1 1)) (hide yes))))
-  (global_label "LP_I2C_SDA" (shape bidirectional) (at 50.8 284.48 180) (effects (font (size 1 1)) (justify right)) (uuid "ef52db08-a7a8-57de-af14-bee04d3d4bb2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.8 284.48 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 50.8 284.48) (xy 66.04 284.48)) (stroke (width 0) (type default)) (uuid "ae7c5082-e15a-5791-a3de-cbbb343b2e23"))
-  (wire (pts (xy 66.04 284.48) (xy 93.98 284.48)) (stroke (width 0) (type default)) (uuid "a037aed1-f8e7-5a71-8a49-3a6c3d261e9e"))
-  (wire (pts (xy 93.98 284.48) (xy 157.48 284.48)) (stroke (width 0) (type default)) (uuid "c4389c5d-8116-5d6c-a816-8f8a16bc0524"))
-  (wire (pts (xy 157.48 284.48) (xy 157.48 269.24)) (stroke (width 0) (type default)) (uuid "d53d0b2f-ff18-5fc4-8816-03221092f1ec"))
-  (wire (pts (xy 157.48 269.24) (xy 175.26 269.24)) (stroke (width 0) (type default)) (uuid "83767331-71f9-5fed-9dab-11daf55f4cf8"))
-  (junction (at 66.04 284.48) (diameter 0) (color 0 0 0 0) (uuid "a4384bc4-b0c9-5a4a-93c6-e0a8d8f01938"))
-  (global_label "LP_I2C_SCL" (shape bidirectional) (at 50.8 297.18 180) (effects (font (size 1 1)) (justify right)) (uuid "f12a83bf-494f-587e-859b-0b326b7aa550") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.8 297.18 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 50.8 297.18) (xy 71.12 297.18)) (stroke (width 0) (type default)) (uuid "4aa87359-7bfa-54f9-aca0-e39489dac090"))
-  (wire (pts (xy 71.12 297.18) (xy 116.84 297.18)) (stroke (width 0) (type default)) (uuid "1a0a7e0b-648d-51ea-8980-4a6336859c0f"))
-  (wire (pts (xy 116.84 297.18) (xy 167.64 297.18)) (stroke (width 0) (type default)) (uuid "e15b10c1-284e-5fad-8a33-ae9469c01c6b"))
-  (wire (pts (xy 167.64 297.18) (xy 167.64 271.78)) (stroke (width 0) (type default)) (uuid "c70a8cf8-7d78-5fe9-a1fb-362d07e9c0b3"))
-  (wire (pts (xy 167.64 271.78) (xy 175.26 271.78)) (stroke (width 0) (type default)) (uuid "6c13f7c9-e466-56b0-af75-2d0cd4f1b7a8"))
-  (junction (at 71.12 297.18) (diameter 0) (color 0 0 0 0) (uuid "cb49a5e9-fc0e-5fb8-8bd8-acf4b5948606"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 88.9 330.2 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1b82cbd3-8417-514b-88c0-e45bab6db2f2") (property "Reference" "D42" (at 92.71 314.96 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 92.71 317.5 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 88.9 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 88.9 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 88.9 330.2 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D42") (unit 1)))))
-  (wire (pts (xy 88.9 342.9) (xy 88.9 355.6)) (stroke (width 0) (type default)) (uuid "c9445e7f-d7ce-54ae-9c1c-d6e7b987b7d0"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 149.86 330.2 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bb023415-09b6-5e66-8961-7a7de9cc0aaa") (property "Reference" "D43" (at 153.67 314.96 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 153.67 317.5 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 149.86 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 149.86 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 149.86 330.2 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D43") (unit 1)))))
-  (wire (pts (xy 149.86 342.9) (xy 149.86 355.6)) (stroke (width 0) (type default)) (uuid "d15a3994-ddf3-56b6-b3f8-b5a3a08eac89"))
-  (wire (pts (xy 66.04 284.48) (xy 66.04 327.66)) (stroke (width 0) (type default)) (uuid "31441f08-c87c-5e3a-b968-09c408595a7c"))
-  (wire (pts (xy 66.04 327.66) (xy 76.2 327.66)) (stroke (width 0) (type default)) (uuid "db7323c4-af3b-5dab-912a-ab5e47e5e4dd"))
-  (wire (pts (xy 71.12 297.18) (xy 71.12 332.74)) (stroke (width 0) (type default)) (uuid "2aba3357-b4af-56bb-96bd-36315161f6d0"))
-  (wire (pts (xy 71.12 332.74) (xy 76.2 332.74)) (stroke (width 0) (type default)) (uuid "04c57b38-9f93-50a4-a772-e0848e840035"))
-  (wire (pts (xy 88.9 355.6) (xy 149.86 355.6)) (stroke (width 0) (type default)) (uuid "e0b9390f-6220-5f75-9c93-35742c6dd263"))
-  (global_label "GND" (shape bidirectional) (at 88.9 355.6 180) (effects (font (size 1 1)) (justify right)) (uuid "6a17abd8-55e0-5c6e-9119-8739e020b235") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 88.9 355.6 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 137.16 327.66) (xy 134.62 327.66)) (stroke (width 0) (type default)) (uuid "8f6ba01a-18b4-5ac5-9822-8dda36ed0269"))
-  (wire (pts (xy 134.62 327.66) (xy 134.62 266.7)) (stroke (width 0) (type default)) (uuid "fc0d6acd-b41d-5382-91eb-679e0b3b16d9"))
-  (wire (pts (xy 134.62 266.7) (xy 149.86 266.7)) (stroke (width 0) (type default)) (uuid "173f6bdb-a57a-5034-bca0-e7a0a73a0566"))
-  (junction (at 149.86 266.7) (diameter 0) (color 0 0 0 0) (uuid "310d0bac-80df-5240-aedb-e312235bf940"))
-  (no_connect (at 137.16 332.74) (uuid "f3482658-e096-5e7d-812c-7933c32c9617"))
-  (text "LP I2C: GPIO6 SDA / GPIO7 SCL - SECOND SOCKET (parallel)" (at 296.86 217.8 0) (effects (font (size 1.3 1.3)) (justify left top)) (uuid "51f549be-64e4-54be-b8e0-41a12537cf34"))
-  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 457.2 266.7 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a39d65ef-cc9d-527c-ab72-6c91e1717d77") (property "Reference" "J26" (at 454.66 251.46 0) (effects (font (size 1 1)))) (property "Value" "QWIIC LP / 3V3 OUT" (at 454.66 254.0 0) (effects (font (size 1 1)))) (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" (at 457.2 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf" (at 457.2 266.7 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 457.2 266.7 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "J26") (unit 1)))))
-  (global_label "+3V3_SENS" (shape bidirectional) (at 337.82 238.76 180) (effects (font (size 1 1)) (justify right)) (uuid "2b6f584d-3e08-5d5b-9585-d6081488ce28") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 337.82 238.76 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 337.82 238.76) (xy 370.84 238.76)) (stroke (width 0) (type default)) (uuid "ff3f8c89-bffc-5f75-95b3-676d2b7ac98e"))
-  (wire (pts (xy 370.84 238.76) (xy 393.7 238.76)) (stroke (width 0) (type default)) (uuid "c3e55eac-868d-5525-b561-c472ac1231ba"))
-  (wire (pts (xy 393.7 238.76) (xy 426.72 238.76)) (stroke (width 0) (type default)) (uuid "56d369b7-08ab-587e-a273-8fbf7a86abc0"))
-  (symbol (lib_id "Device:R") (at 426.72 251.46 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1568a741-cbe5-571c-8ff6-d38e0b2a172e") (property "Reference" "R47" (at 430.53 241.3 0) (effects (font (size 1 1)))) (property "Value" "0" (at 430.53 243.84 0) (effects (font (size 1 1)))) (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 426.72 251.46 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "" (at 426.72 251.46 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 426.72 251.46 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "R47") (unit 1)))))
-  (wire (pts (xy 426.72 238.76) (xy 426.72 247.65)) (stroke (width 0) (type default)) (uuid "7ba4cbe0-de1e-543c-b142-7a87e095f7cc"))
-  (wire (pts (xy 426.72 255.27) (xy 426.72 266.7)) (stroke (width 0) (type default)) (uuid "5b8b9ba8-3feb-587b-9f48-2cd5644f7a89"))
-  (wire (pts (xy 426.72 266.7) (xy 452.12 266.7)) (stroke (width 0) (type default)) (uuid "ae92c561-dde5-5bd8-b91f-52e31d7907f0"))
-  (label "QWIIC_LP2_3V3" (at 426.72 266.7 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "9242a08c-39b3-533f-be67-56532273761d"))
-  (wire (pts (xy 452.12 264.16) (xy 447.04 264.16)) (stroke (width 0) (type default)) (uuid "10e9f39f-9872-56e9-871e-fa7f8110baf5"))
-  (global_label "GND" (shape bidirectional) (at 447.04 264.16 180) (effects (font (size 1 1)) (justify right)) (uuid "64b73099-3c3e-585c-bc5e-7eda97abf101") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 447.04 264.16 180) (effects (font (size 1 1)) (hide yes))))
-  (global_label "LP_I2C_SDA" (shape bidirectional) (at 327.66 284.48 180) (effects (font (size 1 1)) (justify right)) (uuid "6369f529-5dc8-5923-bc29-428f6e52d8b2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 284.48 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 327.66 284.48) (xy 342.9 284.48)) (stroke (width 0) (type default)) (uuid "c97e8f61-b04b-560d-a1eb-b3314675f347"))
-  (wire (pts (xy 342.9 284.48) (xy 370.84 284.48)) (stroke (width 0) (type default)) (uuid "b2d39dfb-297a-5839-bcf9-626937ac4b02"))
-  (wire (pts (xy 370.84 284.48) (xy 434.34 284.48)) (stroke (width 0) (type default)) (uuid "5dc5a748-bfcd-5d27-a81d-490c3ee59933"))
-  (wire (pts (xy 434.34 284.48) (xy 434.34 269.24)) (stroke (width 0) (type default)) (uuid "888ee763-c10c-5927-92a3-a0866a4508e0"))
-  (wire (pts (xy 434.34 269.24) (xy 452.12 269.24)) (stroke (width 0) (type default)) (uuid "4717a0e6-bbe7-597b-bdd4-d3051e95e63a"))
-  (junction (at 342.9 284.48) (diameter 0) (color 0 0 0 0) (uuid "6eca32db-8695-5ee7-ba40-f40a83483242"))
-  (global_label "LP_I2C_SCL" (shape bidirectional) (at 327.66 297.18 180) (effects (font (size 1 1)) (justify right)) (uuid "2de6d0ee-2b35-5e1c-bf7c-aff551f7616f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 297.18 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 327.66 297.18) (xy 347.98 297.18)) (stroke (width 0) (type default)) (uuid "b0723eb9-a11c-56ba-93bb-9d87ea886618"))
-  (wire (pts (xy 347.98 297.18) (xy 393.7 297.18)) (stroke (width 0) (type default)) (uuid "1817d79b-099f-5a64-830d-b36e5623435b"))
-  (wire (pts (xy 393.7 297.18) (xy 444.5 297.18)) (stroke (width 0) (type default)) (uuid "78a73f27-73ed-5189-9d49-b149863a6219"))
-  (wire (pts (xy 444.5 297.18) (xy 444.5 271.78)) (stroke (width 0) (type default)) (uuid "c8a7b99f-4710-57e9-baf4-8380384868c3"))
-  (wire (pts (xy 444.5 271.78) (xy 452.12 271.78)) (stroke (width 0) (type default)) (uuid "3bf2e939-16d3-56f9-bb8b-3fbead013d62"))
-  (junction (at 347.98 297.18) (diameter 0) (color 0 0 0 0) (uuid "aedf6945-f88f-5aeb-9e4c-a1e3885545f3"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 365.76 330.2 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "39a46363-e924-5f0d-8346-363e13f46380") (property "Reference" "D46" (at 369.57 314.96 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 369.57 317.5 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 365.76 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 365.76 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 365.76 330.2 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D46") (unit 1)))))
-  (wire (pts (xy 365.76 342.9) (xy 365.76 355.6)) (stroke (width 0) (type default)) (uuid "5bb6f215-6612-5b8f-b590-52cfd83a7660"))
-  (symbol (lib_id "Motley:PESD5V0S2BT") (at 426.72 330.2 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "4628fddf-2a23-55bd-a346-617328cfa4fe") (property "Reference" "D47" (at 430.53 314.96 0) (effects (font (size 1 1)))) (property "Value" "PESD5V0S2BT,215" (at 430.53 317.5 0) (effects (font (size 1 1)))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 426.72 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 426.72 330.2 0) (effects (font (size 1 1)) (hide yes))) (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005" (at 426.72 330.2 0) (effects (font (size 1 1)) (hide yes))) (instances (project "motley-carrier" (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (reference "D47") (unit 1)))))
-  (wire (pts (xy 426.72 342.9) (xy 426.72 355.6)) (stroke (width 0) (type default)) (uuid "f8f4c7d8-cda5-5dc1-8254-48ad209bf02f"))
-  (wire (pts (xy 342.9 284.48) (xy 342.9 327.66)) (stroke (width 0) (type default)) (uuid "d2affdf6-efdb-55d8-b08f-cd39f13f8e4d"))
-  (wire (pts (xy 342.9 327.66) (xy 353.06 327.66)) (stroke (width 0) (type default)) (uuid "24645d26-9c6b-5ead-a578-d46576d98458"))
-  (wire (pts (xy 347.98 297.18) (xy 347.98 332.74)) (stroke (width 0) (type default)) (uuid "efb85fd7-2109-5181-b640-eaa02eb28e37"))
-  (wire (pts (xy 347.98 332.74) (xy 353.06 332.74)) (stroke (width 0) (type default)) (uuid "c7ab1de3-53df-5b6a-9d00-21afa93a8b18"))
-  (wire (pts (xy 365.76 355.6) (xy 426.72 355.6)) (stroke (width 0) (type default)) (uuid "6618206d-9177-512d-85cd-d1334b810442"))
-  (global_label "GND" (shape bidirectional) (at 365.76 355.6 180) (effects (font (size 1 1)) (justify right)) (uuid "059d136b-c8c0-50a7-96e9-e9704505634d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 365.76 355.6 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 414.02 327.66) (xy 411.48 327.66)) (stroke (width 0) (type default)) (uuid "ec5827fd-abad-5b8b-afe8-468b8bcb6ca4"))
-  (wire (pts (xy 411.48 327.66) (xy 411.48 266.7)) (stroke (width 0) (type default)) (uuid "471df9a7-1426-5e33-8725-a86690abcc57"))
-  (wire (pts (xy 411.48 266.7) (xy 426.72 266.7)) (stroke (width 0) (type default)) (uuid "229a834b-5943-5076-8485-dc6a57c1f079"))
-  (junction (at 426.72 266.7) (diameter 0) (color 0 0 0 0) (uuid "2dff0aaf-30de-52f2-9ec7-df016409f4b4"))
-  (no_connect (at 414.02 332.74) (uuid "e52a2141-272c-51c9-9c02-f081da755940"))
-  (text "SUPPORTED BENCH USE: 3.3 V OUT only; one host and one supply per connected bus. Avoid loops between parallel sockets, chains and branches." (at 15 370 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "eb37c970-424f-5b25-a371-5d0a57c68933"))
-  (text "R44-R47 independently disconnect socket power, NOT SDA/SCL. Do not connect another powered host or drive signals into an unpowered board." (at 15 378 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "61f6dc6d-0a02-5f58-98a8-46d81f745831"))
-  (text "Enable +3V3_SENS before I2C. All sockets share its current budget. At most one SHT45 heater pulse; deselecting a branch does not stop its pulse." (at 15 386 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "f9df6b5e-04cf-5efd-8cac-ee9aa19111db"))
-  (text "One pull-up pair per bus: main 10k, LP 4k7. Configure aggregate pulls when chaining muxes; check LOW current, rise time and cable power drop." (at 15 394 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "6566bbe5-4c60-5051-be13-43113151dd1c"))
-  (text "Five-pin deployment/reset link retained. LP GPIO6/7 preserve USB-JTAG policy. No firmware, hot-plug or ESD-immunity qualification is claimed." (at 15 402 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "dfcdff88-79d3-5914-94ac-7738bbb66945"))
-  (sheet_instances (path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640" (page "6"))))
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 88.9 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1b82cbd3-8417-514b-88c0-e45bab6db2f2")
+		(property "Reference" "D42"
+			(at 92.71 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 92.71 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 88.9 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 88.9 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 88.9 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8d094ca7-15a3-4071-aa86-fdac28d468a6")
+		)
+		(pin "2"
+			(uuid "3009c13d-3315-410a-ad86-cd9b3cd05250")
+		)
+		(pin "3"
+			(uuid "9a167995-cca6-45ee-ab69-b6171b7ce82c")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 365.76 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "39a46363-e924-5f0d-8346-363e13f46380")
+		(property "Reference" "D46"
+			(at 369.57 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 369.57 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 365.76 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 365.76 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 365.76 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 365.76 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c552f8ca-3fb7-4853-a35d-cd0907eca7ab")
+		)
+		(pin "2"
+			(uuid "069106ff-afdd-4d0a-947b-80de2b1a8b90")
+		)
+		(pin "3"
+			(uuid "a6b11481-bf95-40ca-838c-bc7ae1e6365f")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D46")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 116.84 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4532f6e2-2763-556e-8a81-4e90837909c5")
+		(property "Reference" "R41"
+			(at 120.65 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 120.65 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 116.84 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 116.84 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 116.84 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bd60727b-e04a-4265-a904-1d1845d805c6")
+		)
+		(pin "2"
+			(uuid "9e650ac9-3248-4076-bbc4-ae2d695ec831")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 426.72 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "455a61a4-1e95-5a59-b209-9f5c3506f6e8")
+		(property "Reference" "R46"
+			(at 430.53 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 430.53 66.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 426.72 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 426.72 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 426.72 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c95a96b5-d4ed-4c42-8297-a24d322c10b4")
+		)
+		(pin "2"
+			(uuid "24baea86-d19d-411d-9aad-4ff2bab6d9a1")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R46")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 426.72 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4628fddf-2a23-55bd-a346-617328cfa4fe")
+		(property "Reference" "D47"
+			(at 430.53 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 430.53 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 426.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 426.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 426.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c16d3225-6a1c-4779-aa95-9d04e96f51f0")
+		)
+		(pin "2"
+			(uuid "6c4b9726-98bb-4562-873d-a882295b880f")
+		)
+		(pin "3"
+			(uuid "cc53f0d1-ffd4-4ce7-9d41-ddd06cd25ab5")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D47")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 426.72 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4c248c6e-20e4-58c5-9c79-7d866a6220cb")
+		(property "Reference" "D45"
+			(at 430.53 137.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 430.53 139.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 426.72 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 426.72 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 426.72 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f17d0760-fea9-4951-b07f-6db6df7d6d20")
+		)
+		(pin "2"
+			(uuid "2ac0faa9-baf8-4d95-89f1-591424ad2f0e")
+		)
+		(pin "3"
+			(uuid "54b70cce-c98a-4c50-88a4-14994e7313bd")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D45")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 266.7 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4d898fe9-0fc9-5ab3-9c1a-7750c69beeb3")
+		(property "Reference" "R42"
+			(at 97.79 264.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "4k7"
+			(at 97.79 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 93.98 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 93.98 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 93.98 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a5b3fd9d-8d25-4f1e-ac92-7a7fad9087f3")
+		)
+		(pin "2"
+			(uuid "e551d42d-fc36-427b-aa57-9d82a447db08")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "56d9d1e9-d2cb-587d-bc7e-06b72c65a8ad")
+		(property "Reference" "R40"
+			(at 97.79 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 97.79 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 93.98 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 93.98 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 93.98 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c7de2c97-8708-448d-a8d4-7af55a248bc4")
+		)
+		(pin "2"
+			(uuid "2c67bf71-bf70-4efc-84b5-cdb226a1286e")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 116.84 266.7 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7ce7dd98-c825-5fe6-ac7b-3dbd873c6db0")
+		(property "Reference" "R43"
+			(at 120.65 264.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "4k7"
+			(at 120.65 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 116.84 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 116.84 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 116.84 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8085a544-4112-4c2f-b7e0-fdcc31db8136")
+		)
+		(pin "2"
+			(uuid "29a49753-aa52-4bda-b66a-0d8698847d93")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 457.2 266.7 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a39d65ef-cc9d-527c-ab72-6c91e1717d77")
+		(property "Reference" "J26"
+			(at 454.66 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "QWIIC LP / 3V3 OUT"
+			(at 454.66 254 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+			(at 457.2 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+			(at 457.2 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 457.2 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 457.2 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2a320b0b-99bd-4242-9e27-16f5568cb847")
+		)
+		(pin "2"
+			(uuid "07efc032-dd1b-47d1-b56e-72faa6f31d71")
+		)
+		(pin "3"
+			(uuid "4cfb8146-341d-493d-bd56-9fada9020d24")
+		)
+		(pin "4"
+			(uuid "d356e15c-db92-4800-90cd-04e936c77a49")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "J26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 88.9 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "aa20426e-dc62-5046-a3e7-68de5bacb904")
+		(property "Reference" "D40"
+			(at 92.71 137.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 92.71 139.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 88.9 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 88.9 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 88.9 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "304d4968-5d34-4166-8dde-4a77a04dc9bc")
+		)
+		(pin "2"
+			(uuid "25bc270b-3492-4f26-9205-5ee83c323b23")
+		)
+		(pin "3"
+			(uuid "eabeeec5-ea16-4f6a-8e9a-d95a8f9cc4f3")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 149.86 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bb023415-09b6-5e66-8961-7a7de9cc0aaa")
+		(property "Reference" "D43"
+			(at 153.67 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 153.67 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 149.86 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 149.86 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 149.86 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "95019eb2-e6ac-4333-b991-8ff2decc25af")
+		)
+		(pin "2"
+			(uuid "f99f2dba-497e-4a91-8f50-368991abcb79")
+		)
+		(pin "3"
+			(uuid "99fa8cb8-8411-4df3-b88c-3d79f07dda44")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 149.86 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c4db088b-333c-5191-864a-d2c2a906c352")
+		(property "Reference" "D41"
+			(at 153.67 137.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 153.67 139.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 149.86 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 149.86 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 149.86 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c9a8f5cf-b3aa-4a90-ac10-79ff5b131cee")
+		)
+		(pin "2"
+			(uuid "2b5b55b3-fbc0-469e-83b5-9b7e783dfb92")
+		)
+		(pin "3"
+			(uuid "8d00d717-f013-4a29-adb0-4a094c1ec586")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 457.2 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c6a473d8-4e65-56fb-9b9f-7550a432fac1")
+		(property "Reference" "J25"
+			(at 454.66 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "QWIIC MAIN / 3V3 OUT"
+			(at 454.66 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+			(at 457.2 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+			(at 457.2 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 457.2 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 457.2 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "19cefdb4-105d-4d6c-b8a4-1a622407126b")
+		)
+		(pin "2"
+			(uuid "945db796-8518-4fad-a6ce-4c98fa4a8cda")
+		)
+		(pin "3"
+			(uuid "44adc287-8cf9-42e8-ac42-b95ca64a6137")
+		)
+		(pin "4"
+			(uuid "28ce33fe-7a64-43ef-b359-6d3f41627cd6")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "J25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 180.34 266.7 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ccadf4bb-90b3-5a32-b632-5fd33752a795")
+		(property "Reference" "J24"
+			(at 177.8 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "QWIIC LP / 3V3 OUT"
+			(at 177.8 254 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+			(at 180.34 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+			(at 180.34 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 266.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 180.34 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0a482c76-1d94-4e0d-b06a-e31070b6ae3c")
+		)
+		(pin "2"
+			(uuid "0e5b9a42-64a2-45dc-9831-964479d2af79")
+		)
+		(pin "3"
+			(uuid "0ce46b4f-afff-4fc7-bb72-3f375901e9bf")
+		)
+		(pin "4"
+			(uuid "e3230cff-5384-4fc1-a18d-2b5f47a36386")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "J24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 149.86 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cfaabf66-8a2c-5d33-9a48-8b984a07f279")
+		(property "Reference" "R44"
+			(at 153.67 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 153.67 66.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 149.86 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 149.86 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "24e5522e-12ab-4167-824b-23f1909e2ed0")
+		)
+		(pin "2"
+			(uuid "26b10e19-c8df-40a4-b5d4-3f27ef59afe6")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "R44")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 180.34 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e2d0f66c-60c5-57eb-a6da-b978240a281c")
+		(property "Reference" "J23"
+			(at 177.8 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "QWIIC MAIN / 3V3 OUT"
+			(at 177.8 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+			(at 180.34 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+			(at 180.34 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 180.34 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "22843233-dd73-4cd6-8122-621eb4e15a9a")
+		)
+		(pin "2"
+			(uuid "2d797724-f5c1-4337-aa68-ce3e6a585cf1")
+		)
+		(pin "3"
+			(uuid "f81c3d23-e8ac-4aee-8bf2-410ba10277e9")
+		)
+		(pin "4"
+			(uuid "8892e830-f052-4562-8b9f-4a31c0f1425f")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "J23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 365.76 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ef63dd48-4db5-5a25-aa03-80337d4d62b7")
+		(property "Reference" "D44"
+			(at 369.57 137.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 369.57 139.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 365.76 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 365.76 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 365.76 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+			(at 365.76 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61a8a43c-e203-4a9a-bd96-b0ebfbdb7c9b")
+		)
+		(pin "2"
+			(uuid "4c1a8c71-01fb-416d-9b8f-29f2d187bd99")
+		)
+		(pin "3"
+			(uuid "48a2ce20-2d23-4876-bd70-ea4b453a385b")
+		)
+		(instances
+			(project "motley-carrier"
+				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/24118cea-a0f6-5485-8fe7-ff790c922640"
+					(reference "D44")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

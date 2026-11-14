@@ -51,7 +51,8 @@ checks does not establish mains safety or functioning trimmed boards.
 
 ## Open and review
 
-Open any of these KiCad 9 projects in this directory; each has its own matching
+Open any of these KiCad 10 projects in this directory using the
+[pinned mise installation](../../docs/tooling.md#kicad); each has its own matching
 root schematic, netlist and PCB:
 
 | Project | Quantity per unit | Physical contents | Trial outline |

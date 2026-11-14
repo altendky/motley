@@ -1,403 +1,1519 @@
 (kicad_sch
-  (version 20250114)
-  (generator eeschema)
-  (generator_version "9.0")
-  (uuid "bb154cf8-3b8a-5a05-ac66-297e9e78ef7e")
-  (paper "A3")
-  (title_block (title "Output ESD candidates and low-voltage service access") (date "2026-11-12") (rev "0.2") (company "Motley") (comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE"))
-  (lib_symbols
-  (symbol "Motley:PESD5V0S2BT" (pin_names (offset 0.5)) (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "D" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Value" "PESD5V0S2BT" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails." (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (symbol "PESD5V0S2BT_0_1" (polyline (pts (xy -10.16 2.54) (xy -6.35 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 2.54) (xy 0 2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -10.16 -2.54) (xy -6.35 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -3.81 -2.54) (xy 0 -2.54)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0 2.54) (xy 0 -10.16)) (stroke (width 0.254) (type default)) (fill (type none)))) (symbol "PESD5V0S2BT_1_1" (pin passive line (at -12.7 2.54 0) (length 2.54) (name "IO1" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1))))) (pin passive line (at -12.7 -2.54 0) (length 2.54) (name "IO2" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1))))) (pin passive line (at 0 -12.7 90) (length 2.54) (name "REF" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))))
-  (symbol "Device:D_Zener"
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 1.016)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "D"
-			(at 0 2.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "D_Zener"
-			(at 0 -2.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Zener diode"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "diode"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "D_Zener_0_1"
-			(polyline
-				(pts
-					(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 0) (xy -1.27 0)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "D_Zener_1_1"
-			(pin passive line
-				(at -3.81 0 0)
-				(length 2.54)
-				(name "K"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 3.81 0 180)
-				(length 2.54)
-				(name "A"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "bb154cf8-3b8a-5a05-ac66-297e9e78ef7e")
+	(paper "A3")
+	(title_block
+		(title "Output ESD candidates and low-voltage service access")
+		(date "2026-11-12")
+		(rev "0.2")
+		(company "Motley")
+		(comment 1 "DESIGN EXPERIMENT - NOT FOR FABRICATION OR MAINS USE")
 	)
-  (symbol "Connector:TestPoint"
-		(pin_numbers
-			(hide yes)
+	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
 		)
-		(pin_names
-			(offset 0.762)
-			(hide yes)
+		(symbol "Device:D_Zener"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Zener"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Zener diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "D_Zener_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Zener_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
 		)
+		(symbol "Motley:PESD5V0S2BT"
+			(pin_names
+				(offset 0.5)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Value" "PESD5V0S2BT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(property "Description" "Nexperia PESD5V0S2BT,215 / C49338; two BIDIRECTIONAL TVS branches. Pins 1/2 signal, pin 3 common reference. 5V standoff; not for raw 5V rails."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1 1)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_0_1"
+				(polyline
+					(pts
+						(xy -10.16 2.54) (xy -6.35 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10.16 -2.54) (xy -6.35 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 3.81) (xy -6.35 1.27) (xy -3.81 3.81) (xy -3.81 1.27) (xy -6.35 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -1.27) (xy -6.35 -3.81) (xy -3.81 -1.27) (xy -3.81 -3.81) (xy -6.35 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 3.81) (xy -5.08 3.81) (xy -5.08 1.27) (xy -5.588 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.572 -1.27) (xy -5.08 -1.27) (xy -5.08 -3.81) (xy -5.588 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 2.54) (xy 0 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -10.16)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PESD5V0S2BT_1_1"
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "IO1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "IO2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "REF"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "OUTPUT: ESD CANDIDATES AND LOW-VOLTAGE ACCESS"
+		(exclude_from_sim no)
+		(at 15 15 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left top)
+		)
+		(uuid "274d35bb-73f0-554a-bb9a-1b81fae60691")
+	)
+	(text "Unrouted exploratory protection; residual clamp, powered-off behavior and system immunity remain UNQUALIFIED."
+		(exclude_from_sim no)
+		(at 15 24 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "85c8e114-2555-51ac-93d1-bc65666292a4")
+	)
+	(text "TOUCH / CLIP ACCESS: local low-voltage reference only, no PE bond. Equalization is not earth discharge.\nBare two-hole same-net clip pads accept OPTIONAL hand-formed wire loops; no purchased contact required.\nNo permission for exposed energized mains handling or grounded test equipment on live mains.\nPlace clamps at their connectors, with short broad local returns; component ratings do not qualify this board."
+		(exclude_from_sim no)
+		(at 15 254 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "a5c63c96-6998-5115-a112-6e8b24cce73d")
+	)
+	(text "D110 is CONNECTOR-SIDE of D101/D102. Bidirectional topology preserves missing-ground blocking.\nD111 protects only the5V supply; no logic TVS is connected to AC line, neutral or PE."
+		(exclude_from_sim no)
+		(at 15 199.39 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left top)
+		)
+		(uuid "f5600c6b-37c9-5cef-be08-c7dea697ae81")
+	)
+	(wire
+		(pts
+			(xy 76.2 76.2) (xy 76.2 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06233774-97c7-5817-9be4-66f7c9270ba9")
+	)
+	(wire
+		(pts
+			(xy 76.2 176.53) (xy 76.2 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "234f889f-62f9-546c-82c6-05df8d676228")
+	)
+	(wire
+		(pts
+			(xy 231.14 228.6) (xy 231.14 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "436495e9-50ef-5414-8c31-5826dd53f9bb")
+	)
+	(wire
+		(pts
+			(xy 38.1 228.6) (xy 38.1 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "492d2cc4-35ad-581c-a77b-5a8dfd17765e")
+	)
+	(wire
+		(pts
+			(xy 86.36 228.6) (xy 86.36 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b091ad2-7c49-579f-b29b-5df3c9c5cc31")
+	)
+	(wire
+		(pts
+			(xy 76.2 184.15) (xy 76.2 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52003ba6-f33c-5a07-b75d-6e46557c94a8")
+	)
+	(wire
+		(pts
+			(xy 63.5 60.96) (xy 55.88 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57b31b31-a5ae-59f7-b721-ce3dc1e084ad")
+	)
+	(wire
+		(pts
+			(xy 63.5 66.04) (xy 55.88 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa329a1b-6b60-590d-97d9-a34858de0ae9")
+	)
+	(wire
+		(pts
+			(xy 134.62 228.6) (xy 134.62 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1a94ffd-d481-5ecf-b3cc-b7ee44318c6f")
+	)
+	(wire
+		(pts
+			(xy 182.88 228.6) (xy 182.88 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be7bd0fe-20c2-5a7b-b13e-6c08dd17929e")
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 76.2 190.5 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "2de365ea-515a-58bb-938e-f1fcde57377f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 76.2 190.5 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "HEAT_EN"
+		(shape bidirectional)
+		(at 182.88 236.22 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "4737ec1d-6b91-53a5-92f4-0173b41ada1e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 236.22 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "HEAT_EN"
+		(shape bidirectional)
+		(at 55.88 60.96 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "5bef334b-50d1-55c2-8036-7418bcce8698")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 55.88 60.96 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "CUT_EN"
+		(shape bidirectional)
+		(at 55.88 66.04 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "70e5d8a0-fb0b-52b6-be15-49a06eba5754")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 55.88 66.04 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 86.36 236.22 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "7749ad53-c852-5596-9838-21b29dde6b40")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 86.36 236.22 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "CUT_EN"
+		(shape bidirectional)
+		(at 231.14 236.22 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "995ce722-3965-5380-8bd7-5dff57c5d3c1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 231.14 236.22 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+5V_SYS"
+		(shape bidirectional)
+		(at 76.2 170.18 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "ae8e78af-fc16-5a1b-8434-635715e9b958")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 76.2 170.18 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 76.2 81.28 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "d427ce70-2525-598c-9ada-96b8ec84e400")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 76.2 81.28 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "+5V_SYS"
+		(shape bidirectional)
+		(at 134.62 236.22 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "e5307602-68ac-5ace-bd3c-54caa6f3131b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.62 236.22 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 38.1 236.22 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "e69f9eec-742a-5f68-a505-2be93a813d91")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 38.1 236.22 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Zener")
+		(at 76.2 180.34 270)
+		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "TP"
-			(at 0 6.858 0)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1887812b-1025-5d37-a2ed-c52c4447564d")
+		(property "Reference" "D111"
+			(at 80.01 162.56 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
 			)
 		)
-		(property "Value" "TestPoint"
-			(at 0 5.08 0)
+		(property "Value" "ESD5Z6.0T1G"
+			(at 80.01 165.1 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 5.08 0 0)
+		(property "Footprint" "Diode_SMD:D_SOD-523"
+			(at 76.2 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
-				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 5.08 0 0)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/esd5z2.5t1-d.pdf"
+			(at 76.2 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
-				(hide yes)
 			)
 		)
-		(property "Description" "test point"
-			(at 0 0 0)
+		(property "Description" "onsemi C82323; unidirectional 6V-standoff supply ESD candidate. Pin1K rail, pin2A GND. Not continuous overvoltage protection or a qualified IC clamp."
+			(at 76.2 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1 1)
 				)
-				(hide yes)
 			)
 		)
-		(property "ki_keywords" "test point tp"
-			(at 0 0 0)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004"
+			(at 76.2 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.8 0.8)
 				)
-				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Pin* Test*"
-			(at 0 0 0)
+		(pin "1"
+			(uuid "4b6e65e3-2860-415e-97ec-88333e6a2454")
+		)
+		(pin "2"
+			(uuid "fa2b7904-525a-43a1-8ba1-b87976a78aed")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "D111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 86.36 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "422d06e2-90d9-52bc-b5e0-50ff1cd08600")
+		(property "Reference" "TP2"
+			(at 86.36 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "TestPoint_0_1"
-			(circle
-				(center 0 3.302)
-				(radius 0.762)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
+					(size 1 1)
 				)
 			)
 		)
-		(symbol "TestPoint_1_1"
-			(pin passive line
-				(at 0 0 90)
-				(length 2.54)
-				(name "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
+		(property "Value" "GND / LOOP"
+			(at 86.36 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
-		(embedded_fonts no)
-	))
-  (text "OUTPUT: ESD CANDIDATES AND LOW-VOLTAGE ACCESS" (at 15 15 0) (effects (font (size 1.8 1.8)) (justify left top)) (uuid "274d35bb-73f0-554a-bb9a-1b81fae60691"))
-  (text "Unrouted exploratory protection; residual clamp, powered-off behavior and system immunity remain UNQUALIFIED." (at 15 24 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "85c8e114-2555-51ac-93d1-bc65666292a4"))
-  (symbol
-  (lib_id "Motley:PESD5V0S2BT")
-  (at 76.2 63.5 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "e124f86f-5436-5404-befa-9bf14dc1649e")
-  (property "Reference" "D110" (at 80.01 45.72 0) (effects (font (size 1 1))))
-  (property "Value" "PESD5V0S2BT,215" (at 80.01 48.26 0) (effects (font (size 1 1))))
-  (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 76.2 63.5 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf" (at 76.2 63.5 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified." (at 76.2 63.5 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "D110") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004" (at 76.2 63.5 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 63.5 60.96) (xy 55.88 60.96)) (stroke (width 0) (type default)) (uuid "57b31b31-a5ae-59f7-b721-ce3dc1e084ad"))
-  (global_label "HEAT_EN" (shape bidirectional) (at 55.88 60.96 180) (effects (font (size 1 1)) (justify right)) (uuid "5bef334b-50d1-55c2-8036-7418bcce8698") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 55.88 60.96 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 63.5 66.04) (xy 55.88 66.04)) (stroke (width 0) (type default)) (uuid "aa329a1b-6b60-590d-97d9-a34858de0ae9"))
-  (global_label "CUT_EN" (shape bidirectional) (at 55.88 66.04 180) (effects (font (size 1 1)) (justify right)) (uuid "70e5d8a0-fb0b-52b6-be15-49a06eba5754") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 55.88 66.04 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 76.2 76.2) (xy 76.2 81.28)) (stroke (width 0) (type default)) (uuid "06233774-97c7-5817-9be4-66f7c9270ba9"))
-  (global_label "GND" (shape bidirectional) (at 76.2 81.28 180) (effects (font (size 1 1)) (justify right)) (uuid "d427ce70-2525-598c-9ada-96b8ec84e400") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 76.2 81.28 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Device:D_Zener")
-  (at 76.2 180.34 270)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom yes)
-  (on_board yes)
-  (dnp no)
-  (uuid "1887812b-1025-5d37-a2ed-c52c4447564d")
-  (property "Reference" "D111" (at 80.01 162.56 90) (effects (font (size 1 1))))
-  (property "Value" "ESD5Z6.0T1G" (at 80.01 165.1 90) (effects (font (size 1 1))))
-  (property "Footprint" "Diode_SMD:D_SOD-523" (at 76.2 180.34 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "https://www.onsemi.com/pdf/datasheet/esd5z2.5t1-d.pdf" (at 76.2 180.34 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "onsemi C82323; unidirectional 6V-standoff supply ESD candidate. Pin1K rail, pin2A GND. Not continuous overvoltage protection or a qualified IC clamp." (at 76.2 180.34 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "D111") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004" (at 76.2 180.34 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 76.2 176.53) (xy 76.2 170.18)) (stroke (width 0) (type default)) (uuid "234f889f-62f9-546c-82c6-05df8d676228"))
-  (global_label "+5V_SYS" (shape bidirectional) (at 76.2 170.18 180) (effects (font (size 1 1)) (justify right)) (uuid "ae8e78af-fc16-5a1b-8434-635715e9b958") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 76.2 170.18 180) (effects (font (size 1 1)) (hide yes))))
-  (wire (pts (xy 76.2 184.15) (xy 76.2 190.5)) (stroke (width 0) (type default)) (uuid "52003ba6-f33c-5a07-b75d-6e46557c94a8"))
-  (global_label "GND" (shape bidirectional) (at 76.2 190.5 180) (effects (font (size 1 1)) (justify right)) (uuid "2de365ea-515a-58bb-938e-f1fcde57377f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 76.2 190.5 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Connector:TestPoint")
-  (at 38.1 228.6 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom no)
-  (on_board yes)
-  (dnp no)
-  (uuid "d0211882-3f67-5863-a442-aefcd0b6348a")
-  (property "Reference" "TP1" (at 38.1 217.17 0) (effects (font (size 1 1))))
-  (property "Value" "TOUCH LV GND" (at 38.1 219.70999999999998 0) (effects (font (size 1 1))))
-  (property "Footprint" "Motley:TouchGround_8mm" (at 38.1 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 38.1 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points." (at 38.1 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "TP1") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005" (at 38.1 228.6 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 38.1 228.6) (xy 38.1 236.22)) (stroke (width 0) (type default)) (uuid "492d2cc4-35ad-581c-a77b-5a8dfd17765e"))
-  (global_label "GND" (shape bidirectional) (at 38.1 236.22 180) (effects (font (size 1 1)) (justify right)) (uuid "e69f9eec-742a-5f68-a505-2be93a813d91") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 38.1 236.22 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Connector:TestPoint")
-  (at 86.36 228.6 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom no)
-  (on_board yes)
-  (dnp no)
-  (uuid "422d06e2-90d9-52bc-b5e0-50ff1cd08600")
-  (property "Reference" "TP2" (at 86.36 217.17 0) (effects (font (size 1 1))))
-  (property "Value" "GND / LOOP" (at 86.36 219.70999999999998 0) (effects (font (size 1 1))))
-  (property "Footprint" "Motley:WireLoop_P2.54" (at 86.36 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 86.36 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points." (at 86.36 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "TP2") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006" (at 86.36 228.6 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 86.36 228.6) (xy 86.36 236.22)) (stroke (width 0) (type default)) (uuid "4b091ad2-7c49-579f-b29b-5df3c9c5cc31"))
-  (global_label "GND" (shape bidirectional) (at 86.36 236.22 180) (effects (font (size 1 1)) (justify right)) (uuid "7749ad53-c852-5596-9838-21b29dde6b40") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 86.36 236.22 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Connector:TestPoint")
-  (at 134.62 228.6 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom no)
-  (on_board yes)
-  (dnp no)
-  (uuid "c4088100-11d7-5ae3-b226-a3285cdf155d")
-  (property "Reference" "TP3" (at 134.62 217.17 0) (effects (font (size 1 1))))
-  (property "Value" "+5V_SYS / LOOP" (at 134.62 219.70999999999998 0) (effects (font (size 1 1))))
-  (property "Footprint" "Motley:WireLoop_P2.54" (at 134.62 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 134.62 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points." (at 134.62 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "TP3") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006" (at 134.62 228.6 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 134.62 228.6) (xy 134.62 236.22)) (stroke (width 0) (type default)) (uuid "b1a94ffd-d481-5ecf-b3cc-b7ee44318c6f"))
-  (global_label "+5V_SYS" (shape bidirectional) (at 134.62 236.22 180) (effects (font (size 1 1)) (justify right)) (uuid "e5307602-68ac-5ace-bd3c-54caa6f3131b") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 134.62 236.22 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Connector:TestPoint")
-  (at 182.88 228.6 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom no)
-  (on_board yes)
-  (dnp no)
-  (uuid "c3ed042d-c43e-5dcf-afa0-0141af26ae06")
-  (property "Reference" "TP4" (at 182.88 217.17 0) (effects (font (size 1 1))))
-  (property "Value" "HEAT_EN / LOOP" (at 182.88 219.70999999999998 0) (effects (font (size 1 1))))
-  (property "Footprint" "Motley:WireLoop_P2.54" (at 182.88 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 182.88 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points." (at 182.88 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "TP4") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006" (at 182.88 228.6 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 182.88 228.6) (xy 182.88 236.22)) (stroke (width 0) (type default)) (uuid "be7bd0fe-20c2-5a7b-b13e-6c08dd17929e"))
-  (global_label "HEAT_EN" (shape bidirectional) (at 182.88 236.22 180) (effects (font (size 1 1)) (justify right)) (uuid "4737ec1d-6b91-53a5-92f4-0173b41ada1e") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 236.22 180) (effects (font (size 1 1)) (hide yes))))
-  (symbol
-  (lib_id "Connector:TestPoint")
-  (at 231.14 228.6 0)
-  (unit 1)
-  (exclude_from_sim no)
-  (in_bom no)
-  (on_board yes)
-  (dnp no)
-  (uuid "c016cd8e-a244-53a4-bc43-dfdb6be2d6ff")
-  (property "Reference" "TP5" (at 231.14 217.17 0) (effects (font (size 1 1))))
-  (property "Value" "CUT_EN / LOOP" (at 231.14 219.70999999999998 0) (effects (font (size 1 1))))
-  (property "Footprint" "Motley:WireLoop_P2.54" (at 231.14 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Datasheet" "" (at 231.14 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points." (at 231.14 228.6 0) (effects (font (size 1 1)) (hide yes)))
-  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (reference "TP5") (unit 1))))
-  (property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006" (at 231.14 228.6 0) (effects (font (size 0.8 0.8)) (hide yes))))
-  (wire (pts (xy 231.14 228.6) (xy 231.14 236.22)) (stroke (width 0) (type default)) (uuid "436495e9-50ef-5414-8c31-5826dd53f9bb"))
-  (global_label "CUT_EN" (shape bidirectional) (at 231.14 236.22 180) (effects (font (size 1 1)) (justify right)) (uuid "995ce722-3965-5380-8bd7-5dff57c5d3c1") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 231.14 236.22 180) (effects (font (size 1 1)) (hide yes))))
-  (text "TOUCH / CLIP ACCESS: local low-voltage reference only, no PE bond. Equalization is not earth discharge.\nBare two-hole same-net clip pads accept OPTIONAL hand-formed wire loops; no purchased contact required.\nNo permission for exposed energized mains handling or grounded test equipment on live mains.\nPlace clamps at their connectors, with short broad local returns; component ratings do not qualify this board." (at 15 254 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "a5c63c96-6998-5115-a112-6e8b24cce73d"))
-  (text "D110 is CONNECTOR-SIDE of D101/D102. Bidirectional topology preserves missing-ground blocking.\nD111 protects only the5V supply; no logic TVS is connected to AC line, neutral or PE." (at 15 199.39 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "f5600c6b-37c9-5cef-be08-c7dea697ae81"))
-  (sheet_instances (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a" (page "3"))))
+		(property "Footprint" "Motley:WireLoop_P2.54"
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points."
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9184dcfd-7054-47cf-b949-58db5ef74446")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 231.14 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c016cd8e-a244-53a4-bc43-dfdb6be2d6ff")
+		(property "Reference" "TP5"
+			(at 231.14 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "CUT_EN / LOOP"
+			(at 231.14 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Motley:WireLoop_P2.54"
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points."
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b792e490-65af-47d0-9393-73822f7b2b82")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 182.88 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c3ed042d-c43e-5dcf-afa0-0141af26ae06")
+		(property "Reference" "TP4"
+			(at 182.88 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "HEAT_EN / LOOP"
+			(at 182.88 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Motley:WireLoop_P2.54"
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points."
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "85d36092-9da9-4759-8c67-0d1e023b9ef8")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 134.62 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c4088100-11d7-5ae3-b226-a3285cdf155d")
+		(property "Reference" "TP3"
+			(at 134.62 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "+5V_SYS / LOOP"
+			(at 134.62 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Motley:WireLoop_P2.54"
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points."
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ffaa991d-144d-4dd7-9fdd-1f10d7a834b4")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 38.1 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d0211882-3f67-5863-a442-aefcd0b6348a")
+		(property "Reference" "TP1"
+			(at 38.1 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "TOUCH LV GND"
+			(at 38.1 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Motley:TouchGround_8mm"
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "Bare PCB copper; no fitted component. Local LV ground is not earth; optional formed-wire loop for clip points."
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005"
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "416fcb9e-d436-48ef-8173-7ec39b1b1ea1")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motley:PESD5V0S2BT")
+		(at 76.2 63.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e124f86f-5436-5404-befa-9bf14dc1649e")
+		(property "Reference" "D110"
+			(at 80.01 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "PESD5V0S2BT,215"
+			(at 80.01 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf"
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Description" "C49338, bidirectional two-line ESD candidate; 45pF max/line, 100nA max at5V/25C; residual clamp/current and layout unqualified."
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004"
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "898089df-4246-4c9d-addd-38ef4e0f1d4b")
+		)
+		(pin "1"
+			(uuid "64815be4-8c6f-47da-bb42-ac192da863c1")
+		)
+		(pin "2"
+			(uuid "1655cbc0-cec1-4326-9f52-37236d7a32bd")
+		)
+		(instances
+			(project "motley-ac-output"
+				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/3e32dfe9-d40e-5923-b808-18446098584a"
+					(reference "D110")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

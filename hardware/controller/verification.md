@@ -8,6 +8,79 @@ Scope: structural verification of the exploratory exception described in
 No hardware, firmware-control, mains, thermal, ingress, sensor-accuracy or actual
 trimming tests occurred. No product implementation or verification is claimed.
 
+## KiCad 10 native format migration, 2026-11-14
+
+The developer requested KiCad in mise and migration to its newer native formats.
+`mise.toml` and `mise.lock` now pin the official full Linux x86-64 AppImage at
+10.0.8; the installation extracts once and installed launchers dispatch through
+upstream `AppRun`. Other platforms skip this tool and need their native KiCad
+10.0.8 package. This maintenance supports approved `MOT-HW-003` and preserves
+the existing `MOT-PROC-001` exploratory electrical-design exception.
+
+KiCad's own `sch upgrade`, `pcb upgrade`, `sym upgrade` and `fp upgrade` commands
+all exited 0. Every child sheet was upgraded individually: 14 schematics, three
+boards, two symbol libraries and six footprints. Schematics now use format
+20260306, boards/footprints 20260206 and symbol libraries 20251024. The three
+`.kicad_pro` files remain byte-identical; the CLI has no project upgrade command.
+The serializer rewrote indentation/order and explicit defaults, moved hidden
+field syntax, converted PCB nets from numeric IDs to names and converted legacy
+footprint timestamps/reference/value text into the current representation.
+KiCad repaired three pre-existing duplicate UUIDs (one controller wire and two
+output-root symbol pins) and supplied missing pin/graphic UUIDs. Symbol, sheet
+and footprint identities used for traceability remain intact.
+
+Project stock-symbol tables now use `KICAD10_SYMBOL_DIR` and `.kicad_symdir`
+directories. Footprint/model references use the corresponding KiCad 10 variables.
+The project footprint table explicitly includes its used MountingHole library,
+so a fresh configuration does not depend on a previously initialized global
+table. All referenced stock symbol and footprint library paths resolve.
+Four of the 27 unique stock STEP paths are absent from the full distribution:
+IRM-05-xx THT, Littelfuse 111 clips, Texas UQFN-10 1.5x2mm and MetzConnect
+RT13703HBWC. The shipped stock footprints still reference those same missing
+model names; no substitute geometry was invented. This limits 3D visualization,
+not the preserved PCB geometry or connectivity.
+
+Fresh KiCad 9 and 10 XML netlists have identical component references, values,
+footprints, hierarchical identities, requirement fields and pin-to-net mappings:
+82/31/80 components and 60/23/51 nets for carrier/output/sensors. Comparison
+normalizes the empty-datasheet marker and KiCad 10's pinfunction export suffix;
+pin numbers and electrical types remain unchanged. Parsed native comparison
+confirms all 203 footprint identities, placements, pad geometry/nets, outlines,
+groups and rule-area geometry are preserved, with no added routing. Schematic
+differences outside default/empty fields are serializer precision normalization
+and the duplicate-UUID repairs described above.
+
+Fresh `sch erc --format json --exit-code-violations` on KiCad 10 reports one
+carrier warning (PS1 IRM-05-5 differs from the new stock symbol), exit 5; output
+and sensor ERC each report zero findings, exit 0. `pcb drc --format json
+--schematic-parity --exit-code-violations` reports zero physical violations and
+the unchanged 212/56/175 unrouted items, exit 5. Its parity findings are
+41/34/70: respectively 39/29/70 metadata-field differences and 2/5/0 footprint
+assignment differences. Repeating the exact KiCad 10 checks against a preserved
+copy of the original KiCad 9 sources, with only updated library tables, produces
+identical ERC, physical DRC, unrouted and parity findings. They are existing
+design/library differences exposed by the new tool, not conversion regressions.
+
+`uv run scripts/hardware_trace.py` passes 17 annotated files / 203 footprints;
+`uv run scripts/test_hardware_trace.py` passes all 15 fixtures (both exit 0).
+ShellCheck passes the installed launcher source. RQML tool/library links record
+support for native traceability, not implementation of draft electrical goals.
+Full `mise exec -- pre-commit run --all-files`, the new launcher's scoped
+pre-commit run and `rqml check requirements.rqml --strictness standard` pass,
+exit 0. Reviewed implementation baselines were refreshed after inspection and
+the observed checks. Coverage backlog remains 37 unverified and 30 unimplemented
+requirements; zero unapproved implementations, dangling references or lint
+findings are reported.
+
+The checked native set comprises 30 files: the 25 migrated native design/library
+files, three unchanged projects and two library tables. Its manifest is sorted
+by repository-relative path, one UTF-8 line per file in the form
+`<sha256>  <path>\n`; the manifest SHA-256 is
+`60e47a45136cba561cec38af5a36c74ce1b132274fec6f36523ff8ffc3bd041e`.
+Trace checker/test source SHA-256 values are respectively
+`e2c6e9bcd1e4b5a9bd78d61fd2353052598c9430390aa377efeb3fca9f8ea55e` and
+`45613bac1cd0d50c1d31ad593479c3a0a81e6a6b11271a55cfc970de59efc80f`.
+
 ## Current MEAN WELL supply substitution, 2026-11-13
 
 The developer selected MEAN WELL IRM-05-5 in place of RECOM RAC05-05SK and

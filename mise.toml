@@ -18,6 +18,23 @@ uv = "0.13.8"
 "npm:@rqml/cli" = { version = "0.11.0", trust_policy_excludes = ["fast-xml-parser@4.5.7"] }
 "npm:@rqml/mcp" = { version = "0.8.0", trust_policy_excludes = ["fast-xml-parser@4.5.7"] }
 
+# Official full AppImage, extracted once so CLI/editor launches need no FUSE.
+# KiCad currently publishes AppImages only for Linux x86-64.
+[tools."http:kicad"]
+version = "10.0.8"
+os = ["linux/x64"]
+url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{{ version }}-x86_64.AppImage.tar"
+checksum = "sha256:27e4b4baa85c2181be6b219c22667ce138c20c0148dd2e047ba84dbda480dbb4"
+bin_path = "bin"
+postinstall = '''
+cd "$MISE_TOOL_INSTALL_PATH"
+./kicad-"$MISE_TOOL_VERSION"-x86_64.AppImage --appimage-extract
+mkdir -p bin
+for tool in kicad kicad-cli eeschema pcbnew gerbview bitmap2component pcb_calculator pl_editor; do
+  install -m 755 "$MISE_CONFIG_ROOT/scripts/kicad-launcher.sh" "bin/$tool"
+done
+'''
+
 [tasks.rqml]
 description = "Run the pinned RQML CLI"
 run = "rqml"
