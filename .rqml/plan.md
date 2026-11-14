@@ -16,7 +16,7 @@ The deferred pinout requirement remains separate.
   reject empty output, upload a commit/run/attempt-named artifact and include the
   job in `all`. Record real implementation links to the job and documentation;
   refresh reviewed shared workflow and documentation baselines.
-- [ ] **Goal:** Verify report content and publication. **Verification:** Generate
+- [x] **Goal:** Verify report content and publication. **Verification:** Generate
   the report locally, reconcile requirement and acceptance IDs/content with XML,
   inspect Markdown, check empty-file failure, run actionlint and full pre-commit
   including standard RQML. Observe the hosted report job and download its artifact
@@ -29,7 +29,15 @@ The deferred pinout requirement remains separate.
   Spec/report SHA-256 values are
   `9e31caca94fa6e56d89423e56617e39cb7b7f72a95d1ff13d696446a1c5d279b` /
   `e54605d6a14bea226abde8b3ebe09850f92808de7639367f01f3a4b969ade956`.
-  Actionlint passes. Hosted publication/download comparison remains pending.
+  Actionlint and full pre-commit pass (exit 0). Hosted report job 132332900904
+  in run 43557288744 passed in 11 seconds for implementation commit
+  `53eb585dd1da5e332258f1d4225ced0230826a85`. Artifact 14098723188 was published
+  for test-merge `2e01cc04e1a37bcd7d8b6c937be327af67583f63` while firmware was
+  still running. `gh run download` retrieved its Markdown; `gh api` retrieved the
+  exact test-merge specification. A fresh pinned overview of that source and
+  `cmp` against both the artifact and local report succeeded (exit 0), with the
+  source/report hashes above unchanged. This verifies generation, real upload,
+  download and report content; unrelated firmware execution remains separate.
 
 ## Compiler-aware firmware CI caching, 2026-11-13
 
