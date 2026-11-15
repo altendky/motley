@@ -79,8 +79,9 @@ for interfaces, preliminary parts and remaining engineering work.
 
 ## First development-build budget
 
-These are **estimated batch totals in USD, rounded to the nearest $25**, updated
-2026-11-15 for the four-layer, intelligent-output design. They combine actual
+These are **estimated costs in USD using the upper completion allowance, with
+batch totals rounded to the nearest $25**, updated 2026-11-15 for the four-layer,
+intelligent-output design. They combine actual
 JLCPCB Economic fabrication/assembly quotes from the current Gerbers and BOM/CPL
 with estimated remaining hand-fitted parts and enclosure wiring. JLC's quotes
 cover the selected available parts; they do not cover a complete device.
@@ -91,9 +92,9 @@ when finishing only one device.
 
 | Completed controllers | Boards assembled: controller / sensor / output | Estimated total batch cost | Per two-output controller |
 | --- | --- | ---: | ---: |
-| 1, minimum Economic assembly case | 2 / 2 / 2 | $325–$350 | $325–$350 |
-| 2 | 2 / 2 / 5 | $425–$450 | $212.50–$225 |
-| 5 | 5 / 5 / 10 | $725–$800 | $145–$160 |
+| 1, minimum Economic assembly case | 2 / 2 / 2 | $350 | $350 |
+| 2 | 2 / 2 / 5 | $450 | $225 |
+| 5 | 5 / 5 / 10 | $800 | $160 |
 
 Per-controller figures divide the rounded batch budget by the number finished,
 including the cost of paid-for spares.

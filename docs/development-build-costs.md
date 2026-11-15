@@ -8,15 +8,15 @@ addition, order or payment was made.
 
 ## Batch costs
 
-All amounts are USD, before shipping and tax. The README rounds each combined
-range endpoint to the nearest $25; those rounded bands are not guaranteed
-minimums or maximums.
+All amounts are USD, before shipping and tax. The budget uses the upper
+remaining-parts/wiring allowance, then rounds the combined batch estimate to
+the nearest $25. These remain approximate budgets.
 
-| Finished controllers | JLC fabrication and partial assembly, quoted | Remaining parts/wiring, estimated | Combined estimate before $25 rounding | README batch budget | Per two-output controller, from README budget |
+| Finished controllers | JLC fabrication and partial assembly, quoted | Remaining parts/wiring, upper estimate | Combined upper estimate before $25 rounding | README batch budget | Per two-output controller, from README budget |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | $259.18 | $62.98–$81.48 | $322.16–$340.66 | $325–$350 | $325–$350 |
-| 2 | $273.59 | $141.03–$178.03 | $414.62–$451.62 | $425–$450 | $212.50–$225 |
-| 5 | $356.19 | $363.75–$456.25 | $719.94–$812.44 | $725–$800 | $145–$160 |
+| 1 | $259.18 | $81.48 | $340.66 | $350 | $350 |
+| 2 | $273.59 | $178.03 | $451.62 | $450 | $225 |
+| 5 | $356.19 | $456.25 | $812.44 | $800 | $160 |
 
 Per-controller figures divide the rounded README batch budget by the number
 finished, including the cost of paid-for spares.
