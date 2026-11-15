@@ -1,5 +1,62 @@
 # Modular controller study verification
 
+## Four-layer ground/power planes, 2026-11-14
+
+At the developer's request, ADR-0021 records the four-layer choice before
+implementation. Carrier, output and sensor designs retain their 95 x 80,
+90 x 65 and 80 x 40 mm outlines, front assembly and all 257 footprint
+identities/placements/pad nets. Only the three PCBs change among 39 native
+sources; all 36 other schematic/library/project/rule files are byte-identical.
+The [four-layer review](four-layer-review.md) records the exact source hashes,
+stackup, rail partition, checks and remaining qualifications.
+
+In1 is low-voltage GND; In2 has distinct supply regions and a carrier USB GND
+reference corridor. Sensor tail planes receive three added ordinary power-feed
+vias; all three four-layer cut graphs pass with no kerf pad/via/pour hits.
+Independent filled-copper graphs find no disconnected netted pads or floating
+plane pieces on any board. Only actual plated pads/vias join layers in those
+graphs. Negative controls reproduce the preceding USB gap, four output drill
+intersections and two opens; synthetic zone/SMD nodes do not create false
+vertical connections. Every intended inner-plane piece has a plated net feed.
+Retained outer power routes still serve some local supply-plane pockets.
+
+All seven wide mains paths on each mains board pass, and actual projected
+four-layer mains/LV spacing passes the provisional 5 mm check. Sensor cuts and
+antenna guards now exclude inner copper. Carrier USB centerlines have no
+remaining missing reference outside signal antipads; the old 5.8 mm long-run
+gap is gone. Tiny transition/header band-edge gaps remain documented. Output
+H2 is explicitly a mains-side mount, with 8.500 mm to LV and 3.033 mm to its
+nearest HV copper; no blanket 5 mm-to-HV mounting claim is made.
+
+The output's old CUT_EN opens are closed using outer-layer routes and three
+ordinary 0.6/0.3 mm vias. Its four drill/land intersections are repaired without
+reducing the existing via sizes or conductor widths. A 0.71 mm CURRENT_REF via
+move permits the MCU escape without changing components or circuitry. All
+three boards now have zero via-drill/SMD-land intersections.
+
+Fresh native KiCad 10.0.8 DRC on the integrated repository files reports
+**zero physical/silkscreen violations and zero opens on all three boards**.
+With schematic parity and `--exit-code-violations`, each command exits **5**
+because the inherited 49 / 53 / 70 parity findings remain. No project minimum,
+diagnostic severity or exclusion changes. Native annotations pass 20 files /
+257 footprints; all 15 trace fixtures and 11 SVG fixtures pass (exit 0).
+Full pre-commit passes, including twelve-view regeneration, strict lint,
+standard RQML and mapped-implementation approval (exit 0). Only reviewed native
+and derivative-tooling baselines are refreshed; product coverage backlog stays
+36 unimplemented / 43 unverified requirements.
+
+Twelve committed SVGs include each saved copper layer. All rendered views and
+the updated three-page placement / four-page output-copper PDFs were visually
+inspected. PDF copper pages are labelled in stack order and viewed from above;
+schematic PDF source bytes are unchanged. Manufacturing, actual USB/RF/EMC,
+thermal/current/mains insulation, mechanical hardware and cutting remain
+unqualified; structural checks do not close those obligations.
+
+| Review PDF | SHA-256 |
+| --- | --- |
+| motley-controller-placement.pdf | `b1cab66fcbace3b1012f63b757d551e0251f4f65cd0ca6898526d7ec9e202c45` |
+| motley-ac-output-routing.pdf | `e4833a55c635183a67b24c2d9bfdf06fcf7a5a7891c19eed318216c0a2d208d1` |
+
 ## Carrier and sensor packing/routing, 2026-11-14
 
 The carrier is now 95 x 80 mm, and the sensor L is 80 x 40 mm. This extends

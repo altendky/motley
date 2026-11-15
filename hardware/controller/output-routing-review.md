@@ -1,5 +1,8 @@
 # Output-board placement and routing study
 
+Historical two-layer snapshot. The current [four-layer review](four-layer-review.md)
+records the later ground/power-plane conversion and its observed checks.
+
 Date: 2026-11-14. Starting source: merged PR #31, commit
 `81cddc5701fa41644adf3978fc8b2d633878a257`. The developer requested a bounded
 semi-real placement/routing attempt, then chose LV left, mains right, and AC
