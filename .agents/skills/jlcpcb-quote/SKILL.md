@@ -34,6 +34,7 @@ Base: `https://cart.jlcpcb.com/api/overseas-core-platform`.
 | --- | --- |
 | Gerber upload | `POST /file/uploadGerber`, multipart `gerberFile=@archive.zip`, `calculationCostsType=1`; retain `data.fileId` |
 | Gerber analysis | `POST /order/analysisGerber`, form `fileId`, `calculationCostsType=1`, `fromDemo=`; poll boundedly until `data.head=ok` |
+| PCB service defaults | `POST /shoppingCart/quereyOrderService`, JSON `plateType:1`, `stencilLayer`; preserve the exact `querey` spelling |
 | PCB price | `POST /shoppingCart/calculationGoodsCostsNew`, JSON with current `pcbGoodsRequest`, `calculationCostsType=1`, `smtGoodRequest:null`, `steelmeshGoodsRequest:null`, `editCartFlag:false` and applicable service settings |
 | Part lookup | `GET /shoppingCart/smtGood/getComponentDetail?componentCode=C...` |
 | Assembly configuration | `GET /order/getSmtOrderConfig` and `GET /shoppingCart/getSmtConfigFee` |
@@ -45,6 +46,9 @@ match the requested comparison. Verify detected dimensions and layer count
 against the exports. Check response `code`, not HTTP status alone; retain the
 request, response, date, settings and input hashes. A PCB-only price has
 `smtGoodRequest:null` and cannot be reported as a populated-board quote.
+Build `orderServiceConfigVos` from the applicable service/option selections;
+the defaults response includes `configOptionListVos` and `defaultOption`.
+An empty service list produced code 500, so do not omit it.
 
 Assembly BOM/CPL upload uses `/bomCpl/upload/file`. Final assembly pricing needs
 the saved job and matched `selectList` records, quantities and BOM/CPL file IDs;
