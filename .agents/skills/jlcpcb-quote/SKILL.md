@@ -6,65 +6,46 @@ description: Prepare current Motley KiCad exports and obtain JLCPCB prices throu
 # JLCPCB quotes
 
 Use quotation-only API operations. Do not add to a cart, order, pay or purchase
-component inventory. These are undocumented frontend APIs; inspect current
-contracts and responses before relying on them. Browser automation is not
-needed for the verified fabrication workflow.
+component inventory. These are undocumented frontend APIs; verify current
+contracts and responses. Read [the API reference](references/api.md) for the
+verified fabrication and assembly workflow.
 
-## Current inputs
+## Inputs
 
 - Export each current `hardware/controller/motley-*.kicad_pcb` separately with
-  pinned KiCad, actual saved copper fills, all enabled copper layers, mask,
-  silkscreen, outline and drills. Use disposable copies for export origins;
-  preserve native source hashes.
-- Generate matching BOM/CPL pairs from current placements. Reconcile every
-  footprint as factory candidate, manual/unmatched, DNP or bare mechanical/access
-  feature. Catalogue codes require exact manufacturer/package/variant checks;
-  generic quotation candidates must be explicit. Keep required unmatched parts
-  visible, including mains/pulse resistors. Catalogue presence is not assembly
-  availability or a quote.
-- One complete controller currently uses one carrier, one sensor mux and **two
-  identical output boards**. Check actual fabrication/assembly minimums and price
-  spare boards; finish only the required assemblies unless requested otherwise.
+  pinned KiCad, saved copper fills, enabled copper layers, mask, silkscreen,
+  outline and drills. Preserve native source hashes and use disposable copies
+  for export origins. Check detected dimensions/layers against the native board.
+- Generate matching BOM/CPL pairs from current placements. Account for every
+  footprint as factory candidate, manual/unmatched, DNP or mechanical/access
+  feature. Verify exact manufacturer/package/variant for catalogue codes;
+  reject unapproved automatic matches, especially mains/pulse-rated parts.
+- One complete controller currently uses one carrier, one sensor mux and two
+  identical output boards. Recheck fabrication/assembly minimums and stock for
+  each scenario. Quote spare factory assemblies but hand-complete only the
+  requested finished units.
 
-## Verified API operations
+## Authentication and evidence
 
-Base: `https://cart.jlcpcb.com/api/overseas-core-platform`.
+Fabrication pricing works anonymously; saved assembly jobs, matching and final
+pricing require authentication. Reuse an authorized session. If interactive
+login/verification is needed, let the user complete it, then continue API calls
+in that session. Keep the browser client open across tasks when requested;
+handle local task failures without disconnecting it. Do not extract cookies,
+tokens or passwords into agent-visible output or quote artifacts.
 
-| Operation | Request |
-| --- | --- |
-| Gerber upload | `POST /file/uploadGerber`, multipart `gerberFile=@archive.zip`, `calculationCostsType=1`; retain `data.fileId` |
-| Gerber analysis | `POST /order/analysisGerber`, form `fileId`, `calculationCostsType=1`, `fromDemo=`; poll boundedly until `data.head=ok` |
-| PCB service defaults | `POST /shoppingCart/quereyOrderService`, JSON `plateType:1`, `stencilLayer`; preserve the exact `querey` spelling |
-| PCB price | `POST /shoppingCart/calculationGoodsCostsNew`, JSON with current `pcbGoodsRequest`, `calculationCostsType=1`, `smtGoodRequest:null`, `steelmeshGoodsRequest:null`, `editCartFlag:false` and applicable service settings |
-| Part lookup | `GET /shoppingCart/smtGood/getComponentDetail?componentCode=C...` |
-| Assembly configuration | `GET /order/getSmtOrderConfig` and `GET /shoppingCart/getSmtConfigFee` |
-| Final assembly price | `POST /newShoppingCart/calculation`, with `calculationCostsType:4`, `orderType:4`, `pcbGoodsRequest:{pcbGoodsAccessId}` and the actual matched `smtGoodRequest` |
-
-For PCB pricing, configure `stencilWidth`/`stencilLength` in mm, `stencilCounts`,
-`stencilLayer`, `stencilPly`, outer/inner copper, material, finish and mask to
-match the requested comparison. Verify detected dimensions and layer count
-against the exports. Check response `code`, not HTTP status alone; retain the
-request, response, date, settings and input hashes. A PCB-only price has
-`smtGoodRequest:null` and cannot be reported as a populated-board quote.
-Build `orderServiceConfigVos` from the applicable service/option selections;
-the defaults response includes `configOptionListVos` and `defaultOption`.
-An empty service list produced code 500, so do not omit it.
-
-Assembly BOM/CPL upload uses `/bomCpl/upload/file`. Final assembly pricing needs
-the saved job and matched `selectList` records, quantities and BOM/CPL file IDs;
-catalogue prices cannot substitute for those records. Both job operations and
-the final calculator return **460** when logged out. Obtain an authorized API
-session or report the authentication block; do not invent assembly costs or
-switch to a browser silently.
-Only claim an assembly quote after actual matching/selections, stock, quantities
-and service charges have been confirmed by JLC. Keep credentials out of logs.
+Retain requests, responses, date, settings, input hashes and confirmed selected
+references. Check API `code`, quantities, stock and actual fee breakdowns before
+claiming a populated-board quote; catalogue prices alone are insufficient.
 
 ## Report
 
 Separate quoted PCB/assembly charges, missing or hand-fitted parts and off-board
-allowances. Include quantity/attrition constraints, unresolved matches, shipping
-and tax exclusions. A fuse record may require a cartridge plus two clips; an
-outlet handoff terminal does not include the receptacle. Round presentation
-totals only after summing unrounded amounts. Preserve useful aggregate evidence
+allowances. Reconcile manual parts against actual factory selections to avoid
+double counting THT parts JLC will fit. Include attrition/minimum purchases,
+spares, unresolved matches and shipping/tax exclusions. A fuse may need a
+cartridge plus two clips; an outlet handoff terminal excludes the receptacle.
+
+Round only after summing unrounded amounts. Preserve useful aggregate evidence
 with the cost documentation; keep generated quote files temporary. Export and
 quote acceptance do not establish manufacturing readiness.

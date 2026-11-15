@@ -79,12 +79,11 @@ for interfaces, preliminary parts and remaining engineering work.
 
 ## First development-build budget
 
-These are **planning ranges in USD, rounded to the nearest $25**, updated
-2026-11-15 for the four-layer, intelligent-output design. They combine earlier
-JLCPCB Economic assembly prices with allowances for the newer electronics and
-hand-fitted parts; they are not quotes for the current boards.
-Fresh bare-PCB prices have been obtained from the current Gerbers; the updated
-assembly quote still requires authenticated API matching.
+These are **estimated batch totals in USD, rounded to the nearest $25**, updated
+2026-11-15 for the four-layer, intelligent-output design. They combine actual
+JLCPCB Economic fabrication/assembly quotes from the current Gerbers and BOM/CPL
+with estimated remaining hand-fitted parts and enclosure wiring. JLC's quotes
+cover the selected available parts; they do not cover a complete device.
 
 One complete controller means one controller board, one eight-port sensor board
 and two output boards. Small-order minimums mean paying for spare boards even
@@ -92,9 +91,9 @@ when finishing only one device.
 
 | Completed controllers | Boards assembled: controller / sensor / output | Estimated total batch cost |
 | --- | --- | ---: |
-| 1, smallest previously observed Economic assembly order | 2 / 2 / 2 | $275–$325 |
-| 2 | 2 / 2 / 5 | $375–$425 |
-| 5 | 5 / 5 / 10 | $650–$750 |
+| 1, minimum Economic assembly case | 2 / 2 / 2 | $325–$350 |
+| 2 | 2 / 2 / 5 | $425–$450 |
+| 5 | 5 / 5 / 10 | $725–$800 |
 
 The allowance includes PCB fabrication and partial factory assembly, parts to
 finish the required boards, heatsinks, mains cord/entry, outlets, panel USB and
@@ -104,8 +103,8 @@ The selected [7Semi SHT45 probes](https://7semi.com/7semi-sht45-digital-humidity
 are about $13 each; probe count is independent of the eight available ports.
 
 See the [budget basis](docs/development-build-costs.md) for quantity assumptions,
-design-change allowances and uncertainty. Part sourcing and assembly eligibility
-can materially change these figures.
+quoted charges, remaining-parts allowances and uncertainty. Part sourcing and
+assembly eligibility can materially change these figures.
 
 ## Explore or contribute
 
