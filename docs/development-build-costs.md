@@ -35,6 +35,31 @@ is listed at $13; the number purchased need not equal the eight available ports.
 
 ## Reconciliation with earlier estimates
 
+### Fresh bare-PCB quotation, 2026-11-15
+
+The current routed Gerber archives were uploaded through JLCPCB's quotation API.
+JLC detected four copper layers and the exact dimensions below. Live fabrication
+prices, before assembly, shipping and taxes, are:
+
+| Board | Detected outline | Five bare PCBs | Ten bare PCBs |
+| --- | --- | ---: | ---: |
+| Controller/carrier | 95 × 80 mm | $8 | Not requested |
+| Single output | 90 × 65 mm | $8 | $14 |
+| Sensor mux | 80 × 40 mm | $8 | Not requested |
+
+Settings: four layers, nominal 1.6 mm FR4, green mask, leaded HASL, 1 oz outer
+and 0.5 oz inner copper; one design per job. Thus the fabrication subtotal is
+$24 for 5 / 5 / 5 boards, or $30 for 5 / 5 / 10. These exact intermediate
+amounts precede the README's rounded total-budget presentation.
+
+The matched assembly quote remains pending. JLC's final assembly calculator
+requires an authenticated API session and saved BOM/CPL matching records;
+anonymous requests return code 460 (logged out). The full-controller ranges
+above remain planning estimates until that step and the omitted-parts accounting
+are completed. No cart addition, order or payment was made.
+
+### Earlier assembly estimates and change allowances
+
 The saved November 13 mixed-assembly estimates, including manual completion
 and captive-cord/offboard allowances, were $228–238 for one controller,
 $291.17–311.17 for two, and $509.16–559.16 for five. These describe the earlier

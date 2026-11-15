@@ -83,6 +83,8 @@ These are **planning ranges in USD, rounded to the nearest $25**, updated
 2026-11-15 for the four-layer, intelligent-output design. They combine earlier
 JLCPCB Economic assembly prices with allowances for the newer electronics and
 hand-fitted parts; they are not quotes for the current boards.
+Fresh bare-PCB prices have been obtained from the current Gerbers; the updated
+assembly quote still requires authenticated API matching.
 
 One complete controller means one controller board, one eight-port sensor board
 and two output boards. Small-order minimums mean paying for spare boards even
