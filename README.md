@@ -89,11 +89,14 @@ One complete controller means one controller board, one eight-port sensor board
 and two output boards. Small-order minimums mean paying for spare boards even
 when finishing only one device.
 
-| Completed controllers | Boards assembled: controller / sensor / output | Estimated total batch cost |
-| --- | --- | ---: |
-| 1, minimum Economic assembly case | 2 / 2 / 2 | $325–$350 |
-| 2 | 2 / 2 / 5 | $425–$450 |
-| 5 | 5 / 5 / 10 | $725–$800 |
+| Completed controllers | Boards assembled: controller / sensor / output | Estimated total batch cost | Per two-output controller |
+| --- | --- | ---: | ---: |
+| 1, minimum Economic assembly case | 2 / 2 / 2 | $325–$350 | $325–$350 |
+| 2 | 2 / 2 / 5 | $425–$450 | $212.50–$225 |
+| 5 | 5 / 5 / 10 | $725–$800 | $145–$160 |
+
+Per-controller figures divide the rounded batch budget by the number finished,
+including the cost of paid-for spares.
 
 The allowance includes PCB fabrication and partial factory assembly, parts to
 finish the required boards, heatsinks, mains cord/entry, outlets, panel USB and

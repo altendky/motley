@@ -12,11 +12,14 @@ All amounts are USD, before shipping and tax. The README rounds each combined
 range endpoint to the nearest $25; those rounded bands are not guaranteed
 minimums or maximums.
 
-| Finished controllers | JLC fabrication and partial assembly, quoted | Remaining parts/wiring, estimated | Combined estimate before $25 rounding | README batch budget |
-| ---: | ---: | ---: | ---: | ---: |
-| 1 | $259.18 | $62.98–$81.48 | $322.16–$340.66 | $325–$350 |
-| 2 | $273.59 | $141.03–$178.03 | $414.62–$451.62 | $425–$450 |
-| 5 | $356.19 | $363.75–$456.25 | $719.94–$812.44 | $725–$800 |
+| Finished controllers | JLC fabrication and partial assembly, quoted | Remaining parts/wiring, estimated | Combined estimate before $25 rounding | README batch budget | Per two-output controller, from README budget |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | $259.18 | $62.98–$81.48 | $322.16–$340.66 | $325–$350 | $325–$350 |
+| 2 | $273.59 | $141.03–$178.03 | $414.62–$451.62 | $425–$450 | $212.50–$225 |
+| 5 | $356.19 | $363.75–$456.25 | $719.94–$812.44 | $725–$800 | $145–$160 |
+
+Per-controller figures divide the rounded README batch budget by the number
+finished, including the cost of paid-for spares.
 
 The budget includes boards, partial factory assembly, hand-fitted components,
 output heatsinks/interfaces, captive mains cord/strain relief, two outlets per
