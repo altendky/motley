@@ -5,7 +5,8 @@ The output board is packed to **90 x 65 mm**, 22% less area than the preceding
 100 x 75 mm routing study:
 LV left, mains right, AC input/output together at bottom right. The
 [routing review](output-routing-review.md) records the provisional rules,
-checks and remaining limitations. Carrier and sensor boards remain unrouted.
+checks and remaining limitations. The carrier and sensor packing/routing study
+is described in [its own review](carrier-sensor-routing-review.md).
 
 The [intelligent-output review](intelligent-output-review.md) records the current
 pin, default-state, power and ESD assessments, including the complete fresh
@@ -54,9 +55,9 @@ or qualify a PCB. `GOAL-MOT-SENSING` and `MOT-SENS-005` remain draft. Native
 traceability tooling implements approved MOT-HW-003, while the electrical
 study uses design-input relationships without claiming hardware verification.
 
-The output-board experiment includes two-layer routing and LV-only ground pours;
-its schematic is unchanged. Carrier and sensor boards still have no tracks,
-vias or copper pours. Footprint/current/insulation qualification, enclosure
+The board experiments use two-layer routing and ground pours while retaining
+front-only assembly; their schematic circuits are unchanged.
+Footprint/current/insulation qualification, enclosure
 design, manufacturing release, purchasing and energization remain outside this
 experiment. Passing structural checks does not establish mains safety or
 functioning trimmed sensor boards.
@@ -69,9 +70,9 @@ root schematic, netlist and PCB:
 
 | Project | Quantity per unit | Physical contents | Trial outline |
 | --- | ---: | --- | --- |
-| [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5, shared isolated line reference and inter-board connections | 100 x 85 mm |
+| [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5, shared isolated line reference and inter-board connections | 95 x 80 mm |
 | [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation; packed routing study | 90 x 65 mm |
-| [motley-sensors.kicad_pro](motley-sensors.kicad_pro) | 1 | TCA9548A and support parts, upstream interface, eight QT sensor ports with pull-ups | L-shaped, 80 x 44 mm overall |
+| [motley-sensors.kicad_pro](motley-sensors.kicad_pro) | 1 | TCA9548A and support parts, upstream interface, eight QT sensor ports with pull-ups | L-shaped, 80 x 40 mm overall |
 
 The former `motley-controller` monolithic root/project/PCB is replaced by these
 three projects. Shared libraries remain in this directory. No board is panelized
@@ -94,7 +95,7 @@ feedback and access groups. The carrier keeps separate controller, USB/selection
 regulator, input/supply, shared line-reference and interface groups. Mounting
 locations and the WROOM antenna reserve are provisional. Isolation corridors are
 drawings, not qualified clearance rules.
-The output board additionally has provisional copper rules. Moving its groups
+The routed boards additionally have provisional copper rules. Moving their groups
 now requires reviewing/reworking the attached routing; group movement alone
 does not carry every inter-group connection or preserve the filled ground zones.
 
@@ -237,12 +238,13 @@ that does not require cutting away the core behind it. The layout reserves a
 nominal 1 mm kerf and
 0.25 mm positioning allowance; the cutting process is not selected or qualified.
 
-Later routing must keep all required core and retained-port connections on the
+Routing must keep all required core and retained-port connections on the
 retained board. Downstream conductors must cross earlier cut lines, so those
 lanes cannot be completely copper-free. Use deliberate separated crossings,
 exclude pours/pads/vias from the cutting corridor, and provide post-cut edge
-clearance, deburring and short/continuity checks. The present unrouted geometry
-only demonstrates component retention, not electrical cut-down operation.
+clearance, deburring and short/continuity checks. The routing review records
+the retained-copper connectivity checks; the cutting process and actual
+electrical operation still need physical qualification.
 
 ## Shared circuits and repeated placement
 
@@ -277,8 +279,8 @@ monolithic project has been retired.
 
 `review/motley-ac-output-routing.pdf` adds front/back copper pages, both viewed
 from the top, with darkened annotation colours for readability. The combined
-placement PDF uses a component-only output-board view with copper tracks/fills
-omitted; the native output PCB and separate routing PDF retain all copper.
+placement PDF uses component-only views with copper tracks/fills omitted;
+the native PCBs and committed front/back SVGs retain the routed copper.
 
 Each project's ignored `review/` exports include a schematic PDF, placement PDF,
 XML netlist and JSON ERC/DRC reports. Regenerate, for example:
@@ -341,7 +343,7 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
 - PS1 is now MEAN WELL IRM-05-5 / JLC C48603696, isolated 5 V at 1 A.
   The stock four-pin symbol/footprint replaces RECOM: 1 neutral, 2 fused line,
   3 secondary GND, 4 raw 5 V. The 45.7 x 25.4 x 21.5 mm body fits the current
-  100 x 85 mm study outline. Mains-first supply priority and the
+  95 x 80 mm study outline. Mains-first supply priority and the
   Omron G6DN-1A-L DC5 cutoff relay remain selected. The 1 A supply is not a
   qualified sixteen-active-output power budget; two-output and USB-only logic
   operation also need actual peak/current/inrush accounting.

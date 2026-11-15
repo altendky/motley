@@ -25,9 +25,11 @@ matching native board changes. Do not hand-edit these SVGs.
 | Derivative | Native source | View |
 | --- | --- | --- |
 | [motley-carrier.svg](motley-carrier.svg) | `../../motley-carrier.kicad_pcb` | Controller/AC input, front |
+| [motley-carrier-back.svg](motley-carrier-back.svg) | `../../motley-carrier.kicad_pcb` | Controller/AC input, back copper viewed from the top |
 | [motley-ac-output.svg](motley-ac-output.svg) | `../../motley-ac-output.kicad_pcb` | Single AC output, front |
 | [motley-ac-output-back.svg](motley-ac-output-back.svg) | `../../motley-ac-output.kicad_pcb` | Back copper viewed from the top, with front reference outlines |
 | [motley-sensors.svg](motley-sensors.svg) | `../../motley-sensors.kicad_pcb` | Sensor mux/connectors, front |
+| [motley-sensors-back.svg](motley-sensors-back.svg) | `../../motley-sensors.kicad_pcb` | Sensor mux/connectors, back copper viewed from the top |
 
 The exporter uses the KiCad version pinned in `mise.toml`, an isolated default
 theme, fixed layers/options, stable titles and descriptions, and LF line endings.

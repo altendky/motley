@@ -1217,5 +1217,29 @@
     <edge id="E-IMPL-MOT-CI-004-4" type="implements" from="docs/tooling.md#generated-board-svgs" fromKind="doc" to="MOT-CI-004" status="draft" createdBy="rqml"/>
     <edge id="E-IMPL-MOT-CI-004-5" type="implements" from="hardware/controller/generated/board-images/README.md" fromKind="doc" to="MOT-CI-004" status="draft" createdBy="rqml"/>
     <edge id="E-VER-MOT-CI-004" type="verifiedBy" from="MOT-CI-004" to="scripts/test_board_images.py" toKind="test" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-43" type="implements" from="hardware/controller/motley-carrier.kicad_pro" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Source identity and drift coverage for the authorized exploratory carrier routing configuration; no insulation/current qualification is claimed.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-44" type="implements" from="hardware/controller/motley-carrier.kicad_dru" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Source identity and drift coverage for the authorized exploratory carrier geometric rules; no insulation/current qualification is claimed.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-45" type="implements" from="hardware/controller/motley-sensors.kicad_pro" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Source identity and drift coverage for the authorized exploratory sensor routing configuration; no electrical or cutting qualification is claimed.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-004-19" type="dependsOn" from="hardware/controller/motley-carrier.kicad_dru" to="MOT-HW-004" status="draft" createdBy="rqml">
+      <notes>Draft ESD/isolation design input to the bounded routing study; geometric checks do not establish hardware acceptance.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-007" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-007" status="draft" createdBy="rqml">
+      <notes>Draft per-board size target and size-overrun discussion constraint reviewed during the packing study.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-008" type="dependsOn" from="hardware/controller/motley-carrier.kicad_pcb" to="MOT-HW-008" status="draft" createdBy="rqml">
+      <notes>Draft per-board size target and size-overrun discussion constraint reviewed during the packing study.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-007-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-007" status="draft" createdBy="rqml">
+      <notes>Draft per-board size target and size-overrun discussion constraint reviewed during the packing study.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-008-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-008" status="draft" createdBy="rqml">
+      <notes>Draft per-board size target and size-overrun discussion constraint reviewed during the packing study.</notes>
+    </edge>
   </trace>
 </rqml>
