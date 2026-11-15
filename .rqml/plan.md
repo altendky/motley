@@ -1,5 +1,27 @@
 # Motley plan
 
+## Formatter-style SVG regeneration, 2026-11-14
+
+**Readiness:** READY for the developer's correction to `MOT-CI-004`: local
+pre-commit updates derivatives like a formatter; CI retains a read-only check.
+Preserve deterministic rendering, isolated temporary CAD copies and unchanged
+file handling. Existing requirement/acceptance IDs remain stable.
+
+- [x] Add a formatter mode that regenerates expected images and returns failure
+  when it creates or changes any, including a regenerated untracked/deleted SVG.
+  Keep manual `--write` and read-only `--check` behavior. Add regression fixtures.
+- [x] Switch the local hook to formatter mode. Have CI explicitly run `--check`
+  and skip only the formatter hook during its aggregate pre-commit run; preserve
+  all existing jobs and other gates. Update source/derivative documentation.
+- [x] Exercise real stale and missing SVG correction, hook retry success and
+  read-only stale rejection, source/image integrity, fixtures, full pre-commit,
+  and standard RQML. Review and refresh only affected trace baselines.
+
+Eleven fixtures and real pre-commit correction/retry tests pass. Scratch-index
+tests prove a recreated SVG remains blocked after a staged deletion or intent-
+to-add until actually staged. Full pre-commit, explicit read-only freshness and
+standard RQML pass (exit 0); CAD and existing SVG bytes remain unchanged.
+
 ## Reproducible generated board SVGs, 2026-11-14
 
 **Readiness:** READY for the developer's explicit request, recorded as

@@ -58,10 +58,10 @@ repos:
         pass_filenames: false
 
       - id: board-images
-        name: check generated board SVG freshness
-        entry: uv run scripts/board_images.py --check
+        name: regenerate board SVGs
+        entry: uv run scripts/board_images.py --fix
         language: system
-        # A deletion-only commit must still detect a missing derivative.
+        # A deletion-only commit must still regenerate a missing derivative.
         always_run: true
         pass_filenames: false
 

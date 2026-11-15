@@ -216,7 +216,7 @@
       </acceptance>
     </req>
     <req id="MOT-CI-004" type="PR" title="Reproducible committed board SVGs" status="approved" priority="must">
-      <statement>Motley SHALL version its per-board SVG review images in a dedicated generated directory as derivatives of the native KiCad boards, and pre-commit and CI SHALL reject missing or stale images using a reproducible export check.</statement>
+      <statement>Motley SHALL version its per-board SVG review images in a dedicated generated directory as derivatives of the native KiCad boards. Local pre-commit SHALL regenerate missing or stale expected images, while CI SHALL reject out-of-date derivatives using a reproducible read-only export check.</statement>
       <rationale>The developer explicitly requested keeping the SVGs committed, normalizing their timestamps, checking freshness in pre-commit and CI, and clearly separating generated derivatives from native sources.</rationale>
       <acceptance>
         <criterion id="AC-MOT-CI-004-01">
@@ -226,10 +226,13 @@
           <given>unchanged native inputs, declared export settings and the pinned KiCad version</given><when>images are regenerated independently</when><then>their bytes are identical without relying on the previous images, local KiCad preferences, export time or output path; volatile timestamp metadata is normalized without changing plotted geometry</then>
         </criterion>
         <criterion id="AC-MOT-CI-004-03">
-          <given>a missing, stale, altered or unexpected SVG in the generated image directory</given><when>the shared freshness check executes in pre-commit or CI</when><then>it fails with actionable diagnostics, without rewriting native sources or generated images; CI cannot pass the repository checks while that failure remains</then>
+          <given>a missing, stale or altered expected SVG in the generated image directory</given><when>the local pre-commit formatter executes</when><then>it regenerates that derivative without changing native CAD and fails the hook when files were created or updated so the developer can review and stage them before retrying; a new or recreated derivative remains blocking until staged, matching files remain untouched and unexpected SVGs still fail explicitly</then>
         </criterion>
         <criterion id="AC-MOT-CI-004-04">
           <given>matching committed derivatives or an unavailable, incompatible or failing exporter</given><when>the freshness check executes</when><then>matching images pass, and exporter failures fail explicitly rather than silently accepting the existing files</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-004-05">
+          <given>a missing, stale, altered or unexpected SVG in the generated image directory</given><when>CI executes its freshness check</when><then>it fails with actionable diagnostics without rewriting native sources or generated images, and CI cannot pass the repository checks while the failure remains</then>
         </criterion>
       </acceptance>
     </req>

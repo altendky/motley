@@ -135,7 +135,8 @@ def render_views(root: Path, work: Path) -> dict[str, bytes]:
     return rendered
 
 
-def synchronize(output: Path, rendered: dict[str, bytes], write: bool) -> list[str]:
+def synchronize(output: Path, rendered: dict[str, bytes], write: bool,
+                fail_on_change: bool = False) -> list[str]:
     """Check exact derivatives; explicit writes retain already matching files."""
     issues = [f"unexpected SVG: {p.name}" for p in sorted(output.glob("*.svg"))
               if p.name not in rendered]
@@ -148,9 +149,29 @@ def synchronize(output: Path, rendered: dict[str, bytes], write: bool) -> list[s
             output.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
             print(f"Updated {path}")
+            if fail_on_change:
+                # pre-commit's diff cannot always see a recreated untracked SVG.
+                issues.append(f"regenerated SVG: {name}")
         else:
             issues.append(f"{'missing' if existing is None else 'stale'} SVG: {name}")
     return issues
+
+
+def unindexed_images(root: Path, names: dict[str, bytes]) -> list[str]:
+    """A recreated untracked file must not make a staged deletion pass on retry."""
+    missing = []
+    for name in names:
+        try:
+            indexed = subprocess.run(
+                ["git", "-C", str(root), "cat-file", "-s", f":{(OUTPUT / name).as_posix()}"],
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=False,
+            )
+        except FileNotFoundError as exc:
+            raise ExportError("git is required for the pre-commit formatter") from exc
+        # Intent-to-add entries have an empty blob and are not a committed SVG.
+        if indexed.returncode or indexed.stdout.strip() == "0":
+            missing.append(name)
+    return missing
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -158,20 +179,29 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="check freshness without modifying files (default)")
     mode.add_argument("--write", action="store_true", help="regenerate the committed SVG derivatives")
+    mode.add_argument("--fix", action="store_true", help="regenerate and fail if changed, for pre-commit")
     parser.add_argument("--root", type=Path, default=ROOT, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     root = args.root.resolve()
     try:
         with tempfile.TemporaryDirectory(prefix="motley-board-images-") as temporary:
             rendered = render_views(root, Path(temporary))
-        issues = synchronize(root / OUTPUT, rendered, args.write)
+        issues = synchronize(root / OUTPUT, rendered, args.write or args.fix,
+                             fail_on_change=args.fix)
+        if args.fix:
+            issues.extend(f"SVG must be staged with git add: {name}"
+                          for name in unindexed_images(root, rendered))
     except (ExportError, OSError, KeyError, tomllib.TOMLDecodeError) as exc:
         print(f"Board SVG export failed: {exc}", file=sys.stderr)
         return 1
     if issues:
         for issue in issues:
             print(issue, file=sys.stderr)
-        print(f"Regenerate with: {REGENERATE}\nRemove unexpected SVGs explicitly.", file=sys.stderr)
+        if args.fix:
+            print("Review and stage regenerated SVGs, then rerun pre-commit.\n"
+                  "Remove unexpected SVGs explicitly.", file=sys.stderr)
+        else:
+            print(f"Regenerate with: {REGENERATE}\nRemove unexpected SVGs explicitly.", file=sys.stderr)
         return 1
     print(f"Board SVG derivatives: {len(rendered)} views; {'updated' if args.write else 'current'}")
     return 0

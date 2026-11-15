@@ -95,10 +95,13 @@ mise exec -- uv run scripts/board_images.py --check
 
 The first command regenerates changed/missing SVGs; the second fails on
 missing/stale/unexpected views without modifying them. Commit matching native
-board and image changes together. Pre-commit always runs the freshness check,
-including when a commit only deletes an SVG. CI's existing **Repository
-checks** job runs it through `pre-commit --all-files`, and failure blocks the
-aggregate check. It uses the KiCad installation already provided by mise.
+board and image changes together. Local pre-commit always runs the `--fix`
+formatter, including when a commit only deletes an SVG. It regenerates missing
+or stale views and fails after updates so you can review and stage the SVGs
+before retrying. Matching files remain untouched. CI's **Repository checks** job
+explicitly runs `--check`, then skips only this formatter while running the other
+pre-commit hooks. Stale derivatives therefore fail CI without being rewritten.
+It uses the KiCad installation already provided by mise.
 SVG freshness does not establish circuit correctness or fabrication readiness.
 
 ## Human-readable requirements report

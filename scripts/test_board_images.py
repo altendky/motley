@@ -154,6 +154,52 @@ class BoardImageTests(unittest.TestCase):
         self.assertIn(images.REGENERATE, error.getvalue())
         self.assertFalse(self.output.exists())
 
+    def test_formatter_regenerates_missing_or_stale_files_and_requires_restaging(self):
+        # New/untracked files are invisible to pre-commit's ordinary diff check.
+        # The formatter itself must fail after recreating a deleted derivative.
+        content = {"a.svg": b"generated\n"}
+        index = patch.object(images, "unindexed_images", return_value=[])
+        index.start()
+        self.addCleanup(index.stop)
+        with patch.object(images, "render_views", return_value=content), \
+                redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()) as error:
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 1)
+        path = self.output / "a.svg"
+        self.assertEqual(path.read_bytes(), content["a.svg"])
+        self.assertIn("stage regenerated SVGs", error.getvalue())
+        stamp = path.stat().st_mtime_ns
+        with patch.object(images, "render_views", return_value=content), redirect_stdout(io.StringIO()):
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 0)
+        self.assertEqual(path.stat().st_mtime_ns, stamp)
+        path.write_bytes(b"stale\n")
+        with patch.object(images, "render_views", return_value=content), \
+                redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 1)
+        self.assertEqual(path.read_bytes(), content["a.svg"])
+
+    def test_recreated_untracked_image_keeps_failing_until_added_to_index(self):
+        content = {"a.svg": b"generated\n"}
+        with patch.object(images, "render_views", return_value=content), \
+                patch.object(images, "unindexed_images", return_value=["a.svg"]), \
+                redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()) as error:
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 1)
+            stamp = (self.output / "a.svg").stat().st_mtime_ns
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 1)
+        self.assertIn("SVG must be staged with git add", error.getvalue())
+        self.assertEqual((self.output / "a.svg").stat().st_mtime_ns, stamp)
+        with patch.object(images, "render_views", return_value=content), \
+                patch.object(images, "unindexed_images", return_value=[]), redirect_stdout(io.StringIO()):
+            self.assertEqual(images.main(["--root", str(self.root), "--fix"]), 0)
+
+    def test_index_check_rejects_missing_and_intent_to_add_images(self):
+        results = [subprocess.CompletedProcess([], 0, stdout="120\n"),
+                   subprocess.CompletedProcess([], 128, stdout=""),
+                   subprocess.CompletedProcess([], 0, stdout="0\n")]
+        content = {"tracked.svg": b"a", "missing.svg": b"b", "intent.svg": b"c"}
+        with patch.object(images.subprocess, "run", side_effect=results):
+            self.assertEqual(images.unindexed_images(self.root, content),
+                             ["missing.svg", "intent.svg"])
+
     def test_missing_or_failing_kicad_is_not_silently_accepted(self):
         with patch.object(images.subprocess, "run", side_effect=FileNotFoundError):
             with self.assertRaisesRegex(images.ExportError, "unavailable"):

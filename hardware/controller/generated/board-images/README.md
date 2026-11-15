@@ -13,10 +13,14 @@ Check freshness without changing any CAD or images:
 mise exec -- uv run scripts/board_images.py --check
 ```
 
-Pre-commit always runs the same check, including deletion-only commits; CI runs
-it through the **Repository checks** job.
-Missing, changed, stale or unexpected SVGs fail. Commit the images together with
-their matching native board changes. Do not hand-edit these SVGs.
+Local pre-commit always runs a `--fix` formatter, including deletion-only commits.
+It regenerates missing, changed or stale expected SVGs and fails after updates;
+review and stage the regenerated files, then retry. Matching files stay untouched.
+Recreated or new SVGs keep failing until added to the Git index.
+CI's **Repository checks** job explicitly runs the read-only `--check` and skips
+only the formatter hook during its remaining pre-commit checks. Unexpected SVGs
+and exporter errors fail in both modes. Commit the images together with their
+matching native board changes. Do not hand-edit these SVGs.
 
 | Derivative | Native source | View |
 | --- | --- | --- |

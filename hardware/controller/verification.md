@@ -1,6 +1,34 @@
 # Modular controller study verification
 
-## Reproducible generated SVG checks, 2026-11-14
+## Formatter-style SVG pre-commit, 2026-11-14
+
+The developer requested formatter behavior for the local hook. `MOT-CI-004`
+retains its identifiers with updated local-formatting and read-only CI criteria.
+Pre-commit uses `--fix`; CI explicitly uses `--check` and skips only the formatter
+during its remaining pre-commit run. Manual `--write` remains unchanged.
+
+Eleven unit fixtures pass (exit 0), including regeneration/restaging and index
+checks. Real pre-commit runs on deliberately stale/missing SVGs regenerate their
+exact original bytes and fail (exit 1); retries with matching tracked files pass
+(exit 0). Read-only stale checking fails without writing. Native CAD and local
+settings remain byte/mtime identical. A separate scratch Git index confirms
+staged deletion is regenerated, retry without adding remains blocked, intent-to-
+add remains blocked, and adding the regenerated file permits the hook to pass.
+No commits or signing were needed in that disposable fixture repository.
+
+Independent review found no remaining blockers. Current SVG bytes are unchanged
+from commit `54f0fed`; only tooling, requirements and documentation change.
+Full pre-commit passes, including actionlint, all unit/trace fixtures, formatter,
+standard RQML and mapped-implementation approval (exit 0). Explicit read-only
+freshness passes (exit 0), and standard RQML reports no drift. Product backlog
+remains 36 unimplemented and 43 unverified requirements.
+
+| Tested source | SHA-256 |
+| --- | --- |
+| scripts/board_images.py | `bc14b4d6b2d1911085114241486515a618371cb9532f43fc978d31c01b5a926a` |
+| scripts/test_board_images.py | `71a000c150f77b5cf7709cf1703e9d70b88e7691df68f49f4487259a53f72481` |
+
+## Original generated SVG checks before formatter update, 2026-11-14
 
 Approved `MOT-CI-004` records the developer's request for versioned derivative
 SVGs with normalized timestamps and pre-commit/CI freshness checks. Four views
