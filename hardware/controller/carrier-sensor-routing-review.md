@@ -1,5 +1,8 @@
 # Carrier and sensor packing/routing study
 
+Historical two-layer snapshot. The current [four-layer review](four-layer-review.md)
+records the later ground/power-plane conversion and its observed checks.
+
 Date: 2026-11-14. Starting source: merged PR #32, commit
 `a579741eda4976dab7317129edab4154e4f28dbd`. The developer requested packing and
 routing the two remaining boards. This continues the `MOT-PROC-001` exploratory

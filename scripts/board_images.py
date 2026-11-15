@@ -37,14 +37,26 @@ VIEWS = (
          "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - top"),
     View("motley-carrier-back.svg", "motley-carrier",
          "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - back copper, viewed from top"),
+    View("motley-carrier-in1.svg", "motley-carrier",
+         "In1.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - inner 1 ground, viewed from top"),
+    View("motley-carrier-in2.svg", "motley-carrier",
+         "In2.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - inner 2 power and USB ground, viewed from top"),
     View("motley-ac-output.svg", "motley-ac-output",
          "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - top"),
     View("motley-ac-output-back.svg", "motley-ac-output",
          "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - back copper, viewed from top"),
+    View("motley-ac-output-in1.svg", "motley-ac-output",
+         "In1.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - inner 1 ground, viewed from top"),
+    View("motley-ac-output-in2.svg", "motley-ac-output",
+         "In2.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - inner 2 supply regions, viewed from top"),
     View("motley-sensors.svg", "motley-sensors",
          "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - top"),
     View("motley-sensors-back.svg", "motley-sensors",
          "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - back copper, viewed from top"),
+    View("motley-sensors-in1.svg", "motley-sensors",
+         "In1.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - inner 1 ground, viewed from top"),
+    View("motley-sensors-in2.svg", "motley-sensors",
+         "In2.Cu,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - inner 2 sensor supply, viewed from top"),
 )
 
 
@@ -78,6 +90,7 @@ def normalize_svg(source: str, view: View) -> bytes:
     for before, after in {
         "#C83434": "#E9AFA5", "#4D7FC4": "#AAC6EB", "#F2EDA1": "#20252B",
         "#D0D2CD": "#20252B", "#C2C2C2": "#65717E",
+        "#7FC87F": "#B4D9B4", "#CE7D2C": "#E7C7A7",
     }.items():
         source = source.replace(before, after)
     source = "\n".join(line.rstrip() for line in source.splitlines()).rstrip() + "\n"

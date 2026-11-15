@@ -1,5 +1,47 @@
 # Motley plan
 
+## Four-layer ground/power-plane revision, 2026-11-14
+
+**Readiness:** READY for the developer's explicit four-layer/plane request.
+ADR-0021 records the stackup and power/reference partition before native edits.
+Continue the `MOT-PROC-001` exploratory exception; `MOT-HW-003` governs native
+identity/drift and `MOT-CI-004` governs reproducible SVG derivatives. Draft
+electrical constraints remain design inputs, not product acceptance claims.
+
+- [x] **Goal:** Convert carrier/output/sensor candidates to four enabled copper
+  layers and an explicit nominal-1.6-mm standard stackup. **Files:** three PCBs
+  and only necessary project/rule changes. Preserve all 257 identities, local
+  pad nets/geometry, front assembly, outlines, external circuits and selected
+  mains paths. Extend antenna and sensor kerf copper keepouts to all layers.
+- [x] **Goal:** Add connected In1 GND and distinct In2 power regions without
+  merging raw/selected/switched/post-link rails. Preserve a continuous actual
+  In2 GND reference beneath back-side carrier USB with nearby return ties.
+  **Inputs:** ADR-0021, `MOT-HW-004/005/006/009/010/011/012`, `MOT-SENS-005`.
+  Inspect filled copper and vertical connections; repair output CUT_EN opens
+  and drill/land intersections without changing circuits or load-path widths.
+- [x] **Goal:** Independently verify four-layer identity, actual full-board and
+  retained-cut connectivity, projected mains isolation, antenna/mount reserves,
+  plane rail separation, reference coverage and drilled vias. **Inputs:**
+  `MOT-HW-003/004/005/006/007/008`, `MOT-AC-014`. Native DRC must distinguish
+  physical/silk/open and inherited parity findings; no diagnostic suppression.
+- [x] **Goal:** Add inner-plane SVGs, update current design/review/evidence and
+  placement exports, inspect changed source consumers/trace links and refresh
+  only reviewed baselines. Run annotation/fixture/freshness checks, full
+  pre-commit and standard RQML.
+
+Delivery uses the signed-commit/PR/queue workflow, followed by observing the
+merge and updating the ordinary main checkout.
+
+All three converted boards have zero native physical/silk violations, zero
+opens and zero drill/land intersections. The output's two preceding CUT_EN
+gaps are now closed without inner signal routing. Independent four-layer
+connectivity, plane feeds, sensor cuts and current/isolation checks pass.
+The former long USB reference gap is gone; local antipad/impedance and physical
+manufacturing qualifications remain open. Twelve SVGs and both layout/copper
+review PDFs are refreshed. Native annotations, 15 trace fixtures, 11 SVG
+fixtures and full pre-commit pass; source identity and execution evidence are
+recorded separately from product qualification.
+
 ## Carrier and sensor packing/routing study, 2026-11-14
 
 **Readiness:** READY for the developer's request to pack and route both remaining

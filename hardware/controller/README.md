@@ -1,12 +1,15 @@
 # Exploratory modular controller
 
 Status: exploratory design, revised 2026-11-14; not a fabrication release.
-The output board is packed to **90 x 65 mm**, 22% less area than the preceding
-100 x 75 mm routing study:
-LV left, mains right, AC input/output together at bottom right. The
-[routing review](output-routing-review.md) records the provisional rules,
-checks and remaining limitations. The carrier and sensor packing/routing study
-is described in [its own review](carrier-sensor-routing-review.md).
+All three PCB designs now use **four copper layers**, with low-voltage inner
+ground and power planes and front-only assembly. Packed outlines remain
+**95 x 80 mm** for the carrier, **90 x 65 mm** for each output and an
+**80 x 40 mm L** for the sensor board. The current
+[four-layer review](four-layer-review.md) records the stackup, connected plane
+regions, checks and remaining limits. Earlier
+[output](output-routing-review.md) and
+[carrier/sensor](carrier-sensor-routing-review.md) routing studies retain the
+preceding two-layer evidence.
 
 The [intelligent-output review](intelligent-output-review.md) records the current
 pin, default-state, power and ESD assessments, including the complete fresh
@@ -55,8 +58,8 @@ or qualify a PCB. `GOAL-MOT-SENSING` and `MOT-SENS-005` remain draft. Native
 traceability tooling implements approved MOT-HW-003, while the electrical
 study uses design-input relationships without claiming hardware verification.
 
-The board experiments use two-layer routing and ground pours while retaining
-front-only assembly; their schematic circuits are unchanged.
+The board experiments use four-layer routing and low-voltage ground/power
+planes while retaining front-only assembly; their schematic circuits are unchanged.
 Footprint/current/insulation qualification, enclosure
 design, manufacturing release, purchasing and energization remain outside this
 experiment. Passing structural checks does not establish mains safety or
@@ -78,6 +81,15 @@ The former `motley-controller` monolithic root/project/PCB is replaced by these
 three projects. Shared libraries remain in this directory. No board is panelized
 with another, and no mechanical mating height or installed orientation is fixed.
 The shapes are movable starting geometry, not minimum-size or enclosure claims.
+
+**Stackup:** F.Cu signals/components, In1.Cu low-voltage GND, In2.Cu separate
+low-voltage supply regions, B.Cu signals. The carrier additionally has an In2
+GND corridor directly beneath its back-side USB pair. Raw actuator 5 V,
+selected logic 5 V, controller 3.3 V and switched sensor 3.3 V remain distinct;
+planes do not bypass source selection, switches or Qwiic power links. Mains and
+PE retain their external-layer conductors, with no mains/PE planes. Antenna
+and sensor-cut exclusions cover all four layers. [ADR-0021](../../.rqml/adr/0021-four-layer-ground-and-power-planes.md)
+records the nominal 1.6 mm JLC04161H-7628 study construction and its limits.
 
 **Board-size target:** keep each individual board's overall outline width and
 height at or below **100 mm**, including the full untrimmed sensor board.
@@ -277,10 +289,10 @@ The two combined review files retain their original paths:
 bookmark for each board. These PDFs remain current even though the native
 monolithic project has been retired.
 
-`review/motley-ac-output-routing.pdf` adds front/back copper pages, both viewed
-from the top, with darkened annotation colours for readability. The combined
+`review/motley-ac-output-routing.pdf` adds four copper pages in stack order,
+all viewed from the top, with readable layer colours and labels. The combined
 placement PDF uses component-only views with copper tracks/fills omitted;
-the native PCBs and committed front/back SVGs retain the routed copper.
+the native PCBs and committed front/back/inner-layer SVGs retain the routed copper.
 
 Each project's ignored `review/` exports include a schematic PDF, placement PDF,
 XML netlist and JSON ERC/DRC reports. Regenerate, for example:
