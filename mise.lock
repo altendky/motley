@@ -11,6 +11,19 @@ specifiers = ["10.0.8"]
 checksum = "sha256:27e4b4baa85c2181be6b219c22667ce138c20c0148dd2e047ba84dbda480dbb4"
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-10.0.8-x86_64.AppImage.tar"
 
+[[tools."http:kicad-mcp"]]
+version = "2.9.0"
+backend = "http:kicad-mcp"
+specifiers = ["2.9.0"]
+
+[tools."http:kicad-mcp".options]
+format = "tar.gz"
+strip_components = "1"
+
+[tools."http:kicad-mcp"."platforms.linux-x64"]
+checksum = "sha256:43f813c8c73a34a06b10518f8bee1d5e57d4a5b4e534c110d3a93f34554aa735"
+url = "https://codeload.github.com/mixelpixx/KiCAD-MCP-Server/tar.gz/refs/tags/v2.9.0"
+
 [[tools.node]]
 version = "26.13.1"
 backend = "core:node"

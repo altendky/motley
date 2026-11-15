@@ -1500,3 +1500,37 @@ RQML passed with the same backlog. All 20 native CAD hashes still match. The
 aggregate run again exited 1 solely for the two protected formatter inputs;
 all other hooks passed. Source-side CC logic must start independently of the
 Feather's 3.3 V output; independent review confirmed that bootstrap constraint.
+
+## Exploratory KiCad MCP integration, 2026-11-15
+
+**Readiness:** READY for the user-requested tool installation and evaluation.
+Under `MOT-PROC-001`, this is a scoped development-tool experiment: pin and
+install mixelpixx's KiCAD MCP Server through mise, register it for this project,
+and evaluate existing CAD workflows on disposable copies. It does not establish
+validated CAD transformations or replace the maintained traceability/export
+checks. Preserve `MOT-HW-003`, `MOT-CI-003`, `MOT-CI-004` and `MOT-PROC-002`.
+
+- [x] Add the pinned server to the single root mise tool group and register
+  the project MCP entry, with the Python runtime appropriate to the pinned
+  KiCad build. Verify CI caches the installed server and its built dependencies.
+- [x] Initialize the installed server and exercise schematic properties,
+  placement, routing/zone operations, checks and representative exports on
+  disposable native copies. Compare UUIDs, requirement fields, hierarchy and
+  connectivity; confirm the checkout's CAD remains unchanged.
+- [x] Record observed headless capabilities, operations requiring a KiCad
+  window, untested functions and failures. Distinguish alternative placement
+  algorithms from native Place Off-Board Footprints and Repeat Layout.
+- [x] Review mapped configuration/documentation changes, refresh only reviewed
+  changed RQML edges, and run native trace/SVG checks and full pre-commit.
+
+Delivery is a pull request for review; do not land it as part of this work.
+
+Evaluation evidence is summarized in `docs/kicad-mcp.md`: 250 exposed tools,
+headless property/placement/routing/fill/check/export probes, unchanged native
+identity and byte-for-byte restoration after reversible edits. Final-runtime
+property/shared-sheet/placement and PNG probes passed after the private Python
+dependency and renderer compatibility fixes. The original 140 controller files
+remain unchanged. Native annotation and canonical SVG checks pass; existing
+ERC/DRC findings match direct CLI output and are not resolved by this experiment.
+Full pre-commit passes, exit 0; standard RQML and mapped-implementation approval
+pass with the existing backlog of 43 unverified and 36 unimplemented requirements.

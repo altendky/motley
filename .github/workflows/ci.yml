@@ -39,10 +39,14 @@ jobs:
         with:
           version: 2026.11.4
           install_args: --locked
+          cache: true
+          cache_key: "{{default}}-motley-recipe-${{ hashFiles('scripts/install-kicad-mcp*', 'scripts/kicad-mcp-*', 'scripts/kicad-launcher.sh', '.mise/locks/**') }}"
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml', 'mise.toml', 'mise.lock', '.mise/locks/**') }}
+      - name: Check KiCad MCP startup without a desktop
+        run: node scripts/check_kicad_mcp.mjs
       - name: Check board SVG freshness without modifying files
         run: uv run scripts/board_images.py --check
       - run: pre-commit run --all-files --show-diff-on-failure
@@ -62,6 +66,9 @@ jobs:
         with:
           version: 2026.11.4
           install_args: --locked
+          cache: true
+          cache_save: false
+          cache_key: "{{default}}-motley-recipe-${{ hashFiles('scripts/install-kicad-mcp*', 'scripts/kicad-mcp-*', 'scripts/kicad-launcher.sh', '.mise/locks/**') }}"
       - name: Generate requirements Markdown
         env:
           REPORT_DIR: ${{ runner.temp }}/motley-requirements
@@ -97,6 +104,9 @@ jobs:
         with:
           version: 2026.11.4
           install_args: --locked
+          cache: true
+          cache_save: false
+          cache_key: "{{default}}-motley-recipe-${{ hashFiles('scripts/install-kicad-mcp*', 'scripts/kicad-mcp-*', 'scripts/kicad-launcher.sh', '.mise/locks/**') }}"
       - name: Pull pinned firmware SDK
         run: |
           sdk_image="$(python -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("firmware/toolchain.toml").read_text())["image"])')"
