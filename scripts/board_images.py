@@ -35,12 +35,16 @@ class View:
 VIEWS = (
     View("motley-carrier.svg", "motley-carrier",
          "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - top"),
+    View("motley-carrier-back.svg", "motley-carrier",
+         "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Controller and AC input - back copper, viewed from top"),
     View("motley-ac-output.svg", "motley-ac-output",
          "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - top"),
     View("motley-ac-output-back.svg", "motley-ac-output",
          "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "AC output - back copper, viewed from top"),
     View("motley-sensors.svg", "motley-sensors",
-         "F.Cu,F.Mask,F.SilkS,Edge.Cuts", "Sensor mux and connectors - top"),
+         "F.Cu,F.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - top"),
+    View("motley-sensors-back.svg", "motley-sensors",
+         "B.Cu,B.Mask,F.SilkS,Dwgs.User,Edge.Cuts", "Sensor mux and connectors - back copper, viewed from top"),
 )
 
 

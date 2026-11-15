@@ -1,5 +1,46 @@
 # Motley plan
 
+## Carrier and sensor packing/routing study, 2026-11-14
+
+**Readiness:** READY for the developer's request to pack and route both remaining
+boards. Extend the `MOT-PROC-001` exploratory CAD exception; approved `MOT-HW-003`
+governs native annotation/source identity and `MOT-CI-004` governs SVG freshness.
+Electrical obligations remain draft design inputs, not completed qualification.
+Use `MOT-HW-004/005/006/007/008/009/010/011/012`, `MOT-SENS-005`, `MOT-PLAT-004`
+and the preserved AC/power interfaces as applicable constraints. No schematic,
+component selection, firmware or AC-output-board changes are planned.
+
+- [x] Pack the controller/AC-input board below its 100 x 85 mm starting envelope.
+  Preserve all footprint identities/nets, front assembly, antenna/cable/metal
+  reserve, USB data path, source-selection/regulator groups, accessible service
+  interfaces and mains/LV separation. Route mains distribution deliberately,
+  then local USB/power and remaining LV. Use explicit provisional isolation and
+  conductor rules; do not mistake DRC for a current/insulation/EMI rating.
+- [x] Pack the 80 x 44 mm sensor L-shaped board by reducing depth, retaining
+  its connector-controlled 80 mm length, common circuit and five/six/seven-port
+  cut-down options. Preserve connector orientation, front assembly/top access,
+  all upstream interfaces, switch addressing and removable pulls. Route full
+  board and independently inspect connectivity after each proposed tail cut;
+  keep pads/vias/pours out of kerfs and deliberate trace crossings separated.
+- [x] For both candidates, verify exact component UUID/property/pad-net parity,
+  mounting/reserve/courtyard geometry, copper DRC, open connections and via/drill
+  placement. Aim for zero open nets; prefer a slightly less aggressive packing
+  over trapping pins. Record every unresolved routing/DFM finding explicitly.
+- [x] Integrate only reviewed board/project/rule changes, regenerate derived
+  SVGs and review artifacts, update dimensions and verification evidence, inspect
+  source consumers/trace links, refresh only reviewed annotation baselines, and
+  run native annotations/fixtures, full pre-commit and standard RQML.
+
+The carrier is 95 x 80 mm and the sensor L is 80 x 40 mm; all 99 / 82 footprint
+identities, local pad nets/geometry, front assembly and access are preserved.
+Both have zero physical/silk violations, zero opens and zero drill/land hits.
+Inherited parity findings remain 49 / 70 (native DRC exit 5). All three sensor
+cut graphs and the carrier wide-current/isolation/mount/reserve checks pass.
+Six committed SVG views and the placement PDF are refreshed. Native annotations,
+15 trace fixtures, 11 SVG fixtures, full pre-commit and standard RQML pass.
+USB reference/impedance, RF/enclosure, mains/current/thermal and physical cutting
+qualification remain open; the separate output-board routing gaps are unchanged.
+
 ## Formatter-style SVG regeneration, 2026-11-14
 
 **Readiness:** READY for the developer's correction to `MOT-CI-004`: local

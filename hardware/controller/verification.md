@@ -1,5 +1,54 @@
 # Modular controller study verification
 
+## Carrier and sensor packing/routing, 2026-11-14
+
+The carrier is now 95 x 80 mm, and the sensor L is 80 x 40 mm. This extends
+the existing `MOT-PROC-001` exploratory exception and preserves the schematic
+circuits, component choices and source identities. The detailed
+[routing review](carrier-sensor-routing-review.md) records provisional rules,
+source hashes, actual cut connectivity and remaining qualification work.
+
+Independent and parent native audits preserve all 99 carrier / 82 sensor
+footprint UUIDs, selections, properties, schematic identities and local pad
+geometry/UUIDs/nets. Assembly, touch and probe access remain front-side.
+Both boards have two ground pours and zero via-drill/SMD-land intersections;
+there are six carrier and seventeen sensor annulus-only same-net overlaps.
+The carrier has 851 track segments / 104 vias; the sensor has 1,287 / 132.
+Final carrier label cleanup changes only reference presentation, confirmed
+against the preceding native syntax tree with all other tokens identical.
+
+Native KiCad 10.0.8 DRC with all-track and schematic-parity checks reports
+**zero physical/silkscreen violations and zero open connections on both boards**.
+With `--exit-code-violations`, both commands exit **5** because 49 carrier and
+70 sensor parity findings remain, exactly matching their unrouted baselines.
+No diagnostic severity or exclusion was changed. Carrier wide-path checks
+confirm all seven 3 mm shared / 2 mm branch routes and projected 5 mm mains/LV
+spacing; provisional mount-head and antenna component reserves pass.
+
+After clipping actual filled sensor copper at cut minus 0.75 mm, all required
+nets remain connected for five, six and seven ports (167 / 184 / 201 retained
+netted pads). No pads, vias or pours enter any kerf corridor. This is structural
+cut connectivity evidence, not cutting-process or operating qualification.
+Every schematic, library and output-board source stays byte-identical: 34
+unaffected native files. The separate output board's two CUT_EN opens and four
+drill/land intersections remain unresolved.
+
+Native annotations pass 20 files / 257 footprints; all 15 traceability fixtures
+and 11 SVG fixtures pass (exit 0). Six committed front/back SVGs now include
+carrier/sensor back copper and the sensor cut guides. Freshness and full
+pre-commit pass (exit 0), including schema, strict lint, standard RQML and the
+mapped-implementation approval gate. Only inspected PCB/configuration and
+derivative-tooling baselines were recorded/refreshed through RQML. Coverage
+backlog remains 36 unimplemented / 43 unverified requirements.
+
+The combined three-page placement PDF was refreshed from isolated component-
+only board copies and visually inspected after cropping blank sheet margins.
+Its SHA-256 is `efb858772003e03b33067db540212476fb8c6295939e6267b2c2ad53ca040f69`.
+The schematic PDF stays current because schematic source bytes are unchanged.
+USB opposite-plane gaps/impedance, antenna FR-4/enclosure geometry, soldering,
+power/current/thermal/insulation and physical trimming remain unqualified.
+Passing repository checks is distinct from a hardware fabrication release.
+
 ## Formatter-style SVG pre-commit, 2026-11-14
 
 The developer requested formatter behavior for the local hook. `MOT-CI-004`
