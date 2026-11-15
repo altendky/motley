@@ -80,6 +80,30 @@ Compare fresh netlists, ERC/DRC and native trace checks before refreshing review
 RQML baselines. The KiCad 10 migration evidence is in the
 [hardware verification record](../hardware/controller/verification.md).
 
+## Generated board SVGs
+
+Versioned per-board views live in
+[`hardware/controller/generated/board-images/`](../hardware/controller/generated/board-images/README.md).
+They are derivatives of the native KiCad boards, with fixed layers/colours,
+isolated KiCad preferences and stable metadata without export timestamps
+(`MOT-CI-004`). Use the pinned tool environment:
+
+```sh
+mise exec -- uv run scripts/board_images.py --write
+mise exec -- uv run scripts/board_images.py --check
+```
+
+The first command regenerates changed/missing SVGs; the second fails on
+missing/stale/unexpected views without modifying them. Commit matching native
+board and image changes together. Local pre-commit always runs the `--fix`
+formatter, including when a commit only deletes an SVG. It regenerates missing
+or stale views and fails after updates so you can review and stage the SVGs
+before retrying. Matching files remain untouched. CI's **Repository checks** job
+explicitly runs `--check`, then skips only this formatter while running the other
+pre-commit hooks. Stale derivatives therefore fail CI without being rewritten.
+It uses the KiCad installation already provided by mise.
+SVG freshness does not establish circuit correctness or fabrication readiness.
+
 ## Human-readable requirements report
 
 Every PR and push to `main` has an independent **Requirements report** CI job

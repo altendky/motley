@@ -1,5 +1,133 @@
 # Motley plan
 
+## Formatter-style SVG regeneration, 2026-11-14
+
+**Readiness:** READY for the developer's correction to `MOT-CI-004`: local
+pre-commit updates derivatives like a formatter; CI retains a read-only check.
+Preserve deterministic rendering, isolated temporary CAD copies and unchanged
+file handling. Existing requirement/acceptance IDs remain stable.
+
+- [x] Add a formatter mode that regenerates expected images and returns failure
+  when it creates or changes any, including a regenerated untracked/deleted SVG.
+  Keep manual `--write` and read-only `--check` behavior. Add regression fixtures.
+- [x] Switch the local hook to formatter mode. Have CI explicitly run `--check`
+  and skip only the formatter hook during its aggregate pre-commit run; preserve
+  all existing jobs and other gates. Update source/derivative documentation.
+- [x] Exercise real stale and missing SVG correction, hook retry success and
+  read-only stale rejection, source/image integrity, fixtures, full pre-commit,
+  and standard RQML. Review and refresh only affected trace baselines.
+
+Eleven fixtures and real pre-commit correction/retry tests pass. Scratch-index
+tests prove a recreated SVG remains blocked after a staged deletion or intent-
+to-add until actually staged. Full pre-commit, explicit read-only freshness and
+standard RQML pass (exit 0); CAD and existing SVG bytes remain unchanged.
+
+## Reproducible generated board SVGs, 2026-11-14
+
+**Readiness:** READY for the developer's explicit request, recorded as
+`MOT-CI-004`. Keep the native KiCad files authoritative and place the four
+configured SVG views in `hardware/controller/generated/board-images/`.
+Use a stable title without a timestamp, fixed plot settings and an isolated
+default theme. Compare freshly rendered bytes; never retain old image metadata
+as a generation input. This is tooling within the existing CI architecture,
+with no hardware circuit or routing change.
+
+- [x] Implement a dependency-free `scripts/board_images.py` with explicit write
+  and read-only check modes, pinned KiCad validation, normalization and useful
+  missing/stale/export-failure diagnostics. Regenerate all views before writing;
+  preserve already matching files. Add meaningful failure/determinism fixtures.
+- [x] Generate and version the four SVGs in the derivative directory with source
+  and command documentation. Add pre-commit freshness and fixture hooks; the
+  existing CI Repository checks job already runs these with pinned KiCad.
+- [x] Verify repeat generation, independence from local configuration and working
+  directory, real stale/missing failure, source immutability, fixtures, full and
+  new-file pre-commit, and standard RQML. Review/record implementation and test
+  links for `MOT-CI-004`; preserve existing annotation and backlog gates.
+
+All eight fixtures and eight real export/failure cases pass. Full pre-commit
+and explicit new-file checks pass (exit 0), including SVG freshness, native
+annotations and RQML gates. Check mode preserves source/output bytes and mtimes;
+write mode preserves already matching derivatives. The existing output-board
+routing/DFM gaps remain separate from this completed tooling capability.
+
+## Output-board packing follow-up, 2026-11-14
+
+**Readiness:** READY for the developer's request to pack the first routed
+placement more tightly. Continue the `MOT-PROC-001` exploratory exception and
+`MOT-HW-003` annotation integrity; preserve the circuit, 76 footprint identities,
+front-side assembly/access, 35 x 29 mm heatsink reserve, LV left/mains right and
+both AC connectors at bottom right. Try about 90 x 65 mm, without treating that
+trial as a required result or weakening the existing provisional separation.
+The preferred maximum remains 100 mm per dimension (`MOT-HW-007/008`).
+
+- [x] **Goal:** Pack the recovery, MCU, driver, sensing and probe groups around
+  the isolation boundary and reduce idle margins. **Inputs:** `MOT-HW-003/004/
+  005/006/007/008`, `MOT-AC-014`, existing routing review. **Files:** output PCB
+  and current review notes. Check package courtyards, mount/heatsink reserves and
+  source identity before replacing the previous routed snapshot.
+- [ ] **Goal:** Rework routing for the packed placement using the same scoped
+  routing approach and provisional geometric rules; preserve load-path widths,
+  LV-only ground and the all-layer barrier. Check actual copper, zero open nets,
+  source/pad identity and independent review; report any remaining limitation.
+- [x] **Goal:** Refresh placement/copper PDFs and current source/check evidence,
+  retain the preceding routed trial as historical evidence, and run native trace,
+  fixtures, full pre-commit and standard RQML. Refresh only reviewed changed
+  annotation baselines. Carrier/sensor sources and schematic circuits stay intact.
+
+The packed placement is 90 x 65 mm, 22% below the preceding 100 x 75 mm trial.
+Independent review preserves all 76 footprint identities and pad nets, front
+assembly, heatsink/mounting reserves, seven wide mains paths and a 5.16 mm
+projected copper gap. The bounded routing pass stops with two `CUT_EN`
+connections open; the zero-open-net goal above remains pending. Four actual
+via-drill/land intersections also remain DFM work. Ordinary 0.6/0.3 mm LV vias
+are now permitted by two project minima; clearance rules and mains vias remain
+unchanged. The routing review and verification record distinguish these gaps
+from passing native physical DRC and annotation checks.
+
+## Output-board placement and routing experiment, 2026-11-14
+
+**Readiness:** READY for a bounded exploratory pass requested by the developer:
+LV on the left, mains on the right, AC input/output together at bottom right.
+This extends the scoped `MOT-PROC-001` CAD exception to trial copper routing;
+approved `MOT-HW-003` governs native annotations. Electrical requirements remain
+draft; these are provisional geometric rules, not an insulation/current rating
+or manufacturing release. Preserve the schematic circuit, existing source UUIDs,
+front-side assembly/touch/probe access and the 100 mm outline target. Carrier
+and sensor sources stay unchanged. Two copper layers are permitted; front-only
+assembly does not mean a single copper layer.
+
+- [x] **Goal:** Compact output placement with the agreed connector edges and
+  an explicit isolation corridor, heatsink reserve and service access.
+  **Inputs:** `MOT-HW-003/004/005/006/007/008`, `MOT-AC-014`, ADR-0020.
+  **Files:** output PCB/project, provisional routing rules and review notes.
+  Inspect exact isolation-crossing package limits before selecting geometric
+  rules; record unresolved package/insulation and thermal limitations.
+- [x] **Goal:** Route the mains load path deliberately and make one bounded
+  local routing pass over logic/sensing. Preserve schematic connectivity and
+  avoid mains copper in the LV region. Review ground returns, protection entry
+  paths and current/reference ADC routing. Do not substitute circuit components
+  or pursue manufacturing optimization in this pass.
+- [x] **Goal:** Run net/pad/UUID/annotation reconciliation, ERC and actual copper
+  DRC; inspect rendered copper/placement and refresh review PDFs. Record routed
+  versus unresolved connections and every remaining finding without suppressing
+  diagnostic categories. Run hardware trace/fixtures, full pre-commit and standard
+  RQML; refresh only inspected changed annotation baselines. Report study scope
+  and remaining qualification gaps separately from structural results.
+
+The result is 100 x 75 mm, with 525 segments, 34 vias and two LV-only ground
+zones. KiCad reports zero physical/copper violations and zero unconnected items;
+exit 5 remains solely for 53 inherited parity findings. Independent review
+confirms source/pad identity, all seven load/neutral/PE paths through wide trunks
+and short package fanouts, front-only assembly and at least 5.16 mm all-layer
+horizontal copper separation. Existing output ERC findings remain unchanged.
+Trace annotations, all 15 fixtures, full pre-commit and standard RQML pass
+(exit 0); the new rules/review files receive an explicit scoped pre-commit run.
+Only three native files differ: output PCB/project and the new rules file;
+35 other native sources remain byte-identical. Source/PDF identities, mechanical
+limitations and pending qualification are recorded in the hardware verification
+and output-routing review documents. No firmware or product qualification is
+claimed, and no further routing optimization is part of this bounded pass.
+
 ## Intelligent-output exploratory schematic and placement revision, 2026-11-14
 
 **Readiness:** Exploratory schematic and movable placement updated at the
