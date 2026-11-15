@@ -1,5 +1,147 @@
 # Modular controller study verification
 
+## Reproducible generated SVG checks, 2026-11-14
+
+Approved `MOT-CI-004` records the developer's request for versioned derivative
+SVGs with normalized timestamps and pre-commit/CI freshness checks. Four views
+now live under `generated/board-images/` with a derivative/source README. The
+exporter uses pinned KiCad 10.0.8, fixed plot options, an isolated default theme
+and temporary PCB/project copies. Document titles/descriptions and whitespace
+are normalized without changing vector geometry or stroked-text descriptions.
+Native CAD bytes remain identical to the preceding packed-layout revision.
+
+`mise exec -- uv run scripts/test_board_images.py` passes eight fixtures,
+exit 0. Real checks from another working directory with hostile user preferences
+pass; repeated `--write` preserves both bytes and modification times of matching
+images. Altered SVG, missing SVG, extra SVG and a changed native reference each
+fail with exit 1; explicit regeneration repairs the missing output. Restored
+inputs pass. Before/after snapshots confirm checks leave all source and output
+files untouched, including local project settings. Independent review confirms
+temporary PCB/project inputs suffice for the current embedded geometry/fonts.
+
+The freshness hook always runs, including deletion-only commits. CI's existing
+Repository checks job installs pinned KiCad and runs `pre-commit --all-files`;
+the existing aggregate dependency propagates failure. CI wiring is reviewed;
+execution evidence here is local. Full pre-commit and explicit new-file checks
+pass (exit 0), including native traceability, the SVG fixtures/freshness check,
+schema/strict lint, standard RQML and mapped-implementation approval.
+
+| Tested source | SHA-256 |
+| --- | --- |
+| scripts/board_images.py | `d9cc3a88f0987bf8a587551758cf372602a15aa9ee4a1837a34ad685d7e3e423` |
+| scripts/test_board_images.py | `6430901a19d60d3fe0ecc3f30fe3db78f813e1acde8ae3687d6685d8c8fb51f3` |
+
+SVG freshness is independent of the outstanding routing/DFM findings below and
+does not close electrical product obligations. Generated SVGs and their matching
+native board revision must be committed together.
+
+## Packed output-board placement, 2026-11-14
+
+The developer requested tighter placement after reviewing the 100 x 75 mm
+routing study below. The output board is now **90 x 65 mm**, 22% less area;
+LV remains left, mains right and both AC connections at bottom right. This
+continues the `MOT-PROC-001` exploratory exception and approved `MOT-HW-003`
+annotation obligation. The circuit, component selection and schematic are intact.
+
+Independent native review confirms all 76 footprint identities/properties/pad
+nets, front assembly and touch access, the full 35 x 29 mm heatsink reserve,
+provisional 7 mm mounting-head envelopes and all seven wide mains paths.
+Projected all-layer copper separation remains 5.16 mm. There are 686 segments,
+64 vias and two LV-only GND zones. Sixteen LV vias use ordinary 0.6/0.3 mm
+geometry; two project minima now permit it. All other project settings, custom
+clearances and actual mains-via dimensions are unchanged from the preceding
+trial. Thirty-six other native sources are byte-identical to that trial.
+
+Final KiCad 10.0.8 DRC reports **zero physical/copper violations**, **two open
+connections on CUT_EN**, and the inherited 53 parity findings (48 metadata,
+five provisional footprint assignments), exit 5. U20 pin 9 and the TP5 island
+remain unrouted. Independent same-net via review also finds four drill/land
+intersections at C203.1, R202.2, U2.6 and U30.1; C202.1 has annular-copper overlap
+only. These unfinished routing/DFM items are not waived by passing native
+physical DRC. No diagnostic categories or exclusions were changed. The
+[routing review](output-routing-review.md) records details and qualification gaps.
+
+Native annotations pass 20 files / 257 footprints, and all 15 trace fixtures
+pass (exit 0). Only the inspected output PCB/project annotation baselines were
+refreshed through RQML. Full pre-commit passes, including schema/strict lint,
+standard RQML and mapped-implementation approval (exit 0). The requirement
+backlog remains 36 unimplemented and 43 unverified; this experiment does not
+close product obligations.
+
+| Checked source | SHA-256 |
+| --- | --- |
+| motley-ac-output.kicad_pcb | `44bf7c4621ace38860c8fdbcf6450d458834e2b7a1688047b18e82640f5b2d2d` |
+| motley-ac-output.kicad_pro | `9be71d93c7bcf868baec769ec3d00992bc36f52f8a91d60a855ad7316cdb9140` |
+| motley-ac-output.kicad_dru | `96fbf97d53dacc811fd5c0d1542a214558497cec2d228871cffe12618eccd064` |
+| requirements.rqml | `3f25c134ce1e7451bd3f61dece1e330ed50579e0c59da8c5b26fd40001638adc` |
+
+The placement PDF retains three pages/bookmarks and a component-only output
+view. The separate copper PDF has two pages. Changed pages were rendered and
+inspected, including the merged placement page and both copper views. The
+component-only view supplies legible black reference labels alongside the
+colour copper plots. The 24-page schematic PDF remains
+current because its native sources are unchanged.
+
+| Review PDF | Bytes | SHA-256 |
+| --- | ---: | --- |
+| motley-controller-placement.pdf | 364384 | `4f3583f359a4162b2e19e61f2e522cdd7ac154812f43b931cf0a7b6626d84f0d` |
+| motley-ac-output-routing.pdf | 265261 | `115b8cd938ab5b70f9eb249f27f3e6f898a79a26fc28a0a6cccea8bbd9800f97` |
+
+## Earlier 100 x 75 mm output routing study, 2026-11-14
+
+The developer authorized a bounded output-board routing experiment with LV on
+the left, mains on the right and AC input/output together at bottom right.
+This extends the `MOT-PROC-001` exploratory exception. The
+[routing review](output-routing-review.md) records provisional geometric rules,
+method, primary package references and remaining limits. The schematic circuit
+is unchanged; no product requirement is marked completed by these checks.
+
+The output PCB is 100 x 75 mm, with 525 track segments, 34 vias and two LV GND
+zones. All 76 footprint UUIDs, values, requirement fields and pad nets match
+the preceding source. All components/touch/probe points remain on the front.
+Independent review confirms all seven load/neutral/PE paths using at least
+0.8 mm tracks and 1.8 mm / 0.8 mm drilled mains vias, including the short
+package neckdowns; 36 segments are 2 mm wide. Thin detector/gate branches are
+not required for load continuity. The heatsink reservation intersects only Q102.
+Both ground zones are confined to LV, and an all-layer X-envelope comparison
+establishes a conservative geometric gap of 5.16 mm. Screw/washer/clip metal,
+thermal/fault-current performance and insulation qualification remain open.
+
+Final KiCad 10.0.8 `pcb drc --format json --schematic-parity
+--exit-code-violations` reports zero physical/copper violations and zero
+unconnected items. Its exit 5 is solely for 53 inherited parity findings:
+48 metadata differences and five provisional footprint-assignment differences.
+Output `sch erc --format json --exit-code-violations` retains the two documented
+TMCS unused-output grounding findings (exit 5). No diagnostic severities or DRC
+exclusions were changed. Native trace checking passes 20 files / 257 footprints,
+and all 15 trace fixtures pass (both exit 0). Full pre-commit passes, including
+schema/strict lint, standard RQML and mapped-implementation approval (exit 0).
+Backlog remains 36 unimplemented and 43 unverified requirements.
+
+Only the output PCB/project and new custom-rule source differ; 35 other native
+sources, including every schematic and both other boards, remain byte-identical
+to commit `81cddc5701fa41644adf3978fc8b2d633878a257`. Two new configuration
+annotation links and two draft design-input links were recorded through RQML;
+only the inspected output-board annotation baseline was refreshed.
+
+| Checked source | SHA-256 |
+| --- | --- |
+| motley-ac-output.kicad_pcb | `abbd14535fb0327723b48450a3997225a2664651cf3b79bc09403149e1ec7910` |
+| motley-ac-output.kicad_pro | `05afeeff4d0dca29df741b54bdd8b867ad572b455271cc1f30c12fc3ed0207ca` |
+| motley-ac-output.kicad_dru | `96fbf97d53dacc811fd5c0d1542a214558497cec2d228871cffe12618eccd064` |
+| requirements.rqml | `3f25c134ce1e7451bd3f61dece1e330ed50579e0c59da8c5b26fd40001638adc` |
+
+The combined placement PDF has three pages/bookmarks; a component-only output
+view omits copper for legibility. The separate routing PDF has two pages,
+front/back viewed from the top. All changed pages were rendered and inspected;
+light plot annotations were darkened in the copper review copy. The unchanged
+24-page schematic PDF remains current. Current PDF identities:
+
+| Review PDF | Bytes | SHA-256 |
+| --- | ---: | --- |
+| motley-controller-placement.pdf | 366118 | `fe70af2b06d7ee84d807acf21ecc370851002723694f724a5433330cce973600` |
+| motley-ac-output-routing.pdf | 254550 | `5f49930b169f84e9363a43708682df2ac168b5e83ecf88b88cda68d07d3ad70f` |
+
 ## Intelligent-output revision, 2026-11-14
 
 This revision follows the developer's request to update the schematic and board

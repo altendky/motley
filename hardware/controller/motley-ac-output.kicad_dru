@@ -1,0 +1,11 @@
+(version 1)
+
+# Exploratory geometric rules only, not a qualified insulation or current rating.
+# Existing relay footprint copper gap is 5.62 mm; other isolators are about 8 mm.
+(rule "Study mains to LV copper separation"
+  (condition "(A.NetClass == 'MAINS_POWER' || A.NetClass == 'MAINS_SENSE') != (B.NetClass == 'MAINS_POWER' || B.NetClass == 'MAINS_SENSE') && A.Type != 'Hole' && B.Type != 'Hole'")
+  (constraint clearance (min 5.0mm)))
+
+(rule "Study mains functional spacing"
+  (condition "(A.NetClass == 'MAINS_POWER' || A.NetClass == 'MAINS_SENSE') && (B.NetClass == 'MAINS_POWER' || B.NetClass == 'MAINS_SENSE')")
+  (constraint clearance (min 0.6mm)))

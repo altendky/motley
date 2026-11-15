@@ -50,6 +50,21 @@ repos:
         files: ^(hardware/|requirements\.rqml$|scripts/(hardware_trace|test_hardware_trace)\.py|\.pre-commit-config\.yaml$)
         pass_filenames: false
 
+      - id: board-image-tests
+        name: test generated board SVG checks
+        entry: uv run scripts/test_board_images.py
+        language: system
+        files: ^(scripts/(board_images|test_board_images)\.py|\.pre-commit-config\.yaml)$
+        pass_filenames: false
+
+      - id: board-images
+        name: check generated board SVG freshness
+        entry: uv run scripts/board_images.py --check
+        language: system
+        # A deletion-only commit must still detect a missing derivative.
+        always_run: true
+        pass_filenames: false
+
       - id: rqml-validate
         name: validate RQML
         entry: mise exec -- rqml validate requirements.rqml

@@ -215,6 +215,24 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-CI-004" type="PR" title="Reproducible committed board SVGs" status="approved" priority="must">
+      <statement>Motley SHALL version its per-board SVG review images in a dedicated generated directory as derivatives of the native KiCad boards, and pre-commit and CI SHALL reject missing or stale images using a reproducible export check.</statement>
+      <rationale>The developer explicitly requested keeping the SVGs committed, normalizing their timestamps, checking freshness in pre-commit and CI, and clearly separating generated derivatives from native sources.</rationale>
+      <acceptance>
+        <criterion id="AC-MOT-CI-004-01">
+          <given>the maintained board views and their native KiCad sources</given><when>the documented regeneration command runs</when><then>it generates the configured coloured SVG views in a dedicated versioned generated directory whose documentation identifies their source and regeneration command</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-004-02">
+          <given>unchanged native inputs, declared export settings and the pinned KiCad version</given><when>images are regenerated independently</when><then>their bytes are identical without relying on the previous images, local KiCad preferences, export time or output path; volatile timestamp metadata is normalized without changing plotted geometry</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-004-03">
+          <given>a missing, stale, altered or unexpected SVG in the generated image directory</given><when>the shared freshness check executes in pre-commit or CI</when><then>it fails with actionable diagnostics, without rewriting native sources or generated images; CI cannot pass the repository checks while that failure remains</then>
+        </criterion>
+        <criterion id="AC-MOT-CI-004-04">
+          <given>matching committed derivatives or an unavailable, incompatible or failing exporter</given><when>the freshness check executes</when><then>matching images pass, and exporter failures fail explicitly rather than silently accepting the existing files</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-BUILD-001" type="FR" title="Minimal ESP32-C6 firmware build" status="approved" priority="must">
       <statement>Motley SHALL provide a C++ ESP32-C6 firmware target with a documented build using a version-pinned ESP-IDF environment. Its application behavior SHALL follow the approved milestone requirements.</statement>
       <acceptance>
@@ -1175,5 +1193,26 @@
     <edge id="E-DEP-MOT-HW-002-13" type="dependsOn" from="hardware/controller/output-feedback.kicad_sch" to="MOT-HW-002" status="draft" createdBy="rqml">
       <notes>Draft design input assessed by the exploratory circuit/pin review; does not claim implemented or verified product behavior.</notes>
     </edge>
+    <edge id="E-IMPL-MOT-HW-003-41" type="implements" from="hardware/controller/motley-ac-output.kicad_pro" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Source identity and drift coverage for the authorized exploratory native routing configuration; no product insulation/current qualification is claimed.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-003-42" type="implements" from="hardware/controller/motley-ac-output.kicad_dru" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml">
+      <notes>Source identity and drift coverage for the authorized exploratory native routing configuration; no product insulation/current qualification is claimed.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-AC-014" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_pro" to="MOT-AC-014" status="draft" createdBy="rqml">
+      <notes>Draft design input to the bounded routing experiment; geometric rules and routing preferences do not establish hardware acceptance.</notes>
+    </edge>
+    <edge id="E-DEP-MOT-HW-004-18" type="dependsOn" from="hardware/controller/motley-ac-output.kicad_dru" to="MOT-HW-004" status="draft" createdBy="rqml">
+      <notes>Draft design input to the bounded routing experiment; geometric rules and routing preferences do not establish hardware acceptance.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-CI-004-GOAL-MOT-PROCESS" type="satisfies" from="MOT-CI-004" to="GOAL-MOT-PROCESS" status="draft" createdBy="rqml">
+      <notes>Explicit developer request for versioned, normalized derivative board SVGs with pre-commit and CI freshness verification.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-CI-004" type="implements" from="scripts/board_images.py#main" fromKind="code" to="MOT-CI-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-CI-004-2" type="implements" from="./.pre-commit-config.yaml" fromKind="code" to="MOT-CI-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-CI-004-3" type="implements" from=".github/workflows/ci.yml#pre-commit" fromKind="code" to="MOT-CI-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-CI-004-4" type="implements" from="docs/tooling.md#generated-board-svgs" fromKind="doc" to="MOT-CI-004" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-CI-004-5" type="implements" from="hardware/controller/generated/board-images/README.md" fromKind="doc" to="MOT-CI-004" status="draft" createdBy="rqml"/>
+    <edge id="E-VER-MOT-CI-004" type="verifiedBy" from="MOT-CI-004" to="scripts/test_board_images.py" toKind="test" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>

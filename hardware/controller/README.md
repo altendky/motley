@@ -1,6 +1,11 @@
 # Exploratory modular controller
 
-Status: unrouted design experiment, revised 2026-11-14; not a fabrication release.
+Status: exploratory design, revised 2026-11-14; not a fabrication release.
+The output board is packed to **90 x 65 mm**, 22% less area than the preceding
+100 x 75 mm routing study:
+LV left, mains right, AC input/output together at bottom right. The
+[routing review](output-routing-review.md) records the provisional rules,
+checks and remaining limitations. Carrier and sensor boards remain unrouted.
 
 The [intelligent-output review](intelligent-output-review.md) records the current
 pin, default-state, power and ESD assessments, including the complete fresh
@@ -49,10 +54,12 @@ or qualify a PCB. `GOAL-MOT-SENSING` and `MOT-SENS-005` remain draft. Native
 traceability tooling implements approved MOT-HW-003, while the electrical
 study uses design-input relationships without claiming hardware verification.
 
-The boards contain schematic nets and ratsnests but **no tracks, vias or copper
-pours**. Footprint qualification, routing, enclosure design, manufacturing files,
-purchasing and energization remain outside this experiment. Passing structural
-checks does not establish mains safety or functioning trimmed boards.
+The output-board experiment includes two-layer routing and LV-only ground pours;
+its schematic is unchanged. Carrier and sensor boards still have no tracks,
+vias or copper pours. Footprint/current/insulation qualification, enclosure
+design, manufacturing release, purchasing and energization remain outside this
+experiment. Passing structural checks does not establish mains safety or
+functioning trimmed sensor boards.
 
 ## Open and review
 
@@ -63,7 +70,7 @@ root schematic, netlist and PCB:
 | Project | Quantity per unit | Physical contents | Trial outline |
 | --- | ---: | --- | --- |
 | [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5, shared isolated line reference and inter-board connections | 100 x 85 mm |
-| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation | 100 x 90 mm |
+| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation; packed routing study | 90 x 65 mm |
 | [motley-sensors.kicad_pro](motley-sensors.kicad_pro) | 1 | TCA9548A and support parts, upstream interface, eight QT sensor ports with pull-ups | L-shaped, 80 x 44 mm overall |
 
 The former `motley-controller` monolithic root/project/PCB is replaced by these
@@ -87,6 +94,9 @@ feedback and access groups. The carrier keeps separate controller, USB/selection
 regulator, input/supply, shared line-reference and interface groups. Mounting
 locations and the WROOM antenna reserve are provisional. Isolation corridors are
 drawings, not qualified clearance rules.
+The output board additionally has provisional copper rules. Moving its groups
+now requires reviewing/reworking the attached routing; group movement alone
+does not carry every inter-group connection or preserve the filled ground zones.
 
 ## Inter-board connections
 
@@ -264,6 +274,11 @@ The two combined review files retain their original paths:
 (three pages). Both use carrier, AC output, then sensor board order, with a
 bookmark for each board. These PDFs remain current even though the native
 monolithic project has been retired.
+
+`review/motley-ac-output-routing.pdf` adds front/back copper pages, both viewed
+from the top, with darkened annotation colours for readability. The combined
+placement PDF uses a component-only output-board view with copper tracks/fills
+omitted; the native output PCB and separate routing PDF retain all copper.
 
 Each project's ignored `review/` exports include a schematic PDF, placement PDF,
 XML netlist and JSON ERC/DRC reports. Regenerate, for example:

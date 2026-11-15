@@ -117,7 +117,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.2,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -130,9 +130,9 @@
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.0,
+        "min_track_width": 0.2,
         "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -237,7 +237,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -248,9 +248,45 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.2,
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
+        "track_width": 0.25,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.6,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MAINS_POWER",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "via_diameter": 1.0,
+        "via_drill": 0.5,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.6,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MAINS_SENSE",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.6,
+        "via_diameter": 1.0,
+        "via_drill": 0.5,
         "wire_width": 6
       }
     ],
@@ -259,7 +295,80 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "AC_L_FUSED"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "AC_N"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "PE"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "Net-(Q102-A2)"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "/Heater 1/TRIAC_A1"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "CUT_L_UNSENSED"
+      },
+      {
+        "netclass": "MAINS_POWER",
+        "pattern": "OUTLET_L"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(C101-Pad1)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(J20-Pin_1)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(Q102-G)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R104-Pad1)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R310-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R311-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R312-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(U31-AC1)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "unconnected-(U2-NC-Pad5)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "unconnected-(U31-DC+-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "unconnected-(U31-DC--Pad3)"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

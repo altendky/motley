@@ -4,8 +4,8 @@ Status: exploratory CAD study, updated 2026-11-14. This records the voltage/curr
 local-MCU direction explored in conversation. Current sensing is restored to
 the full-feature proposal for assessment before any later simplification.
 Component choices, bus details
-and circuit qualification remain open. The native schematic and unrouted PCB
-placement now represent this architecture; firmware and hardware qualification
+and circuit qualification remain open. The native schematic and exploratory PCB
+placement/routing now represent this architecture; firmware and hardware qualification
 remain pending. See the [pin/default review](../hardware/controller/intelligent-output-review.md)
 for exact pin assignments, power domains and unresolved limits.
 
