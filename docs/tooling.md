@@ -80,6 +80,21 @@ Compare fresh netlists, ERC/DRC and native trace checks before refreshing review
 RQML baselines. The KiCad 10 migration evidence is in the
 [hardware verification record](../hardware/controller/verification.md).
 
+## KiCad MCP server
+
+`mise install --locked` also installs the pinned KiCad MCP server in the same
+tool group. The project MCP configuration launches it through mise with the
+headless-capable SWIG backend. Check the installed transport and Python bridge:
+
+```sh
+mise exec -- node scripts/check_kicad_mcp.mjs
+```
+
+See the [integration and workflow evaluation](kicad-mcp.md) for the pinned
+release, bundled Python bridge, CI cache, tested capabilities and remaining
+desktop-dependent operations. This is an exploratory tool integration;
+existing native traceability and deterministic SVG checks remain in force.
+
 ## Generated board SVGs
 
 Versioned per-board views live in

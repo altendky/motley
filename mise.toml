@@ -38,3 +38,16 @@ done
 [tasks.rqml]
 description = "Run the pinned RQML CLI"
 run = "rqml"
+
+# Build the reviewed upstream release inside mise's cached installation root.
+# This bridge uses the Python/pcbnew ABI bundled with the pinned AppImage.
+[tools."http:kicad-mcp"]
+version = "2.9.0"
+os = ["linux/x64"]
+url = "https://codeload.github.com/mixelpixx/KiCAD-MCP-Server/tar.gz/refs/tags/v{{ version }}"
+checksum = "sha256:43f813c8c73a34a06b10518f8bee1d5e57d4a5b4e534c110d3a93f34554aa735"
+format = "tar.gz"
+strip_components = 1
+bin_path = "bin"
+depends = ["node", "python", "uv", "http:kicad"]
+postinstall = 'sh "$MISE_CONFIG_ROOT/scripts/install-kicad-mcp.sh"'

@@ -4,6 +4,14 @@
 command = "mise"
 args = ["exec", "--", "rqml-mcp"]
 
+[mcp_servers.kicad]
+command = "mise"
+args = ["exec", "--", "kicad-mcp"]
+env_vars = ["JLCPCB_APP_ID", "JLCPCB_API_KEY", "JLCPCB_API_SECRET"]
+startup_timeout_sec = 60
+# The stable file backend works without an open PCB editor.
+env = { KICAD_BACKEND = "swig" }
+
 [marketplaces.motley]
 source_type = "local"
 # Open Codex at the repository root so this resolves the marketplace.
