@@ -2512,6 +2512,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 149.86 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 149.86 251.46 0)
 			(hide yes)
@@ -2601,6 +2612,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 426.72 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 426.72 251.46 0)
 			(hide yes)
@@ -2687,6 +2709,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 88.9 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -2782,6 +2815,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 365.76 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 365.76 330.2 0)
 			(hide yes)
@@ -2874,6 +2918,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 116.84 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 116.84 88.9 0)
 			(hide yes)
@@ -2963,6 +3018,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 426.72 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 426.72 73.66 0)
 			(hide yes)
@@ -3049,6 +3115,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 426.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3144,6 +3221,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 426.72 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 426.72 152.4 0)
 			(hide yes)
@@ -3236,6 +3324,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 93.98 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 93.98 266.7 0)
 			(hide yes)
@@ -3322,6 +3421,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 93.98 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3414,6 +3524,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 116.84 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 116.84 266.7 0)
 			(hide yes)
@@ -3500,6 +3621,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 457.2 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3598,6 +3730,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 88.9 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 88.9 152.4 0)
 			(hide yes)
@@ -3687,6 +3830,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 149.86 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3782,6 +3936,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 149.86 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 149.86 152.4 0)
 			(hide yes)
@@ -3871,6 +4036,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 457.2 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -3969,6 +4145,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 180.34 266.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 180.34 266.7 0)
 			(hide yes)
@@ -4064,6 +4251,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 149.86 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 149.86 73.66 0)
 			(hide yes)
@@ -4150,6 +4348,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 180.34 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -4245,6 +4454,17 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 365.76 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)

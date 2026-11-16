@@ -3608,6 +3608,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 243.84 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-SENS-005"
 			(at 243.84 96.52 0)
 			(hide yes)
@@ -3704,6 +3715,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 177.8 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -3821,6 +3843,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 110.49 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004"
 			(at 110.49 177.8 0)
 			(hide yes)
@@ -3925,6 +3958,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 294.64 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 294.64 149.86 0)
 			(hide yes)
@@ -4014,6 +4058,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 160.02 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4109,6 +4164,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 383.54 198.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 383.54 198.12 0)
 			(hide yes)
@@ -4201,6 +4267,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 91.44 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 91.44 38.1 0)
 			(hide yes)
@@ -4288,6 +4365,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 35.56 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4395,6 +4483,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 281.94 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-SENS-005"
 			(at 281.94 110.49 0)
 			(hide yes)
@@ -4484,6 +4583,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 370.84 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4579,6 +4689,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 63.5 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 63.5 73.66 0)
 			(hide yes)
@@ -4668,6 +4789,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 281.94 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4763,6 +4895,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 195.58 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-SENS-005"
 			(at 195.58 110.49 0)
 			(hide yes)
@@ -4852,6 +4995,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 281.94 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4947,6 +5101,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 294.64 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 294.64 190.5 0)
 			(hide yes)
@@ -5036,6 +5201,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 50.8 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -5131,6 +5307,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 63.5 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 63.5 43.18 0)
 			(hide yes)
@@ -5218,6 +5405,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 119.38 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -5329,6 +5527,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 243.84 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 243.84 50.8 0)
 			(hide yes)
@@ -5425,6 +5634,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 327.66 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -5532,6 +5752,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 247.65 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 247.65 166.37 0)
 			(hide yes)
@@ -5621,6 +5852,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 220.98 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)

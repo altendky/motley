@@ -487,6 +487,17 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-HW-013" type="PR" title="Complete functional allocation of hardware components" status="approved" priority="must">
+      <statement>Each physical component in the maintained schematic and PCB designs SHALL have exactly one explicit functional-group allocation from a versioned catalog, with completeness and consistency checked locally by pre-commit and in CI.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-013-01">
+          <given>the maintained schematic hierarchies and PCB designs, including DNP and BOM-excluded physical components, repeated sheets, multi-unit parts and board-only mechanics</given><when>the functional-group checker runs</when><then>missing, empty, duplicate, unknown or board-inappropriate allocations fail with actionable diagnostics; all units of a physical component and its corresponding footprint agree using hierarchical source identity, while virtual power symbols are excluded</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-013-02">
+          <given>a valid or invalid allocation in the maintained native sources or group catalog</given><when>the directly executable uv script, local pre-commit or CI repository checks run</when><then>valid allocations pass and invalid allocations fail without rewriting CAD or requiring prices, quotation credentials or network access for the allocation check; the script declares its Python dependencies using inline uv metadata</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-HW-004" type="CR" title="External-interface ESD assessment" status="draft" priority="must">
       <statement>Every externally accessible electrical interface SHALL have a documented ESD assessment and appropriate protective measures for its declared exposure and operating states.</statement>
       <acceptance>
@@ -1240,6 +1251,27 @@
     </edge>
     <edge id="E-DEP-MOT-HW-008-2" type="dependsOn" from="hardware/controller/motley-sensors.kicad_pcb" to="MOT-HW-008" status="draft" createdBy="rqml">
       <notes>Draft per-board size target and size-overrun discussion constraint reviewed during the packing study.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-HW-013-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-013" to="GOAL-MOT-HARDWARE" status="approved" createdBy="rqml">
+      <notes>Developer requested functional-group attribution in schematics with pre-commit/CI completeness checks; pricing deferred.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-013" type="implements" from="scripts/hardware_groups.py#check" fromKind="code" to="MOT-HW-013" status="draft" createdBy="rqml">
+      <notes>Read-only native inventory validates explicit groups, board scopes, repeated/multi-unit identity and source/PCB agreement.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-013-2" type="implements" from="hardware/controller/functional-groups.toml" fromKind="code" to="MOT-HW-013" status="draft" createdBy="rqml">
+      <notes>Versioned functional ownership catalog with group descriptions and board applicability; no prices.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-013-3" type="implements" from="hardware/controller/functional-groups.md" fromKind="code" to="MOT-HW-013" status="draft" createdBy="rqml">
+      <notes>Direct executable uv commands, maintenance boundaries and preservation/coverage scope.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-013-4" type="implements" from="./.pre-commit-config.yaml" fromKind="code" to="MOT-HW-013" status="draft" createdBy="rqml">
+      <notes>Always-run allocation hook and relevant regression fixtures; executable scripts with inline uv metadata.</notes>
+    </edge>
+    <edge id="E-IMPL-MOT-HW-013-5" type="implements" from=".github/workflows/ci.yml#pre-commit" fromKind="code" to="MOT-HW-013" status="draft" createdBy="rqml">
+      <notes>Existing Repository checks job runs all pre-commit hooks, including allocation validation and tests.</notes>
+    </edge>
+    <edge id="E-VER-MOT-HW-013" type="verifiedBy" from="MOT-HW-013" to="scripts/test_hardware_groups.py" toKind="test" status="draft" createdBy="rqml">
+      <notes>20 executed regression fixtures pass: invalid/duplicate/missing/board-inappropriate fields, repeated/multi-unit/BOM-only/board-only identity, CLI failures and input preservation.</notes>
     </edge>
   </trace>
 </rqml>

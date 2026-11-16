@@ -1026,6 +1026,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 182.88 228.6 0)
 			(hide yes)
@@ -1110,6 +1121,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1206,6 +1228,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 134.62 228.6 0)
 			(hide yes)
@@ -1290,6 +1323,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 279.4 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1380,6 +1424,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 86.36 228.6 0)
 			(hide yes)
@@ -1464,6 +1519,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1554,6 +1620,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 231.14 228.6 0)
 			(hide yes)
@@ -1638,6 +1715,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)

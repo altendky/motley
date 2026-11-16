@@ -3229,6 +3229,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 50.8 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 50.8 81.28 0)
 			(hide yes)
@@ -3317,6 +3328,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 102.87 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -3416,6 +3438,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 80.01 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 80.01 40.64 0)
 			(hide yes)
@@ -3504,6 +3537,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 115.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -3632,6 +3676,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 77.47 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 77.47 81.28 0)
 			(hide yes)
@@ -3725,6 +3780,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 50.8 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 50.8 96.52 0)
 			(hide yes)
@@ -3813,6 +3879,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 105.41 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -3913,6 +3990,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 124.46 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 124.46 124.46 0)
 			(hide yes)
@@ -4006,6 +4094,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 63.5 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 63.5 96.52 0)
 			(hide yes)
@@ -4093,6 +4192,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 264.16 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4193,6 +4303,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 229.87 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 229.87 124.46 0)
 			(hide yes)
@@ -4289,6 +4410,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 41.91 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 41.91 81.28 0)
 			(hide yes)
@@ -4380,6 +4512,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 269.24 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 269.24 88.9 0)
 			(hide yes)
@@ -4467,6 +4610,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 64.77 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4563,6 +4717,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 190.5 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 190.5 91.44 0)
 			(hide yes)
@@ -4651,6 +4816,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 200.66 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4745,6 +4921,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 175.26 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 175.26 55.88 0)
 			(hide yes)
@@ -4833,6 +5020,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 269.24 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -4927,6 +5125,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 73.66 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 73.66 144.78 0)
 			(hide yes)
@@ -5015,6 +5224,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 276.86 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -5111,6 +5331,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 73.66 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 73.66 157.48 0)
 			(hide yes)
@@ -5204,6 +5435,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 86.36 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 86.36 157.48 0)
 			(hide yes)
@@ -5292,6 +5534,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 229.87 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)

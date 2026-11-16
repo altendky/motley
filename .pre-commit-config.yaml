@@ -43,6 +43,20 @@ repos:
         files: ^(scripts/(hardware_trace|test_hardware_trace)\.py|\.pre-commit-config\.yaml)$
         pass_filenames: false
 
+      - id: hardware-group-tests
+        name: test functional component allocation checks
+        entry: ./scripts/test_hardware_groups.py
+        language: system
+        files: ^(scripts/(hardware_groups|hardware_trace|test_hardware_groups)\.py|\.pre-commit-config\.yaml)$
+        pass_filenames: false
+
+      - id: hardware-groups
+        name: check functional component allocation
+        entry: ./scripts/hardware_groups.py
+        language: system
+        always_run: true
+        pass_filenames: false
+
       - id: hardware-trace
         name: check native hardware requirement annotations
         entry: uv run scripts/hardware_trace.py

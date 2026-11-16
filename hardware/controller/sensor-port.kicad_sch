@@ -1142,6 +1142,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 80.01 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 80.01 64.77 0)
 			(hide yes)
@@ -1257,6 +1268,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 180.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1379,6 +1401,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 129.54 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1506,6 +1539,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 241.3 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 241.3 64.77 0)
 			(hide yes)
@@ -1624,6 +1668,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 110.49 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1748,6 +1803,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 100.33 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 100.33 64.77 0)
 			(hide yes)
@@ -1863,6 +1929,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 110.49 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)

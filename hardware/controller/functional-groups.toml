@@ -1,0 +1,69 @@
+version = 1
+
+[groups."mains.power"]
+description = "Mains input, main fuse, isolated 5 V conversion and mains distribution to output boards, including raw-supply protection."
+boards = ["motley-carrier"]
+
+[groups."controller.core"]
+description = "ESP32-C6 application/radio controller, main 3.3 V regulation, boot/reset, status LED and shared selected-supply protection."
+boards = ["motley-carrier"]
+
+[groups."usb.service"]
+description = "Panel USB interface, data path, host-presence detection and protection. Includes controller-side USB series resistors."
+boards = ["motley-carrier"]
+
+[groups."usb.power-selection"]
+description = "Automatic mains-first/USB-backup power selection and its local input/output decoupling."
+boards = ["motley-carrier"]
+
+[groups."sensors.power"]
+description = "Separate enabled sensor supply, regulator support and default-off bias."
+boards = ["motley-carrier"]
+
+[groups."ac.line-reference"]
+description = "Shared isolated AC timing detector, mains burden, buffer and carrier-side distribution/input protection. Output receiver support belongs to output.control."
+boards = ["motley-carrier"]
+
+[groups."output.switching"]
+description = "Optotriac/driver and power-triac gate network, branch fuse and mains inlet/outlet connections. Excludes cutoff relay, configurable snubber and sensing."
+boards = ["motley-ac-output"]
+
+[groups."output.snubber"]
+description = "Series RC transient suppression and its manual enable/disable configuration header."
+boards = ["motley-ac-output"]
+
+[groups."output.cutoff"]
+description = "Independent relay cutoff, coil driver, input bias/filtering and flyback suppression. Both relay units are one physical component."
+boards = ["motley-ac-output"]
+
+[groups."output.voltage-sense"]
+description = "Isolated output-voltage detector, regional input burden/shunt and local signal conditioning."
+boards = ["motley-ac-output"]
+
+[groups."output.current-sense"]
+description = "Isolated load-current sensor and its supply, output and reference filtering."
+boards = ["motley-ac-output"]
+
+[groups."output.control"]
+description = "Local output MCU/regulator, recovery/reset/programming, I2C and line-reference receiver support; shared carrier bus pulls, deployment headers and link protection."
+boards = ["motley-carrier", "motley-ac-output"]
+
+[groups."sensors.mux"]
+description = "Mux, address/reset configuration, deployment/pass-through interfaces and upstream pull-ups/protection, including carrier support needed without Qwiic sockets."
+boards = ["motley-carrier", "motley-sensors"]
+
+[groups."sensors.port"]
+description = "One repeated downstream sensor port: socket, branch pull-ups and local protection. Each sheet instance is counted separately."
+boards = ["motley-sensors"]
+
+[groups."interfaces.bench"]
+description = "Optional Qwiic bench/expansion sockets, removable power links and dedicated protection. Excludes shared deployment-bus pulls."
+boards = ["motley-carrier", "motley-sensors"]
+
+[groups."diagnostics.access"]
+description = "Clip probe points, ground touch pads, carrier UART service connector and its dedicated protection. Output recovery/programming belongs to output.control."
+boards = ["motley-carrier", "motley-ac-output", "motley-sensors"]
+
+[groups."mechanical.mounting"]
+description = "Board-only mounting holes and isolated mechanical support-pin footprints."
+boards = ["motley-carrier", "motley-ac-output", "motley-sensors"]
