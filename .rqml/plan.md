@@ -1,5 +1,55 @@
 # Motley plan
 
+## Repository licensing, 2026-11-16
+
+**Readiness:** READY for the developer's accepted licensing policy and PR
+request: `MIT OR Apache-2.0` for original software/general text,
+`CERN-OHL-P-2.0` for original hardware including independently created library
+parts, and preserved upstream terms for third-party material. This is a scoped
+repository legal/documentation maintenance exception under `MOT-PROC-001`;
+it adds no product capability or build behavior and creates no artificial
+product requirement or implementation trace. No architectural ADR is needed.
+Preserve `MOT-PROC-002` gates and all existing native CAD, generated images,
+requirement content, trace edges and reviewed baselines.
+
+- [x] **Goal:** Add complete license texts under `LICENSES/`, a root scope
+  statement and third-party provenance notices. **Files:** `LICENSE.md`,
+  `LICENSES/*`, `THIRD_PARTY_NOTICES.md`, `README.md` and the hardware guide.
+  Classify local reusable parts individually; a local name or modification
+  does not establish independent authorship. Preserve upstream license text
+  and exceptions, including the existing Espressif notice.
+- [x] **Goal:** Replace attributed upstream research code excerpts with prose
+  and source links in `PLANNING_SESSION.md`, preserving technical observations
+  and historical provenance without asserting ownership of quoted code.
+- [x] **Goal:** Review source/license scope, compare canonical license texts,
+  verify local links and unchanged native/generated files, then run
+  `mise exec -- pre-commit run --all-files` and standard RQML consistency.
+  Record commands/results and the checked content identity. No new trace links
+  or hash refreshes are expected for this documentation-only change.
+
+Verification: five complete license texts match pinned SPDX sources after the
+documented whitespace normalization/MIT copyright substitution; the moved
+Espressif notice is byte-identical and its library exception is verbatim.
+All 19 local symbols and nine footprints are individually inventoried, and
+changed-document relative links resolve. Independent provenance/diff review
+found only introduction-date corrections, now made against Git history.
+All 51 native CAD/SVG/spec/baseline files match base
+`c496b9321366d2d80b7ba441d4ff4ba3c3b0efe0` byte-for-byte.
+
+`mise exec -- pre-commit run --all-files` passes, exit 0, including strict lint,
+standard RQML consistency and mapped-implementation approval. The initial run
+was blocked only by formatter/cache filesystem permissions; after inspecting
+the protected inputs and granting command-scoped access, the full normal suite
+passed without modifying those inputs. Explicit `rqml check` passes, exit 0;
+status retains 43 unverified and 36 unimplemented requirements, zero dangling
+references, zero lint findings and no premature implementations. No trace or
+baseline refresh was needed. Changed-content fingerprint excluding this plan
+(SHA-256 of the sorted JSON path/content-SHA-256 pairs):
+`fecff2659b11813cab04f86d01e9474d9d22aa0eff9c913a41e30958f2741709`.
+
+Delivery: a normal signed commit and review PR; leave repository visibility
+private. No PR template is present in the starting tree.
+
 ## Functional component allocation, 2026-11-15
 
 **Readiness:** READY for the developer's accepted grouping proposal, narrowed
