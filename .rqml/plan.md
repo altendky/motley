@@ -1,35 +1,5 @@
 # Motley plan
 
-## Historical research excerpt cleanup, 2026-11-16
-
-**Readiness:** READY for the developer's request to remove third-party research
-excerpts before adding project licenses in a separate dependent PR. This is
-repository documentation maintenance under the scoped `MOT-PROC-001` exception:
-`PLANNING_SESSION.md` is historical research, not approved specification content.
-No product behavior, architecture, requirements, traces or baselines change.
-Preserve `MOT-PROC-002` consistency and approval gates.
-
-- [x] **Goal:** Remove the GPL-sourced controller research section, its source
-  entry and related timing example/claims. **Files:** `PLANNING_SESSION.md`.
-  Replace other attributed source excerpts with factual prose/upstream links
-  so the later licensing change needs no research edits or extra source licenses.
-- [x] **Goal:** Verify removal and relative links, compare the diff for unrelated
-  source/CAD changes, and run `mise exec -- pre-commit run --all-files` plus
-  standard RQML consistency. No new trace links or baseline refreshes are needed.
-
-Verification: the research document has no remaining source-name, timing-example
-or GPL markers from the removed controller research; its relative links resolve.
-Independent review confirms unrelated intent/questions remain and only this
-plan and the research document differ from `main`. Full
-`mise exec -- pre-commit run --all-files` and explicit standard `rqml check`
-pass, exit 0. Requirements, traces, baselines, CAD and SVGs are unchanged; the
-existing backlog remains 43 unverified and 36 unimplemented requirements.
-Research SHA-256:
-`fa51975e033c0becfe4f53ba88213be5170d43f3c232b7e6979aea757bd75c51`.
-
-Delivery: an independent review PR against `main`, with licensing prepared
-separately on top. Historical commits and repository visibility are unchanged.
-
 ## Functional component allocation, 2026-11-15
 
 **Readiness:** READY for the developer's accepted grouping proposal, narrowed
