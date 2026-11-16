@@ -208,6 +208,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f1243480-f093-46e1-ae54-0ea121666797")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -366,6 +378,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b1cd1b3-85bf-4354-bf4e-f08158e6acd9")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -752,6 +776,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7abd3bca-db2f-4785-a92a-2e0cfeacb881")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8a33cbba-20d8-48eb-a426-16e80e92d982")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1182,6 +1218,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fbb1702f-f04e-421a-8469-324ab163c5a7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1463,6 +1511,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "54bd5381-5ece-41f4-88c3-733d7776a822")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1616,6 +1676,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5942d2dd-a932-4214-bf13-2d7668af630c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1762,6 +1834,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cdb60af5-ff04-4115-9994-d8d71beeda1c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6e7d8e7a-a447-4969-897f-15e5b56b03d3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2147,6 +2231,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f008c004-dd98-421b-a278-b5c9030db5ad")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -2305,6 +2401,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d234f8e3-57c1-4a6a-b917-85663d410485")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -2572,6 +2680,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3baa089e-d595-4ace-9c47-3cacde8fdc13")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0bd14b29-a78b-43bb-89ba-ed777012c4cc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2952,6 +3072,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0840b45b-018c-4762-86f3-f56ac7d4ebf3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3104,6 +3236,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1502136c-8e14-4d3d-87a5-984e30575652")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3206,6 +3350,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "20d9af16-b5b7-407d-b2a1-a0f02ff88248")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b980bcf1-52ce-47a3-a338-659a71b41a32")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3634,6 +3790,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "41e93d15-2760-4228-a977-298bb3da56c1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3738,6 +3906,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5b291eef-892d-4b5d-b93e-2af3c67f26bd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c5a5f13-092b-4476-99f9-108dbb2e4d7d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4200,6 +4380,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "96c7d6f4-9ded-4ff3-a859-6d8fa21471e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4345,6 +4537,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "925dd13a-22c5-4ab7-9767-37565ca3f864")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "463e90a7-2088-45b4-9ccf-b9403db71817")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4735,6 +4939,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "62fcb45c-d113-404b-9ec0-386265767642")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4888,6 +5104,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47502ce1-367a-47d6-9bb9-10862caf163b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -5033,6 +5261,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "13695ce6-1acd-4265-b0ad-122893994e56")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bd09ce76-a495-4401-9b70-927a0982885e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5193,6 +5433,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "758a7c57-f4db-4791-be1b-f67c1f8dcce1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -5346,6 +5598,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "21a1db8e-54ee-4abf-9754-441e09d4b11c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5461,6 +5725,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "36e4901a-7229-42f4-939c-591501c02361")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -5728,6 +6004,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "52159dd5-8ffa-4135-ab8c-32808a7d7358")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74538ad2-47ee-4566-a89e-f20eb5772f91")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6110,6 +6398,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b3507f5-4a70-4451-90af-c92f721d9724")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6373,6 +6673,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8ceae4f0-6612-4633-be33-4610365e7f35")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 270)
 			(layer "F.Fab")
@@ -6518,6 +6830,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "78cfcb81-9faa-40e6-a247-4f159f7caf95")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "625cf2f5-7e74-4c3d-b140-7d16885a5ef0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6900,6 +7224,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ed92582-dbb0-4357-9a49-e1f9d5123661")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -7154,6 +7490,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "276a6874-3421-4cf1-999d-c5bc169892cd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0599b1a9-3186-4f7e-b33b-c5eaaddf7b93")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7432,6 +7780,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 180)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "420a1a85-de6a-452f-ba54-9a6ba482cd64")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 180)
 			(layer "F.Fab")
@@ -7577,6 +7937,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "372c2e11-2dc4-464c-a5b7-f4955db7e471")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b98480f-96cc-439e-9e65-c1a8f32b7564")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7730,6 +8102,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ca91b7d1-2c44-4aa2-9fa4-b94150254eea")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3f06fbd6-c0ca-43b4-a94b-df7c3a5eab7a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8110,6 +8494,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e8c597b8-537b-407e-93fc-c23a0e3568e6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -8476,6 +8872,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "187bced4-c79f-413d-8ac9-2fed13edfb78")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "437931c5-a1c7-404b-8f2c-9ec26cbf5740")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9059,6 +9467,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e64396b7-beea-4dcd-92dd-601ebbb2194c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9204,6 +9624,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2ecdf12a-5146-4d85-9221-e6dc2f0eaa7d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a04b736-f54e-4056-af72-8481031751df")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9359,6 +9791,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "71cad038-9d5d-4b93-96eb-e17059d495ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0251f7f-bdf8-4407-a1b4-62b9bcd62317")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9627,6 +10071,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19f5f140-5490-4181-826c-89280a8356d5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9779,6 +10235,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "676f30ce-3523-41c5-b9fa-4e2eeeca1818")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9875,6 +10343,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d4dbdafa-f43a-4cdd-b568-3c1a9da25a67")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3478e25c-88fb-4e08-8b80-470ab13cb390")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10027,6 +10507,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a92fbfd1-2fb2-4d4b-a05d-e38813aa919e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f99e8341-6b7b-43bd-b704-2c0421a659c7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10455,6 +10947,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3630e298-d916-4574-8134-c4652d477a9c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10844,6 +11348,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e185320f-33ee-4b29-9b85-87a20268c6b6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10989,6 +11505,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c1eaabc8-00d2-4c95-b9ea-f1e8b3b9df4a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0bbe71ee-5b6e-439a-91ca-6bacbd3b0e88")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11159,6 +11687,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0fc209cb-548a-4dc6-9d47-c86c73ec8891")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -11306,6 +11846,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "abc9c715-1729-4cc9-b50a-fb8fb2b9fbb8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8a3e4e5c-a799-4a00-8400-e89fa2e590b6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11567,6 +12119,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a026795b-3313-474c-964a-89211ce6d13f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a74911ca-6f7d-4a52-92b7-51bf64fde4b9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11995,6 +12559,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9b3c45e-a37d-4e1f-a6c4-6445596dc5b6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -12242,6 +12818,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "21ce69f4-3072-479b-9a99-7d76883100f6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b91236a4-b8e1-4142-8c31-811ee048174a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12665,6 +13253,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bca35ae3-f7b3-4719-9031-7f1a8f6fca8d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -12815,6 +13415,18 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1767a487-5e0f-4e7f-ad53-cb7a07e9a9b1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12992,6 +13604,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ee3dfc97-381b-4d91-8da9-6227341399d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d5ce8278-d104-4426-baab-0be9a7d8d8fb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13376,6 +14000,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "42f57d9a-1651-4241-a179-369708ff1667")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -13659,6 +14295,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "db1c6330-a1b1-42f3-9ec8-bd650e059486")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4d5f199a-4aaa-4735-aa26-e6c647055bb4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14015,6 +14663,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "97863576-ccb0-4adf-823a-78593fbb5e32")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -14269,6 +14929,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "65de2540-a99a-4f0f-adae-2edbea4f2117")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef5663e6-379b-42b1-acb8-b4a9121be74c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14649,6 +15321,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1114033b-38a9-4d27-a1fc-81f69d1b887e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -14795,6 +15479,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "15543aba-2a8b-466b-b2a6-0fc0ebaa2fb4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a308a1ee-ba87-4140-9b79-edd760f54e7f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15196,6 +15892,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e16a6e49-f03c-427b-9a3d-f5dd2f4015d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -15341,6 +16049,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a74ee34a-f662-4aa7-ad4e-90d672762f58")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66728734-058a-43e5-9362-c3b3e20c37de")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15511,6 +16231,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0be2ab31-a01b-4342-be8e-f51e2304b8a7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -15657,6 +16389,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3bdf95ce-5531-40ca-9481-26505b9ab61a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d72f7435-7ca8-4d24-8f83-54b3d1ee953d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16037,6 +16781,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bc65a0f6-1fc2-445b-a05f-5cb169ae59c9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -16182,6 +16938,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9eff946e-b6f5-4d5b-8409-39e155f44953")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.power-selection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "89730479-c13a-4946-8f05-b03117306a20")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16337,6 +17105,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e4881ff0-d5e6-4fbf-98af-bb9b4604b026")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0885327-c287-4119-a114-c943919dbd32")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16605,6 +17385,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "54a26e05-d629-4432-bd14-4cab5439f3d0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -16768,6 +17560,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3c71394-76a7-4195-8a22-0f6c2851b950")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -16920,6 +17724,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5e035d94-9e5a-4d23-b58f-b29c25485f96")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -17022,6 +17838,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7ed2ba99-dc5e-440c-bb86-abd8bd5477f9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e065dd91-a31c-4c98-8341-37ef2b66a35f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17182,6 +18010,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f5ed30ac-2934-4b48-bc44-9b579d660492")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -17327,6 +18167,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1599ab04-1526-4232-8096-b2140ed3df59")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f8a7033d-f895-4b6c-89ca-c8b8fce9f69a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17709,6 +18561,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "52e18a09-f7eb-4823-ba0c-974b4742d404")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -17985,6 +18849,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bcc73219-4929-48c0-9811-ec7375507031")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4185d4e-5356-47f5-9335-e686da9efcfa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18300,6 +19176,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87dbe98c-77fd-4f1a-981e-b70f57399180")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -18462,6 +19350,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a356f1a4-47fb-4cc0-83ae-90f2c08ec053")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -18607,6 +19507,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5ae50ea8-827f-48b3-9855-dcfe9b7a8dbb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "270c4396-9c05-49b8-8026-e6f5058ea274")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18987,6 +19899,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7618cfa7-3670-45a9-aaad-ae1f4f71801f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -19133,6 +20057,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "15410917-3113-4a4e-a1a5-59b56016db3e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9f62044-8802-4120-9368-d655fade72ec")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19528,6 +20464,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f7a94e2a-f848-462a-8bf4-fd5cee759044")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -19673,6 +20621,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c3fcdae4-f43a-4ee9-9c34-479bb561c721")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "468b58a5-43de-40df-aa7a-c7ba2c18ba72")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20046,6 +21006,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2d6a8621-800c-4e75-b6f0-6f3eec8171b2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9208c45-bd12-4ba3-af8c-bdadb7b13554")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20436,6 +21408,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "160b7a73-37b0-4197-8ed6-d65810002a30")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -20582,6 +21566,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "81ecbd62-a606-467e-b94a-f36834ac3d5e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b872e3d-d2cb-4a90-b0d7-b336a664ba43")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20784,6 +21780,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e6e4ca82-19a2-45f1-b14a-6af91fa90270")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "64118c64-1bac-43ef-b08f-79aaf8897abe")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21166,6 +22174,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 180)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "18bd3c86-e927-401d-8e5e-dca3dfbce559")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 180)
 			(layer "F.Fab")
@@ -21452,6 +22472,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "99e352e1-e34c-448f-8887-fdd051dcebfe")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c89db70a-851c-416a-ad01-ae71d6415d92")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22032,6 +23064,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "229f5d68-3cf2-4f96-888f-ff680e2c1c54")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -22194,6 +23238,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 180)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3bbccfbd-cb11-45e6-a647-2c37cf6f538f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 180)
 			(layer "F.Fab")
@@ -22339,6 +23395,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "00f613c0-353a-443b-8e8b-4e2577e5f33f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0d7afe0a-13f7-44a3-af4a-52ac4f4979fe")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22498,6 +23566,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bbc7c428-6d61-40cc-8b5f-8400ce1a3632")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -22643,6 +23723,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bb93f04e-66bb-4982-adca-4de472fa064b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3adfc203-f803-40ca-9cdb-c5933df68713")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23007,6 +24099,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8aef98ad-0cfa-4ebf-be39-14b5e4e6a1ab")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -23152,6 +24256,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "eed6426b-de73-468e-8b86-89bc1eef18b1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d445d00d-de6e-4a37-a81f-e36818700edb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23311,6 +24427,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b28b55e-8281-4776-9369-59169f66c8c9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -23456,6 +24584,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3d01b889-2e2a-4183-8280-9d1ae35ec481")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4d93f706-304b-40be-8b57-fadff4fd1761")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23611,6 +24751,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9e90dd90-7665-4621-aa2f-29d74122f29f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "014ac07b-3971-4f22-9067-8efd92ba4388")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24073,6 +25225,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mains.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3e4b02fc-9583-4449-9e4c-da8a5364e42d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -24223,6 +25387,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c71129ac-e91d-4e6e-9fc0-b499b984e452")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0f9ed491-3057-41e0-a0a7-3fe31fa3063b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24504,6 +25680,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1e832c50-9221-47ae-8384-22f9521af359")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.power"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ccabdbc-2793-4287-96f7-467abccd298c")
 			(effects
 				(font
 					(size 1.27 1.27)

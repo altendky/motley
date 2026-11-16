@@ -1578,6 +1578,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 38.1 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005"
 			(at 38.1 228.6 0)
 			(hide yes)
@@ -1662,6 +1673,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "ac.line-reference"
+			(at 299.72 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -1758,6 +1780,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 76.2 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 76.2 127 0)
 			(hide yes)
@@ -1851,6 +1884,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 134.62 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 134.62 228.6 0)
 			(hide yes)
@@ -1938,6 +1982,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 182.88 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 182.88 228.6 0)
 			(hide yes)
@@ -2022,6 +2077,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 76.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -2118,6 +2184,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 327.66 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 327.66 228.6 0)
 			(hide yes)
@@ -2202,6 +2279,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 299.72 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -2298,6 +2386,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 187.96 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 187.96 63.5 0)
 			(hide yes)
@@ -2391,6 +2490,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 86.36 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 86.36 228.6 0)
 			(hide yes)
@@ -2475,6 +2585,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "controller.core"
+			(at 187.96 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -2568,6 +2689,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mains.power"
+			(at 76.2 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 76.2 180.34 0)
 			(hide yes)
@@ -2658,6 +2790,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 279.4 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 279.4 228.6 0)
 			(hide yes)
@@ -2742,6 +2885,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "usb.service"
+			(at 299.72 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)
@@ -2835,6 +2989,17 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 187.96 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004"
 			(at 187.96 127 0)
 			(hide yes)
@@ -2925,6 +3090,17 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 231.14 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
 				)
 			)
 		)

@@ -113,6 +113,11 @@ does not carry every inter-group connection or preserve the filled ground zones.
 
 ## Inter-board connections
 
+Functional ownership is recorded in hidden `FunctionalGroup` component fields.
+Run `./scripts/hardware_groups.py` to check allocation; pre-commit and CI enforce
+the same check. See [the allocation guide](functional-groups.md) and
+[group catalog](functional-groups.toml) for ownership boundaries and maintenance.
+
 The connector numbers below define signal correspondence, not an approved
 harness or rated connector selection. Low-voltage 2.54 mm pin headers are study
 placeholders; short ordinary pins may join matching plated holes when the

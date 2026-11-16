@@ -207,6 +207,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4093b902-45a6-46ed-8755-7da347b9c28d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -354,6 +366,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0c8c8e03-e61c-48e0-8b30-ec0d8e57b4fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c09693a8-94c5-487f-b388-1a2ea527d09e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -790,6 +814,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "064eb92f-eea9-4d7e-b5d7-1dd343852649")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1163,6 +1199,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fe49251f-8d84-43fe-bf53-ac0a2cd911b9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1308,6 +1356,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "48a56bc5-f11b-41cb-b836-00de6b0ac35c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f2a61dda-f638-4f55-998c-5369060157e2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1469,6 +1529,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7f10a77e-b68d-4f90-9723-666fc1f04514")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1614,6 +1686,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "09bf4d4d-952f-4dbb-8066-97196047805e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "24f72b04-ded9-4c8c-9aff-c83e56e8010b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1994,6 +2078,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "53be74b1-e3c4-4b01-8b71-7d3d4fd023bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -2146,6 +2242,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "16a26e40-97de-454b-80ce-bc37cce8e33e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -2249,6 +2357,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b2477060-22e8-47dd-a776-2b7702d47636")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "3b77bacb-cad4-44d8-89d4-d919c2b7a257")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2629,6 +2749,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b251a699-33a0-4c4d-8801-b2d144f09faf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3002,6 +3134,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4ee434b3-8dc3-45f2-84a1-fb2f9b587907")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-011 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3148,6 +3292,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bf08a3ba-3d5b-4b0d-84b5-d2b5099ba1a4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "80e312d8-88b8-475e-b652-8ec72cbd9f39")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3307,6 +3463,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "85a5e110-a375-43e3-a65f-07be5e127359")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3454,6 +3622,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bc355aed-d5fe-45f1-934f-e30de3ee7967")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "03f24106-f290-4da8-bcdb-19380d3e2140")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3834,6 +4014,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6409affd-703f-4726-a5e8-e2fdd492e324")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3979,6 +4171,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "978c0847-0280-4be9-8936-80b3af27a8d5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7fdc20ea-2706-4afd-a0e0-434624c51f9d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4133,6 +4337,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e2b40471-773a-49d6-858e-a02950a11ad4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "444081b1-5526-4b8c-9ecc-5e36f9f798b7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4513,6 +4729,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "437b6bbb-e99c-4711-b9dc-c4e622317ddb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -4660,6 +4888,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ff651bd5-4c4c-43df-b1e5-df790b87dfa1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1fee6f86-256d-4876-91a3-6d99ec5eefce")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5098,6 +5338,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e3d45a81-cbf7-4a10-9aeb-ff5e69208fa3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5205,6 +5457,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "745045e5-679b-400b-8f46-f734e2a8b024")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c5464d32-dc4c-4547-b887-3b64f407fdf6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5641,6 +5905,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "93d68801-222d-4ec0-8922-c964fc1df336")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -6070,6 +6346,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c37b8cf2-0631-478d-ae20-7b1b3910b157")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-012 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -6217,6 +6505,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "79d5a44f-193b-4394-a7fd-5deaabfd50d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "42d1773a-266d-49bf-aa3e-edc3afd05187")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6377,6 +6677,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a22a2759-8c7e-49b1-a136-4da8b78d23c1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -6473,6 +6785,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ed8fa020-2abb-49f0-8736-69f9c0eb98dd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "54293c55-c502-410d-8206-c9425397beb4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6853,6 +7177,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ad86ffe0-b509-4099-b2ba-8c123478598e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -7000,6 +7336,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9aa27cd4-4368-495a-a1a5-493400d419ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b264c3b7-c609-4f51-8806-091d3f03fef8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7428,6 +7776,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7bd54ab7-b9ad-46b6-bd82-a52bae3cccaa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-012 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -7573,6 +7933,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1aec46bc-e806-4173-9c6e-ff3dbfa271bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "813f3f76-02cf-4d15-aeb6-f783f1b3967b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7732,6 +8104,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "64db99de-7a7f-424d-b5e9-cf7ce8cc65a1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -7879,6 +8263,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d4476a7d-30ad-4297-b01d-e8ad7bc6f6fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "51cb78aa-07e1-4d8d-b64d-9f6e3fc18e3b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8252,6 +8648,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9b6d6bc8-a6a7-442f-8624-d0380b9aba3a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "14e2b2ff-defe-4ab2-a2a9-956989827d81")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8688,6 +9096,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "363d2bfa-8270-4a72-95c2-a7eb78ab4fae")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -9054,6 +9474,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d47532ab-59d0-469a-9f2a-944a92e63799")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0427ad4b-b996-4e85-a39a-e83f74e5a2d4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9434,6 +9866,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "77fe6870-a470-4aed-b5ca-1e5e970b0137")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -9588,6 +10032,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "32da6d21-d3f9-467f-a39a-54db162ebf6a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -9733,6 +10189,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "83811188-1de9-40ba-93fa-971c93b021d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a92393ec-cd54-4ffd-8d41-58dc48a05d2a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10161,6 +10629,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9a1ba15a-79ce-49df-8696-f21dd30593a6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -10308,6 +10788,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7894c2ab-3203-44b8-b9fa-bc5183e47e8d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "bb956555-b4d3-4536-b5d3-675bb0124b82")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10469,6 +10961,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "49cf57be-9737-4cc1-bfdd-8d33f8dbd494")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-011 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10615,6 +11119,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "16f05add-52ac-424b-bd65-6b28faaa282f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0ac1ec22-1c0c-420e-a925-208c8b7a8257")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10988,6 +11504,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "03e4e7ac-9e69-481a-a80b-f31c53ee30af")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "44e6c5f8-7bd1-4923-8153-9f396ec79b6a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11494,6 +12022,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4d8f4f7c-019c-49e4-be38-5e2601d0ceab")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -11639,6 +12179,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "72f65d2c-fe1e-4c3d-ae7c-74105d348e16")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6c3f940c-d8e3-4777-aa1c-b057b34bd0b8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11793,6 +12345,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "495d5101-74a8-4422-8f15-6bfcf988fc6a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6e6a7939-fdcb-47f4-a60d-4f6acd2c1938")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12173,6 +12737,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ae265386-2ff1-44ac-9075-d29ce7ac4bf3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -12539,6 +13115,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c30f9c67-95de-4b8e-be53-2f67d84a2d62")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "62262322-3c97-4c48-ac1f-adf4c38d1fca")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12919,6 +13507,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "db4fadce-6a68-4166-846f-6a9901eb9426")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13066,6 +13666,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "506e3767-8b6d-41e5-9d2d-a9542c40fa58")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "503f756a-d441-4144-af1c-227697446b35")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13502,6 +14114,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7f89fc4e-3687-41f1-95c5-8fab1693f42a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13647,6 +14271,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "17cecdcf-0bc1-44a1-9002-bf81b6a61929")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "interfaces.bench"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ff90a48-9cb3-43da-b139-1017a015ff68")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13808,6 +14444,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "21c1a9a9-e9c2-4728-bd7d-7d05554d90f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13915,6 +14563,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fc7ad0a3-4869-4f2d-8f9d-6f86c4123333")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a1b21430-b7b4-402f-a3ce-ac9270197fd4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14069,6 +14729,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "471102e0-9474-4156-baa0-1f6f70bccef7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "16f60dcf-eb31-41ae-93f3-63ec184ce7c5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14449,6 +15121,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6f1b2d31-8d3f-4bbd-97ad-80806f774eb0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-011 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -14595,6 +15279,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0cefdb37-b9c4-46d8-8c19-83001df3c667")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c23bfdb0-0b47-460b-a25e-5bf43da53093")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15031,6 +15727,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cf8d8e46-71f3-4416-8bb3-9ff03808a572")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -15134,6 +15842,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e845b2fa-b5ec-41be-a69f-8e8e30067b4d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1c27bcf6-ea0d-4319-aaf0-86ba1113694d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15293,6 +16013,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5ba2116e-5adb-4a8d-bbb5-66dc2c13a86e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -15440,6 +16172,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d43c0670-1379-4b05-ac22-077a7a1c29c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "caa6c170-6b01-420a-89ea-53f555586aee")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15710,6 +16454,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b8388ebe-e3bb-4263-851f-9f4eb71a0765")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -15855,6 +16611,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e97554da-ee90-45eb-98e7-845bab143f94")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4a70b8ec-42f5-47a3-871b-1da35c2e4672")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16014,6 +16782,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0e8da065-f082-4e29-b291-0c7cae4b4461")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16161,6 +16941,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c218a721-e06e-4006-a376-65d26feec6d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "88cf0de4-7448-4c8f-b1b5-a9fe20773180")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16429,6 +17221,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "37aadbcb-c7fb-44c6-9c66-8cc020043a9b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16576,6 +17380,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "87c5fca7-f6af-4424-ac28-2122e190e271")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ecded2bc-c4c7-44cf-aaf5-02b1a6d80b78")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16737,6 +17553,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "942fde23-7fb7-48a5-9fc3-3af4367bc775")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16891,6 +17719,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "09234ce6-49b9-4194-a958-4adad3524060")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16998,6 +17838,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ec1d0d01-34ed-4576-97c4-6fa233a1cf8f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "d0e2a426-2816-4b0c-bc47-911cd50f9992")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17371,6 +18223,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ac4f557e-8eaa-4c4e-9eef-4c8f559736b2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2e470f52-9122-41b7-a16f-3458a0dc2d5d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17807,6 +18671,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "064b93ec-542c-4c84-8eec-dd51ce966d6d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -17952,6 +18828,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3488030b-e635-4adc-81c1-13c915257a92")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b1e937f4-2495-4091-a722-df6db4bdf533")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18106,6 +18994,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4af2e2e6-ae3b-4c2b-91aa-f65add17db44")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f149bc5f-bbbf-4aae-a2dd-74a10ce1baa0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18367,6 +19267,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2e781f04-0108-4f8f-ab95-1c6422d76d99")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f5130b42-b52c-4921-acc8-739633726d75")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18747,6 +19659,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e159c7aa-0d91-429e-931e-731176f566af")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -18894,6 +19818,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "77d7868e-6594-4946-a46c-652460f2cc30")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c3015af8-f215-461f-977f-480bee98112f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19427,6 +20363,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2b88adde-2d95-4b9f-9cbc-20f865b8c474")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -19575,6 +20523,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e8e4ecae-5882-4155-9019-804ccd7a8a95")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.port"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5e3c8616-6855-4e23-997e-f044ea0a00a2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19955,6 +20915,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce73439f-9c50-4307-a799-8c181d7f73ff")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-010 MOT-SENS-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -20209,6 +21181,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "de682f54-1347-4188-8ebd-565efe53e4fa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "sensors.mux"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8cb2720a-41b3-4502-a539-2ebbddb7a007")
 			(effects
 				(font
 					(size 1.27 1.27)

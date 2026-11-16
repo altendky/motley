@@ -218,6 +218,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2bbba32a-13da-4017-99cc-0ddcdbda4ce9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -363,6 +375,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "94773c39-0a0e-414e-9b07-277332336928")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "22fb46b8-343d-47cf-bed8-3bd84c3fade6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -758,6 +782,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a0cdb785-f097-4322-a1e3-e1c48cce7d61")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004 MOT-AC-010"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -905,6 +941,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3ccfe322-285a-4065-9f8f-24ad531b2113")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0380d722-5e5f-448e-a3b1-d579d54459dd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1168,6 +1216,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "12f27e3b-33d4-45be-8c66-b28261bae410")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "539d9c20-8e3f-4c40-bc5d-0194c8bd20b7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1446,6 +1506,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8472af8d-b107-4c8d-a649-4a4fad15b88a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1593,6 +1665,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "098d0ad3-ca0e-442b-a4f7-f73280a1b1f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5573f2a2-de45-4d36-a351-0761be6ec582")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1854,6 +1938,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a8d209fd-4103-4857-803e-7ecd0bb12ee5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a1056fb4-88ba-453a-aca3-e85dc19f7516")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2243,6 +2339,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c74847fa-bc64-4cba-9a5d-4bf2458ebda0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -2405,6 +2513,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9eb36203-99fd-4550-be76-a9a6ed66c2fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -2550,6 +2670,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a858252a-c2ab-4eeb-bec7-2e3d5a7b7fa7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "03ae460c-83a7-4b35-80ae-97f453df3d38")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2721,6 +2853,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9ba84f9f-ebcb-4ed0-9c98-d9808952804c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -2866,6 +3010,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "186dcf8b-de18-4305-9d2c-d275b97ada01")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "da5488aa-5ce4-4b85-bc76-9041b9a8244f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3146,6 +3302,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9dc8f1c0-26ea-439a-b4e6-ac068954e190")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3417,6 +3585,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "69395fe5-8ba5-41c2-a498-6161e36548a4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004 MOT-AC-010"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3579,6 +3759,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7d2a25db-5fc7-42c7-85ac-e16379d78843")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3730,6 +3922,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad0cd9b8-f9f4-46af-b8f1-8580067f18be")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-005"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -3825,6 +4029,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9d6dcd34-1f55-4bbd-bdc4-8b01ff9c732e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c36d52ff-43c3-42e1-8429-426577ff94e6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3947,6 +4163,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0b7882fc-9387-406d-8971-84cd55118208")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -4098,6 +4326,18 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f79ea284-eecb-4b77-b081-d7e0129be68f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4321,6 +4561,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0cb6a1cf-a291-45fc-876b-eb46e3bc1604")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85264368-a1cd-45fb-a422-7d31baa08bd2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4599,6 +4851,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5a4ced95-5e04-45f5-9aa9-c60a2571ce4c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4746,6 +5010,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2b28a72f-dbb8-49e5-aeb0-0f6aa97eaa20")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d18b378-07a3-4efc-ac0f-b87d39edb0d6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5049,6 +5325,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ca0854ea-c8c5-4693-aa73-6cb322dc3e34")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-006"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -5309,6 +5597,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8887e865-debb-4165-aafa-facf60fcd773")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -5552,6 +5852,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9b09d502-e2bf-4e13-8b7b-f0887d7f32c7")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -5944,6 +6256,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e34eec3f-d873-4d59-bd7d-d86e000ae0a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6160,6 +6484,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e7d0da3-d9d3-4c27-b93f-116edca952f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6322,6 +6658,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b9fe191b-3c73-4a00-81a7-84f68bf19280")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6467,6 +6815,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "810932e2-c8a3-4fa3-8ea1-7afd485c361f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "abebbaea-fe58-4c95-9075-d2724f6b8f62")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6733,6 +7093,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fbb9d828-18a0-4f7a-bf84-4e7b65230a0b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6878,6 +7250,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2fabbd35-a3e2-420b-9eed-adc4efe4c8d5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "58afd68e-21c9-4acd-a564-4c3cdbc71eed")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7273,6 +7657,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "759a3683-2c24-4f46-aaae-696feaef2192")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -7435,6 +7831,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a14f112d-9475-4700-b1bf-e0e6a060fe89")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -7580,6 +7988,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "33449c0c-6325-4f17-9273-61bc67e206f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "456c8978-f4b7-4a9d-a465-128f85efb4f3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7734,6 +8154,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7b939863-6b56-4115-b68d-0b1abe71abff")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed60430f-d0df-4b9e-8ee1-5155cc3bc0d7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8167,6 +8599,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d5ad6ba6-b1ed-4a20-bf07-d88d6c6cf1cd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -8319,6 +8763,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2fd7cc7c-e80b-4024-9078-9802e2a5607c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -8434,6 +8890,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e051e64-c3dd-43e8-8033-ca21631bd7b2")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -8600,6 +9068,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d49082c0-3c28-42c3-bc54-02cc1a00d4f6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -8747,6 +9227,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "68b1e63a-c837-4b50-8872-41fec75726de")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fa94f9d1-70c2-47c3-8576-9c2ac97aab9b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9042,6 +9534,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dc35266e-58e0-4273-9a71-6a3fcf79fc19")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9232,6 +9736,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e3bce450-00d5-434a-b74a-64df3aab8a8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004 MOT-AC-010"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9394,6 +9910,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "64c61051-fecb-4dcb-8a51-f57c82a59b32")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004 MOT-AC-010"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -9546,6 +10074,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "410232d3-3f3d-45d2-8a4f-fa961e14b780")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -9661,6 +10201,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "359a1345-ddd9-4e1a-b851-9a3b1af0e13c")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -10093,6 +10645,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "923e7137-2d22-4c26-a8ac-5601443c8c0a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10255,6 +10819,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "12d479c0-146e-456c-8766-b4a785b8a0de")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004 MOT-AC-010"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10413,6 +10989,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c41f85b1-b716-4f3a-96e5-31f552a1b19e")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -10687,6 +11275,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "98237a57-2af6-45f8-890c-e822d621b26a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -10836,6 +11436,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6bee921c-b815-496c-a761-3cb79f03fb15")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "73d841c1-10bb-4842-b53f-9d557030c63a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11133,6 +11745,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "de89e26f-b001-4ac9-8777-b18295f82524")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -11361,6 +11985,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1594b179-8a2c-4b88-b011-5440db5c90b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8cdc4bb2-0b6b-40c7-ae8b-9069ae94ed2b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11668,6 +12304,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6a2b269b-911e-4a44-bccd-0694748dd35b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -11815,6 +12463,18 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.current-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3b929e90-0843-4c18-8f84-17c524df342a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12009,6 +12669,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d354702a-cee0-4b17-aa18-59900c7d5595")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dfc609bf-76ec-400f-b191-a6491387bf43")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12287,6 +12959,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d844731c-067a-4114-a13e-df0e8ba34932")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -12548,6 +13232,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "mechanical.mounting"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fc1f142d-4f03-4e90-bc5e-2271ef1ff235")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -12663,6 +13359,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83acf31e-c65c-4da5-bab7-cf3baa3615fd")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -13049,6 +13757,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8fea6fb6-c0c0-474e-8039-ec93436baeea")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-AC-011 MOT-AC-012 MOT-ENG-010 MOT-STOR-001"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -13196,6 +13916,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b6621f0a-4642-42ed-84c7-49d1f69c7257")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "490d3a52-dcf8-4f64-9d38-a1d905a18cb9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13464,6 +14196,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0174776d-1f6a-4bc1-8642-9878012655c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -13611,6 +14355,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e7e4f19c-2142-4e39-afed-4dc563e9609d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4e25a9f-e4f0-48a7-829e-c30601211218")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14012,6 +14768,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "acb65f5f-d167-4932-b95d-b7469351e283")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -14159,6 +14927,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9e0d0146-7365-409e-8ca1-41fc65a54499")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2c7d5a69-2c5d-45b7-a9a2-ed94b21fa4bf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14629,6 +15409,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e0e28298-4629-4c23-99f8-11bd73177e3c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -14774,6 +15566,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "28859514-974f-4c6c-8c5e-496f097fb31a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5707e3dc-c822-4fc6-a40c-207d59b53f73")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14930,6 +15734,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "16a1bcad-165e-4d7e-9192-f103a783cf1f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "diagnostics.access"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "649745ba-30fd-4bac-b20e-62ffc9cdcabf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15208,6 +16024,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "caef3e60-daea-4217-a7f7-18692c994fa2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -15353,6 +16181,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a7c5d331-0407-489e-b299-cbfee8b8d990")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.snubber"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "db337a8b-eff8-441f-b93c-b9b4afabc251")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15556,6 +16396,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d4f6aba2-e6ca-459d-99a5-0e0e2b4f898d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -15720,6 +16572,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.voltage-sense"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e3b5a16d-15d0-49f8-a035-027c7008f44a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -15867,6 +16731,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "11ea3335-bcde-4a82-b546-f09b76e434ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6ed913b9-a28d-4f96-8530-943f87d6f8f7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16147,6 +17023,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c3527dc5-f103-4b6e-bf3f-f984031e32ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.cutoff"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8bb3258-a174-44d6-83bf-232519794ad9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16532,6 +17420,18 @@
 				)
 			)
 		)
+		(property "FunctionalGroup" "output.switching"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cb155dd6-1033-4018-8e5c-5ab31d9c5b34")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -16692,6 +17592,18 @@
 			(effects
 				(font
 					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "FunctionalGroup" "output.control"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4f8df772-9469-495b-ab2e-d4a221ad6ce3")
+			(effects
+				(font
+					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)

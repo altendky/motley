@@ -1,5 +1,44 @@
 # Motley plan
 
+## Functional component allocation, 2026-11-15
+
+**Readiness:** READY for the developer's accepted grouping proposal, narrowed
+to attribution and checks without pricing or a mise task wrapper. `MOT-HW-013`
+records the agreed obligation. Preserve `MOT-HW-003` UUID/requirement identity,
+`MOT-CI-004` deterministic images and `MOT-PROC-002` backlog-tolerant gates.
+The hidden field/catalog names and native parser reuse are implementation
+details; no electrical architecture or new ADR is needed.
+
+- [x] Add a versioned functional-group catalog and hidden `FunctionalGroup`
+  properties to physical schematic components and PCB footprints. Include
+  DNP/excluded-BOM parts, test/touch access and board-only mechanics; preserve
+  multi-unit consistency and repeated-sheet identity. Review shared support
+  ownership explicitly. Verify native trees differ only by that property.
+- [x] Add executable PEP 723 uv scripts for read-only allocation checking and
+  regression fixtures. Reject missing/empty/duplicate/unknown/board-inappropriate
+  groups and inconsistent multi-unit/source/PCB allocation, with per-instance
+  inventory and no prices or external services. Exercise BOM-only symbols too.
+- [x] Add pre-commit checks (also executed by existing CI), document direct
+  commands and maintenance boundaries, export a real grouped BOM, run trace,
+  SVG freshness, fixtures and full pre-commit. Record implementation/test links
+  for `MOT-HW-013` and refresh only reviewed affected baselines.
+
+Verification: direct `./scripts/hardware_groups.py` passes for 257 components
+in 17 catalog groups. Direct `./scripts/test_hardware_groups.py` passes all 20
+fixtures. KiCad 10 BOM export retains valid `FunctionalGroup` fields on all
+three roots (88/62/74 BOM quantities; BOM-excluded access and board-only features
+remain covered by the 257-component native inventory). All 20 native files were
+compared against the starting tree with only the new field removed; no other
+structural differences exist. Native requirement annotation checks pass, all
+12 SVGs remain byte-current, independent ownership/checker review has no blocking
+findings, and full pre-commit including RQML passes (exit 0).
+
+Executed source SHA-256: checker
+`26d21622470568f2c8feaba8a258c8deb9fcc3b1aece390099d06f37996d5874`,
+fixtures `55965e04dbf3d634ada4e4e7384710c930852d795fe0d52f6d03f97a6627aba6`,
+catalog `e3465d8b19788e28359e699bc38d58da3bc128e311511ed5ccdc24bf83251c62`.
+No hosted run of the new hooks is claimed before this change is pushed.
+
 ## Four-layer ground/power-plane revision, 2026-11-14
 
 **Readiness:** READY for the developer's explicit four-layer/plane request.
