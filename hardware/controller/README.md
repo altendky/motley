@@ -330,7 +330,9 @@ selection and heat flow are not qualified.
 
 `U10` is the ESP32-C6-WROOM-1-N8 module. Its symbol and footprint derive from
 Espressif's KiCad library tag 3.0.1, with a local library path and omitted
-unavailable external 3D model; see [license](Espressif-LICENSE.md). All nine
+unavailable external 3D model; see the
+[upstream notice](../../LICENSES/Espressif-library-notice.md) and
+[part-level licensing](../../THIRD_PARTY_NOTICES.md). All nine
 center pads are numbered 29 and connected to GND, along with pins 1/28.
 Both symbol units
 of each G6DN are one physical relay. Logical AC connector numbering does not
@@ -502,6 +504,10 @@ The local triac/optotriac graphics are adapted from KiCad's standard symbols,
 with the selected part's description and datasheet. The split relay symbol
 uses the pin map above. KiCad's standard symbol graphics retain their
 [upstream library license](https://gitlab.com/kicad/libraries/kicad-symbols/-/blob/master/LICENSE.md).
+Original hardware and independently created library parts use CERN-OHL-P-2.0;
+the [repository license scope](../../LICENSE.md) and
+[third-party notices](../../THIRD_PARTY_NOTICES.md) identify the inherited
+library exceptions without changing the board-design license.
 
 ## Verification
 
