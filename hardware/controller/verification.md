@@ -1,5 +1,69 @@
 # Modular controller study verification
 
+## Continuous output ribbon, 2026-11-17
+
+ADR-0022 and draft `MOT-HW-016` record the continuous six-wire harness, keyed
+2×3/2.54 mm interface and one fitted plus one DNP parallel header per output.
+The [harness record](../../docs/output-ribbon.md) contains exact parts, actual
+Economic matching, pin order, nominal 50 mm tap spacing, electrical assumptions
+and twisted/toolless alternatives. Sixteen remains a soft exploration target;
+this revision screens the initial two-output arrangement and retains the
+existing protection. R42/R43 are 2k2 and each output gains raw-power C205=100n.
+
+Fresh KiCad XML comparisons preserve every original component UUID and circuit
+pin group after the explicit connector permutation: old 1/2/3/4/5/6 become
+3/1/2/4/6/5. J14/J22 have identical numbered nets, separate raw/logic supplies,
+and native DNP states; a default BOM export excludes J22 and includes J14/C205.
+The complete pin inventory reconciles 261 components / 745 symbol pins across
+the three designs, or 342/958 for one carrier, two outputs and one sensor board.
+Native annotation and allocation checks pass for all **271 footprints**.
+
+The carrier remains **95×80 mm** and the output **90×87 mm**, front assembly.
+Both have **zero native DRC violations and zero opens**. Independent native
+reviews preserve old footprint/pad/group identities and all 90 carrier / 238
+output mains-route items. Carrier USB copper is unchanged; all ten USB nets
+pass the expanded filled-ground centerline screen, with the previously recorded
+wider-band antipad limitations retained. H4 moves to (99,116); touch pads remain
+on the front. All 44 other native inputs, including sensor sources, are unchanged.
+
+Actual filled-copper graphs find no disconnected pads, floating pours, unfed
+inner-plane islands, via-drill/SMT intersections or projected 5 mm HV/LV
+collisions. All seven wide-path checks on each changed board pass. Output
+CUT_EN uses one intentional **21.96 mm / 0.2 mm In2** bridge between the existing
+via at (59.4,74.2) and plated TP5 at (60,95), adding no vias. In1 remains one
+continuous fed GND polygon; the three output power regions retain physical
+feeds. No stackup, zone-outline, mains-placement or board-rule change is made.
+
+ERC retains the existing carrier IRM symbol/library mismatch and two output
+open-collector/power-flag findings; no new finding is introduced. Changed
+schematic and board renders were visually reviewed. The eight carrier/output
+SVGs regenerate; the four sensor views are unchanged. Native DRC, XML and BOM
+exports used pinned KiCad 10.0.8. Maintained annotation/allocation/SVG checkers
+are unchanged from base commit `c759771a7a5aabd7bca73fb4cdf8356b894ca924`.
+
+| Reviewed native source | SHA-256 |
+| --- | --- |
+| `motley-carrier.kicad_sch` | `d92045d28d2f37c616fbd6eac92dbbd982cf76f08fadc1cf418e271fa49e5d10` |
+| `motley-ac-output.kicad_sch` | `cf6779b80c6f48bc9bb26d1c589188bfb8f8019588ff3df65255a0efe9ab890a` |
+| `qwiic-bench.kicad_sch` | `4118069182fed93bbd6fe68ae8e53cbfdfb2b75aa2961d0bc788a23766a0f2c2` |
+| `motley-carrier.kicad_pcb` | `4f1367fda55849379730f6e263654e0cd0dfaab435be541f98791aa52ce983ef` |
+| `motley-ac-output.kicad_pcb` | `eb2595db9ffdb863b65f62a7927ae16a0f83d3718a33ee7d50401fbb25970065` |
+| Kinghelm local `.kicad_mod` | `2499fa7412d7e96d6f6e79f52a7409d3b8db78c86a9a53bf78c546c8128e0e37` |
+
+This continues the approved exploratory exception. `MOT-HW-003/013` govern
+annotation/allocation integrity and `MOT-CI-004` the derivatives; electrical
+requirements remain draft. Sample mixed-vendor mating/IDC termination, actual
+enclosure wiring, hot-plug, electrical/thermal/EMC and mains qualification remain
+open. Actual header matching is not a new whole-board quote; earlier prices
+remain dated snapshots. No purchase or firmware change was made.
+
+After source and independent native review, the seven affected annotation/
+allocation implementation baselines were refreshed. Full
+`mise exec -- pre-commit run --all-files` and standard RQML pass, exit 0,
+including deterministic SVG regeneration and mapped-implementation approval.
+Unimplemented/unverified electrical obligations remain backlog; passing these
+structural gates does not complete the draft product requirements.
+
 ## Optional USB wiring and CC population, 2026-11-17
 
 The requested alternative USB interface is J27, a normally unpopulated six-pin

@@ -5,8 +5,9 @@ prototype and indoor ventilated electronics, with about 60°C air as a design
 input. These are exact sourcing decisions and integration requirements, not
 a fabrication release or a new populated-board quote. No purchase was made.
 The twelve previously unresolved board positions now have concrete choices.
-The subsequent assembly-matching pass selects JST PH for the six-wire harness
-and integrates exact terminal, holder and configuration-header footprints.
+The 2026-11-17 harness revision replaces the earlier PH6 selection with a
+continuous keyed IDC ribbon; exact terminal, holder and configuration-header
+selections remain. See [the harness specification](output-ribbon.md).
 Factory installation, hand installation and remaining qualification are separate
 decisions; a catalogue listing alone is not evidence of factory assembly.
 
@@ -25,9 +26,9 @@ current-board quantities, omissions and prices require complete assembly jobs.
 | Fuse-holder cover | Schurter **0853.0571**, black | 3 | Correct OGN accessory; DigiKey $1.57 / 4,017 listed. JLC C17365258 unavailable. Fitted after soldering, not a second PCB position. |
 | F1 main cartridge | Littelfuse **021506.3MXP**, JLC **C142721** | 1 | T6.3 A, ceramic 5×20 mm, 250 VAC. JLC 9,351 / $0.1594; refreshed US Mouser catalogue lists $2.29. Loose cartridge, hand inserted. |
 | F2 output cartridge | Littelfuse **02153.15MXP**, JLC **C142723** | 2 | T3.15 A, ceramic 5×20 mm, 250 VAC. JLC 1,938 / $0.1486; refreshed Mouser $1.95 / 990. Loose cartridge, hand inserted. |
-| Six-pin LV headers: carrier J15/J18, output J14 | JST **B6B-PH-K(LF)(SN)**, JLC **C274409** | 4 | Actual Economic matching confirms factory hand soldering; 6,924 listed, $0.1105 each. Keyed 2.00 mm PH replaces the proposed retail Molex KK; same part family already used on carrier J21. |
-| Six-way cable housings | JST **PHR-6** | 4 | One per harness end; hand assemble or source complete correctly wired PH harnesses. |
-| Loose cable contacts | JST **SPH-002T-P0.5S** | 24 | Standard-force contact, 24–30 AWG, insulation diameter 0.8–1.5 mm. Prefer 24 AWG power conductors for the series' 2 A rating. Harness fabrication remains separate from PCB assembly. |
+| Six-pin LV headers: carrier J15/J18, output J14 | Kinghelm **KH-2.54PH180-2X3P-L8.9**, JLC **C5157626** | 4 fitted; 2 extra output footprints DNP | Actual Economic/top-side matching confirms factory THT installation; 346 listed, $0.1262 each. Keyed/shrouded 2×3, 2.54 mm, exact local 1.02 mm-hole footprint. |
+| Continuous-ribbon sockets | HARTING **09185065813** | 3 | Open-ended IDC, strain-relief clamp, 26/7–28/7 AWG; DigiKey $2.15 each / $1.824 at ten. One carrier plus two output taps. Mixed-vendor mating/termination still needs a sample check. |
+| Six-conductor ribbon | **3M 3801/06**, 26 AWG | Cut length with fold/service allowance | 1.27 mm spacing, 0.99 mm insulation thickness; DigiKey cut lengths, five feet approximately $2.70. Nominal tap spacing 50 mm. |
 | J20 snubber header | Samtec **HMTSW-102-07-L-D-200** | 2 | Short-post, high-temperature 2×2 header. DigiKey $0.51 at one, 151 listed plus factory stock; no exact JLC assembly established. LOW-only provisional assembly as discussed below. |
 | SW20 recovery header | Samtec **HMTSW-102-07-G-S-200** | 2 | Short-post 1×2, about $0.291 direct; manufacturer listed 432. Exact JLC stock/assembly not established. RUN stays open, RECOVERY uses a cap. |
 | Covered configuration caps | Harwin **M7685-05** | 4 normally fitted at J20, plus 2 recovery accessories | DigiKey $0.49 at one, $0.417 at ten; 10,476 listed. Retains the previously accepted closed-top arrangement. |
@@ -44,9 +45,11 @@ purchase minimum did not apply to the two-piece factory-matching probe.
 ### Retail hand-fitting basket
 
 For one finished controller, the base board parts, configuration accessories
-and two output harnesses total **$25.67** at the refreshed single-unit tiers.
-This excludes wire, tools, shipping/tax/tariffs, off-board outlets/heatsinks/USB
-hardware and any additional stock omissions in the final assembly quote.
+and the three-tap output ribbon total approximately **$33.50**, combining the
+2026-11-16 retail snapshots with the 2026-11-17 ribbon selections.
+This includes five feet of output ribbon, and excludes other wire, tools,
+shipping/tax/tariffs, off-board outlets/heatsinks/USB hardware and any additional
+stock omissions in the final assembly quote.
 
 | Parts | Purchase quantities | Extended USD |
 | --- | --- | ---: |
@@ -55,12 +58,12 @@ hardware and any additional stock omissions in the final assembly quote.
 | Retained Omron relays | 2 | $5.52 |
 | Samtec J20 / recovery headers | 2 / 2 | $1.02 / $0.582 |
 | Harwin caps, including recovery accessories | 6 | $2.94 |
-| PHR-6 housings / standard contacts | 4 / 25 | $0.44 / $0.875 |
+| HARTING IDC sockets / 3M ribbon | 3 / 5 ft | $6.45 / $2.70 |
 
-All selected retail paths allow single-piece purchasing. Buy **25 contacts**:
-Mouser's $0.035 tier costs about $0.88, less than buying 24 at its $0.042 tier
-(about $1.01). DigiKey's indexed contact offer starts at 100 pieces. Stock
-omissions and price breaks for larger batches must be reconciled separately.
+All selected retail paths allow single-piece purchasing; ribbon is sold by
+the foot. Five feet costs only about two cents more than four at the observed
+price break and provides useful assembly allowance. Stock omissions and price
+breaks for larger batches must be reconciled separately.
 The main fuse's $2.29 price is from a current US catalogue row; its exact product
 page timed out. Other refreshed basket entries were checked on product pages.
 
@@ -131,25 +134,24 @@ own resistors. This adds no default purchased parts. See the
 [carrier interface notes](../hardware/controller/README.md) before populating.
 J27 is a bare pin-strip footprint, not a reserved larger locking-header body.
 
-The JST PH harness preserves the six signals in order: GND, selected logic 5 V,
-SDA, SCL, LINE_SYNC, raw actuator 5 V. Preserve pin numbers and verify end-to-end
-continuity rather than inferring a cable's pin order from photographs. The
-existing KiCad PH footprint's 0.75 mm holes fit JST's 0.70 +0.10/−0 mm drawing.
-Its pins run along local +X; −90° PCB rotation keeps the prior +Y pin order.
-Body dimensions are 13.9×4.5×6 mm, with 8 mm mated height. The series rating is
-2 A with 24 AWG, 100 V AC/DC, and −40 to 105°C including temperature rise;
-the current system's 5 V supply is 1 A. Exact wire, crimp tooling, pull testing
-and harness strain relief remain assembly qualifications.
+The output ribbon uses **1 selected logic 5 V, 2 SDA, 3 GND, 4 SCL, 5 raw
+actuator 5 V, 6 LINE_SYNC**. All taps are straight-through, pin 1 to wire 1;
+intermediate conductors stay uncut. The default second output header J22 is
+DNP, parallel with fitted J14. Construction, dimensional fit, actual matching
+evidence and initial two-output electrical limits are in the
+[harness specification](output-ribbon.md). Existing board quotes remain dated
+PH6 snapshots, not prices for these changed exports.
 
-The panel-USB carrier header J21 also uses six-way PH, with a different pinout
-(including VBUS/GND in the opposite first-two-pin order). These harnesses are
-**not electrically interchangeable**. Identify them by function and verify
-polarity/continuity before power; mechanical differentiation remains an open
-enclosure/harness design concern for the exploratory build.
+The panel-USB carrier header J21 remains six-way PH with a different pinout.
+Its 1×6/2.00 mm mating family differs from the boxed 2×3/2.54 mm output
+interface. Alternative USB J27 remains bare 1×6/2.54 mm and requires its
+deliberate service-harness configuration. These are not interchangeable output
+plugs. The general poka-yoke review in issue #59 remains open for other
+interfaces and foreseeable partial/incorrect assemblies.
 
 Molex 0022232061 + 0022013067 + 0008500032 remains a documented retail fallback.
-It was superseded because PH has confirmed factory installation and a smaller
-body, not because the Molex parts are unavailable. It is not a mating substitute.
+It is superseded for the output bus by the continuous IDC harness; it is not a
+mating substitute for the selected boxed header.
 
 Harwin M20-9990645 + M20-1060600 + M20-1180042 is a documented narrow-body backup
 that fits the present nominal pin-strip geometry. It is unpolarized/unlatched,

@@ -1,5 +1,65 @@
 # Motley plan
 
+## Multi-drop output ribbon, 2026-11-17
+
+**Readiness:** READY for the reviewed native integration. Kinghelm
+KH-2.54PH180-2X3P-L8.9 / C5157626 passed actual Economic assembly matching;
+HARTING 09185065813 and 3M 3801/06 form a dimensionally matched prototype
+harness pending sample termination/mating. Pin order is logic 5 V, SDA, GND,
+SCL, raw actuator 5 V, LINE_SYNC. ADR-0022 records the selected topology and
+draft `MOT-HW-016` its interface contract. Continue the existing exploratory
+exception; electrical requirements remain draft. Sixteen outputs remains a
+soft exploration target, not a qualified population. Issues #59/#62 remain open.
+
+- [x] **Goal:** Select and document the complete multi-drop interconnect.
+  **Requirements:** `MOT-AC-009`, `MOT-HW-015`; ADR-0022 and existing six-signal
+  power domains. **Files:** `docs/hardware-exact-selections.md`,
+  `docs/ac-output-module.md`, `hardware/controller/README.md`. Check exact
+  keyed/shrouded 2x3/2.54 mm headers, mid-cable IDC sockets, matching ribbon
+  gauge/spacing/insulation and strain relief; establish manufacturer fit and
+  actual factory-installation eligibility separately. Specify pin 1 to wire 1
+  everywhere; freeze the numbered pin map after ribbon-coupling review.
+  **Verification:** review drawings, mating exclusions, contact/wire limits,
+  chain current/voltage drop, I2C loading and SYNC fanout; state supported
+  lengths/counts or explicit qualification gaps. Do not assume the present
+  supply qualifies the preferred sixteen-output capacity.
+  **Decision:** keep the existing S2BT protection; use central LP pull-ups
+  R42/R43 = 2k2 for calculated two-output rise-time margin, and add one raw
+  actuator 5 V bypass capacitor per output tap. Nominal 50 mm spacing needs
+  strain-relief/service allowance; 1 m is a conservative screening assumption,
+  not a cable rating. Twisted cable and lever terminals remain alternatives;
+  they are not required for the initial internal ribbon.
+- [x] **Goal:** Integrate the reviewed connector population into native CAD.
+  **Requirements:** `MOT-HW-003/013/015`, `MOT-AC-009`, `MOT-CI-004`.
+  **Files:** carrier/output root schematics and PCBs, any required local
+  footprints/library tables, native review inventories and generated SVGs.
+  Convert controller/output bus connectors to the selected interface; add a
+  second parallel output header DNP by default. Preserve separate logic/raw
+  5 V, all six bus functions, local defaults/protection, mains isolation,
+  front assembly and the 100 mm dimension discussion target. Preserve source
+  identities wherever possible and allocate both fitted and DNP footprints.
+  **Verification:** fresh XML pin-net comparison, DNP/BOM inspection, native
+  ERC/DRC and filled-copper/drill/isolation review; render revised SVGs.
+- [x] **Goal:** Record observed evidence and remaining wiring limits.
+  **Requirements:** `MOT-HW-003/013/015`, `MOT-AC-009`, `MOT-CI-004`.
+  **Files:** `hardware/controller/verification.md`, changed design notes and
+  issue #62. Run `mise exec -- pre-commit run --all-files` and standard RQML.
+  Use `rqml link` for real new native-file applicability relationships and
+  implementation links for approved annotation/allocation obligations; refresh
+  changed baselines only after review. Keep draft electrical design inputs
+  distinct from completed implementation/physical verification. Retain old
+  quotes as dated snapshots rather than prices for changed exports.
+
+**Result:** exact source/pin/DNP/BOM comparisons and independent native reviews
+pass; both changed boards have zero DRC violations/opens, connected actual
+copper and passing drill/plane/isolation screens. One documented 21.96 mm
+CUT_EN bridge uses output In2 without adding vias. Eight SVGs regenerate;
+sensor sources/views are unchanged. Full pre-commit and standard RQML pass,
+exit 0. Reviewed annotation/allocation baselines were refreshed; no draft
+electrical requirement was approved or given fabricated verification coverage.
+Physical harness and product qualification remain open. See the current
+hardware verification and harness records for hashes, assumptions and limits.
+
 ## Optional USB header and CC pull-downs, 2026-11-17
 
 **Readiness:** READY for the user's requested normally-unpopulated 0.1-inch

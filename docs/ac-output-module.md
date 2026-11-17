@@ -217,8 +217,10 @@ the feedback approach. These are candidate mechanisms, not qualified selections.
 
 The gate, feedback and relay-control signals stay local to each module. The
 ESP does not need to generate every triac firing pulse over the communication
-bus. The study connector order is **GND, selected 5 V, SDA, SCL, SYNC,
-raw 5 V**. LP Qwiic power/pulls now use main 3.3 V; the HP/sensor bus remains
+bus. The keyed 2×3 connector order is **selected 5 V, SDA, GND, SCL,
+raw 5 V, SYNC**. A continuous ribbon taps fitted J14 on each module; the
+parallel J22 is DNP by default. See the [harness selection and limits](output-ribbon.md).
+LP Qwiic power/pulls now use main 3.3 V; the HP/sensor bus remains
 on the switched sensor supply. A separate inhibit/fault wire remains optional.
 
 ## Division of control

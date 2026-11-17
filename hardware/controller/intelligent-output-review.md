@@ -19,9 +19,9 @@ than completed product claims.
 
 Fresh KiCad 10 XML exports of all three roots were independently enumerated
 with Python's `xml.etree.ElementTree`, without using the CAD-generation helper
-to infer connectivity. The inventory reconciles **259 components and 737 distinct
-symbol-pin identities**: carrier 100/308, output 79/205, sensors 80/224. One carrier,
-two outputs and one sensor board instantiate **338 components / 942 symbol pins**.
+to infer connectivity. The inventory reconciles **261 components and 745 distinct
+symbol-pin identities**: carrier 100/308, output 81/213, sensors 80/224. One carrier,
+two outputs and one sensor board instantiate **342 components / 958 symbol pins**.
 Counts include optional bare probe contacts and DNP parts, exclude virtual ERC
 power flags and board-only mechanical holes, and count a repeated physical pad
 number once electrically. The WROOM's repeated GND-29 lands retain one shared
@@ -31,17 +31,19 @@ geometry and source hashes are recorded separately after placement settles.
 
 ## Current electrical architecture
 
-Carrier J15/J18 and output J14 now use six contacts. They carry common low-voltage
-ground; these are not isolated buses between boards.
+Carrier J15/J18 and output J14/J22 use keyed/shrouded 2×3, 2.54 mm headers with
+the [continuous ribbon](../../docs/output-ribbon.md). Output J14 is fitted and
+J22 is DNP, electrically parallel. They carry common low-voltage ground; these
+are not isolated buses between boards.
 
-| Contact | Carrier J15/J18 | Output J14 | Default / disconnection disposition |
+| Contact | Carrier J15/J18 | Output J14/J22 | Default / disconnection disposition |
 | --- | --- | --- | --- |
-| 1 | GND | GND | Required local return. Full removal is different from a missing-ground partial connection; no guaranteed contact sequence. |
-| 2 | +5V_SELECTED | +5V_LOGIC | Selected mains-derived/USB supply powers local logic and sensing. It does not feed the relay coil or optotriac LED. |
-| 3 | LP_I2C_SDA | OUT_SDA | Open-drain bus with carrier R42=4k7 to main +3V3; no duplicate output-board pull-up. Missing carrier/pull-up leaves the disconnected bus undefined, so communication must not authorize actuation. |
-| 4 | LP_I2C_SCL | OUT_SCL | Same disposition with R43=4k7. Clock stretching, capacitance and electrical timing need qualification. |
-| 5 | LINE_SYNC | LINE_SYNC | Carrier push-pull source; each output has 1k series and 100k local LOW bias. Missing reference means invalid timing, not a valid zero crossing. |
-| 6 | +5V_SYS | +5V_SYS | Raw mains-derived actuator supply, upstream of the output relay. Absent raw supply removes sustained LED/coil energy; stored energy and signal injection remain assessment cases. |
+| 1 | +5V_SELECTED | +5V_LOGIC | Selected mains-derived/USB supply powers local logic and sensing. It does not feed the relay coil or optotriac LED. |
+| 2 | LP_I2C_SDA | OUT_SDA | Open-drain bus with carrier R42=2k2 to main +3V3; no duplicate output-board pull-up. Missing carrier/pull-up leaves the disconnected bus undefined, so communication must not authorize actuation. |
+| 3 | GND | GND | Required local return. Full removal is different from a missing-ground partial connection; no guaranteed contact sequence. |
+| 4 | LP_I2C_SCL | OUT_SCL | Same disposition with R43=2k2. Clock stretching, capacitance and electrical timing need qualification. |
+| 5 | +5V_SYS | +5V_SYS | Raw mains-derived actuator supply, upstream of the output relay, locally bypassed by C205. Absent raw supply removes sustained LED/coil energy; stored energy and signal injection remain assessment cases. |
+| 6 | LINE_SYNC | LINE_SYNC | Carrier push-pull source; each output has 1k series and 100k local LOW bias. Missing reference means invalid timing, not a valid zero crossing. |
 
 The output regulator U21 derives +3V3_OUT from +5V_LOGIC. USB-only power can
 therefore keep the MCU and observations alive for commissioning while raw 5 V
@@ -71,7 +73,7 @@ explicit; an NC marker is a wiring choice, not proof of firmware input bias.
 | 9 / GPIO1 | LINE_SYNC input through R87=1k. Source U41 is on the same main 3.3 V domain. No separate GPIO pull is fitted: a powered source drives the line; a powered U41 with inactive detector sees R85's HIGH. Do not interpret a constant HIGH/LOW as valid timing. ROM/application input configuration, power ramps and faulted-buffer behavior still need checking. GPIO1 is not a C6 strap. |
 | 4 / GPIO4 | Restored NC; MTMS/strap behavior remains an explicit unused-pin/eFuse policy item. No external SYNC bias now perturbs this strap. |
 | 8 / GPIO0; 26 / GPIO3; 27 / GPIO2 | Former direct CUT/HEAT connections removed; pins are NC. Configure unused pins appropriately after boot. Their reset/ROM behavior no longer directly commands either actuator. |
-| 6 / GPIO6, 7 / GPIO7 | LP I2C SDA/SCL retain main 3.3 V 4k7 external pulls, including when the switched sensor rail is OFF. MTCK/MTDO/JTAG/reset alternate functions and LP-controller SDK support require deliberate configuration; avoid drive conflicts in ROM/recovery. No direct actuator path remains. |
+| 6 / GPIO6, 7 / GPIO7 | LP I2C SDA/SCL use main 3.3 V 2k2 external pulls, including when the switched sensor rail is OFF. MTCK/MTDO/JTAG/reset alternate functions and LP-controller SDK support require deliberate configuration; avoid drive conflicts in ROM/recovery. No direct actuator path remains. |
 
 The C6 straps include GPIO4/5/8/9/15. The choice of GPIO1 for SYNC avoids adding
 a continuously driven timing signal to GPIO4's strap sampling. This does not
@@ -89,13 +91,18 @@ is unchanged by moving the independent LP bank.
 
 The selected PESD5V0S2BT signal clamp is specified at up to 45 pF per line.
 Sixteen output-board I2C clamps alone can therefore contribute 720 pF per bus
-line before carrier clamps, MCU pins or cables. With 4k7 pulls, the simple
-30–70% RC rise estimate is already about 2.9 microseconds. Lower clock frequency
+line before carrier clamps, MCU pins or cables. Even with the revised 2k2 pulls,
+the simple 30–70% RC rise estimate for those output clamps alone is about
+1.34 microseconds. Lower clock frequency
 does not itself establish standard I2C rise-time compliance. A qualified larger
 population may require different low-capacitance protection, pull-ups, topology
 or a lower declared count; the sixteen-board target is not closed by address
 space or the present two-output schematic. See the
 [Nexperia capacitance specification](https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf).
+The two-output ribbon screen, including carrier and cable loading, gives about
+0.57 µs at 0.3 m and 0.70 µs at 1 m with 2k2. These are calculations with
+explicit allowances, not measured bounds. Sixteen remains a soft exploration
+target; the present 1 A supply and protection network do not qualify it.
 
 ## Shared line-reference pins
 
@@ -148,7 +155,7 @@ with completed software protection. [ST DS13866 Rev 5](https://www.st.com/resour
 
 | Pin / function | Pull/default and normal/reset/ROM/disconnection disposition |
 | --- | --- |
-| 1 PB7 | OUT_SDA runtime and ROM I2C1. Carrier 4k7 pull to main 3.3 V; no local output pull. Open-drain configuration; no arbitrary internal pull to local +3V3_OUT. Carrier removal removes the source pull. Powered bus/unpowered MCU injection and capacitance remain open. |
+| 1 PB7 | OUT_SDA runtime and ROM I2C1. Carrier 2k2 pull to main 3.3 V; no local output pull. Open-drain configuration; no arbitrary internal pull to local +3V3_OUT. Carrier removal removes the source pull. Powered bus/unpowered MCU injection and capacitance remain open. |
 | 2 PC14 | NC. No external resistor selected; unused low-leakage/input policy required. No actuator load. |
 | 3 PC15 | NC; same unused-pin assessment as 2. |
 | 4 VDD/VDDA | +3V3_OUT with C202 = 100n/C203 = 1u; supply/ADC reference domain. No logic pull; qualify ramp/brownout and ADC supply noise. |
@@ -385,6 +392,7 @@ handling limitations above and in [esd-access-review.md](esd-access-review.md).
 | LINE-ACPL | U40 and input/filter/pull-up components; isolated threshold reference and unqualified heat/timing. |
 | LINE-BUF | U41/source 47 ohm/decoupling; push-pull fanout and physical NC pin 1. |
 | O-MCU | All 20 U20 pins; bias, reset/ROM/domain and unimplemented firmware obligations. |
+| O-RAW-BYPASS | C205 across raw +5V_SYS and GND beside the fitted tap; passive supply/AC-return bypass, no logic pull. Stored charge, missing GND and partial-power cases retain their existing qualifications. |
 | O-LDO | U21 and local input/output bypass; hard EN, NC pin 4, no arbitrary pull on supply pins. |
 | O-MCU-BIAS | MCU OFF/SYNC pulls, decoupling and reset network; passive terminals inherit their named net function. |
 | O-RECOVERY / O-RESET / O-SERVICE | Shunt 1k/47k boot choice,10k/100n reset, momentary switch and five-pin service connector. Open contacts retain their fixed bias; not all option states recoverable. |
@@ -445,9 +453,9 @@ new maintained test that merely mirrors the generator.
 | **F1** — T6.3A / 250V provisional | `1`  (passive) → `/Mains input and isolated 5 V supply/AC_L_IN`<br>`2`  (passive) → `AC_L_FUSED` | C-MAINS |
 | **J1** — AC INPUT / cord or inlet | `1` Pin_1 (passive) → `/Mains input and isolated 5 V supply/AC_L_IN`<br>`2` Pin_2 (passive) → `AC_N`<br>`3` Pin_3 (passive) → `PE` | C-MAINS |
 | **J13** — SENSOR LINK | `1` Pin_1 (passive) → `GND`<br>`2` Pin_2 (passive) → `+3V3_SENS`<br>`3` Pin_3 (passive) → `I2C_SDA`<br>`4` Pin_4 (passive) → `I2C_SCL`<br>`5` Pin_5 (passive) → `MUX_RESET_N` | C-SENSIF |
-| **J15** — OUTPUT BUS / LOGIC + ACTUATOR POWER | `1` Pin_1 (passive) → `GND`<br>`2` Pin_2 (passive) → `+5V_SELECTED`<br>`3` Pin_3 (passive) → `LP_I2C_SDA`<br>`4` Pin_4 (passive) → `LP_I2C_SCL`<br>`5` Pin_5 (passive) → `LINE_SYNC`<br>`6` Pin_6 (passive) → `+5V_SYS` | BUS-6 |
+| **J15** — OUTPUT BUS / IDC6 | `1` Pin_1_1 (passive) → `+5V_SELECTED`<br>`2` Pin_2_2 (passive) → `LP_I2C_SDA`<br>`3` Pin_3_3 (passive) → `GND`<br>`4` Pin_4_4 (passive) → `LP_I2C_SCL`<br>`5` Pin_5_5 (passive) → `+5V_SYS`<br>`6` Pin_6_6 (passive) → `LINE_SYNC` | BUS-6 |
 | **J16** — MAINS LINK / provisional terminal | `1` Pin_1 (passive) → `AC_L_FUSED`<br>`2` Pin_2 (passive) → `AC_N`<br>`3` Pin_3 (passive) → `PE` | C-MAINS |
-| **J18** — OUTPUT BUS / LOGIC + ACTUATOR POWER | `1` Pin_1 (passive) → `GND`<br>`2` Pin_2 (passive) → `+5V_SELECTED`<br>`3` Pin_3 (passive) → `LP_I2C_SDA`<br>`4` Pin_4 (passive) → `LP_I2C_SCL`<br>`5` Pin_5 (passive) → `LINE_SYNC`<br>`6` Pin_6 (passive) → `+5V_SYS` | BUS-6 |
+| **J18** — OUTPUT BUS / IDC6 | `1` Pin_1_1 (passive) → `+5V_SELECTED`<br>`2` Pin_2_2 (passive) → `LP_I2C_SDA`<br>`3` Pin_3_3 (passive) → `GND`<br>`4` Pin_4_4 (passive) → `LP_I2C_SCL`<br>`5` Pin_5_5 (passive) → `+5V_SYS`<br>`6` Pin_6_6 (passive) → `LINE_SYNC` | BUS-6 |
 | **J19** — MAINS LINK / provisional terminal | `1` Pin_1 (passive) → `AC_L_FUSED`<br>`2` Pin_2 (passive) → `AC_N`<br>`3` Pin_3 (passive) → `PE` | C-MAINS |
 | **J21** — PANEL USB-C / ADAFRUIT 6153 | `1` VBUS (passive) → `Net-(J21-VBUS)`<br>`2` GND (passive) → `GND`<br>`3` D+ (passive) → `Net-(J21-D+)`<br>`4` D- (passive) → `Net-(J21-D-)`<br>`5` CC1 (passive+no_connect) → `unconnected-(J21-CC1-Pad5)`<br>`6` CC2 (passive+no_connect) → `unconnected-(J21-CC2-Pad6)` | C-USBPORT |
 | **J22** — 3V3 UART SERVICE / NO 5V | `1` Pin_1 (passive) → `GND`<br>`2` Pin_2 (passive) → `+3V3`<br>`3` Pin_3 (passive) → `UART_TX`<br>`4` Pin_4 (passive) → `UART_RX` | C-UART |
@@ -477,8 +485,8 @@ new maintained test that merely mirrors the generator.
 | **R29** — 5k1 / 1% / DNP | `1`  (passive) → `Net-(J27-CC2)`<br>`2`  (passive) → `GND` | C-USBALT |
 | **R40** — 10k | `1`  (passive) → `+3V3_SENS`<br>`2`  (passive) → `I2C_SDA` | C-QWPULL |
 | **R41** — 10k | `1`  (passive) → `+3V3_SENS`<br>`2`  (passive) → `I2C_SCL` | C-QWPULL |
-| **R42** — 4k7 | `1`  (passive) → `+3V3`<br>`2`  (passive) → `LP_I2C_SDA` | LP-MAIN |
-| **R43** — 4k7 | `1`  (passive) → `+3V3`<br>`2`  (passive) → `LP_I2C_SCL` | LP-MAIN |
+| **R42** — 2k2 | `1`  (passive) → `+3V3`<br>`2`  (passive) → `LP_I2C_SDA` | LP-MAIN |
+| **R43** — 2k2 | `1`  (passive) → `+3V3`<br>`2`  (passive) → `LP_I2C_SCL` | LP-MAIN |
 | **R44** — 0 | `1`  (passive) → `+3V3_SENS`<br>`2`  (passive) → `/Independent Qwiic bench ports/QWIIC_HP_3V3` | QW-POWER |
 | **R45** — 0 | `1`  (passive) → `+3V3`<br>`2`  (passive) → `/Independent Qwiic bench ports/QWIIC_LP_3V3` | LP-MAIN |
 | **R46** — 0 | `1`  (passive) → `+3V3_SENS`<br>`2`  (passive) → `/Independent Qwiic bench ports/QWIIC_HP2_3V3` | QW-POWER |
@@ -523,6 +531,7 @@ Reconciliation: **100 components / 308 distinct symbol-pin identities**.
 | **C202** — 100n / 16V | `1`  (passive) → `+3V3_OUT`<br>`2`  (passive) → `GND` | O-MCU-BIAS |
 | **C203** — 1u / 10V | `1`  (passive) → `+3V3_OUT`<br>`2`  (passive) → `GND` | O-MCU-BIAS |
 | **C204** — 100n / 16V | `1`  (passive) → `/Local output MCU, power and recovery/OUT_NRST`<br>`2`  (passive) → `GND` | O-MCU-BIAS |
+| **C205** — 100n / 16V | `1`  (passive) → `+5V_SYS`<br>`2`  (passive) → `GND` | O-RAW-BYPASS |
 | **C300** — 100n / 10V | `1`  (passive) → `+3V3_OUT`<br>`2`  (passive) → `GND` | O-CURRENT |
 | **C301** — 1u / 10V | `1`  (passive) → `+3V3_OUT`<br>`2`  (passive) → `GND` | O-CURRENT |
 | **C302** — 1n / 10V | `1`  (passive) → `CURRENT_V`<br>`2`  (passive) → `GND` | O-CURRENT |
@@ -538,10 +547,11 @@ Reconciliation: **100 components / 308 distinct symbol-pin identities**.
 | **D113** — ESD5Z6.0T1G | `1` K (passive) → `+5V_LOGIC`<br>`2` A (passive) → `GND` | BUS-ESD |
 | **F2** — T3.15A provisional | `1`  (passive) → `AC_L_FUSED`<br>`2`  (passive) → `Net-(Q102-A2)` | O-MAINS |
 | **J10** — Qualtek 738W-X2/03 (wired) | `1` Pin_1 (passive) → `OUTLET_L`<br>`2` Pin_2 (passive) → `AC_N`<br>`3` Pin_3 (passive) → `PE` | O-MAINS |
-| **J14** — OUTPUT BUS / LOGIC + ACTUATOR POWER | `1` Pin_1 (passive) → `GND`<br>`2` Pin_2 (passive) → `+5V_LOGIC`<br>`3` Pin_3 (passive) → `OUT_SDA`<br>`4` Pin_4 (passive) → `OUT_SCL`<br>`5` Pin_5 (passive) → `LINE_SYNC`<br>`6` Pin_6 (passive) → `+5V_SYS` | BUS-6 |
+| **J14** — OUTPUT BUS / IDC6 | `1` Pin_1_1 (passive) → `+5V_LOGIC`<br>`2` Pin_2_2 (passive) → `OUT_SDA`<br>`3` Pin_3_3 (passive) → `GND`<br>`4` Pin_4_4 (passive) → `OUT_SCL`<br>`5` Pin_5_5 (passive) → `+5V_SYS`<br>`6` Pin_6_6 (passive) → `LINE_SYNC` | BUS-6 |
 | **J17** — MAINS LINK / provisional terminal | `1` Pin_1 (passive) → `AC_L_FUSED`<br>`2` Pin_2 (passive) → `AC_N`<br>`3` Pin_3 (passive) → `PE` | O-MAINS |
 | **J20** — SNUBBER CONFIG | `1` Pin_1 (passive) → `Net-(J20-Pin_1)`<br>`2` Pin_2 (passive) → `/Heater 1/TRIAC_A1`<br>`3` Pin_3 (passive) → `Net-(J20-Pin_1)`<br>`4` Pin_4 (passive) → `/Heater 1/TRIAC_A1` | O-SNUB |
 | **J21** — 3V3 SWD / SERVICE | `1` Pin_1 (passive) → `+3V3_OUT`<br>`2` Pin_2 (passive) → `GND`<br>`3` Pin_3 (passive) → `/Local output MCU, power and recovery/OUT_SWDIO`<br>`4` Pin_4 (passive) → `/Local output MCU, power and recovery/OUT_BOOT0_SWCLK`<br>`5` Pin_5 (passive) → `/Local output MCU, power and recovery/OUT_NRST` | O-SERVICE |
+| **J22** — OUTPUT BUS / DNP | `1` Pin_1_1 (passive) → `+5V_LOGIC`<br>`2` Pin_2_2 (passive) → `OUT_SDA`<br>`3` Pin_3_3 (passive) → `GND`<br>`4` Pin_4_4 (passive) → `OUT_SCL`<br>`5` Pin_5_5 (passive) → `+5V_SYS`<br>`6` Pin_6_6 (passive) → `LINE_SYNC` | BUS-6 |
 | **K1** — G6DN-1A-L DC5 | `1` COIL (passive) → `+5V_SYS`<br>`2` COIL (passive) → `Net-(D1-A)`<br>`5` NO (passive) → `/Heater 1/TRIAC_A1`<br>`8` COM (passive) → `CUT_L_UNSENSED` | O-RELAY |
 | **Q101** — MMBT3904 | `1` B (input) → `Net-(Q101-B)`<br>`2` E (passive) → `GND`<br>`3` C (passive) → `Net-(Q101-C)` | O-HEAT |
 | **Q102** — BTA08-600SWRG | `1` A1 (passive) → `/Heater 1/TRIAC_A1`<br>`2` A2 (passive) → `Net-(Q102-A2)`<br>`3` G (input) → `Net-(Q102-G)` | O-GATE |
@@ -594,7 +604,7 @@ Reconciliation: **100 components / 308 distinct symbol-pin identities**.
 | **U30** — TMCS1123B5AQDVGR | `1` IN+ (passive) → `CUT_L_UNSENSED`<br>`2` IN- (passive) → `OUTLET_L`<br>`3` GND (power_in) → `GND`<br>`4` ALERT (open_collector) → `GND`<br>`5` VREF_OUT (output) → `Net-(U30-VREF_OUT)`<br>`6` VOUT (output) → `Net-(U30-VOUT)`<br>`7` OC (open_collector) → `GND`<br>`8` VS (power_in) → `+3V3_OUT`<br>`9` VOC (input) → `+3V3_OUT`<br>`10` NC (no_connect) → `unconnected-(U30-NC-Pad10)` | O-CURRENT |
 | **U31** — ACPL-K370-500E | `1` AC1 (passive) → `Net-(U31-AC1)`<br>`2` DC+ (passive+no_connect) → `unconnected-(U31-DC+-Pad2)`<br>`3` DC- (passive+no_connect) → `unconnected-(U31-DC--Pad3)`<br>`4` AC2 (passive) → `AC_N`<br>`5` GND (power_in) → `GND`<br>`6` VO (open_collector) → `OUT_VOLT_N`<br>`7` NC (no_connect) → `unconnected-(U31-NC-Pad7)`<br>`8` VCC (power_in) → `Net-(U31-VCC)` | O-VOLT |
 
-Reconciliation: **79 components / 205 distinct symbol-pin identities**.
+Reconciliation: **81 components / 213 distinct symbol-pin identities**.
 
 ### motley-sensors
 
