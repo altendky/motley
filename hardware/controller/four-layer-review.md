@@ -1,5 +1,12 @@
 # Four-layer ground and power-plane study
 
+**Output-ribbon revision, 2026-11-17:** one local CUT_EN bridge now uses In2.Cu,
+21.96 mm between an existing via at (59.4,74.2) and plated TP5 at (60,95).
+It adds no vias and retains In1 GND, the supply-zone boundaries and the board
+outline. This supersedes the earlier outer-only CUT_EN conclusion below;
+power-plane feeds and actual filled copper are rechecked for the revised board.
+See the [current verification record](verification.md).
+
 Date: 2026-11-14. Starting source: merged PR #33, commit
 `296edee5de4194e0dd0b33d40a5abc8ae7c81cd9`. The developer requested four layers
 with ground and power planes on all three designs. [ADR-0021](../../.rqml/adr/0021-four-layer-ground-and-power-planes.md)

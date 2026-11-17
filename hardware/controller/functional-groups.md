@@ -51,13 +51,16 @@ physical components and are excluded.
 
 Known identifiers alone cannot prove that a component serves the claimed
 function. Review that decision, including supporting passives and protection,
-when editing the circuit. The current allocations cover 259 physical schematic
-components and ten board-only mechanical footprints, 269 total across the three
+when editing the circuit. The current allocations cover 261 physical schematic
+components and ten board-only mechanical footprints, 271 total across the three
 board designs. Building two identical output boards repeats that board inventory;
 the checker does not impose a system purchase quantity.
 
 ## Ownership boundaries
 
+- Carrier J15/J18, output J14/J22 (including DNP J22), central LP pull-ups and
+  raw tap bypass C205 belong to `output.control`; the shared ribbon serves
+  control and its supporting power, rather than the switched-mains path.
 - The optional USB J27, three copper source selectors and two DNP CC pull-downs
   belong to `usb.service`, including the excluded-BOM copper features and DNP
   components. Their lack of purchased default parts does not remove allocation.

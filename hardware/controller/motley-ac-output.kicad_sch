@@ -804,7 +804,9 @@
 			)
 			(embedded_fonts no)
 		)
-	)
+(symbol "Connector_Generic:Conn_02x03_Odd_Even" (pin_names (offset 1.016) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (duplicate_pin_numbers_are_jumpers no) (property "Reference" "J" (at 1.27 5.08 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Value" "Conn_02x03_Odd_Even" (at 1.27 -5.08 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Footprint" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_keywords" "connector" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_fp_filters" "Connector*:*_2x??_*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (symbol "Conn_02x03_Odd_Even_1_1" (rectangle (start -1.27 3.81) (end 3.81 -3.81) (stroke (width 0.254) (type default)) (fill (type background))) (rectangle (start -1.27 2.667) (end 0 2.413) (stroke (width 0.1524) (type default)) (fill (type none))) (rectangle (start -1.27 0.127) (end 0 -0.127) (stroke (width 0.1524) (type default)) (fill (type none))) (rectangle (start -1.27 -2.413) (end 0 -2.667) (stroke (width 0.1524) (type default)) (fill (type none))) (rectangle (start 3.81 2.667) (end 2.54 2.413) (stroke (width 0.1524) (type default)) (fill (type none))) (rectangle (start 3.81 0.127) (end 2.54 -0.127) (stroke (width 0.1524) (type default)) (fill (type none))) (rectangle (start 3.81 -2.413) (end 2.54 -2.667) (stroke (width 0.1524) (type default)) (fill (type none))) (pin passive line (at -5.08 2.54 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 7.62 2.54 180) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))) (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27))))) (pin passive line (at 7.62 0 180) (length 3.81) (name "Pin_4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_5" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27))))) (pin passive line (at 7.62 -2.54 180) (length 3.81) (name "Pin_6" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))) (embedded_fonts no))
+(symbol "Device:C" (pin_numbers (hide yes)) (pin_names (offset 0.254)) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (duplicate_pin_numbers_are_jumpers no) (property "Reference" "C" (at 0.635 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Value" "C" (at 0.635 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Footprint" "" (at 0.9652 -3.81 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Description" "Unpolarized capacitor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_keywords" "cap capacitor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_fp_filters" "C_*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (symbol "C_0_1" (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508) (type default)) (fill (type none))) (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508) (type default)) (fill (type none)))) (symbol "C_1_1" (pin passive line (at 0 3.81 270) (length 2.794) (name "" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 0 -3.81 90) (length 2.794) (name "" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))) (embedded_fonts no))
+)
 	(text "One heater circuit and one placement area per physical output PCB.\nUse the same schematic and PCB for both independently controlled copies."
 		(exclude_from_sim no)
 		(at 15 190 0)
@@ -816,7 +818,7 @@
 		)
 		(uuid "7ba52c3e-4315-5264-ada1-46d6abeee3bd")
 	)
-	(text "J14 mates with carrier J15/J18: GND / selected logic 5 V / SDA / SCL / SYNC / raw actuator 5 V.\nJ17 is the separate mains feed. USB can power logic without powering relay/opto actuators.\nOnly one new/recovery board at the selected default address; other addressed boards may remain connected."
+	(text "J14 (fitted) / J22 (DNP) mate with carrier J15/J18: logic 5 V / SDA / GND / SCL / raw 5 V / SYNC.\nJ17 is the separate mains feed. USB can power logic without powering relay/opto actuators.\nOnly one new/recovery board at the selected default address; other addressed boards may remain connected."
 		(exclude_from_sim no)
 		(at 15 174 0)
 		(effects
@@ -850,16 +852,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 54.61) (xy 59.69 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3290335e-a786-5f94-b412-3f793f8928ab")
-	)
-	(wire
-		(pts
 			(xy 69.85 121.92) (xy 59.69 121.92)
 		)
 		(stroke
@@ -867,16 +859,6 @@
 			(type default)
 		)
 		(uuid "342cbfb6-5b37-5b86-8226-89b9872a510a")
-	)
-	(wire
-		(pts
-			(xy 69.85 62.23) (xy 59.69 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "37860ee1-e879-51fe-8f70-4cdeb8055dc3")
 	)
 	(wire
 		(pts
@@ -910,16 +892,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 49.53) (xy 59.69 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "84587cf3-8db1-5a15-84a8-33e09bf8556b")
-	)
-	(wire
-		(pts
 			(xy 69.85 116.84) (xy 59.69 116.84)
 		)
 		(stroke
@@ -940,16 +912,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 59.69) (xy 59.69 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b92edf97-06a4-521a-b34f-dde683977701")
-	)
-	(wire
-		(pts
 			(xy 69.85 119.38) (xy 59.69 119.38)
 		)
 		(stroke
@@ -957,26 +919,6 @@
 			(type default)
 		)
 		(uuid "ba45da21-208d-58dd-b6d9-9c14e0c702f8")
-	)
-	(wire
-		(pts
-			(xy 69.85 52.07) (xy 59.69 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6af3993-fa14-5ba7-b6db-473d938e5dfd")
-	)
-	(wire
-		(pts
-			(xy 69.85 57.15) (xy 59.69 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e1f103c9-83c3-5b4c-b16c-59ac4a0efb73")
 	)
 	(global_label "+5V_LOGIC"
 		(shape bidirectional)
@@ -1044,116 +986,6 @@
 			)
 		)
 	)
-	(global_label "OUT_SCL"
-		(shape bidirectional)
-		(at 59.69 57.15 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "14aca215-b29e-55d6-b409-0d4d7bb8105f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 57.15 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "+5V_LOGIC"
-		(shape bidirectional)
-		(at 59.69 52.07 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "16d03fab-a002-53ce-953c-dc8f0547a9ea")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 52.07 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "+5V_SYS"
-		(shape bidirectional)
-		(at 59.69 62.23 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "1a222812-6992-5c49-9052-1ed65092aa17")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 62.23 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "LINE_SYNC"
-		(shape bidirectional)
-		(at 59.69 59.69 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "4b36892e-7df5-59a8-8066-ec6305495b44")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 59.69 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "OUT_SDA"
-		(shape bidirectional)
-		(at 59.69 54.61 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "6ebc214b-e173-5332-a7ce-e554718f4057")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 54.61 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
 	(global_label "+5V_SYS"
 		(shape bidirectional)
 		(at 44.45 157.48 180)
@@ -1210,28 +1042,6 @@
 		(uuid "cb531163-33d7-588d-b7e0-521c061ec496")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 90.17 157.48 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 59.69 49.53 180)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "dcc1ee50-1797-5e3f-a0b9-60412f583b49")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.69 49.53 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1581,108 +1391,6 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x06")
-		(at 74.93 54.61 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e47bc1ce-4523-52a1-8e3f-75d86407f48b")
-		(property "Reference" "J14" (at 78.74000000000001 49.53 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)) (justify left)))
-		(property "Value" "OUTPUT BUS / LOGIC + ACTUATOR POWER" (at 78.74000000000001 52.07 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)) (justify left)))
-		(property "Footprint" "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical"
-			(at 74.93 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
-			(at 74.93 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 74.93 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "FunctionalGroup" "output.control"
-			(at 74.93 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-007 MOT-AC-009 MOT-AC-011 MOT-AC-015"
-			(at 74.93 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "19557236-e64d-46cd-90d0-7abd20b9d287")
-		)
-		(pin "2"
-			(uuid "fd9c6969-8df9-460c-ba24-bb4fef4d4b1f")
-		)
-		(pin "3"
-			(uuid "0f65ac58-c047-41e0-b9ac-6a6781481564")
-		)
-		(pin "4"
-			(uuid "f7f7548d-3c46-4297-8e6c-c2e387b24cef")
-		)
-		(pin "5"
-			(uuid "72cf6dd5-6bc4-4779-a55c-7f87d7f4dbaa")
-		)
-		(pin "6"
-			(uuid "5a490177-db95-4de9-8829-33a62cbfdb4d")
-		)
-		(instances
-			(project "motley-ac-output"
-				(path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b"
-					(reference "J14")
-					(unit 1)
-				)
-			)
-		)
-		(property "Manufacturer" "JST" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "MPN" "B6B-PH-K(LF)(SN)" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "LCSC" "C274409" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "AssemblyDisposition" "factory-candidate" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "HousingMPN" "PHR-6" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "ContactMPN" "SPH-002T-P0.5S" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-		(property "PurchasingNote" "Keyed PH six-way. Pin1 GND,2 logic5V,3 SDA,4 SCL,5 LINE_SYNC,6 raw5V. Preserve continuity by numbered pads; mating drawings required. 0.75mm holes within manufacturer 0.70+0.10/-0. Economic matching confirmed 2026-11-16. 2A series rating with24AWG; system supply remains1A." (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
-	)
 	(sheet
 		(at 134.62 111.76)
 		(size 110 25.4)
@@ -1922,4 +1630,104 @@
 			(page "1")
 		)
 	)
+	(symbol
+  (lib_id "Connector_Generic:Conn_02x03_Odd_Even")
+  (at 74.93 54.61 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "e47bc1ce-4523-52a1-8e3f-75d86407f48b")
+  (property "Reference" "J14" (at 76.2 45.72 0) (show_name no) (do_not_autoplace no) (effects (font (size 0.9 0.9))))
+  (property "Value" "OUTPUT BUS / IDC6" (at 76.2 48.26 0) (show_name no) (do_not_autoplace no) (effects (font (size 0.9 0.9))))
+  (property "Footprint" "Motley:Kinghelm_KH-2.54PH180-2X3P-L8.9_Vertical" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.kinghelm.net/upload/file/20230103/KH-2.54PH180-2X3P-L8.9.pdf" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-007 MOT-AC-009 MOT-AC-011 MOT-AC-015 MOT-HW-015 MOT-HW-016" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.control" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "Kinghelm" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "KH-2.54PH180-2X3P-L8.9" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C5157626" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "AssemblyDisposition" "factory-candidate" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "SocketMPN" "HARTING 09185065813" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "CableMPN" "3M 3801/06" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Pinout" "1logic5V 2SDA 3GND 4SCL 5raw5V 6LINE_SYNC; same at every socket, pin1 to wire1." (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "PurchasingNote" "Keyed 2x3/2.54mm IDC header,1.02mm holes. Economic factory matching confirmed2026-11-17. Nominal mixed-vendor socket fit; sample mate/termination required. Sixteen-output target remains exploratory; selected supply1A." (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b" (reference "J14") (unit 1)))))
+	(wire (pts (xy 69.85 52.07) (xy 62.23 52.07)) (stroke (width 0) (type default)) (uuid "a3bbe85b-f59f-52f9-950e-c5c72dacae00"))
+	(global_label "+5V_LOGIC" (shape bidirectional) (at 62.23 52.07 180) (effects (font (size 1 1)) (justify right)) (uuid "c489f8d0-bb68-503e-a360-489b0a75411a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 52.07 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 52.07) (xy 90.17 52.07)) (stroke (width 0) (type default)) (uuid "db5b2ad2-264e-555d-b346-128416df9272"))
+	(global_label "OUT_SDA" (shape bidirectional) (at 90.17 52.07 0) (effects (font (size 1 1)) (justify left)) (uuid "766a1129-073d-5fa3-a825-c5087d162b75") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 52.07 0) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 69.85 54.61) (xy 62.23 54.61)) (stroke (width 0) (type default)) (uuid "ac7d155c-2b30-5804-b69a-9fa679f35da1"))
+	(global_label "GND" (shape bidirectional) (at 62.23 54.61 180) (effects (font (size 1 1)) (justify right)) (uuid "ee481b37-8571-5bbc-8c8c-b5a54af4492e") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 54.61 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 54.61) (xy 90.17 54.61)) (stroke (width 0) (type default)) (uuid "c76e32c4-d5a6-5312-85ba-678268ed94e6"))
+	(global_label "OUT_SCL" (shape bidirectional) (at 90.17 54.61 0) (effects (font (size 1 1)) (justify left)) (uuid "48dcfe24-fa33-5725-a442-906652a50327") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 54.61 0) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 69.85 57.15) (xy 62.23 57.15)) (stroke (width 0) (type default)) (uuid "e4c17726-063a-5f99-98c6-5f90aee15a2a"))
+	(global_label "+5V_SYS" (shape bidirectional) (at 62.23 57.15 180) (effects (font (size 1 1)) (justify right)) (uuid "123de849-b81a-5091-a670-fc392d7600fc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 57.15 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 57.15) (xy 90.17 57.15)) (stroke (width 0) (type default)) (uuid "f17e6ef1-d266-5165-8f1a-21e8bd2de85c"))
+	(global_label "LINE_SYNC" (shape bidirectional) (at 90.17 57.15 0) (effects (font (size 1 1)) (justify left)) (uuid "d9aa6477-cbfb-53da-8caf-4189169582d4") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 57.15 0) (hide yes) (effects (font (size 1 1)))))
+	(symbol
+  (lib_id "Connector_Generic:Conn_02x03_Odd_Even")
+  (at 74.93 83.82 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp yes)
+  (uuid "084c51b0-d886-576a-bcd7-ef7e6c2df7b1")
+  (property "Reference" "J22" (at 76.2 74.93 0) (show_name no) (do_not_autoplace no) (effects (font (size 0.9 0.9))))
+  (property "Value" "OUTPUT BUS / DNP" (at 76.2 77.47 0) (show_name no) (do_not_autoplace no) (effects (font (size 0.9 0.9))))
+  (property "Footprint" "Motley:Kinghelm_KH-2.54PH180-2X3P-L8.9_Vertical" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.kinghelm.net/upload/file/20230103/KH-2.54PH180-2X3P-L8.9.pdf" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-007 MOT-AC-009 MOT-AC-011 MOT-AC-015 MOT-HW-015 MOT-HW-016" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.control" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "Kinghelm" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "KH-2.54PH180-2X3P-L8.9" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C5157626" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "AssemblyDisposition" "manual-DNP" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "SocketMPN" "HARTING 09185065813" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "CableMPN" "3M 3801/06" (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Pinout" "1logic5V 2SDA 3GND 4SCL 5raw5V 6LINE_SYNC; same at every socket, pin1 to wire1." (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "PurchasingNote" "Keyed 2x3/2.54mm IDC header,1.02mm holes. Economic factory matching confirmed2026-11-17. Nominal mixed-vendor socket fit; sample mate/termination required. Sixteen-output target remains exploratory; selected supply1A." (at 74.93 83.82 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b" (reference "J22") (unit 1)))))
+	(wire (pts (xy 69.85 81.28) (xy 62.23 81.28)) (stroke (width 0) (type default)) (uuid "39aa8812-f45a-5679-a5f8-436640b072e2"))
+	(global_label "+5V_LOGIC" (shape bidirectional) (at 62.23 81.28 180) (effects (font (size 1 1)) (justify right)) (uuid "5b07f3e7-7596-561a-a30a-0f526632cfa3") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 81.28 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 81.28) (xy 90.17 81.28)) (stroke (width 0) (type default)) (uuid "645aa07e-6387-5bf7-b54f-ca2491fa9265"))
+	(global_label "OUT_SDA" (shape bidirectional) (at 90.17 81.28 0) (effects (font (size 1 1)) (justify left)) (uuid "6aee312a-af75-5277-abe0-91ef880bb690") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 81.28 0) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 69.85 83.82) (xy 62.23 83.82)) (stroke (width 0) (type default)) (uuid "ec89411d-6b38-5eb5-be3e-5332dbb5209c"))
+	(global_label "GND" (shape bidirectional) (at 62.23 83.82 180) (effects (font (size 1 1)) (justify right)) (uuid "0610d982-084a-56e2-91cb-634d6b5a882a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 83.82 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 83.82) (xy 90.17 83.82)) (stroke (width 0) (type default)) (uuid "cea163ce-3adf-587a-9e49-fc0cafb0b4b9"))
+	(global_label "OUT_SCL" (shape bidirectional) (at 90.17 83.82 0) (effects (font (size 1 1)) (justify left)) (uuid "0732e33e-94f1-5b67-9e22-86f077c95c7c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 83.82 0) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 69.85 86.36) (xy 62.23 86.36)) (stroke (width 0) (type default)) (uuid "e56a072c-c316-5a2e-a21f-a5ac4203e7e5"))
+	(global_label "+5V_SYS" (shape bidirectional) (at 62.23 86.36 180) (effects (font (size 1 1)) (justify right)) (uuid "3f74822b-fb9c-5687-aa50-7551172ed934") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 62.23 86.36 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 82.55 86.36) (xy 90.17 86.36)) (stroke (width 0) (type default)) (uuid "0416f558-ec5c-5ba9-a687-4ae37e2531cd"))
+	(global_label "LINE_SYNC" (shape bidirectional) (at 90.17 86.36 0) (effects (font (size 1 1)) (justify left)) (uuid "11fd127a-8af1-510d-b4a7-e54f07535acc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 90.17 86.36 0) (hide yes) (effects (font (size 1 1)))))
+	(symbol
+  (lib_id "Device:C")
+  (at 111.76 104.14 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "447c216b-cec7-5f32-a3b9-89a16dcdc7e8")
+  (property "Reference" "C205" (at 115.57 99.06 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "100n / 16V" (at 115.57 101.6 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-HW-016" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.control" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "YAGEO" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "CC0805KRX7R9BB104" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C49678" (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Purpose" "Local raw5V bypass at ribbon tap: actuator supply and AC reference for adjacent LINE_SYNC conductor." (at 111.76 104.14 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b" (reference "C205") (unit 1)))))
+	(wire (pts (xy 111.76 100.33) (xy 101.6 100.33)) (stroke (width 0) (type default)) (uuid "cfd66de4-1d3b-530f-8be4-b73d75f26bf7"))
+	(global_label "+5V_SYS" (shape bidirectional) (at 101.6 100.33 180) (effects (font (size 1 1)) (justify right)) (uuid "7c96ff06-e56a-5144-913c-d8047b5bc641") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.6 100.33 180) (hide yes) (effects (font (size 1 1)))))
+	(wire (pts (xy 111.76 107.95) (xy 101.6 107.95)) (stroke (width 0) (type default)) (uuid "0ebb014d-e548-56fc-87f6-dd9f622d9a36"))
+	(global_label "GND" (shape bidirectional) (at 101.6 107.95 180) (effects (font (size 1 1)) (justify right)) (uuid "13757a1c-f9ae-52d1-912f-e065490dd2af") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.6 107.95 180) (hide yes) (effects (font (size 1 1)))))
+	(text "J14 fitted; J22 parallel and normally DNP. Continuous ribbon taps: pin1 to wire1.\n1logic5V 2SDA 3GND 4SCL 5raw5V 6SYNC. C205 bypasses raw5V at the tap.\nUnplugging either header retains local MCU/actuator bias. No hot-plug qualification." (at 20.32 93.98 0) (effects (font (size 0.9 0.9)) (justify left top)) (uuid "bc4e9f74-4f62-52d8-ac98-b74128c46c9e"))
 )

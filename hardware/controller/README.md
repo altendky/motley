@@ -132,21 +132,24 @@ the same check. See [the allocation guide](functional-groups.md) and
 [group catalog](functional-groups.toml) for ownership boundaries and maintenance.
 
 The connector numbers below define signal correspondence. The six-wire output
-links now use keyed JST B6B-PH-K(LF)(SN), with PHR-6 housings and standard-force
-SPH-002T-P0.5S contacts; harness continuity and crimp qualification remain to be
-checked. Other low-voltage 2.54 mm headers retain their study assignments.
+bus uses a continuous ribbon with keyed/shrouded 2×3, 2.54 mm Kinghelm headers,
+HARTING 09185065813 IDC sockets and 3M 3801/06 cable. Output J14 is fitted;
+parallel J22 is DNP. Nominal tap spacing is 50 mm, with allowance for strain
+relief and service bends. See the [harness specification and electrical screen](../../docs/output-ribbon.md).
+Sample mating, termination and operating qualification remain open. Other
+low-voltage headers retain their study assignments.
 Mechanical-only plated support holes are isolated from circuit nets. Mains
 uses its separate terminal connection and must never use the signal interface.
 
 | Link | Mating references | Pin order |
 | --- | --- | --- |
 | Sensor low voltage | Carrier J13 to sensor J12 | 1 GND, 2 switched 3V3_SENS, 3 SDA, 4 SCL, 5 mux RESET_N (GPIO21) |
-| Output 1 low voltage | Carrier J15 to first output module J14 | 1 GND, 2 selected logic 5 V, 3 LP_I2C_SDA, 4 LP_I2C_SCL, 5 LINE_SYNC, 6 raw +5V_SYS |
-| Output 2 low voltage | Carrier J18 to second output module J14 | Same six shared signals as output 1 |
+| Output low voltage | One carrier J15 or J18 to continuous ribbon taps at each output J14 | 1 selected logic 5 V, 2 LP_I2C_SDA, 3 GND, 4 LP_I2C_SCL, 5 raw +5V_SYS, 6 LINE_SYNC |
+| Optional output chaining | Each output J22, DNP by default | Electrically parallel with J14, identical numbered mapping |
 | Output 1 mains | Carrier J16 to first output module J17 | 1 AC_L_FUSED, 2 AC_N, 3 PE |
 | Output 2 mains | Carrier J19 to second output module J17 | 1 AC_L_FUSED, 2 AC_N, 3 PE |
 
-Carrier contact 2 is `+5V_SELECTED`; the corresponding output net is `+5V_LOGIC`.
+Carrier contact 1 is `+5V_SELECTED`; the corresponding output net is `+5V_LOGIC`.
 It feeds the output's local `+3V3_OUT` regulator, permitting USB-powered logic
 commissioning without powering the raw 5 V relay/opto actuators. These two rails
 are not tied together on the output. All boards share low-voltage GND.
@@ -156,6 +159,13 @@ Each module's J10 is its own outlet; physical copies are not separate schematic
 instances. Shared LINE_SYNC requires the same AC source/phase at every output.
 Full and partial unplugging, missing GND and separately powered bus endpoints
 remain unqualified.
+
+Connect a continuous harness to only one carrier source. Its downstream
+conductors remain intact when a tapped board is unplugged. The revised pin
+order is incompatible with the earlier PH6 wiring. R42/R43 are now 2k2, with
+no output-board I2C pull-ups; C205 bypasses raw 5 V at each output tap. Two
+outputs have useful calculated timing/current margin. Sixteen remains a soft
+exploration target requiring a different load/protection/supply assessment.
 
 The main fuse is on the carrier; each heater retains its branch fuse on the
 output board. Neutral and PE continue to both outlets. PE is not low-voltage
@@ -177,7 +187,7 @@ Six additional four-pin JST-SH sockets use standard Qwiic order:
 | Sensor J10/J11 | Parallel mux upstream SDA/SCL, also used by J12/J13 | Shared connector-side power enters through removable R50 = 0 ohm |
 
 Carrier-local pull-ups are 10k on the HP sensor bus to switched `+3V3_SENS`
-and 4k7 on the LP bus to main `+3V3`, one pair per bus rather than per socket.
+and 2k2 on the LP bus to main `+3V3`, one pair per bus rather than per socket.
 The mux keeps its local 4k7 upstream pull-ups
 through separately removable R55/R56 = 0 ohm and retains its reset pull-up,
 so it can be used without the carrier. Carrier port TVSs protect each signal pair and power
