@@ -1,5 +1,15 @@
 # ESD, touch reference and probe-access study
 
+USB interface extension, 2026-11-17: J27 is a normally-DNP 2.54 mm six-position
+alternative harness. JP30/31/32 select its VBUS/D+/D- or the existing PH cable
+together, preserving the selected-side D20/D38 protection and host-VBUS gating.
+The longer inactive data branch is disconnected. R28/R29 are separate DNP
+5k1/1% CC-to-GND resistors for J27 only; primary CC contacts stay NC on-board.
+CC has no active carrier input; these passive footprints do not establish
+Type-C CC ESD immunity. Alternative cable length, connector-side protection,
+return inductance, shell termination and system immunity still require review.
+Use only one upstream host and populate Rd in one place per CC line.
+
 Review: 2026-11-14. Governing design inputs: MOT-HW-001/002/004/005/006/009/010;
 native annotation integrity: approved MOT-HW-003 and ADR-0015. Electrical
 requirements remain drafts. This is an unrouted prototype, not a system ESD
@@ -72,7 +82,8 @@ files; the board remains unrouted.
 | Carrier J15/J18 and each output J14, six contacts | GND, selected logic 5 V, SDA, SCL, LINE_SYNC, raw 5 V. Carrier D34 protects SDA/SCL, D35 SYNC (second branch NC), D36 raw 5 V and D37 selected 5 V. Output D110 protects SDA/SCL, D112 SYNC (second branch NC), D111 raw 5 V and D113 logic 5 V. Signal arrays remain bidirectional; supply arrays have 6 V standoff. | Local HEAT_EN/CUT_EN no longer cross this connector. Shared I2C/SYNC and dual supplies introduce partial-contact/back-power paths that the older two-command analysis does not qualify. Hot leakage, missing GND, capacitance/edge timing, current/inrush and transient actuation remain open. |
 | Output J21 SWD/service, SW20 recovery, SW21 reset | Local 3.3 V reference, GND, SWDIO, SWCLK/BOOT0 and NRST; defined reset/boot biases are recorded in the intelligent-output review. | No additional connector-local TVS was added here. Service exposure, debugger-powered/unpowered states, shunt handling and whether local protection is needed remain explicit decisions. |
 | Carrier J22, four contacts | GND return; RX/TX and 3.3 V protected by two dual arrays; remaining channel NC. | External adapter power, missing-ground behavior and injection into an unpowered MCU still need an explicit supported procedure and tests. |
-| USB J21 VBUS and D+/D- | Existing USBLC6-2 protects the data path; D38 adds 6 V-standoff VBUS protection. D38 and TP7 actually join J21 pin 1, including the existing power-selector input, bleed and VBUS qualifier. | Keep low-capacitance protection on USB data. Normal host current/inrush/transfer budgets and fast-pulse coordination remain open. |
+| USB J21 / alternative J27 VBUS and D+/D- | Three source selectors connect one connector to the existing USBLC6-2 data path and D38 6 V-standoff VBUS protection. D38, TP7, power-selector input, bleed and VBUS qualifier stay on the selected common side. | Keep low-capacitance protection on USB data. The alternative connector's longer route needs cable-specific ESD/return assessment. Host current/inrush/transfer budgets and fast-pulse coordination remain open. |
+| Alternative J27 CC1/CC2 | Each reaches its own DNP 5k1/1% footprint to local GND; no active IC or primary CC connection. Fit only when the alternative assembly lacks Rd. | CC wiring and passive discharge paths need assessment for the chosen external receptacle. Shared USB data protection does not qualify CC immunity; no PD/current-negotiation capability is added. |
 | USB J21 provisional CC1/CC2 contacts | Remain NC on the carrier; the selected panel assembly contains its sink resistors. No active carrier CC input is exposed through these contacts. | Actual panel/harness mapping and resistor location must be confirmed. The external female CC contacts' discharge path is not qualified by these NC markers or the data-line protector. Select any additional protection at the verified panel interface. |
 | USB shell/shield | No shield is provided by the provisional unshielded harness; no new bond is invented. | The user's preference for a robust shielded assembly, shell termination and panel retention remains unsatisfied. Enclosure/return design and testing are required. |
 | Carrier J1/J16/J19; output J17/J10, three mains contacts each | PE remains separate from logic GND and continuous where required; no ordinary logic TVS is connected from L/N/PE to LV GND. | Mains transient protection, insulation, fuse coordination, enclosure/access and surge/ESD exposure remain a separate engineering task. No arbitrary MOV was added. |

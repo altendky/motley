@@ -367,6 +367,18 @@
       {
         "netclass": "MAINS_SENSE",
         "pattern": "unconnected-(U31-DC--Pad3)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R104-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R109-Pad2)"
+      },
+      {
+        "netclass": "MAINS_SENSE",
+        "pattern": "Net-(R110-Pad2)"
       }
     ]
   },

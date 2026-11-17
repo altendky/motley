@@ -1,5 +1,128 @@
 # Motley plan
 
+## Optional USB header and CC pull-downs, 2026-11-17
+
+**Readiness:** READY for the user's requested normally-unpopulated 0.1-inch
+USB interface and DNP CC pull-downs. `MOT-HW-014` records this real design input;
+continue the existing exploratory exception with electrical requirements draft.
+Approved `MOT-HW-003/013` and `MOT-CI-004` govern trace fields, allocation and
+derivatives. Preserve the default USB behavior, power qualification and mains
+isolation; keep the existing carrier outline and other boards unchanged.
+
+- [x] Add a labelled six-position 2.54 mm header and separate 5k1/1% CC1/CC2
+  pull-down footprints, all DNP. Three copper solder selectors default to PH
+  and select VBUS/D+/D- together for the alternate interface. No new purchased
+  default components or duplicate pull-downs on the Adafruit assembly.
+- [x] Place/reroute only the affected USB area, retaining a continuous LV ground
+  reference and disconnected inactive USB branches. Preserve existing UUIDs,
+  groups and pin maps except the intentional selector interface; verify the
+  contracted default electrical behavior and separate ALT behavior.
+- [x] Run native ERC/DRC, actual copper/plane/isolation/drill checks and default/
+  ALT connectivity review. Update pin/ESD notes, derivative SVGs and quote-input
+  provenance; independently review before refreshing baselines, then run full
+  pre-commit and standard RQML. Physical USB/hot-plug qualification remains open.
+
+**Result:** default/ALT connectivity and independent native review pass; native
+DRC has zero violations/opens. Full pre-commit and standard RQML pass (exit 0).
+The reference centerline screen passes; neighboring header antipads clip parts
+of the wider ±0.3 mm margin. Record this limitation and source identities in
+`hardware/controller/verification.md`; no USB impedance or operating acceptance
+is inferred.
+
+## Assembly-ready exact-part integration, 2026-11-16
+
+**Readiness:** READY for the user's authorization to confirm factory assembly,
+integrate exact footprints and obtain updated prices. Continue the exploratory
+hardware exception under `MOT-PROC-001`; approved `MOT-HW-003/013` and
+`MOT-CI-004` govern native identities, allocations and derivatives. Preserve
+electrical connectivity, front assembly, four-layer isolation and dimensions
+below the 100 mm discussion target. Keep the retained relay and LOW default;
+do not silently claim optional HIGH qualification or completed protection tests.
+
+- [x] Confirm actual PCBA matching for the proposed exact mains terminals,
+  holders and headers; distinguish selected factory parts from hand installation.
+  Review sensible alternatives and existing fuse/jumper limitations.
+- [x] Integrate manufacturer-derived footprints, source fields and corrected
+  placement/routing, retaining source UUIDs, pad-net identities and functional
+  allocations. Check access, covered component envelopes and hole sizes.
+- [x] Compare fresh netlists, native DRC/ERC, copper connectivity, isolation,
+  drills and wide mains paths. Inspect revised views and regenerate derivatives;
+  independently review before refreshing affected RQML baselines. Run full
+  pre-commit and standard RQML; record limits and tested hashes.
+- [x] Export revised BOM/CPL/Gerbers and obtain quotation-only JLC pricing.
+  Reconcile actual factory-selected references, hand-fitted items and attrition
+  for the one/two/five-controller scenarios without double counting parts.
+
+Verification: both boards have zero physical DRC violations/opens; independent
+filled-copper, isolation, drill and wide-path audits pass, as do source/pin-net
+invariants, full pre-commit and standard RQML. Eight changed SVGs are current;
+sensor sources/views are unchanged. Actual Economic prices are $285.26 /
+$312.08 / $419.13, with manual positions and stock omissions separated in
+`docs/jlcpcb-quote-2026-11-16-exact-parts.md`. This is a checked exploratory
+integration and quotation, not electrical/thermal or fabrication qualification.
+
+## Exact mechanical/electrical purchasing selections, 2026-11-16
+
+**Readiness:** SELECTED exact parts for the user's sourcing request.
+Continue the existing exploratory hardware exception and approved
+`MOT-HW-003/013` annotation/allocation obligations. Preserve circuit behavior,
+source identities, front assembly, isolation and the 100 mm board target.
+
+- [x] Inspect the twelve unresolved positions, existing ancillary selections and
+  manufacturer drawings. Select actual mains terminals, fuse holder/cartridge
+  assemblies, LV harness headers and configuration links; prioritize technical
+  fit and current acquisition over retaining an unverified generic footprint.
+- [x] Record exact MPNs, source codes and dimensional/electrical evidence.
+  Apply confirmed existing-part metadata; preserve accepted current parts and
+  keep unfinished qualifications explicit. Fuse and connector drawings expose
+  real footprint/access changes, so record their complete integration plan in
+  `docs/hardware-exact-selections.md` for the separate manufacturing-cleanup
+  work item.
+- [x] Independently verify that this pass changes only the documented R25/K1
+  identities/relay assignment and J20's discovered LOW-only constraint, with
+  unchanged wiring/geometry/SVGs. Refresh reviewed RQML baselines and run full
+  pre-commit. Preserve the preceding quote as a dated snapshot rather than a
+  price claim for the selected future connector/holder integration.
+
+Verification: independent parsed native-tree comparison passes; all twelve
+SVGs are byte-current. Full pre-commit, including annotation/allocation and
+standard RQML checks, passes (exit 0). Reviewed native hashes are recorded in
+`hardware/controller/verification.md`. Mechanical integration and physical
+qualification remain explicit follow-up work.
+
+## JLC-sourceable AC passive revision, 2026-11-16
+
+**Readiness:** VERIFIED the user's authorized update of the circuit and
+board from the completed passive review. Continue the existing `MOT-PROC-001`
+exploratory hardware exception: electrical requirements remain draft inputs,
+not product qualification claims. Approved `MOT-HW-003`, `MOT-HW-013` and
+`MOT-CI-004` govern native identity, allocation and generated views. The reviewed
+component/value changes are implementation details, not a new architecture.
+
+- [x] **Goal:** Update heater, feedback and line-reference schematics with
+  stocked pulse-rated passives, explicit source fields and common-PCB LOW/HIGH
+  assembly choices. **Inputs:** `MOT-HW-001/002/003`, `MOT-AC-001/002/003/008/013/014`,
+  `hardware/controller/ac-passive-review.md`. Preserve source UUIDs and groups;
+  add meaningful annotations for new symbols and retain the off-default path.
+- [x] **Goal:** Synchronize output/carrier footprints, repair affected routing
+  and preserve external connectors, front assembly, four-layer LV planes and
+  the existing isolation boundary. Keep dimensions at most 100 mm. Verify
+  changed pad nets against fresh KiCad XML netlists, native DRC/parity,
+  connectivity, drills, mains netclasses and unchanged unrelated circuits.
+- [x] **Goal:** Refresh affected review/SVG and pin/default inventories,
+  record calculations/actual limits separately from qualified behavior, inspect
+  changed source before refreshing the existing native `MOT-HW-003` baselines,
+  and run allocation/trace checks plus full pre-commit and standard RQML.
+
+Verification: the current section in `hardware/controller/verification.md`
+records tested source hashes and observed native/graph checks. Both changed
+boards have zero physical/silk violations, opens and drilled-via/SMT-land
+intersections; inherited parity/ERC findings remain explicit. All 263 footprints
+pass annotation/allocation, full pre-commit and standard RQML pass (exit 0), and
+eight derivative SVGs are refreshed. Sensor sources/views are unchanged.
+Ignored PDFs are earlier snapshots; assembly eligibility, revised pricing and
+physical electrical qualification remain unclaimed.
+
 ## Functional component allocation, 2026-11-15
 
 **Readiness:** READY for the developer's accepted grouping proposal, narrowed

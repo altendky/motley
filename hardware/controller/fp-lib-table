@@ -8,6 +8,7 @@
   (lib (name "Converter_ACDC")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Converter_ACDC.pretty")(options "")(descr "Placement study footprint library"))
   (lib (name "Diode_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Diode_SMD.pretty")(options "")(descr "Placement study footprint library"))
   (lib (name "Fuse")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Fuse.pretty")(options "")(descr "Placement study footprint library"))
+  (lib (name "Jumper")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Jumper.pretty")(options "")(descr "Copper solder selectors for alternative USB wiring"))
   (lib (name "Module")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Module.pretty")(options "")(descr "Placement study footprint library"))
   (lib (name "Motley")(type "KiCad")(uri "${KIPRJMOD}/Motley.pretty")(options "")(descr "Placement study footprint library"))
   (lib (name "Package_DIP")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Package_DIP.pretty")(options "")(descr "Placement study footprint library"))

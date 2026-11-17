@@ -1,15 +1,27 @@
 # Exploratory modular controller
 
-Status: exploratory design, revised 2026-11-14; not a fabrication release.
+Status: exploratory design, revised 2026-11-16; not a fabrication release.
 All three PCB designs now use **four copper layers**, with low-voltage inner
-ground and power planes and front-only assembly. Packed outlines remain
-**95 x 80 mm** for the carrier, **90 x 65 mm** for each output and an
+ground and power planes and front-only assembly. Packed outlines are
+**95 x 80 mm** for the carrier, **90 x 87 mm** for each output and an
 **80 x 40 mm L** for the sensor board. The current
 [four-layer review](four-layer-review.md) records the stackup, connected plane
 regions, checks and remaining limits. Earlier
 [output](output-routing-review.md) and
 [carrier/sensor](carrier-sensor-routing-review.md) routing studies retain the
 preceding two-layer evidence.
+The [AC passive review](ac-passive-review.md) records the subsequent pulse-rated
+component selection and LOW/HIGH assembly variants. The
+[current JLC quote](../../docs/jlcpcb-quote-2026-11-16-exact-parts.md) includes the new LOW
+passives in Economic assembly; physical electrical qualification remains pending.
+The [exact purchasing selections](../../docs/hardware-exact-selections.md)
+resolve the remaining connector/holder choices and record their mechanical
+integration, including a LOW-only limit on the covered snubber caps. GOOSVN
+mains terminals and JST PH output-bus headers pass actual Economic factory
+assembly matching. Retail OGN holders, Samtec configuration headers and the
+retained Omron relay remain hand-fitted in the current stock situation.
+The later DNP USB-header/CC extension adds no default purchased components;
+the quote retains its earlier input hashes and is not a new copper-revision quote.
 
 The [intelligent-output review](intelligent-output-review.md) records the current
 pin, default-state, power and ESD assessments, including the complete fresh
@@ -22,13 +34,13 @@ timing and contact-loss transients remain unqualified. Structural checks do not
 close draft `MOT-HW-001/002` or qualify hardware defaults.
 
 Native files now have hidden `Requirements` fields and explicit RQML links.
-`uv run scripts/hardware_trace.py` checks 20 native source files and all 257
+`uv run scripts/hardware_trace.py` checks 20 native source files and all 269
 design footprints by hierarchical UUID identity. The fields record electrical
 design applicability; MOT-HW-003 file links cover annotation integrity and
 whole-file drift, not completion of the draft electrical requirements.
-The fresh schematic inventory is 247 components / 706 symbol-pin identities
-across the three designs; two output copies give 319 components / 897 pins per
-complete unit. The 257 PCB footprints include ten board-only mechanical items.
+The fresh schematic inventory is 259 components / 737 symbol-pin identities
+across the three designs; two output copies give 338 components / 942 pins per
+complete unit. The 269 PCB footprints include ten board-only mechanical items.
 
 The [ESD and access review](esd-access-review.md) records the added connector
 clamps, per-port 100 ohm series resistors, marked local-GND touch copper and
@@ -59,7 +71,8 @@ traceability tooling implements approved MOT-HW-003, while the electrical
 study uses design-input relationships without claiming hardware verification.
 
 The board experiments use four-layer routing and low-voltage ground/power
-planes while retaining front-only assembly; their schematic circuits are unchanged.
+planes while retaining front-only assembly. The AC passive revision updates the
+gate, snubber and voltage/timing detector networks on those routed studies.
 Footprint/current/insulation qualification, enclosure
 design, manufacturing release, purchasing and energization remain outside this
 experiment. Passing structural checks does not establish mains safety or
@@ -74,7 +87,7 @@ root schematic, netlist and PCB:
 | Project | Quantity per unit | Physical contents | Trial outline |
 | --- | ---: | --- | --- |
 | [motley-carrier.kicad_pro](motley-carrier.kicad_pro) | 1 | WROOM-N8, panel USB harness interface, automatic power selector, separate controller/sensor regulators, AC input, main fuse, MEAN WELL IRM-05-5, shared isolated line reference and inter-board connections | 95 x 80 mm |
-| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation; packed routing study | 90 x 65 mm |
+| [motley-ac-output.kicad_pro](motley-ac-output.kicad_pro) | 2 identical copies | One output: STM32C011 and local logic supply/recovery, random-phase optotriac/triac, cutoff relay, isolated voltage/current feedback, branch fuse, configurable snubber, outlet and heatsink reservation; packed routing study | 90 x 87 mm |
 | [motley-sensors.kicad_pro](motley-sensors.kicad_pro) | 1 | TCA9548A and support parts, upstream interface, eight QT sensor ports with pull-ups | L-shaped, 80 x 40 mm overall |
 
 The former `motley-controller` monolithic root/project/PCB is replaced by these
@@ -118,12 +131,12 @@ Run `./scripts/hardware_groups.py` to check allocation; pre-commit and CI enforc
 the same check. See [the allocation guide](functional-groups.md) and
 [group catalog](functional-groups.toml) for ownership boundaries and maintenance.
 
-The connector numbers below define signal correspondence, not an approved
-harness or rated connector selection. Low-voltage 2.54 mm pin headers are study
-placeholders; short ordinary pins may join matching plated holes when the
-mechanical arrangement is settled. Mechanical-only plated support holes are
-isolated from circuit nets. Mains uses its separate terminal connection and must
-never use the signal-header interface.
+The connector numbers below define signal correspondence. The six-wire output
+links now use keyed JST B6B-PH-K(LF)(SN), with PHR-6 housings and standard-force
+SPH-002T-P0.5S contacts; harness continuity and crimp qualification remain to be
+checked. Other low-voltage 2.54 mm headers retain their study assignments.
+Mechanical-only plated support holes are isolated from circuit nets. Mains
+uses its separate terminal connection and must never use the signal interface.
 
 | Link | Mating references | Pin order |
 | --- | --- | --- |
@@ -291,8 +304,9 @@ The two combined review files retain their original paths:
 `review/motley-controller.pdf` contains all three schematics (24 pages), and
 `review/motley-controller-placement.pdf` contains the three front placements
 (three pages). Both use carrier, AC output, then sensor board order, with a
-bookmark for each board. These PDFs remain current even though the native
-monolithic project has been retired.
+bookmark for each board. These ignored PDFs are earlier review snapshots;
+the 2026-11-16 passive revision updates native CAD and committed SVGs, and
+the PDFs need regeneration before reviewing that revision.
 
 `review/motley-ac-output-routing.pdf` adds four copper pages in stack order,
 all viewed from the top, with readable layer colours and labels. The combined
@@ -315,12 +329,14 @@ ratsnest available in PCB Editor. The carrier schematic has seven pages, the
 single-output module has five, and the sensor project has twelve, including eight
 shared-port instances. The output design is shown once; build two copies.
 
-Seven blank schematic footprint fields still have board-only
-study assignments: fuse holders, mains terminals, relays and snubber R/C parts.
-Their schematic-parity warnings remain explicit. New mains terminals use the
-same 7.50 mm stock footprint as a packaging placeholder. This selects no rated
-terminal for purchase. The 10 mm-pitch capacitor pattern does not qualify an X2
-part. Review these assignments when updating the PCB from its schematic.
+Fuse holders, mains terminals, configuration links and output-bus headers now
+have explicit exact-part schematic/PCB assignments. Local terminal/holder/link
+footprints derive from manufacturer drawings; PH uses the matching stock
+footprint. F1/F2 purchasing identities mean one OGN holder each, with separately
+inserted cartridges and black covers. The retained relay uses its reviewed
+local assignment. Remaining study/parity findings and physical qualifications
+are recorded in the verification evidence; exact sourcing does not qualify
+the assembly for manufacturing or electrical operation.
 
 The local G6DN pattern derives from Omron's package drawing: pins 1, 2, 5 and 8
 at 0, 2.54, 10.16 and 17.78 mm, with provisional 1.1 mm drills and 2 mm pads.
@@ -375,6 +391,21 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   cable, defined shell termination, strain relief and panel retention remain
   explicitly unsatisfied preferences. The 175 mm loose-wire harness is not a
   qualified USB or ingress solution.
+- J27 is an adjacent, normally unpopulated **1×6, 2.54 mm alternate USB header**:
+  1 VBUS, 2 GND, 3 D+, 4 D-, 5 CC1, 6 CC2. Pin 1 and signal names identify the
+  bare header; it is not a keyed replacement for the 2.00 mm PH cable socket.
+  JP30/JP31/JP32 select VBUS/D+/D- together: factory copper joins **1-2 for PH**;
+  to use J27, unplug sources, cut those bridges and join **2-3 for ALT**. Never
+  bridge all three pads or mix selector settings. Both choices retain the same
+  ESD, valid-host-VBUS data gating and power-priority circuitry. The inactive
+  connector's long data branch and VBUS are disconnected; GND remains common.
+  Use one upstream host. This is alternative wiring access, not a USB hub.
+- R28/R29 are independent **5.1k, 1%, 0603** pull-downs from J27 CC1/CC2 to GND,
+  **DNP by default**. Fit both for a bare USB-C receptacle; leave them DNP if
+  the alternative cable already supplies Rd. They never parallel the Adafruit
+  cable's existing pull-downs or connect primary J21's CC pins. Cable polarity,
+  D+/D- pairing, ESD/shield return and physical operation still need qualification;
+  neither Rd nor these manual options establishes USB-PD or extra current rights.
 - U23 TS3USB221ERSER connects USB data only when raw host VBUS is valid.
   U24 TLV3011BIDBVR compares a 226k/100k VBUS divider to its 1.242 V reference;
   approximately 4.05 V typical enables the active-low data gate. A 47k pull-up
@@ -410,8 +441,11 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   base-to-emitter. These are receiver-local prototype protections, not a
   qualified six-contact hot-plug interface. The exact local option 7 footprint
   follows Vishay's land pattern; JLC assembly availability remains unconfirmed.
-  The gate network uses a 430 ohm pulse-rated 2512 candidate and a
-  330 ohm gate-to-A1 shunt. Leading-edge phase-angle and zero-cross-aligned
+  The gate network now has four 1k2 PR02 positions: LOW fits R104/R109 and
+  bypasses DNP R110/R111 with fitted 0-ohm R112/R113; HIGH fits all four
+  and omits both bypasses. R105 is a 330 ohm PR02 gate-to-A1 shunt.
+  Failed-latch current/power, cold firing and relay interruption still need
+  physical qualification. Leading-edge phase-angle and zero-cross-aligned
   whole-cycle burst control require local scheduling and qualified line timing;
   neither firmware mode is implemented by this drawing.
 - Each 5 V relay coil is approximately 36 mA, driven by an MMBT3904 with
@@ -437,16 +471,16 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   two explicit ERC findings rather than incorrect symbol types.
 - Main T6.3 A and branch T3.15 A fuses are provisional. Final breaking capacity,
   inrush, interrupt energy, conductor/connector protection, surge protection,
-  EMI, and leakage need assessment. The provisional 100 Ohm + 10 nF X2 snubber
-  parts are fitted, with J20 configuring whether the series branch is connected;
-  actual part ratings and values remain unqualified.
-- Snubber review: fitting a correctly rated RC network is a reasonable
-  preliminary option for transient immunity. At 120 V / 60 Hz, 10 nF passes
-  approximately 0.45 mA while the relay is closed, negligible heating for the
-  intended resistive loads; opening the relay breaks that path. Check actual
-  voltage waveforms and capacitor/resistor pulse ratings before settling the
-  values. A full 170 V step through 100 Ohm gives an illustrative initial 1.7 A
-  pulse and 1 microsecond RC time constant, not a worst-case surge specification.
+  EMI, and leakage need assessment. R108 is a 330 ohm PR02 and C101/C104 are
+  parallel 4n7 TDK B32651A7472K000 pulse/snubber capacitors, 9.4 nF total.
+  J20 still configures whether the series branch is connected. The capacitors
+  are not X2 across-line EMI substitutes.
+- Snubber review: the selected parts clear the ordinary discharge-pulse screen
+  in [ac-passive-review.md](ac-passive-review.md); this does not establish mains
+  surge protection or transient immunity. At 120 V / 60 Hz, 9.4 nF passes
+  approximately 0.43 mA while the relay is closed; opening the relay breaks
+  that path. Actual load/wiring, turn-on di/dt, false triggering and capacitor-
+  short failure still require physical qualification.
 - **J20 is a provisional manual snubber setting, default ON.** Header pins
   1/3 share the capacitor-side net; 2/4 share triac A1. Fit two closed-top shunts
   across 1-2 and 3-4 for ON, or rotate both across 1-3 and 2-4 for OFF. This
@@ -455,17 +489,22 @@ establish manufacturer terminal numbering on the inlet, cord or outlets.
   / four per unit. The bare-PCB schematic netlist contains no fitted-shunt
   connections; configured-state audits model them explicitly. No extra GPIO or
   inter-board signal is required. Configure only while unplugged and discharged.
-  Closed caps do not establish a touch-safe mains rating. The stock header
-  footprint is a placement placeholder; select and verify compatible short pins
-  (at most 5.6 mm for the Harwin M7685-05 candidate), cap retention, coverage,
-  transients and mains spacing. The previously discussed 6.1 mm header is too
+  Closed caps do not establish a touch-safe mains rating. The selected Samtec
+  HMTSW-102-07-L-D-200 has 5.08 mm posts, within Harwin M7685-05's 5.6 mm maximum.
+  Exact local geometry is integrated; cap retention, coverage, working voltage,
+  transients and mains spacing still need qualification. The discussed 6.1 mm header is too
   long for this closed cap. No insulating blank cap has been selected.
+  Exact-selection review establishes that M7685-05 is rated 250 V **AC peak**,
+  so this covered arrangement is a LOW-only candidate; it does not support the
+  264 VAC HIGH population. See the exact purchasing guide before replacing
+  the header or treating the cap as a mains-qualified assembly.
 - Each output retains two discrete MMBT3904 drivers. Driver-array alternatives
   remain unselected; the earlier combined-board array discussion is not the
   current modular circuit.
 - Triac heatsinks/clips, socket and mains connector footprints, mechanical
   access, antenna clearance, creepage/clearance, and enclosure protection have
-  not been qualified. Study assignments do not resolve blank schematic items.
+  not been qualified. Exact purchasing assignments do not establish physical
+  qualification.
   The shown JST-SH footprint is a reference; side-wall rotation and connector
   protrusion remain enclosure/layout questions, not settled placement.
   The additional relays are cutoff actuators; they do not independently protect

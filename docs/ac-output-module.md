@@ -1,6 +1,6 @@
 # MCU-controlled AC output module
 
-Status: exploratory CAD study, updated 2026-11-14. This records the voltage/current-feedback,
+Status: exploratory CAD study, updated 2026-11-16. This records the voltage/current-feedback,
 local-MCU direction explored in conversation. Current sensing is restored to
 the full-feature proposal for assessment before any later simplification.
 Component choices, bus details
@@ -8,6 +8,8 @@ and circuit qualification remain open. The native schematic and exploratory PCB
 placement/routing now represent this architecture; firmware and hardware qualification
 remain pending. See the [pin/default review](../hardware/controller/intelligent-output-review.md)
 for exact pin assignments, power domains and unresolved limits.
+The [AC passive review](../hardware/controller/ac-passive-review.md) records the
+new pulse-rated parts, regional assembly choices and remaining qualification limits.
 
 One board controls one AC outlet. The current overall arrangement uses two
 identical output boards, an ESP32-C6 controller/AC-input board and a sensor
@@ -184,10 +186,10 @@ separate mains-referenced DC supply is needed for this arrangement.
 | Low-voltage supply | Selected 5 V powers local AP2112 3.3 V logic/sensing; separate raw mains-derived 5 V powers the relay coil and optotriac LED. USB alone cannot supply actuator power. |
 | Communication | Six-contact internal header, protected I2C on PB7 SDA/PB6 SCL, and shared buffered line reference. Runtime addresses and protocol remain open. |
 | Programming | SW20 RUN/RECOVERY shunt, SW21 reset and J21 SWD access; ESP-assisted ROM programming, boot-option and persistence qualification pending. |
-| Triac drive | Vishay VO3053-X007T random-phase optotriac, 270 ohm LED resistor, 430 ohm pulse-rated gate resistor and 330 ohm gate/A1 shunt; 1 nF transistor-base filter. Exact package has a local study footprint. |
+| Triac drive | Vishay VO3053-X007T random-phase optotriac, 270 ohm LED resistor, four series gate-resistor positions and pulse-rated 330 ohm gate/A1 shunt; 1 nF transistor-base filter. LOW fits two 1.2k PR02 resistors and two 0-ohm bypasses; HIGH fits four 1.2k resistors and omits the bypasses. |
 | Power switching | Existing ST BTA08-600SWRG candidate, heatsink, channel fuse and manually configurable RC snubber. |
 | Second cutoff | Existing Omron G6DN-1A-L DC5 candidate, transistor coil driver and coil suppression. |
-| Voltage feedback | ACPL-K370 after the relay; regional resistor variants distinguish real voltage from expected leakage. LOW 90–132 V uses 4×8.2k with shunt DNP; HIGH 180–264 V uses 4×12k and 3.9k shunt fitted. These detector studies do not qualify the whole board for either range. |
+| Voltage feedback | ACPL-K370 after the relay; LOW 90–132 V uses 8.2k + 8.2k + (8.2k parallel 8.2k), a fitted 0-ohm series link and 2.7k input shunt. HIGH 180–264 V uses four series 8.2k, omits the parallel branch and fits a 1.5k shunt. These BOM variants do not qualify the whole board for either range. |
 | Current feedback | TMCS1123B5AQDVGR, 150 mV/A, series between relay and outlet. VOUT and VREF_OUT feed separate MCU ADC channels through 100 ohm/1 nF filters. Range, drift, sampling and thermal qualification remain open. |
 
 The earlier MOC3063 zero-cross optotriac cannot provide arbitrary phase-angle
@@ -310,8 +312,8 @@ establish correct phase-angle timing. Detector thresholds, delays, minimum
 usable off interval and noise margin need qualification.
 
 A shorted triac is detected during a qualifying gate-off interval, both with
-and without an external load. The proposed 10 nF snubber passes approximately
-0.45 mA at 120 V, 60 Hz; permitted leakage and switching transients need to be
+and without an external load. The fitted 9.4 nF pulse-rated snubber passes approximately
+0.43 mA at 120 V, 60 Hz; permitted leakage and switching transients need to be
 distinguished from unintended energization.
 
 With sensing after the cutoff relay, opening the relay permits observation of

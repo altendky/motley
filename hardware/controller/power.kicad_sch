@@ -1870,7 +1870,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:Fuseholder_Schurter_OGN_0031.8201_P22.50mm_Covered"
 			(at 76.2 58.42 90)
 			(hide yes)
 			(show_name no)
@@ -1881,7 +1881,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.schurter.com/en/datasheet/typ_OGN.pdf"
 			(at 76.2 58.42 90)
 			(hide yes)
 			(show_name no)
@@ -1945,6 +1945,14 @@
 				)
 			)
 		)
+		(property "Manufacturer" "SCHURTER" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "0031.8201" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C3204125" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "manual" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CartridgeMPN" "021506.3MXP" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CartridgeLCSC" "C142721" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CoverMPN" "0853.0571" (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "PCB BOM position is ONE OGN holder. Separately hand insert ONE Littelfuse 215 cartridge and ONE Schurter black cover. Retail hand fit holders: current factory stock insufficient for whole controller. LOW-only provisional fuse selection; thermal/fault coordination unqualified." (at 76.2 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
@@ -1979,7 +1987,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:TerminalBlock_GOOSVN_GS007S_P5.08mm_1x03_Horizontal"
 			(at 35.56 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -1990,7 +1998,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.goosvn.com/uploads/ueditor/file/20180820/6367035820032422801238022.pdf"
 			(at 35.56 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -2057,6 +2065,11 @@
 				)
 			)
 		)
+		(property "Manufacturer" "GOOSVN" (at 35.56 60.96 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "GS007S-5.08-03P-11-00A(H)" (at 35.56 60.96 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C5142603" (at 35.56 60.96 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "factory-candidate" (at 35.56 60.96 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Exact manufacturer drawing: 1.60mm holes, 300V/16A component; actual system current/insulation not qualified. Economic matching confirmed 2026-11-16; final job/placement still reviewed separately." (at 35.56 60.96 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Converter_ACDC:IRM-05-5")

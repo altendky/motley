@@ -1,10 +1,21 @@
 # Development-build budget basis
 
-Updated 2026-11-15 using actual JLCPCB quotation API results for the current
+Updated 2026-11-15 using actual JLCPCB quotation API results for that date's
 routed four-layer designs and matched BOM/CPL files. JLC charges below are
 quoted; the remaining parts and wiring are estimates. One finished controller
 uses one carrier, one sensor mux and two identical output boards. No cart
 addition, order or payment was made.
+
+The 2026-11-16 exact-part integration has a
+[new actual JLC quotation](jlcpcb-quote-2026-11-16-exact-parts.md): $285.26 /
+$312.08 / $419.13 for the three scenarios' fabrication and partial assembly.
+New mains terminals, output-bus connectors, R25 and all new LOW passives are
+included. A refreshed base hand-fitting basket is
+[$25.67 per finished controller](hardware-exact-selections.md#retail-hand-fitting-basket),
+excluding additional optical stock omissions and off-board hardware. The
+complete-controller figures below retain the older
+quotation and completion allowances; they need reconciliation against the new
+factory selections before claiming a current finished-controller budget.
 
 ## Batch costs
 
