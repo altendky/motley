@@ -1317,7 +1317,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type171_RT13703HBWC_1x03_P7.50mm_Horizontal"
+		(property "Footprint" "Motley:TerminalBlock_GOOSVN_GS007S_P7.50mm_1x03_Horizontal"
 			(at 74.93 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -1328,7 +1328,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.goosvn.com/uploads/ueditor/file/20180929/6367382481749100251922503.pdf"
 			(at 74.93 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -1388,6 +1388,11 @@
 				)
 			)
 		)
+		(property "Manufacturer" "GOOSVN" (at 74.93 119.38 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "GS007S-7.5-03P-11-00A(H)" (at 74.93 119.38 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C5142605" (at 74.93 119.38 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "factory-candidate" (at 74.93 119.38 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Exact manufacturer drawing: 1.60mm holes, 300V/16A component; actual system current/insulation not qualified. Economic matching confirmed 2026-11-16; final job/placement still reviewed separately." (at 74.93 119.38 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -1589,7 +1594,7 @@
 		(uuid "e47bc1ce-4523-52a1-8e3f-75d86407f48b")
 		(property "Reference" "J14" (at 78.74000000000001 49.53 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)) (justify left)))
 		(property "Value" "OUTPUT BUS / LOGIC + ACTUATOR POWER" (at 78.74000000000001 52.07 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)) (justify left)))
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical"
 			(at 74.93 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -1600,7 +1605,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
 			(at 74.93 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -1670,6 +1675,13 @@
 				)
 			)
 		)
+		(property "Manufacturer" "JST" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "B6B-PH-K(LF)(SN)" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C274409" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "factory-candidate" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "HousingMPN" "PHR-6" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "ContactMPN" "SPH-002T-P0.5S" (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Keyed PH six-way. Pin1 GND,2 logic5V,3 SDA,4 SCL,5 LINE_SYNC,6 raw5V. Preserve continuity by numbered pads; mating drawings required. 0.75mm holes within manufacturer 0.70+0.10/-0. Economic matching confirmed 2026-11-16. 2A series rating with24AWG; system supply remains1A." (at 74.93 54.61 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(sheet
 		(at 134.62 111.76)

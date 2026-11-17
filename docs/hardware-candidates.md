@@ -6,6 +6,12 @@ outputs, not a complete bill of materials or an approved hardware design.
 Prices and stock below are snapshots from the discussion, before shipping,
 tax, tariffs, and assembly overage; check them again before ordering.
 
+The [2026-11-16 exact purchasing selections](hardware-exact-selections.md)
+supersede the unresolved board connector, holder and configuration-header
+choices below. That guide distinguishes recorded parts from the footprint and
+placement changes still required, and identifies the covered shunt's LOW-only
+voltage limitation. This document retains the earlier research snapshots.
+
 The current working plan includes two grounded single AC outlets with insulated
 female quick-disconnect terminals. Both a detachable mains cord and a permanently
 attached cord remain in play. The MEAN WELL IRM-05-5 is the provisional controller

@@ -940,7 +940,7 @@
 		)
 		(uuid "12151d19-5afd-4290-b03f-2952e9216454")
 	)
-	(text "Same PCB, different regional BOM. Input resistors: 0.44W total at120V; 1.45W at264V high-line."
+	(text "Same PCB, regional BOM only. Bank heat upper bounds:0.876W at132V LOW;2.191W at264V HIGH."
 		(exclude_from_sim no)
 		(at 20.32 172.72 0)
 		(effects
@@ -973,7 +973,7 @@
 		)
 		(uuid "3d454069-0d1c-4987-af28-1710575c4de0")
 	)
-	(text "HIGH alternate: 180-264Vac, 4 x12k; FIT R316=3k9."
+	(text "HIGH180-264Vac: R310-R313=8k2; R317DNP; FIT R316=1k5. Total32.8k."
 		(exclude_from_sim no)
 		(at 20.32 167.64 0)
 		(effects
@@ -1028,7 +1028,7 @@
 		)
 		(uuid "c6ccc8ca-b86c-4237-8fe0-4ffadf2714d8")
 	)
-	(text "LOW default: 90-132Vac, 4 x8k2; R316 not fitted."
+	(text "LOW90-132Vac: R310/R311/R312/R317=8k2; R313=0R; FIT R316=2k7. Total20.5k."
 		(exclude_from_sim no)
 		(at 20.32 162.56 0)
 		(effects
@@ -2587,7 +2587,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 60.96 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -2598,7 +2598,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TE CRGP2512 pulse resistor; selected LOW/HIGH detector-bank component."
 			(at 60.96 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -2631,7 +2631,7 @@
 				)
 			)
 		)
-		(property "Rating" "1W / 1%; qualify voltage/pulse/temperature derating"
+		(property "Rating" "2W at70C /1% /500V working; pulse, fault and board-temperature limits apply."
 			(at 60.96 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -2642,7 +2642,7 @@
 				)
 			)
 		)
-		(property "High-line variant" "12k / 1W / 1% for180-264Vac"
+		(property "High-line variant" "8k2 fitted in180-264Vac HIGH bank."
 			(at 60.96 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -2667,6 +2667,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 60.96 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F8K2" (at 60.96 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C3992729" (at 60.96 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: fit8k2; see R313/R317 for bank topology." (at 60.96 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -2981,7 +2989,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 48.26 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -2992,7 +3000,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TE CRGP2512 pulse resistor; selected LOW/HIGH detector-bank component."
 			(at 48.26 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3025,7 +3033,7 @@
 				)
 			)
 		)
-		(property "Rating" "1W / 1%; qualify voltage/pulse/temperature derating"
+		(property "Rating" "2W at70C /1% /500V working; pulse, fault and board-temperature limits apply."
 			(at 48.26 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3036,7 +3044,7 @@
 				)
 			)
 		)
-		(property "High-line variant" "12k / 1W / 1% for180-264Vac"
+		(property "High-line variant" "8k2 fitted in180-264Vac HIGH bank."
 			(at 48.26 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3061,6 +3069,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 48.26 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F8K2" (at 48.26 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C3992729" (at 48.26 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: fit8k2; see R313/R317 for bank topology." (at 48.26 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -3508,7 +3524,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 35.56 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3519,7 +3535,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TE CRGP2512 pulse resistor; selected LOW/HIGH detector-bank component."
 			(at 35.56 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3552,7 +3568,7 @@
 				)
 			)
 		)
-		(property "Rating" "1W / 1%; qualify voltage/pulse/temperature derating"
+		(property "Rating" "2W at70C /1% /500V working; pulse, fault and board-temperature limits apply."
 			(at 35.56 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3563,7 +3579,7 @@
 				)
 			)
 		)
-		(property "High-line variant" "12k / 1W / 1% for180-264Vac"
+		(property "High-line variant" "8k2 fitted in180-264Vac HIGH bank."
 			(at 35.56 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3588,6 +3604,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 35.56 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F8K2" (at 35.56 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C3992729" (at 35.56 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: fit8k2; see R313/R317 for bank topology." (at 35.56 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -3699,7 +3723,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "dcf5886a-5488-5e84-a9e9-22562308f3cb")
 		(property "Reference" "R316"
 			(at 76.2 137.16 0)
@@ -3711,7 +3735,7 @@
 				)
 			)
 		)
-		(property "Value" "3k9 / DNP"
+		(property "Value" "2k7"
 			(at 76.2 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3732,7 +3756,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.uni-royal.cn/en/images/userfile/file/1668661899c56505e6d9ab55c7.pdf"
 			(at 87.63 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -3743,7 +3767,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Mains-side AC detector input shunt, fitted in both regional variants for hysteretic leakage release."
 			(at 87.63 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -3776,7 +3800,7 @@
 				)
 			)
 		)
-		(property "High-line variant" "FIT3k9 in180-264Vacvariant"
+		(property "High-line variant" "FIT1k5 0805W8F1501T5E/C4310 in180-264Vac HIGH variant."
 			(at 87.63 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -3801,6 +3825,16 @@
 				)
 			)
 		)
+
+		(property "RegionalVariant" "LOW:2k7 0805W8F2701T5E/C17530. HIGH:1k5 0805W8F1501T5E/C4310." (at 87.63 139.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "Manufacturer" "UNI-ROYAL" (at 87.63 139.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "0805W8F2701T5E" (at 87.63 139.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C17530" (at 87.63 139.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "Rating" "125mW /1% /100ppm/C; normal detector clamp voltage only." (at 87.63 139.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -3823,7 +3857,7 @@
 				)
 			)
 		)
-		(property "Value" "8k2"
+		(property "Value" "0 / LOW link"
 			(at 73.66 113.03 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3844,7 +3878,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.uni-royal.cn/en/images/userfile/file/1668661899c56505e6d9ab55c7.pdf"
 			(at 73.66 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3855,7 +3889,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Regional detector series link: LOW0ohm, HIGH8k2 CRGP2512F8K2/C3992729."
 			(at 73.66 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3888,7 +3922,7 @@
 				)
 			)
 		)
-		(property "Rating" "1W / 1%; qualify voltage/pulse/temperature derating"
+		(property "Rating" "0ohm2512 link; use proper current-rated jumper, not a safety fuse."
 			(at 73.66 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3899,7 +3933,7 @@
 				)
 			)
 		)
-		(property "High-line variant" "12k / 1W / 1% for180-264Vac"
+		(property "High-line variant" "8k2 /2W /1% CRGP2512F8K2/C3992729."
 			(at 73.66 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3924,5 +3958,38 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "UNI-ROYAL" (at 73.66 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "25121WJ0000T4E" (at 73.66 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C25469" (at 73.66 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW: fit0ohmC25469. HIGH: fit8k2CRGP2512F8K2/C3992729." (at 73.66 115.57 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
+	(symbol
+  (lib_id "Device:R")
+  (at 60.96 129.54 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "66c35e6d-ffb1-51c0-89c4-2ab9bd5845cf")
+  (property "Reference" "R317" (at 60.96 134.62 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "8k2" (at 60.96 137.16 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "LOW regional detector-bank parallel resistor; R310+R311+(R312||R317)+R313=20.5k." (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-003 MOT-HW-001 MOT-HW-002 MOT-AC-008 MOT-AC-003 MOT-AC-004" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.voltage-sense" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "TE Connectivity" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "CRGP2512F8K2" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C3992729" (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW: fit8k2 parallel to R312. HIGH: DNP." (at 60.96 129.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/1ba5a54e-b64a-532a-9f47-4a3344fa1b27" (reference "R317") (unit 1)))))
+	(wire (pts (xy 57.15 115.57) (xy 57.15 129.54)) (stroke (width 0) (type default)) (uuid "551ea4a3-0253-5bcd-9dcd-f8a8ce3892dd"))
+	(junction (at 57.15 115.57) (diameter 0) (color 0 0 0 0) (uuid "dccea0ba-bd94-58c3-b8cf-de87acf1c593"))
+	(wire (pts (xy 64.77 115.57) (xy 64.77 129.54)) (stroke (width 0) (type default)) (uuid "34ec4515-4a5d-58da-b02a-24f247e1a31e"))
+	(junction (at 64.77 115.57) (diameter 0) (color 0 0 0 0) (uuid "776c84da-b45c-52a8-8f4e-ef3d856841c1"))
 )

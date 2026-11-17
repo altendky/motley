@@ -51,13 +51,16 @@ physical components and are excluded.
 
 Known identifiers alone cannot prove that a component serves the claimed
 function. Review that decision, including supporting passives and protection,
-when editing the circuit. The initial allocations cover 247 physical schematic
-components and ten board-only mechanical footprints, 257 total across the three
+when editing the circuit. The current allocations cover 259 physical schematic
+components and ten board-only mechanical footprints, 269 total across the three
 board designs. Building two identical output boards repeats that board inventory;
 the checker does not impose a system purchase quantity.
 
 ## Ownership boundaries
 
+- The optional USB J27, three copper source selectors and two DNP CC pull-downs
+  belong to `usb.service`, including the excluded-BOM copper features and DNP
+  components. Their lack of purchased default parts does not remove allocation.
 - Each package has one owner. A dual ESD array serving more than one signal is
   allocated as a package rather than split into fictitious components.
 - Carrier Qwiic-sheet R40/R41 support the deployed sensor link and belong to
