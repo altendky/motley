@@ -41,25 +41,15 @@ A controller for a Velux skylight/blind that:
 
 1. **esp-matter SDK** (https://github.com/espressif/esp-matter)
 2. **lemauee/esp32c6-matter-over-thread-roof-window-controller** (https://github.com/lemauee/esp32c6-matter-over-thread-roof-window-controller)
-3. **thorio/esphome-projects/velux-controller** (https://github.com/thorio/esphome-projects/tree/master/velux-controller)
 
 ---
 
 ### From esp-matter SDK
 
-**Project Structure:**
-```
-esp-matter/
-├── components/
-│   └── esp_matter/           # Core Matter SDK wrapper
-│       ├── data_model/       # Endpoints, clusters, attributes, features
-│       └── utils/
-├── connectedhomeip/          # Matter SDK submodule
-├── device_hal/
-│   └── device/               # HAL for different ESP32 devkits
-├── examples/                 # Reference applications (20+ examples)
-└── Kconfig                   # Root config
-```
+**Project Structure:** The SDK separates its Matter wrapper/data model,
+connectedhomeip submodule, device HAL, examples and Kconfig. Consult the
+[upstream source](https://github.com/espressif/esp-matter) for code and its
+Apache-2.0 license. This summary replaces the earlier embedded source examples.
 
 **Key Patterns:**
 - Config structs with feature flags for device types
@@ -68,17 +58,8 @@ esp-matter/
 - Target-specific `sdkconfig.defaults.{target}` files
 
 **Window Covering Device Type (0x0202):**
-```cpp
-namespace window_covering {
-typedef struct config : app_with_group_config {
-    cluster::window_covering::config_t window_covering;
-    config(uint8_t end_product_type = 0) : window_covering(end_product_type) {
-        identify.identify_type = chip::to_underlying(
-            chip::app::Clusters::Identify::IdentifyTypeEnum::kActuator);
-    }
-} config_t;
-}
-```
+The SDK's window-covering configuration combines application configuration with
+cluster-specific settings and actuator identification.
 
 **Features available:**
 - `lift` - basic lift control
@@ -87,103 +68,32 @@ typedef struct config : app_with_group_config {
 - `position_aware_tilt` - with position tracking
 
 **Thread Configuration (sdkconfig.defaults.esp32c6):**
-```ini
-CONFIG_IDF_TARGET="esp32c6"
-CONFIG_OPENTHREAD_ENABLED=y
-CONFIG_OPENTHREAD_SRP_CLIENT=y
-CONFIG_OPENTHREAD_DNS_CLIENT=y
-CONFIG_ENABLE_WIFI_STATION=n
-CONFIG_ENABLE_OTA_REQUESTOR=y
-CONFIG_MRP_LOCAL_ACTIVE_RETRY_INTERVAL_FOR_THREAD=5000
-CONFIG_MRP_LOCAL_IDLE_RETRY_INTERVAL_FOR_THREAD=5000
-```
+The researched configuration selected ESP32-C6 and Thread, enabled SRP/DNS and
+OTA requestor support, disabled the Wi-Fi station, and considered 5000 ms active
+and idle retry intervals. These are historical research settings, not current
+requirements.
 
 ---
 
 ### From lemauee's Roof Window Controller
 
-**Project Structure:**
-```
-esp32c6-matter-over-thread-roof-window-controller/
-├── main/
-│   ├── app_main.cpp
-│   ├── relay/
-│   │   ├── relay.cpp/.h          # Low-level GPIO
-│   │   └── relay_driver.cpp/.h   # Matter integration
-│   ├── switch/
-│   │   └── switch_driver.cpp/.h  # Button input handling
-│   ├── reset_button/
-│   └── user_led/
-├── sdkconfig.defaults
-├── sdkconfig.defaults.esp32c6
-└── partitions.csv
-```
+**Project Structure:** Separate application, relay, switch, reset-button and LED
+drivers, with SDK defaults and a partition table. Consult the
+[upstream application](https://github.com/lemauee/esp32c6-matter-over-thread-roof-window-controller/blob/main/main/app_main.cpp)
+for its examples and file-level public-domain/CC0 notice.
 
 **Key Finding:** Uses `on_off_plugin_unit` + `generic_switch` instead of Window Covering cluster (simpler approach).
 
 **Thread Safety Pattern (CRITICAL):**
-```cpp
-// All Matter attribute updates from callbacks MUST use ScheduleLambda:
-chip::DeviceLayer::SystemLayer().ScheduleLambda([endpoint_id, newPosition]() {
-    chip::app::Clusters::Switch::Attributes::CurrentPosition::Set(
-        endpoint_id, newPosition);
-});
-```
+Schedule callback-driven Matter attribute updates onto the Matter thread using
+`ScheduleLambda`; the upstream application demonstrates that pattern.
 
 **Handle-Based Driver Pattern:**
-```cpp
-endpoint_t *ep = create(node, &config, ENDPOINT_FLAG_NONE, driver_handle);
-// Later in callback:
-relay_handle_t handle = (relay_handle_t)priv_data;
-```
+Endpoint creation associates a driver handle with an endpoint, and later
+callbacks recover that handle from their private data.
 
 **Uses `iot_button` component for debounced inputs:**
-```cpp
-button_config_t button_config{};
-button_config.type = BUTTON_TYPE_GPIO;
-button_config.gpio_button_config.gpio_num = SWITCH_GPIOS[i_gpio];
-button_config.gpio_button_config.active_level = 0;  // Active low
-button_handle_t button_handle = iot_button_create(&button_config);
-```
-
----
-
-### From ESPHome Velux Controller (Hardware Details)
-
-**Button Press Duration: 200ms**
-```yaml
-switch:
-  - platform: gpio
-    id: output_up
-    pin: GPIO12
-    on_turn_on:
-      then:
-        - delay: 200ms
-        - switch.turn_off: output_up
-```
-
-**5-Wire Interface:**
-- 2 wires for power (3.3V, GND)
-- 3 wires for buttons (UP, STOP, DOWN)
-
-**Transistor Switching:**
-- Uses MMBT3904 NPN transistors (similar to ULN2003AN functionality)
-- Base resistor: 1kΩ (current limiting)
-- Buttons are active-LOW (remote has internal pull-ups)
-
-**Bidirectional Design (optional):**
-- Output GPIO (via transistor) to simulate button presses
-- Sense GPIO (direct connection) to detect physical button presses
-- Filter logic: ignore sense line when ESP is driving output
-
-**Position Estimation:**
-```yaml
-cover:
-  - platform: time_based
-    has_built_in_endstop: true
-    open_duration: 30s   # Calibrate to your window
-    close_duration: 30s
-```
+The researched button configuration selects a GPIO input and active-low logic.
 
 ---
 
@@ -195,7 +105,7 @@ cover:
 - Proper Matter Window Covering (0x0202) with position tracking
 - More complex but semantically correct for HomeKit/Google Home
 - Shows as a single "Window Covering" device with up/down/stop controls
-- Position can be estimated via timing (like ESPHome's time_based cover)
+- Position can be estimated via timing
 
 **Option B: On/Off Plugin Units**
 - Simpler: 3 separate on/off endpoints (up/stop/down)
@@ -316,12 +226,6 @@ Available GPIOs on Feather headers:
 - Status LED: GPIO13 (or use onboard NeoPixel on GPIO8)
 - Factory reset: Boot button (GPIO9)
 
-### Button Press Timing
-
-```cpp
-#define BUTTON_PRESS_DURATION_MS 200  // From ESPHome reference
-```
-
 ### Thread Router Configuration
 
 For mains-powered FTD (Full Thread Device) to extend mesh:
@@ -351,6 +255,5 @@ CONFIG_OPENTHREAD_CHILD_MAX=10
 ## Additional Notes
 
 - The ULN2003AN you're using is a better choice than discrete transistors - it has built-in base resistors and flyback diodes
-- 200ms button pulse is proven to work with KLI remotes
 - Thread retry intervals should be longer (5 seconds) for mesh reliability
 - All Matter attribute updates must use `ScheduleLambda()` for thread safety

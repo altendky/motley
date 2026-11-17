@@ -131,3 +131,13 @@ The first useful contributions are likely to be application design, firmware,
 hardware review and practical packaging. Requirements distinguish planned
 behavior from implementation and verification; build and CAD checks alone do
 not establish that the assembled device works.
+
+## Licensing
+
+Original software and general text are licensed under **MIT OR Apache-2.0**.
+Original hardware designs, including independently created symbols and
+footprints, are licensed under **CERN-OHL-P-2.0**. Upstream-derived reusable
+library parts retain their identified licenses and exceptions.
+
+See the [license scope](LICENSE.md), [complete license texts](LICENSES/) and
+[third-party notices](THIRD_PARTY_NOTICES.md).
