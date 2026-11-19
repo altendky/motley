@@ -1,0 +1,40 @@
+name: Runner cleanup benchmark
+
+on:
+  push:
+    branches: [ci/runner-cleanup-benchmark]
+
+permissions:
+  contents: read
+
+jobs:
+  cleanup:
+    name: ${{ matrix.tool }} sample ${{ matrix.sample }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tool: [rm, rmz]
+        sample: [1, 2, 3]
+    steps:
+      - name: Measure setup and deletion
+        env:
+          CLEANUP_TOOL: ${{ matrix.tool }}
+        run: |
+          start_ns=$(date +%s%N)
+          df -B1 /
+          if [[ "$CLEANUP_TOOL" == rmz ]]; then
+            curl --fail --location --silent --show-error --retry 3 \
+              https://github.com/SUPERCILEX/fuc/releases/download/3.2.1/x86_64-unknown-linux-gnu-rmz \
+              --output "$RUNNER_TEMP/rmz"
+            echo 'e2c2c07e731d9422dfe3f14e17e010c6dd5f7a4ad54a9c9bcd141cb8a5ec4fb1  '"$RUNNER_TEMP/rmz" | sha256sum --check
+            chmod +x "$RUNNER_TEMP/rmz"
+            /usr/bin/time -f 'Deletion: %e seconds' sudo "$RUNNER_TEMP/rmz" -f /usr/local/lib/android /usr/share/dotnet
+          else
+            /usr/bin/time -f 'Deletion: %e seconds' sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          fi
+          test ! -e /usr/local/lib/android
+          test ! -e /usr/share/dotnet
+          df -B1 /
+          end_ns=$(date +%s%N)
+          awk -v start="$start_ns" -v end="$end_ns" 'BEGIN { printf "Total cleanup: %.3f seconds\n", (end - start) / 1000000000 }'

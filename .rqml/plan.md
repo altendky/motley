@@ -1,5 +1,22 @@
 # Motley plan
 
+## Runner cleanup runtime experiment, 2026-11-18
+
+**Readiness:** READY for the requested bounded experiment under approved
+`MOT-CI-001/002`. Compare the existing SDK deletion with pinned, checksum-verified
+rmz 3.2.1 on three fresh `ubuntu-latest` runners per variant. This temporary
+workflow is measurement infrastructure, not a new maintained capability; it
+does not change firmware, caches, artifacts, or requirement intent. Existing
+ADR-0019 remains applicable; no architectural decision changes.
+
+- [ ] **Goal:** Measure cleanup on matching hosted runner images, including rmz
+  setup overhead. **Requirements:** `MOT-CI-001/002`. **Files:** temporary
+  `.github/workflows/runner-cleanup-benchmark.yml`. **Verification:** actionlint,
+  full pre-commit and standard RQML, then inspect all six job logs for image
+  version, deletion exit status, elapsed time and recovered bytes. No maintained
+  trace links are claimed for this temporary experiment. Transfer results to
+  the implementation PR and exclude the benchmark workflow from its final tree.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
