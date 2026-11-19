@@ -97,8 +97,13 @@ jobs:
       - name: Free firmware runner disk space
         run: |
           df -h /
+          curl --fail --location --silent --show-error --retry 3 \
+            https://github.com/SUPERCILEX/fuc/releases/download/3.2.1/x86_64-unknown-linux-gnu-rmz \
+            --output "$RUNNER_TEMP/rmz"
+          echo 'e2c2c07e731d9422dfe3f14e17e010c6dd5f7a4ad54a9c9bcd141cb8a5ec4fb1  '"$RUNNER_TEMP/rmz" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/rmz"
           # This job uses the container SDK, not these preinstalled host SDKs.
-          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          /usr/bin/time -f 'SDK cleanup: %e seconds' sudo "$RUNNER_TEMP/rmz" -f /usr/local/lib/android /usr/share/dotnet
           df -h /
       - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5
         with:
