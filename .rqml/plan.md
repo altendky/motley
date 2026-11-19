@@ -1,5 +1,56 @@
 # Motley plan
 
+## Faster firmware runner cleanup, 2026-11-18
+
+**Readiness:** READY for the requested rmz substitution under approved
+`MOT-CI-001/002`. Preserve the two unused host SDK deletion targets, free-space
+reporting, pinned firmware SDK, fresh build outputs, caches, verification and
+artifact handling. Reviewed shared-file mappings also cover `MOT-CI-003/004`
+and `MOT-HW-013`; their jobs remain unchanged. This is a tooling optimization
+within ADR-0019, with no new requirement or significant architectural decision.
+
+- [x] **Goal:** Replace recursive rm with official rmz 3.2.1, pinned by release
+  URL and SHA-256, downloaded into the disposable runner's temporary directory.
+  **Requirements:** `MOT-CI-001/002`. **Files:** `.github/workflows/ci.yml`.
+  **Verification:** inspect the workflow diff and official CLI arguments, run
+  actionlint and full `mise exec -- pre-commit run --all-files`, and refresh only
+  reviewed workflow implementation baselines using `rqml link --refresh`.
+- [x] **Goal:** Report measured runtime with and without rmz, including setup
+  overhead. **Requirements:** `MOT-CI-001/002`. **Files:** this plan and PR notes.
+  **Verification:** temporary experiment branch `ci/runner-cleanup-benchmark`
+  runs three fresh `ubuntu-latest` runners per variant, records image version,
+  deletion/total elapsed time and free bytes, and asserts both SDK paths were
+  removed. This bounded measurement workflow is not a maintained capability and
+  is excluded from the PR tree. Inspect the implementation PR's hosted cleanup
+  and CI checks before claiming service execution evidence; retain existing
+  specification coverage gaps without fabricating verification links.
+
+**Evidence:** benchmark commit `d922816e6a8a68bb51a5a8432bbc0ea5c1a4b5e6`
+passed all six jobs in
+[run 44451368426](https://github.com/altendky/motley/actions/runs/44451368426).
+All runners used Ubuntu 26.04; each image version received one run per variant.
+Total seconds, including download/checksum/chmod for rmz:
+
+| Runner image version | rm | rmz |
+| --- | ---: | ---: |
+| 20261111.82.6 | 67.961 | 30.528 |
+| 20261111.196.1 | 88.623 | 10.610 |
+| 20261116.202.1 | 55.417 | 21.368 |
+| Median | 67.961 | 21.368 |
+
+The observed median ratio is 3.18, a 68.6% reduction (46.593 seconds saved).
+Deletion alone took rm 55.40/88.61/67.85 seconds and rmz
+30.09/21.00/10.32 seconds in sample order. All six deletion commands and both
+path-absence assertions passed; each recovered approximately 18.6 billion bytes.
+These are three hosted samples per variant, with visible host/image variation,
+not a guarantee for future runs or an overall firmware-job speedup.
+Actionlint, full pre-commit and standard RQML each exited 0 for workflow SHA-256
+`75d81e2f9bd76d99ff6ba6eb9c0b3ebc861f8a796a70ccce9925c2c48c139b87`.
+Five reviewed workflow baselines were refreshed because RQML hashes the entire
+YAML even for fragment locators. The specification still has 46 unverified and
+39 unimplemented requirements; no new coverage is asserted. Implementation PR
+hosted CI execution remains pending.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
