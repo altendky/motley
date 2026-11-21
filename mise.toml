@@ -10,7 +10,7 @@ npm.package_manager = "aube"
 [tools]
 node = "26.13.1"
 python = "3.15.2"
-uv = "0.13.8"
+uv = "0.13.9"
 "pipx:pre-commit" = "4.7.0"
 # Exact-version exception for a reviewed security backport published without
 # the newer major line's trusted-publisher evidence. Re-review before extending.

@@ -2092,7 +2092,7 @@
 		)
 		(uuid "049831ff-5ad2-50df-aba7-937d73e8b3c1")
 	)
-	(text "Series current sensing: CUT_L_UNSENSED -> sensor -> OUTLET_L.\nRandom-phase drive and R101 270 / R104 430 / C102 1n remain preliminary.\nLamp inrush, EMI, heat and fault timing require qualification." (exclude_from_sim no) (at 15 192 0) (effects (font (size 1 1)) (justify left top)) (uuid "22d21fe0-4223-5441-8218-31fca1f969ac"))
+	(text "LOW90-132V: R104/R109=1k2; R110/R111DNP; R112/R113=0R fitted (2.4k total).\nHIGH180-264V: R104/R109/R110/R111=1k2; R112/R113DNP (4.8k total).\nGate and snubber PR02 pulse parts; C101+C104=9.4nF. Firmware must bound failed-latch retries/cutoff.\nCurrent path: CUT_L_UNSENSED -> sensor -> OUTLET_L. Timing, temperature, surges and EMI unqualified." (exclude_from_sim no) (at 15 192 0) (effects (font (size 1 1)) (justify left top)) (uuid "22d21fe0-4223-5441-8218-31fca1f969ac"))
 	(text "LOCAL MCU DRIVERS: blocking diodes; 10k B-E bias.\nGate filter 1n / relay filter 100n. R102 470 / R106 200.\nDefaults, drive and release timing remain UNQUALIFIED." (exclude_from_sim no) (at 15 32 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "34eedc19-f815-5404-a2f4-8321bdc72446"))
 	(text "Normally hold relay ON; triac modulates heat. Coil 5 V / about 36 mA.\nNormal relay changes with triac OFF; interrupt load after triac fault.\nCommands HIGH = ON; flyback delays release. Verify actual timing." (exclude_from_sim no) (at 15 180 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "397cba46-1758-56ac-b6b4-343795e27753"))
 	(text "LOW VOLTAGE: local MCU, blocking diodes, 10k B-E bias; gate 1n / relay 100n filters, unqualified"
@@ -2263,16 +2263,6 @@
 			(type default)
 		)
 		(uuid "150e774b-7358-5adb-9e4f-0f53eeb2d027")
-	)
-	(wire
-		(pts
-			(xy 123.19 55.88) (xy 171.45 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15cdbaf4-f33d-5463-bbc9-cecadc9df82a")
 	)
 	(wire
 		(pts
@@ -2543,16 +2533,6 @@
 			(type default)
 		)
 		(uuid "76527b5e-0b99-508f-89ec-593a689c4ba7")
-	)
-	(wire
-		(pts
-			(xy 179.07 55.88) (xy 229.87 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7ad1cb7b-91cb-57e5-9c5e-09aad632945a")
 	)
 	(wire
 		(pts
@@ -3849,7 +3829,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:Relay_G6DN_1A_L_DC5_Study"
 			(at 105.41 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -3860,7 +3840,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf"
+		(property "Datasheet" "https://components.omron.com/us-en/system/files/2024-01/datasheet_pdf/K276-E1.pdf"
 			(at 105.41 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -3924,6 +3904,11 @@
 				)
 			)
 		)
+		(property "Manufacturer" "Omron Electronics" (at 105.41 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "G6DN-1A-L DC5" (at 105.41 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C6624853" (at 105.41 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "RetailSource" "https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/G6DN-1A-L-DC5/6819352" (at 105.41 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Retained Omron high-durability 5V 139ohm/36mA part, now also sold as Aratas. JLC quotation has no stock. Existing mounting geometry matches manufacturer; physical qualification remains." (at 105.41 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -4162,7 +4147,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical"
+		(property "Footprint" "Motley:Samtec_HMTSW-102-07-L-D-200_Vertical"
 			(at 264.16 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -4173,7 +4158,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://suddendocs.samtec.com/prints/hmtsw-xxx-xx-xxx-x-xxxx-xx-xx-mkt.pdf"
 			(at 264.16 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -4237,6 +4222,12 @@
 				)
 			)
 		)
+		(property "SelectionConstraint" "LOW120V provisional only: Harwin cap250V DC/ACpeak is below HIGH264Vrms/373Vpeak. Bare-header working voltage, whole-assembly insulation, hot current and surge/pulse qualification unresolved." (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "Manufacturer" "Samtec" (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "HMTSW-102-07-L-D-200" (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "" (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "manual" (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AccessoryMPN" "Harwin M7685-05 (two per header)" (at 264.16 110.49 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Motley:G6DN_1A_L_DC5")
@@ -4270,7 +4261,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:Relay_G6DN_1A_L_DC5_Study"
 			(at 229.87 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -4281,7 +4272,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g6dn.pdf"
+		(property "Datasheet" "https://components.omron.com/us-en/system/files/2024-01/datasheet_pdf/K276-E1.pdf"
 			(at 229.87 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -4345,6 +4336,11 @@
 				)
 			)
 		)
+		(property "Manufacturer" "Omron Electronics" (at 229.87 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "G6DN-1A-L DC5" (at 229.87 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C6624853" (at 229.87 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "RetailSource" "https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/G6DN-1A-L-DC5/6819352" (at 229.87 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Retained Omron high-durability 5V 139ohm/36mA part, now also sold as Aratas. JLC quotation has no stock. Existing mounting geometry matches manufacturer; physical qualification remains." (at 229.87 124.46 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -4469,7 +4465,7 @@
 				)
 			)
 		)
-		(property "Value" "10n X2"
+		(property "Value" "4n7 / pulse"
 			(at 269.24 83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4479,7 +4475,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Rect_L13.0mm_W5.0mm_P10.00mm_FKS3_FKP3_MKS4"
 			(at 269.24 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -4490,7 +4486,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/film/mkp_mfp/data_sheet/20/20/db/fc_2009/mkp_b32651_658.pdf"
 			(at 269.24 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -4501,7 +4497,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "TDK high-pulse semiconductor snubber capacitor, 4.7nF 10%, 450VAC /1250VDC; C101 and C104 parallel for9.4nF."
 			(at 269.24 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -4548,6 +4544,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TDK" (at 269.24 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "B32651A7472K000" (at 269.24 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C3781178" (at 269.24 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: C101+C104 fitted, 9.4nF total; qualification pending." (at 269.24 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -4673,7 +4677,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "330 / PR02"
 			(at 193.5 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4684,7 +4688,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Motley:Vishay_PR02_P15.24mm"
 			(at 190.5 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4695,7 +4699,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf"
 			(at 190.5 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4706,7 +4710,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pulse-rated gate-to-A1 shunt; include main-gate-open fault energy."
 			(at 190.5 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4753,6 +4757,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "Vishay" (at 190.5 91.44 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "PR02000203300JA100" (at 190.5 91.44 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C1365089" (at 190.5 91.44 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: 330ohm PR02 fitted." (at 190.5 91.44 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:Fuse")
@@ -4786,7 +4798,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:Fuseholder_Schurter_OGN_0031.8201_P22.50mm_Covered"
 			(at 200.66 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -4797,7 +4809,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.schurter.com/en/datasheet/typ_OGN.pdf"
 			(at 200.66 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -4855,10 +4867,18 @@
 				)
 			)
 		)
+		(property "Manufacturer" "SCHURTER" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "0031.8201" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C3204125" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "manual" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CartridgeMPN" "02153.15MXP" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CartridgeLCSC" "C142723" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "CoverMPN" "0853.0571" (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "PCB BOM position is ONE OGN holder. Separately hand insert ONE Littelfuse 215 cartridge and ONE Schurter black cover. Retail hand fit holders: current factory stock insufficient for whole controller. LOW-only provisional fuse selection; thermal/fault coordination unqualified." (at 200.66 40.64 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 175.26 55.88 90)
+		(at 139.7 55.88 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4869,7 +4889,7 @@
 		(fields_autoplaced yes)
 		(uuid "ad015636-933f-518e-964c-7cd67bed6fbf")
 		(property "Reference" "R104"
-			(at 175.26 48 90)
+			(at 139.7 62.23 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4878,8 +4898,8 @@
 				)
 			)
 		)
-		(property "Value" "430 / pulse-rated"
-			(at 175.26 51 90)
+		(property "Value" "1k2 / PR02"
+			(at 139.7 66.04 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4888,8 +4908,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
-			(at 175.26 55.88 0)
+		(property "Footprint" "Motley:Vishay_PR02_P15.24mm"
+			(at 139.7 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4899,8 +4919,8 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
-			(at 175.26 55.88 0)
+		(property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf"
+			(at 139.7 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4910,8 +4930,8 @@
 				)
 			)
 		)
-		(property "Description" "430 ohm preliminary pulse-rated gate resistor; 2512 geometry placeholder; surge/pulse and firing margins require qualification."
-			(at 175.26 55.88 0)
+		(property "Description" "First series gate resistor; LOW2.4k /HIGH4.8k total with regional bypass links."
+			(at 139.7 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4922,7 +4942,7 @@
 			)
 		)
 		(property "FunctionalGroup" "output.switching"
-			(at 175.26 55.88 0)
+			(at 139.7 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4933,7 +4953,7 @@
 			)
 		)
 		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003"
-			(at 175.26 55.88 0)
+			(at 139.7 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4957,6 +4977,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "Vishay" (at 139.7 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "PR02000201201JA100" (at 139.7 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C1366069" (at 139.7 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: 1k2 PR02 fitted; see R109-R113." (at 139.7 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -4980,7 +5008,7 @@
 				)
 			)
 		)
-		(property "Value" "100"
+		(property "Value" "330 / PR02"
 			(at 269.24 52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4990,7 +5018,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:Vishay_PR02_P15.24mm"
 			(at 269.24 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -5001,7 +5029,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf"
 			(at 269.24 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -5012,7 +5040,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pulse-rated 330ohm snubber discharge resistor; C101+C104=9.4nF; ordinary pulse screen reviewed, surge/fault qualification pending."
 			(at 269.24 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -5059,6 +5087,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "Vishay" (at 269.24 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "PR02000203300JA100" (at 269.24 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C1365089" (at 269.24 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "RegionalVariant" "LOW/HIGH: 330ohm PR02 fitted." (at 269.24 58.42 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5194,7 +5230,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Motley:TerminalBlock_GOOSVN_GS007S_P7.50mm_1x03_Horizontal"
 			(at 276.86 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -5205,7 +5241,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.goosvn.com/uploads/ueditor/file/20180929/6367382481749100251922503.pdf"
 			(at 276.86 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -5266,6 +5302,11 @@
 				)
 			)
 		)
+		(property "Manufacturer" "GOOSVN" (at 276.86 142.24 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "MPN" "GS007S-7.5-03P-11-00A(H)" (at 276.86 142.24 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "LCSC" "C5142605" (at 276.86 142.24 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "AssemblyDisposition" "factory-candidate" (at 276.86 142.24 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+		(property "PurchasingNote" "Exact manufacturer drawing: 1.60mm holes, 300V/16A component; actual system current/insulation not qualified. Economic matching confirmed 2026-11-16; final job/placement still reviewed separately." (at 276.86 142.24 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -5577,4 +5618,147 @@
 			)
 		)
 	)
+	(symbol
+  (lib_id "Device:R")
+  (at 165.1 55.88 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "c6d4cb27-f033-5aab-9db1-fdca0922cd24")
+  (property "Reference" "R109" (at 165.1 62.23 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "1k2 / PR02" (at 165.1 66.04 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Motley:Vishay_PR02_P15.24mm" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Series gate resistor; selected regional population determines total gate resistance." (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.switching" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "Vishay" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "PR02000201201JA100" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C1366069" (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW/HIGH: fitted." (at 165.1 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "R109") (unit 1)))))
+	(symbol
+  (lib_id "Device:R")
+  (at 190.5 55.88 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp yes)
+  (uuid "74464f50-2807-5e76-a490-2be294057415")
+  (property "Reference" "R110" (at 190.5 62.23 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "1k2 / PR02" (at 190.5 66.04 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Motley:Vishay_PR02_P15.24mm" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Series gate resistor; selected regional population determines total gate resistance." (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.switching" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "Vishay" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "PR02000201201JA100" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C1366069" (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW: DNP, bypass fitted. HIGH: fit1k2 PR02, bypass DNP." (at 190.5 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "R110") (unit 1)))))
+	(symbol
+  (lib_id "Device:R")
+  (at 215.9 55.88 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp yes)
+  (uuid "e1a88071-9f58-5e19-9e3b-87797c2881f6")
+  (property "Reference" "R111" (at 215.9 62.23 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "1k2 / PR02" (at 215.9 66.04 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Motley:Vishay_PR02_P15.24mm" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.vishay.com/docs/28729/pr010203.pdf" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Series gate resistor; selected regional population determines total gate resistance." (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.switching" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "Vishay" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "PR02000201201JA100" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C1366069" (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW: DNP, bypass fitted. HIGH: fit1k2 PR02, bypass DNP." (at 215.9 55.88 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "R111") (unit 1)))))
+	(symbol
+  (lib_id "Device:R")
+  (at 190.5 46.99 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "d096eedd-7eec-5812-97cb-53d87a67f993")
+  (property "Reference" "R112" (at 190.5 42.8 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "0 / LOW bypass" (at 190.5 44.8 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.uni-royal.cn/en/images/userfile/file/1668661899c56505e6d9ab55c7.pdf" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Regional gate-bank bypass acrossR110; not a removable mains configuration jumper." (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.switching" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "UNI-ROYAL" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "25121WJ0000T4E" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C25469" (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW: fit0ohm2512. HIGH: DNP; fit corresponding1k2 PR02." (at 190.5 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "R112") (unit 1)))))
+	(wire (pts (xy 186.69 46.99) (xy 186.69 55.88)) (stroke (width 0) (type default)) (uuid "1e6a535a-99b6-513d-a5f9-7d99b86897f7"))
+	(junction (at 186.69 55.88) (diameter 0) (color 0 0 0 0) (uuid "81b00372-5543-5f4a-a1fb-bbed83d17f04"))
+	(wire (pts (xy 194.31 46.99) (xy 194.31 55.88)) (stroke (width 0) (type default)) (uuid "834363b7-a4b4-5562-9259-fc7de7f5afd0"))
+	(junction (at 194.31 55.88) (diameter 0) (color 0 0 0 0) (uuid "46c7b2c2-b249-5e8a-83fa-8b50e7086011"))
+	(symbol
+  (lib_id "Device:R")
+  (at 215.9 46.99 90)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "4c9001b5-2c26-594f-a232-8881ce92b26d")
+  (property "Reference" "R113" (at 215.9 42.8 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "0 / LOW bypass" (at 215.9 44.8 90) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://www.uni-royal.cn/en/images/userfile/file/1668661899c56505e6d9ab55c7.pdf" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Regional gate-bank bypass acrossR111; not a removable mains configuration jumper." (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.switching" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "UNI-ROYAL" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "25121WJ0000T4E" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C25469" (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW: fit0ohm2512. HIGH: DNP; fit corresponding1k2 PR02." (at 215.9 46.99 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "R113") (unit 1)))))
+	(wire (pts (xy 212.09 46.99) (xy 212.09 55.88)) (stroke (width 0) (type default)) (uuid "aba470d3-b79b-511c-8c65-c0f86599372a"))
+	(junction (at 212.09 55.88) (diameter 0) (color 0 0 0 0) (uuid "baebd347-7d0c-5ad1-acbe-cf096412dd6b"))
+	(wire (pts (xy 219.71 46.99) (xy 219.71 55.88)) (stroke (width 0) (type default)) (uuid "51bed177-2c8a-5b2c-bc82-ec6be27fef67"))
+	(junction (at 219.71 55.88) (diameter 0) (color 0 0 0 0) (uuid "24a7d01e-b551-574e-adac-141ebc5e1fac"))
+	(wire (pts (xy 123.19 55.88) (xy 135.89 55.88)) (stroke (width 0) (type default)) (uuid "397fc8d4-4003-58fe-a189-d893720db9a0"))
+	(wire (pts (xy 143.51 55.88) (xy 161.29 55.88)) (stroke (width 0) (type default)) (uuid "7b0d9e99-ed44-5735-98b9-7f62c3162fa9"))
+	(wire (pts (xy 168.91 55.88) (xy 186.69 55.88)) (stroke (width 0) (type default)) (uuid "8f27f2df-acf1-5a07-8511-fbc6ce697a3c"))
+	(wire (pts (xy 194.31 55.88) (xy 212.09 55.88)) (stroke (width 0) (type default)) (uuid "fe52271a-b044-53e3-a842-614993e00847"))
+	(wire (pts (xy 219.71 55.88) (xy 229.87 55.88)) (stroke (width 0) (type default)) (uuid "0fa78077-a007-53fc-8111-238a58716972"))
+	(symbol
+  (lib_id "Device:C")
+  (at 279.4 88.9 0)
+  (unit 1)
+  (exclude_from_sim no)
+  (in_bom yes)
+  (on_board yes)
+  (dnp no)
+  (uuid "f97a1801-d5e7-5855-a1f9-aade702c2d5d")
+  (property "Reference" "C104" (at 279.4 80 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Value" "4n7 / pulse" (at 279.4 83 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1))))
+  (property "Footprint" "Capacitor_THT:C_Rect_L13.0mm_W5.0mm_P10.00mm_FKS3_FKP3_MKS4" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/film/mkp_mfp/data_sheet/20/20/db/fc_2009/mkp_b32651_658.pdf" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Description" "Second high-pulse snubber capacitor, parallel to C101." (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+  (property "FunctionalGroup" "output.snubber" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "Manufacturer" "TDK" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "MPN" "B32651A7472K000" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "LCSC" "C3781178" (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (property "RegionalVariant" "LOW/HIGH: fitted in parallel with C101;9.4nF total." (at 279.4 88.9 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+  (instances (project "motley-ac-output" (path "/a1a462d4-acb2-5147-9df0-d8609ab1df1b/e60bee3a-0434-582c-b7d2-ce2253b93154" (reference "C104") (unit 1)))))
+	(wire (pts (xy 269.24 85.09) (xy 279.4 85.09)) (stroke (width 0) (type default)) (uuid "f2478efd-06bd-530f-8abc-f0738b2977dc"))
+	(junction (at 269.24 85.09) (diameter 0) (color 0 0 0 0) (uuid "33525afb-3893-5185-9eb7-34fe57cfe274"))
+	(wire (pts (xy 269.24 92.71) (xy 279.4 92.71)) (stroke (width 0) (type default)) (uuid "9178b701-ba89-5535-9533-47745c094879"))
+	(junction (at 269.24 92.71) (diameter 0) (color 0 0 0 0) (uuid "674ebc6f-2cbc-5e9c-8650-94484395ee61"))
 )

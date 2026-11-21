@@ -1,5 +1,295 @@
 # Modular controller study verification
 
+## Continuous output ribbon, 2026-11-17
+
+ADR-0022 and draft `MOT-HW-016` record the continuous six-wire harness, keyed
+2×3/2.54 mm interface and one fitted plus one DNP parallel header per output.
+The [harness record](../../docs/output-ribbon.md) contains exact parts, actual
+Economic matching, pin order, nominal 50 mm tap spacing, electrical assumptions
+and twisted/toolless alternatives. Sixteen remains a soft exploration target;
+this revision screens the initial two-output arrangement and retains the
+existing protection. R42/R43 are 2k2 and each output gains raw-power C205=100n.
+
+Fresh KiCad XML comparisons preserve every original component UUID and circuit
+pin group after the explicit connector permutation: old 1/2/3/4/5/6 become
+3/1/2/4/6/5. J14/J22 have identical numbered nets, separate raw/logic supplies,
+and native DNP states; a default BOM export excludes J22 and includes J14/C205.
+The complete pin inventory reconciles 261 components / 745 symbol pins across
+the three designs, or 342/958 for one carrier, two outputs and one sensor board.
+Native annotation and allocation checks pass for all **271 footprints**.
+
+The carrier remains **95×80 mm** and the output **90×87 mm**, front assembly.
+Both have **zero native DRC violations and zero opens**. Independent native
+reviews preserve old footprint/pad/group identities and all 90 carrier / 238
+output mains-route items. Carrier USB copper is unchanged; all ten USB nets
+pass the expanded filled-ground centerline screen, with the previously recorded
+wider-band antipad limitations retained. H4 moves to (99,116); touch pads remain
+on the front. All 44 other native inputs, including sensor sources, are unchanged.
+
+Actual filled-copper graphs find no disconnected pads, floating pours, unfed
+inner-plane islands, via-drill/SMT intersections or projected 5 mm HV/LV
+collisions. All seven wide-path checks on each changed board pass. Output
+CUT_EN uses one intentional **21.96 mm / 0.2 mm In2** bridge between the existing
+via at (59.4,74.2) and plated TP5 at (60,95), adding no vias. In1 remains one
+continuous fed GND polygon; the three output power regions retain physical
+feeds. No stackup, zone-outline, mains-placement or board-rule change is made.
+
+ERC retains the existing carrier IRM symbol/library mismatch and two output
+open-collector/power-flag findings; no new finding is introduced. Changed
+schematic and board renders were visually reviewed. The eight carrier/output
+SVGs regenerate; the four sensor views are unchanged. Native DRC, XML and BOM
+exports used pinned KiCad 10.0.8. Maintained annotation/allocation/SVG checkers
+are unchanged from base commit `c759771a7a5aabd7bca73fb4cdf8356b894ca924`.
+
+| Reviewed native source | SHA-256 |
+| --- | --- |
+| `motley-carrier.kicad_sch` | `d92045d28d2f37c616fbd6eac92dbbd982cf76f08fadc1cf418e271fa49e5d10` |
+| `motley-ac-output.kicad_sch` | `cf6779b80c6f48bc9bb26d1c589188bfb8f8019588ff3df65255a0efe9ab890a` |
+| `qwiic-bench.kicad_sch` | `4118069182fed93bbd6fe68ae8e53cbfdfb2b75aa2961d0bc788a23766a0f2c2` |
+| `motley-carrier.kicad_pcb` | `4f1367fda55849379730f6e263654e0cd0dfaab435be541f98791aa52ce983ef` |
+| `motley-ac-output.kicad_pcb` | `eb2595db9ffdb863b65f62a7927ae16a0f83d3718a33ee7d50401fbb25970065` |
+| Kinghelm local `.kicad_mod` | `2499fa7412d7e96d6f6e79f52a7409d3b8db78c86a9a53bf78c546c8128e0e37` |
+
+This continues the approved exploratory exception. `MOT-HW-003/013` govern
+annotation/allocation integrity and `MOT-CI-004` the derivatives; electrical
+requirements remain draft. Sample mixed-vendor mating/IDC termination, actual
+enclosure wiring, hot-plug, electrical/thermal/EMC and mains qualification remain
+open. Actual header matching is not a new whole-board quote; earlier prices
+remain dated snapshots. No purchase or firmware change was made.
+
+After source and independent native review, the seven affected annotation/
+allocation implementation baselines were refreshed. Full
+`mise exec -- pre-commit run --all-files` and standard RQML pass, exit 0,
+including deterministic SVG regeneration and mapped-implementation approval.
+Unimplemented/unverified electrical obligations remain backlog; passing these
+structural gates does not complete the draft product requirements.
+
+## Optional USB wiring and CC population, 2026-11-17
+
+The requested alternative USB interface is J27, a normally unpopulated six-pin
+2.54 mm header: VBUS, GND, D+, D-, CC1, CC2. R28/R29 are separate 5k1/1% CC-to-GND
+footprints, both DNP. The primary Adafruit 6153 retains its internal pull-downs;
+its CC wires remain unconnected on the carrier. Populate the board resistors
+only for an alternative USB-C assembly without its own Rd.
+
+Three copper solder selectors default to PH (1-2). Switching to ALT requires
+cutting all three PH bridges and bridging all three 2-3 positions. VBUS selects
+with the data so the existing host-VBUS qualifier follows the chosen connector;
+both choices retain D20 and U23. This is a one-host interface. The selectors
+are excluded-BOM copper features, so the default purchased population is
+unchanged. The quote record remains the preceding dated export, not a new quote.
+
+Fresh XML configuration checks contract the three default bridges and reproduce
+all original 94 components' physical pin-net groups exactly. Separate ALT checks
+confirm the protected VBUS/data paths, isolated inactive branches and independent
+CC resistors. All six new components are allocated to `usb.service`; allocation
+and native annotation checks pass for 269 footprints across the three boards.
+Carrier source inventory is 100 components, 80 nets and 308 pin entries. ERC
+retains only the preceding IRM-05 symbol-library mismatch. The USB sheet was
+exported and visually reviewed with the DNP marks and configuration notes.
+
+The unchanged 95×80 mm four-layer carrier has 104 footprints, all on the front;
+only TP2-TP7 relocate among existing components. Independent native review
+preserves every old footprint/pad UUID and geometry, existing group membership,
+all 90 mains routes, zone definitions and outline. Actual stock F.Cu selector
+polygons connect only pads 1-2; pad 3 is physically open in the default board.
+Native DRC has **zero violations and zero opens**. Filled-copper checks find
+zero disconnected nets, floating pours, unfed inner-plane polygons, drilled-via
+intersections with SMT lands or projected 5 mm HV/LV collisions. All seven wide
+mains paths and antenna keepouts pass the same provisional geometric screens.
+
+The expanded USB-reference check includes PH, ALT and renamed protected nets.
+All data centerlines have zero missing-reference samples outside signal antipads.
+The extra ±0.3 mm margin is not completely clear: neighboring header antipads
+clip approximately 0.416 mm² on ALT D+, 0.348/0.695 mm² on common D+/D-, and
+0.010 mm² on PH D-. Existing transition slivers remain about 0.00146 mm².
+These local fanout/antipad results are retained as a qualification limitation;
+they do not support a controlled-impedance claim. Four carrier SVGs regenerate;
+the output/sensor native sources and their eight views remain byte-identical
+to the preceding integration checkpoint. The current carrier view was rendered
+and visually reviewed.
+
+| Reviewed source | SHA-256 |
+| --- | --- |
+| `usb-power.kicad_sch` | `1364688f6f1fec192f1729add27e0a9d5207b6f4755635410e4d039d01e122b6` |
+| `motley-carrier.kicad_pcb` | `4f3b4aff2964f5999f75c36a588835691af24776efbb2913ed2afc8e8df4faa8` |
+| `fp-lib-table` | `ccaa0162494142f51adba76b1abd40a7c78ce3f19447ee7c0a03f47525ddca3f` |
+| `functional-groups.md` | `610fa025757a92e6e3435e3506bf05b833761818fd097a0e5b9ca44b03ca4e6b` |
+
+This continues the documented exploratory hardware exception. `MOT-HW-014`
+records the requested design input as draft; approved `MOT-HW-003/013` and
+`MOT-CI-004` govern native annotations, allocation and generated views. These
+structural checks do not qualify USB impedance, signal integrity, hot-plug,
+current entitlement, ESD immunity or actual harness orientation and fit.
+
+After reviewing the changed source and independent audit evidence, the four
+affected implementation baselines were refreshed. Full
+`mise exec -- pre-commit run --all-files` passes (exit 0), including standard
+RQML consistency/drift and mapped-implementation approval. Earlier sandbox-only
+runs failed on protected-file read/write opens and the validator's online schema;
+isolated checks passed before granting the narrowly scoped permissions required
+for the successful complete run. No protected configuration content changed.
+
+## Factory-matched exact-part integration, 2026-11-16
+
+The user authorized completing assembly matching, mechanical integration and
+new quotes. This continues the exploratory hardware exception: approved
+`MOT-HW-003/013` and `MOT-CI-004` govern identities, allocation and derivatives;
+no electrical requirement has been approved or declared physically verified.
+
+Actual Economic matching confirms GOOSVN C5142603/C5142605 and JST PH C274409
+can be factory hand-soldered. YAGEO AC0603FR-07226KL / C227714 replaces the
+same-value/package R25 after its original part failed the attrition-stock test.
+The [selection guide](../../docs/hardware-exact-selections.md) records exact
+drawings, purchasing identities, hand-fitted accessories and limitations.
+F1/F2 now represent one exact Schurter OGN holder each, with separate cartridge
+and cover metadata. Short Samtec configuration headers retain the LOW-only
+covered-snubber constraint. Five new local library footprints are traced.
+
+The carrier remains **95×80 mm** with right-facing mains entries. The output
+increases from 90×85 to **90×87 mm** to fit the covered fuse holder and bottom
+terminals. Output-bus PH headers preserve their six numbered signals; nearby
+clamps and routing are repacked. Full before/after schematic-tree comparison
+allows only purchasing/footprint fields: values, UUIDs, geometry, requirements,
+functional groups and electrical connectivity are unchanged. Fresh XML pin-net
+sets match: carrier 94 components / 72 nets / 289 pin entries; output 79 / 60 /
+205. All 98 carrier and 83 output footprint identities, values, numbered-pad
+nets and group memberships are retained. The fuse stand-in's four duplicate
+clip pads intentionally become two actual holder terminals.
+
+Both final native DRC reports contain **zero violations and zero opens**.
+Parity reports retain 43 carrier / 38 output `Description`-field mismatches;
+they are explicit study metadata gaps, not clean-parity claims. ERC retains
+the one carrier IRM-05 symbol mismatch and two output open-collector/power-output
+findings. No rule, exclusion or severity is weakened. J18.1 and J14.1 use direct
+GND-plane connection, and D31 has a clear ground stitch to join its local copper.
+
+Actual filled-copper audits, independently rerun, find zero disconnected nets,
+floating polygons, drilled-via/SMT-land intersections or unfed inner-plane
+polygons. The provisional projected **5 mm HV/LV screen passes on all layers**,
+and all seven specified wide mains paths per board remain connected. Six new
+sense/load via drills were moved outside solder lands and their routes repaired
+before these results. These checks do not qualify insulation, fault interruption
+or thermal behavior. The sensor native sources and four sensor views are
+unchanged; eight carrier/output derivative SVGs are regenerated and the front
+views rendered and visually inspected. Full pre-commit and standard RQML pass
+(exit 0); affected baselines were refreshed only after source/drawing review.
+
+Remaining qualification includes actual 60°C operation, fuse/holder temperature
+and clearing-energy coordination, cold-lamp/supply inrush, harness/tool access,
+snubber capacitor-short behavior, header surge/working voltage, and the future
+HIGH regional population. The present 250 VAC fuse cartridges and 250 V AC-peak
+caps do not establish operation at 264 VAC. Ignored review PDFs remain earlier
+snapshots; current committed SVGs are the layout derivatives for this revision.
+
+Fresh Gerber/BOM/CPL exports pass coordinate/origin, outline, drill, four-layer,
+reference completeness and source-unchanged checks. Actual
+[exact-part JLC quotes](../../docs/jlcpcb-quote-2026-11-16-exact-parts.md) return
+$285.26 / $312.08 / $419.13 for one/two/five planned controllers' partial board
+assemblies. Exact persisted selections, actual fees, attrition and stock
+omissions are reconciled; the four explicit manual positions and separate fuse
+accessories are not double counted as factory parts. Assembly centroids,
+production rotations and physical operating qualification remain unverified.
+
+| Reviewed native source | SHA-256 |
+| --- | --- |
+| motley-carrier.kicad_pcb | `543eabf96cbf424bb785e4668c660ce4672964dfbb7659c98546d38dede6ba70` |
+| motley-ac-output.kicad_pcb | `ef9f7dc9058d4277370079e7154b7d21aaaf9b22b9fc3009f056eecf6194d85f` |
+| motley-carrier.kicad_sch | `741f294afeaea5b34e4ed5e447692c9c5147157b95a476fbf8b17cee8d746e8e` |
+| motley-ac-output.kicad_sch | `c507c436f3b1ae291051c231c4c1a2ff3dcb9bea0ceca6a966a35eec42e43a99` |
+| power.kicad_sch | `3b2385ec79ab56822dda444e53ae8cf3c0ff72a8c41761cb3cb4b1f96a04550e` |
+| heater-channel.kicad_sch | `311d8adae464634492134fb82a514de4eef85ec594ebd6576d04e51eafe760e4` |
+| output-control.kicad_sch | `ea853b83ac98dfe65d5bbc38d507df3a3fb8cc6e3e39abf5fa27a3daff94c612` |
+| usb-power.kicad_sch | `0c43cd67c16a2dd8504009f7b8f4054010605ea1c5a6fc96c91de778757f9933` |
+
+## Exact purchasing selections, 2026-11-16
+
+The [selection record](../../docs/hardware-exact-selections.md) resolves the
+remaining board-part identities against manufacturer drawings and current
+catalogues. New terminal, holder and keyed-header geometry is documented for
+the separate manufacturing-cleanup pass; it is not integrated or newly quoted.
+The snubber cap's AC-peak rating makes that provisional selection LOW-only.
+
+This pass changes only R25/K1 purchasing properties, K1's schematic assignment
+to its existing reviewed footprint, and J20's hidden `SelectionConstraint`.
+A full parsed before/after comparison of all four native trees, repeated by an
+independent reviewer, confirms unchanged wiring, geometry, identity, groups and
+rules. All twelve generated SVGs remain current without regeneration changes.
+Only the four affected `MOT-HW-003` implementation baselines were refreshed
+after this review. The preceding physical/electrical checks remain historical
+evidence for unchanged geometry, not fresh physical qualification.
+Full pre-commit passes (exit 0), including native allocation/annotations, SVG
+freshness and fixtures, strict RQML lint, standard consistency/drift and mapped
+implementation approval. No additional electrical requirement was approved.
+
+| Reviewed native source | SHA-256 |
+| --- | --- |
+| heater-channel.kicad_sch | `ded5a196516357d55a6a4427a35e18919785d8024621e179b4168669034fa9da` |
+| usb-power.kicad_sch | `0818f3f08a20aba9619560df85f18a04c32cdca0d99bc5639f9e8305e764863d` |
+| motley-ac-output.kicad_pcb | `c1dee704581312ccb1c9578b3566188bf064e661900e60eb9f9103216d0e33da` |
+| motley-carrier.kicad_pcb | `7cb22f2174cb5bfe2fa1ea85b8ffe73dcaa378acfc298206d22404c59c1b7726` |
+
+## JLC-sourceable AC passive revision, 2026-11-16
+
+The user authorized the [passive review](ac-passive-review.md) recommendations
+after confirming indoor, ventilated controller electronics outside the humid
+enclosure. This continues the `MOT-PROC-001` exploratory exception: approved
+`MOT-HW-003/013` and `MOT-CI-004` govern native identity, allocation and generated
+views; electrical requirements remain draft, not accepted hardware claims.
+
+The LOW default now uses the reviewed pulse-rated gate/snubber components and
+leakage-shunted detector. HIGH population choices are recorded in native fields
+and notes; they require a deliberately prepared regional BOM, not an automatic
+KiCad variant export. The carrier detector is three 18k CRGP parts. Existing
+source identities are preserved except the intentionally removed R83; seven
+output components are added. Fresh XML reconciles 253 schematic components /
+718 pin identities and 263 PCB footprints, including ten board-only mechanics.
+Requirement and functional allocations agree for every source/footprint.
+
+The output grows from 90 x 65 to **90 x 85 mm** for the larger pulse parts and
+regional positions. Carrier and sensor outlines remain 95 x 80 and 80 x 40 mm.
+Front assembly, heatsink reserve, external connectors, four-layer LV planes and
+unaffected LV routing are preserved. The project adds only three new mains-sense
+netclass assignments; no rule, severity or exclusion is weakened. The carrier
+change is confined to R80–R82 metadata and removal/bypass of R83.
+
+KiCad 10.0.8 DRC reports **zero physical/silkscreen violations and zero opens**
+on both changed boards. The parity-inclusive reports retain 45 carrier / 42
+output findings, reduced from 49 / 53 by actual source/footprint alignment.
+Changed selections have no remaining parity findings. Output ERC retains the
+same two open-collector/power-output findings; carrier ERC retains the same
+IRM-05 library-symbol mismatch. CLI report generation exits 0; these inherited
+findings are not represented as a clean schematic or manufacturing release.
+
+Independent actual-copper audits pass the provisional projected 5 mm HV/LV
+screen on all four layers and find zero via-drill/SMT-land intersections on
+both boards. All seven output load paths retain 2 mm trunks and the intended
+short 0.8 mm TO-220 escapes; all seven carrier load paths pass unchanged.
+The output graph connects all 203 netted pads and all eleven filled plane
+polygons, with no disconnected nets or floating plane pieces. Four new via
+drill/land intersections found during review were repaired before this result.
+
+`hardware_trace.py` and `hardware_groups.py` pass for all 263 footprints.
+Full `mise exec -- pre-commit run --all-files` passes (exit 0), including trace,
+allocation and SVG fixtures, twelve-view freshness, strict lint, standard RQML
+and mapped-implementation approval. Eight carrier/output SVGs were regenerated;
+the sensor CAD and four sensor SVGs remain byte-identical. Revised schematic
+and coloured PCB exports were visually inspected. Ignored review PDFs remain
+earlier snapshots and need regeneration. No firmware change, fresh assembly
+quote, Economic assembly eligibility or physical qualification is claimed.
+Temperature, firing/fault timing, surge protection and EMC still need the
+validation described in the passive review.
+
+| Tested native source | SHA-256 |
+| --- | --- |
+| heater-channel.kicad_sch | `7e22df1da8158683d59f30833f1cf3968323fe29f7a0cdb00311f482ee9b3d03` |
+| output-feedback.kicad_sch | `c49d3cb66ae8ef51146d791855636466f8268c84f3d1b30eb5739066e2bf26a1` |
+| line-reference.kicad_sch | `76145c9bdffce1afbfd4f92db7b30d564343b5d709a378950670193bc4177f38` |
+| motley-ac-output.kicad_pcb | `95ac0aed5d2f0a2c0f0ba1ca824c9fb16528e2cd6a8d1043f3d2f8487209f8a2` |
+| motley-carrier.kicad_pcb | `bf769075e662eed372fe9a0bfc58c47819c43a1c4fe2f96f58ff364c4279bd1f` |
+| motley-ac-output.kicad_pro | `f9cb5b20cd9f2dd91f080034d46ddf5a4cc031dd0131aa901a6621cad20e0b3b` |
+| Vishay_PR02_P15.24mm.kicad_mod | `b6c10fc7b5068cb9efcb2cc4e7f09cebcd69dd6247ffa4fc0e82abed53d95157` |
+
 ## Four-layer ground/power planes, 2026-11-14
 
 At the developer's request, ADR-0021 records the four-layer choice before

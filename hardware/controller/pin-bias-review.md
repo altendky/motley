@@ -7,6 +7,13 @@ random-phase driver, feedback and LP power domain. This document retains the
 earlier analysis and the unchanged sensor assessment; its direct-GPIO pin map
 and old driver values are historical.
 
+The 2026-11-16 [AC passive review](ac-passive-review.md) and current
+[intelligent-output inventory](intelligent-output-review.md#inventory-assessment-keys)
+also supersede the historical mains gate/snubber and line-detector values here.
+They explicitly cover the added parallel capacitor, series gate positions,
+regional bypass links and detector branch; this document's dated inventory
+and source hashes remain historical evidence rather than current CAD counts.
+
 Review date: 2026-11-13. Scope: the current unrouted three-design study,
 including both physical copies of the AC-output module. Governing proposals:
 `MOT-HW-001` (complete assessment) and `MOT-HW-002` (defined hardware defaults).
@@ -299,7 +306,7 @@ ordinary logic pulls do not apply.
 | C-VBUS | Comparator, 226k/100k divider, 47k OE pull-up and comparator decoupling | IN+ = REF, IN- = grounded divider, OUT open drain. B-version POR gives Hi-Z and local receiver pull-up gives disconnect. Quantify combined leakage/ramp margin. |
 | C-RAWUSB | R23 VBUS bleed | 10k gives raw VBUS a local discharge/reference when cable is absent; no assumed host current entitlement. |
 | C-ESD | D20 all pins | Data clamp/pass-through pins are analog, GND/VBUS are references. No arbitrary logic pulls; powered-off clamp/gate leakage still needs review. |
-| C-USBPORT | J21 all contacts | Power and USB analog pair follow attached cable; CC resistors reside in selected panel assembly. PB-07 and physical mapping remain open. |
+| C-USBPORT | J21 all contacts | PH-selected VBUS/data follow the attached cable through JP30/31/32; its CC contacts stay NC because Rd is inside the panel assembly. J27 and separate DNP Rd are assessed as C-USBALT in the current intelligent-output review. PB-07 and physical mapping remain open. |
 | C-SENSIF | J13 all contacts | GND/switched rail and remote SDA/SCL/reset. Local main-bus 10k pulls now survive mux removal; the receiver retains its own bus/reset pulls. PB-02/04 and reset off-domain behavior remain open. |
 | C-QWIIC | J23/J25 HP and J24/J26 LP, all contacts | GND, switched 3.3 V power OUT, SDA/SCL on independent HP/LP buses; duplicates within each pair share data. Carrier-local pulls survive mux removal; individual power links are not I/O isolation. One host/supply; no external power backfeed or signals into unpowered boards. PB-02/04 and full partial-contact behavior remain open. |
 | C-QWPULL | R40/R41 main 10k; R42/R43 LP 4k7 | Two-contact passive pulls to switched sensor rail define idle HIGH while powered, surviving removal of either socket/mux. Main nominal 10k parallel mux 4k7 and selected branch 2k2 gives 1.303k before probe-added pulls. Off-domain, GPIO6/7 JTAG/reset defaults, leakage, LOW/rise margins and temperatures remain unqualified. |

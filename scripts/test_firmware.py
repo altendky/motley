@@ -8,6 +8,7 @@
 from contextlib import redirect_stderr, redirect_stdout
 import io
 import json
+import os
 from pathlib import Path
 import struct
 import subprocess
@@ -41,8 +42,20 @@ def identity_fixture(version: str, extra: bytes = b"") -> tuple[bytes, bytes]:
     return bytes(elf), bytes(image)
 
 
-class GitIdentityTests(unittest.TestCase):
+class IsolatedGitTests(unittest.TestCase):
     def setUp(self):
+        super().setUp()
+        # Git hooks export repository-local variables which override even git -C.
+        local_names = subprocess.check_output(
+            ["git", "rev-parse", "--local-env-vars"], text=True).splitlines()
+        environment = {name: value for name, value in os.environ.items()
+                       if name not in local_names}
+        self.enterContext(patch.dict(os.environ, environment, clear=True))
+
+
+class GitIdentityTests(IsolatedGitTests):
+    def setUp(self):
+        super().setUp()
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name) / "repo"
@@ -343,11 +356,12 @@ class ArtifactTests(unittest.TestCase):
             firmware.verify_embedded_identity(elf[:60], image, self.version)
 
 
-class RunnerTests(unittest.TestCase):
+class RunnerTests(IsolatedGitTests):
     def test_source_change_during_build_invalidates_previous_success(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             subprocess.run(["git", "init", str(root)], check=True, capture_output=True)
+            self.assertTrue((root / ".git").is_dir())
             (root / "firmware").mkdir()
             (root / "firmware" / "toolchain.toml").write_text('image = "sdk@sha256:' + 'a' * 64 + '"\ntarget = "esp32c6"\n')
             (root / "firmware" / "dependencies.lock").write_text("fixture\n")
@@ -384,6 +398,7 @@ class RunnerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             subprocess.run(["git", "init", str(root)], check=True, capture_output=True)
+            self.assertTrue((root / ".git").is_dir())
             (root / "firmware").mkdir()
             (root / "firmware" / "toolchain.toml").write_text('image = "sdk@sha256:' + 'a' * 64 + '"\ntarget = "esp32c6"\n')
             output = root / "output"; output.mkdir()
@@ -401,6 +416,41 @@ class RunnerTests(unittest.TestCase):
                   redirect_stdout(io.StringIO())):
                 self.assertEqual(firmware.main(), 0)
             self.assertEqual(path.read_bytes(), before)
+
+
+class HookEnvironmentTests(IsolatedGitTests):
+    def setUp(self):
+        super().setUp()
+        temporary = self.enterContext(tempfile.TemporaryDirectory())
+        self.outer = Path(temporary) / "outer"
+        subprocess.run(["git", "clone", "--shared", "--no-checkout",
+                        str(firmware.ROOT), str(self.outer)], check=True, capture_output=True)
+        metadata.git(self.outer, "checkout", "--detach", "HEAD")
+        (self.outer / "staged.fixture").write_text("preserve staged content\n")
+        metadata.git(self.outer, "add", "staged.fixture")
+        (self.outer / ".git" / "MERGE_HEAD").write_text(
+            metadata.git(self.outer, "rev-parse", "HEAD^") + "\n")
+
+    def run_with_hook_environment(self, suite):
+        git_dir = self.outer / ".git"
+        paths = [git_dir / name for name in ("HEAD", "index", "MERGE_HEAD", "config")]
+        before = {path: path.read_bytes() for path in paths}
+        environment = {"GIT_DIR": str(git_dir), "GIT_INDEX_FILE": str(git_dir / "index"),
+                       "GIT_COMMON_DIR": str(git_dir), "GIT_WORK_TREE": str(self.outer),
+                       "GIT_PREFIX": ""}
+        with patch.dict(os.environ, environment), patch.object(firmware, "ROOT", self.outer):
+            result = unittest.TestResult()
+            suite.run(result)
+        self.assertTrue(result.wasSuccessful(), result.errors + result.failures)
+        self.assertEqual({path: path.read_bytes() for path in paths}, before)
+
+    def test_identity_fixtures_preserve_hook_repository(self):
+        self.run_with_hook_environment(
+            unittest.defaultTestLoader.loadTestsFromTestCase(GitIdentityTests))
+
+    def test_runner_fixtures_preserve_hook_repository(self):
+        self.run_with_hook_environment(
+            unittest.defaultTestLoader.loadTestsFromTestCase(RunnerTests))
 
 
 class DependencyTests(unittest.TestCase):

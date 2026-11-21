@@ -64,7 +64,7 @@ copper layers with ground/power planes and components on the front side.
 | Board | High-level capabilities | Current outline |
 | --- | --- | --- |
 | [Controller and AC input](hardware/controller/motley-carrier.kicad_pro) | ESP32-C6 with 8 MB flash; Matter/Thread platform; isolated 5 V mains supply; automatic mains/USB logic-power selection; separately switched sensor supply; both I2C buses exposed through Qwiic; output connections and shared line timing | 95 × 80 mm |
-| [Single AC output](hardware/controller/motley-ac-output.kicad_pro) | Local STM32 MCU; triac with random-phase isolated drive; series cutoff relay; isolated current/voltage feedback; branch fuse and configurable snubber; programming/recovery access | 90 × 65 mm |
+| [Single AC output](hardware/controller/motley-ac-output.kicad_pro) | Local STM32 MCU; triac with random-phase isolated drive; series cutoff relay; isolated current/voltage feedback; branch fuse and configurable snubber; programming/recovery access | 90 × 87 mm |
 | [Sensor multiplexer](hardware/controller/motley-sensors.kicad_pro) | Eight independently selected I2C branches with JST-SH/Qwiic-compatible connectors; selectable mux address; deployment and Qwiic upstream connections; cut-down layout for fewer ports | L-shaped, 80 × 40 mm overall |
 
 The preferred expansion target is at least sixteen output boards, subject to
@@ -82,9 +82,14 @@ for interfaces, preliminary parts and remaining engineering work.
 These are **estimated costs in USD using the upper completion allowance, with
 batch totals rounded to the nearest $25**, updated 2026-11-15 for the four-layer,
 intelligent-output design. They combine actual
-JLCPCB Economic fabrication/assembly quotes from the current Gerbers and BOM/CPL
+JLCPCB Economic fabrication/assembly quotes from that date's Gerbers and BOM/CPL
 with estimated remaining hand-fitted parts and enclosure wiring. JLC's quotes
 cover the selected available parts; they do not cover a complete device.
+The subsequent exact-part revision has a
+[new JLC quotation](docs/jlcpcb-quote-2026-11-16-exact-parts.md): $285.26 /
+$312.08 / $419.13 for fabrication and partial assembly in the three scenarios.
+The complete-controller budget below still uses the November 15 completion
+allowances and needs reconciliation against those newer factory selections.
 
 One complete controller means one controller board, one eight-port sensor board
 and two output boards. Small-order minimums mean paying for spare boards even
@@ -126,3 +131,13 @@ The first useful contributions are likely to be application design, firmware,
 hardware review and practical packaging. Requirements distinguish planned
 behavior from implementation and verification; build and CAD checks alone do
 not establish that the assembled device works.
+
+## Licensing
+
+Original software and general text are licensed under **MIT OR Apache-2.0**.
+Original hardware designs, including independently created symbols and
+footprints, are licensed under **CERN-OHL-P-2.0**. Upstream-derived reusable
+library parts retain their identified licenses and exceptions.
+
+See the [license scope](LICENSE.md), [complete license texts](LICENSES/) and
+[third-party notices](THIRD_PARTY_NOTICES.md).

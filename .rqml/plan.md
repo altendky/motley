@@ -1,5 +1,334 @@
 # Motley plan
 
+## Python 3.15 maintenance update, 2026-11-21
+
+Reviewed dependency PR #12 and show/impact results for `MOT-HW-003`,
+`MOT-HW-013`, `MOT-CI-001/002/003/004` and `MOT-PROC-001/002` before editing
+the tooling configuration. Python also runs firmware metadata, hardware trace,
+allocation and SVG helpers beyond the declared tooling links. Their behavior,
+requirements, tool trust exceptions and native sources must remain unchanged.
+
+Combined dependency head `648b59c200ed54f8999a3aa7f69f39a17a84e13e` with main
+`e78f6aeb47b720a0cf22e6c4797c928d969a2fab`, keeping Python 3.15.2 and the
+current main tool pins. Cold wheel-only replay of the old pre-commit graph
+failed with exit 2 because PyYAML 6.0.3 lacks a Python 3.15 wheel. PyYAML 6.0.4
+publishes the required wheels for all five declared platforms:
+<https://pypi.org/project/PyYAML/6.0.4/#files>.
+
+Used uv 0.13.9 to update only PyYAML to 6.0.4, preserving every other package
+record and the original global release cutoff. A package-specific cutoff admits
+the reviewed PyYAML release. `mise lock pipx:pre-commit` refreshed its graph
+digest; pre-commit remains 4.7.0. `mise install --locked` exited 0, and the actual
+pre-commit environment runs Python 3.15.2 with PyYAML 6.0.4 and libyaml enabled.
+
+Refreshed only `E-IMPL-MOT-HW-003-21` and `E-IMPL-MOT-HW-003-22` with RQML.
+Reviewed SHA-256 values are
+`be7fa89a57774bbceb7b6c7b1214bb694bd77c4e7b27afdddb03d4ce4d949ead` for
+`mise.toml` and
+`6e551851116395c6d8ac008d81fadf4bfb0ea9a740f7d9da27fb0116be883872` for
+`mise.lock`; other source/test inputs remain at the reviewed main commit.
+
+`mise exec -- uv run scripts/test_firmware.py` passed all 35 tests on Python
+3.15.2. `mise exec -- pre-commit run --all-files` exited 0, including firmware,
+hardware and board SVG fixtures, strict RQML lint, standard consistency/drift
+checks and the mapped-implementation approval gate. Requirement intent and other
+baselines are unchanged. These checks do not claim a new firmware build,
+additional platform execution or completion of the existing requirements backlog.
+
+## Reviewed mise-action dependency update, 2026-11-21
+
+Reviewed `238b371617987e74273dd373c090f28357832472` and show/impact results for
+`MOT-CI-001/002/003/004` and `MOT-HW-013`. The update changes only the four
+`jdx/mise-action` pins from `b44d12e7d0d8ee7461bb893e1b1993500433185b` to
+`90f833d396d0cc3674b631d2d225e306476c303a`. Locked installation, firmware build
+and artifact handling, the independent requirements report, generated-board
+freshness and hardware checks remain configured as before. No requirement
+intent or verification link changes are needed.
+
+Refreshed only the five baseline edges mapped to `.github/workflows/ci.yml`:
+`E-IMP-MOT-CI-BUILD`, `E-IMP-MOT-CI-UPLOAD`, `E-IMPL-MOT-CI-003`,
+`E-IMPL-MOT-CI-004-3` and `E-IMPL-MOT-HW-013-5`. RQML hashes the whole file for
+fragment locators too. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0. `mise exec -- pre-commit run --all-files` exited 0,
+including actionlint, Mergify validation, hardware/firmware metadata tests,
+board SVG checks and RQML gates. The reviewed workflow SHA-256 is
+`94d834d14b792eb55dc3b45f49ca442d2fbeb6150d7adbd0dc4c5c24e179dca9`;
+the other source/test inputs remain at the reviewed commit above. These local
+checks do not claim a new firmware build or hosted action execution.
+
+## Reviewed uv dependency update, 2026-11-21
+
+Reviewed `598e342fd533cfaf3855848ae1cc1b66d4ee2886` and the `MOT-HW-003`
+show/impact results before refreshing its two tooling baselines. The update
+changes only uv 0.13.8 to 0.13.9 in `mise.toml` and the corresponding release
+asset URLs and checksums for all five existing `mise.lock` platforms, retaining
+their provenance settings. KiCad pins, native hardware, traceability checks and
+requirements remain unchanged. This maintains the approved tooling relationship,
+with no requirement-intent change or new implementation coverage.
+
+Used `rqml link --refresh` for `E-IMPL-MOT-HW-003-21` and
+`E-IMPL-MOT-HW-003-22` only. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0 after the refresh.
+`mise exec -- pre-commit run --all-files` exited 0, including hardware trace,
+firmware metadata, generated SVG and RQML checks. Reviewed SHA-256 values are
+`f72986a4096e8245f7339d9c58292c10f8fef214f90c2093ed7085e990cdef17`
+for `mise.toml` and
+`f32e0653f13de516ac345d752545c6b2aa574eae8d468fa4fa10e9b27bb3adb9`
+for `mise.lock`; other source/test inputs remain at the reviewed commit above.
+These local checks do not claim a new firmware build or additional platform
+execution evidence.
+
+## Reviewed mise dependency update, 2026-11-21
+
+Reviewed `c79cc27e7dd6ab0a7de712632279a2523a14db21` and show/impact results for
+`MOT-CI-001/002/003/004` and `MOT-HW-013`. The update changes only the four
+workflow mise versions from 2026.11.4 to 2026.11.12. Locked installation,
+firmware build and artifact handling, the independent requirements report,
+generated-board freshness and hardware checks remain configured as before.
+No requirement intent or verification link changes are needed.
+
+Refreshed only the five baseline edges mapped to `.github/workflows/ci.yml`:
+`E-IMP-MOT-CI-BUILD`, `E-IMP-MOT-CI-UPLOAD`, `E-IMPL-MOT-CI-003`,
+`E-IMPL-MOT-CI-004-3` and `E-IMPL-MOT-HW-013-5`. RQML hashes the whole file for
+fragment locators too. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0. `mise exec -- pre-commit run --all-files` exited 0,
+including actionlint, Mergify validation, hardware/firmware metadata tests,
+board SVG checks and RQML gates. The reviewed workflow SHA-256 is
+`ecbaa21b2dda52d0ff6bc017d1474e9afe4a837c1f4a00691b8af19104de5ee3`;
+the other source/test inputs remain at the reviewed commit above. These local
+checks do not claim a new firmware build or hosted action execution.
+
+### Main catch-up review, 2026-11-21
+
+Reviewed the merge of main `032d7a9b4827082d3b3ecd135e3c238041e7b784`
+into `744c4d9d5f55b935145c222f87277c0fc2241bba`, preserving the reviewed
+mise-action and uv updates from #23 and #64. The combined workflow changes
+only those action pins and the four mise versions; requirements, locked
+installation, firmware/artifact handling and hardware checks retain their
+intent. Re-ran show/impact for `MOT-CI-001/002/003/004`, `MOT-HW-013` and
+`MOT-HW-003` before resolution. Kept the main baseline as authoritative,
+including both uv hashes, and refreshed only the five workflow edges listed
+above for the actual combined `.github/workflows/ci.yml` SHA-256:
+`0d12de38edfbbd86215f0c95a78d79e38a8181b955852b2a5296f27d06a68843`.
+
+`mise exec -- pre-commit run --all-files` exited 0 for the combined state,
+including standard RQML consistency/drift, the mapped-implementation approval
+gate, hardware/firmware metadata tests and generated SVG checks. This records
+local review and checks, not a new firmware build or hosted action execution.
+
+## Firmware fixture isolation review, 2026-11-21
+
+Reviewed `MOT-BUILD-002` and `MOT-PLAT-001` with show/impact and the matrix
+before changing their shared `scripts/test_firmware.py` target. Git hooks export
+repository-local environment variables that override `git -C`; foreign fixture
+reset/clean and init commands must therefore run with those variables removed.
+The test contexts now remove the names reported by `git rev-parse
+--local-env-vars`. Production source identity, provenance and dependency checks
+retain their existing behavior.
+
+The 35 tests passed normally and with hook variables targeting a disposable
+shared clone. Two new regression tests execute the actual identity and runner
+fixtures under those variables, checking that the invoking repository's HEAD,
+index, MERGE_HEAD and config remain byte-for-byte unchanged. Both init fixtures
+also check that their own Git directory was created. The full-suite hook test
+additionally preserved the recovery worktree's Git state. No fixture commits
+were created. The reviewed test SHA-256 is
+`6bd949e02df3b5a3d7efe32235402c3f46f7ef554cb5553dff689a518bb0fc77`;
+`scripts/build_metadata.py` remains
+`58a115e6dbbb74991745c12f63e6889e335f713dae868233b4bddd97449320e1`.
+
+The existing `E-VER-MOT-IDENTITY-FIXTURES` and `E-VER-MOT-PLAT-001` links still
+target this test file. RQML 0.11.0 supports baseline refresh only for implements
+edges, so no verification hashes were fabricated or baseline entries changed.
+The five reviewed workflow and two uv baseline values were preserved.
+`mise exec -- pre-commit run --all-files` exited 0, including firmware metadata,
+hardware, generated SVG, RQML validation/lint/consistency and approval checks.
+These checks exercise fixture safety and existing mocked firmware behavior;
+they do not claim a new SDK firmware build or hardware verification.
+
+## Multi-drop output ribbon, 2026-11-17
+
+**Readiness:** READY for the reviewed native integration. Kinghelm
+KH-2.54PH180-2X3P-L8.9 / C5157626 passed actual Economic assembly matching;
+HARTING 09185065813 and 3M 3801/06 form a dimensionally matched prototype
+harness pending sample termination/mating. Pin order is logic 5 V, SDA, GND,
+SCL, raw actuator 5 V, LINE_SYNC. ADR-0022 records the selected topology and
+draft `MOT-HW-016` its interface contract. Continue the existing exploratory
+exception; electrical requirements remain draft. Sixteen outputs remains a
+soft exploration target, not a qualified population. Issues #59/#62 remain open.
+
+- [x] **Goal:** Select and document the complete multi-drop interconnect.
+  **Requirements:** `MOT-AC-009`, `MOT-HW-015`; ADR-0022 and existing six-signal
+  power domains. **Files:** `docs/hardware-exact-selections.md`,
+  `docs/ac-output-module.md`, `hardware/controller/README.md`. Check exact
+  keyed/shrouded 2x3/2.54 mm headers, mid-cable IDC sockets, matching ribbon
+  gauge/spacing/insulation and strain relief; establish manufacturer fit and
+  actual factory-installation eligibility separately. Specify pin 1 to wire 1
+  everywhere; freeze the numbered pin map after ribbon-coupling review.
+  **Verification:** review drawings, mating exclusions, contact/wire limits,
+  chain current/voltage drop, I2C loading and SYNC fanout; state supported
+  lengths/counts or explicit qualification gaps. Do not assume the present
+  supply qualifies the preferred sixteen-output capacity.
+  **Decision:** keep the existing S2BT protection; use central LP pull-ups
+  R42/R43 = 2k2 for calculated two-output rise-time margin, and add one raw
+  actuator 5 V bypass capacitor per output tap. Nominal 50 mm spacing needs
+  strain-relief/service allowance; 1 m is a conservative screening assumption,
+  not a cable rating. Twisted cable and lever terminals remain alternatives;
+  they are not required for the initial internal ribbon.
+- [x] **Goal:** Integrate the reviewed connector population into native CAD.
+  **Requirements:** `MOT-HW-003/013/015`, `MOT-AC-009`, `MOT-CI-004`.
+  **Files:** carrier/output root schematics and PCBs, any required local
+  footprints/library tables, native review inventories and generated SVGs.
+  Convert controller/output bus connectors to the selected interface; add a
+  second parallel output header DNP by default. Preserve separate logic/raw
+  5 V, all six bus functions, local defaults/protection, mains isolation,
+  front assembly and the 100 mm dimension discussion target. Preserve source
+  identities wherever possible and allocate both fitted and DNP footprints.
+  **Verification:** fresh XML pin-net comparison, DNP/BOM inspection, native
+  ERC/DRC and filled-copper/drill/isolation review; render revised SVGs.
+- [x] **Goal:** Record observed evidence and remaining wiring limits.
+  **Requirements:** `MOT-HW-003/013/015`, `MOT-AC-009`, `MOT-CI-004`.
+  **Files:** `hardware/controller/verification.md`, changed design notes and
+  issue #62. Run `mise exec -- pre-commit run --all-files` and standard RQML.
+  Use `rqml link` for real new native-file applicability relationships and
+  implementation links for approved annotation/allocation obligations; refresh
+  changed baselines only after review. Keep draft electrical design inputs
+  distinct from completed implementation/physical verification. Retain old
+  quotes as dated snapshots rather than prices for changed exports.
+
+**Result:** exact source/pin/DNP/BOM comparisons and independent native reviews
+pass; both changed boards have zero DRC violations/opens, connected actual
+copper and passing drill/plane/isolation screens. One documented 21.96 mm
+CUT_EN bridge uses output In2 without adding vias. Eight SVGs regenerate;
+sensor sources/views are unchanged. Full pre-commit and standard RQML pass,
+exit 0. Reviewed annotation/allocation baselines were refreshed; no draft
+electrical requirement was approved or given fabricated verification coverage.
+Physical harness and product qualification remain open. See the current
+hardware verification and harness records for hashes, assumptions and limits.
+
+## Optional USB header and CC pull-downs, 2026-11-17
+
+**Readiness:** READY for the user's requested normally-unpopulated 0.1-inch
+USB interface and DNP CC pull-downs. `MOT-HW-014` records this real design input;
+continue the existing exploratory exception with electrical requirements draft.
+Approved `MOT-HW-003/013` and `MOT-CI-004` govern trace fields, allocation and
+derivatives. Preserve the default USB behavior, power qualification and mains
+isolation; keep the existing carrier outline and other boards unchanged.
+
+- [x] Add a labelled six-position 2.54 mm header and separate 5k1/1% CC1/CC2
+  pull-down footprints, all DNP. Three copper solder selectors default to PH
+  and select VBUS/D+/D- together for the alternate interface. No new purchased
+  default components or duplicate pull-downs on the Adafruit assembly.
+- [x] Place/reroute only the affected USB area, retaining a continuous LV ground
+  reference and disconnected inactive USB branches. Preserve existing UUIDs,
+  groups and pin maps except the intentional selector interface; verify the
+  contracted default electrical behavior and separate ALT behavior.
+- [x] Run native ERC/DRC, actual copper/plane/isolation/drill checks and default/
+  ALT connectivity review. Update pin/ESD notes, derivative SVGs and quote-input
+  provenance; independently review before refreshing baselines, then run full
+  pre-commit and standard RQML. Physical USB/hot-plug qualification remains open.
+
+**Result:** default/ALT connectivity and independent native review pass; native
+DRC has zero violations/opens. Full pre-commit and standard RQML pass (exit 0).
+The reference centerline screen passes; neighboring header antipads clip parts
+of the wider ±0.3 mm margin. Record this limitation and source identities in
+`hardware/controller/verification.md`; no USB impedance or operating acceptance
+is inferred.
+
+## Assembly-ready exact-part integration, 2026-11-16
+
+**Readiness:** READY for the user's authorization to confirm factory assembly,
+integrate exact footprints and obtain updated prices. Continue the exploratory
+hardware exception under `MOT-PROC-001`; approved `MOT-HW-003/013` and
+`MOT-CI-004` govern native identities, allocations and derivatives. Preserve
+electrical connectivity, front assembly, four-layer isolation and dimensions
+below the 100 mm discussion target. Keep the retained relay and LOW default;
+do not silently claim optional HIGH qualification or completed protection tests.
+
+- [x] Confirm actual PCBA matching for the proposed exact mains terminals,
+  holders and headers; distinguish selected factory parts from hand installation.
+  Review sensible alternatives and existing fuse/jumper limitations.
+- [x] Integrate manufacturer-derived footprints, source fields and corrected
+  placement/routing, retaining source UUIDs, pad-net identities and functional
+  allocations. Check access, covered component envelopes and hole sizes.
+- [x] Compare fresh netlists, native DRC/ERC, copper connectivity, isolation,
+  drills and wide mains paths. Inspect revised views and regenerate derivatives;
+  independently review before refreshing affected RQML baselines. Run full
+  pre-commit and standard RQML; record limits and tested hashes.
+- [x] Export revised BOM/CPL/Gerbers and obtain quotation-only JLC pricing.
+  Reconcile actual factory-selected references, hand-fitted items and attrition
+  for the one/two/five-controller scenarios without double counting parts.
+
+Verification: both boards have zero physical DRC violations/opens; independent
+filled-copper, isolation, drill and wide-path audits pass, as do source/pin-net
+invariants, full pre-commit and standard RQML. Eight changed SVGs are current;
+sensor sources/views are unchanged. Actual Economic prices are $285.26 /
+$312.08 / $419.13, with manual positions and stock omissions separated in
+`docs/jlcpcb-quote-2026-11-16-exact-parts.md`. This is a checked exploratory
+integration and quotation, not electrical/thermal or fabrication qualification.
+
+## Exact mechanical/electrical purchasing selections, 2026-11-16
+
+**Readiness:** SELECTED exact parts for the user's sourcing request.
+Continue the existing exploratory hardware exception and approved
+`MOT-HW-003/013` annotation/allocation obligations. Preserve circuit behavior,
+source identities, front assembly, isolation and the 100 mm board target.
+
+- [x] Inspect the twelve unresolved positions, existing ancillary selections and
+  manufacturer drawings. Select actual mains terminals, fuse holder/cartridge
+  assemblies, LV harness headers and configuration links; prioritize technical
+  fit and current acquisition over retaining an unverified generic footprint.
+- [x] Record exact MPNs, source codes and dimensional/electrical evidence.
+  Apply confirmed existing-part metadata; preserve accepted current parts and
+  keep unfinished qualifications explicit. Fuse and connector drawings expose
+  real footprint/access changes, so record their complete integration plan in
+  `docs/hardware-exact-selections.md` for the separate manufacturing-cleanup
+  work item.
+- [x] Independently verify that this pass changes only the documented R25/K1
+  identities/relay assignment and J20's discovered LOW-only constraint, with
+  unchanged wiring/geometry/SVGs. Refresh reviewed RQML baselines and run full
+  pre-commit. Preserve the preceding quote as a dated snapshot rather than a
+  price claim for the selected future connector/holder integration.
+
+Verification: independent parsed native-tree comparison passes; all twelve
+SVGs are byte-current. Full pre-commit, including annotation/allocation and
+standard RQML checks, passes (exit 0). Reviewed native hashes are recorded in
+`hardware/controller/verification.md`. Mechanical integration and physical
+qualification remain explicit follow-up work.
+
+## JLC-sourceable AC passive revision, 2026-11-16
+
+**Readiness:** VERIFIED the user's authorized update of the circuit and
+board from the completed passive review. Continue the existing `MOT-PROC-001`
+exploratory hardware exception: electrical requirements remain draft inputs,
+not product qualification claims. Approved `MOT-HW-003`, `MOT-HW-013` and
+`MOT-CI-004` govern native identity, allocation and generated views. The reviewed
+component/value changes are implementation details, not a new architecture.
+
+- [x] **Goal:** Update heater, feedback and line-reference schematics with
+  stocked pulse-rated passives, explicit source fields and common-PCB LOW/HIGH
+  assembly choices. **Inputs:** `MOT-HW-001/002/003`, `MOT-AC-001/002/003/008/013/014`,
+  `hardware/controller/ac-passive-review.md`. Preserve source UUIDs and groups;
+  add meaningful annotations for new symbols and retain the off-default path.
+- [x] **Goal:** Synchronize output/carrier footprints, repair affected routing
+  and preserve external connectors, front assembly, four-layer LV planes and
+  the existing isolation boundary. Keep dimensions at most 100 mm. Verify
+  changed pad nets against fresh KiCad XML netlists, native DRC/parity,
+  connectivity, drills, mains netclasses and unchanged unrelated circuits.
+- [x] **Goal:** Refresh affected review/SVG and pin/default inventories,
+  record calculations/actual limits separately from qualified behavior, inspect
+  changed source before refreshing the existing native `MOT-HW-003` baselines,
+  and run allocation/trace checks plus full pre-commit and standard RQML.
+
+Verification: the current section in `hardware/controller/verification.md`
+records tested source hashes and observed native/graph checks. Both changed
+boards have zero physical/silk violations, opens and drilled-via/SMT-land
+intersections; inherited parity/ERC findings remain explicit. All 263 footprints
+pass annotation/allocation, full pre-commit and standard RQML pass (exit 0), and
+eight derivative SVGs are refreshed. Sensor sources/views are unchanged.
+Ignored PDFs are earlier snapshots; assembly eligibility, revised pricing and
+physical electrical qualification remain unclaimed.
+
 ## Functional component allocation, 2026-11-15
 
 **Readiness:** READY for the developer's accepted grouping proposal, narrowed

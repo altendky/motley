@@ -613,7 +613,7 @@
 		(uuid "51f549be-64e4-54be-b8e0-41a12537cf34")
 	)
 	(text "R44-R47 independently disconnect socket power, NOT SDA/SCL. Do not connect another powered host or drive signals into an unpowered board." (exclude_from_sim no) (at 15 381 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "61f6dc6d-0a02-5f58-98a8-46d81f745831"))
-	(text "One pull-up pair per bus: main 10k, LP 4k7. Configure aggregate pulls when chaining muxes; check LOW current, rise time and cable power drop." (exclude_from_sim no) (at 15 395 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "6566bbe5-4c60-5051-be13-43113151dd1c"))
+	(text "One pull-up pair per bus: main 10k, LP 2k2. Configure aggregate pulls when chaining muxes; check LOW current, rise time and cable power drop." (exclude_from_sim no) (at 15 395 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "6566bbe5-4c60-5051-be13-43113151dd1c"))
 	(text "MAIN I2C: GPIO19 SDA / GPIO18 SCL - FIRST SOCKET / LOCAL PULL-UPS"
 		(exclude_from_sim no)
 		(at 20 40 0)
@@ -3282,7 +3282,7 @@
 				)
 			)
 		)
-		(property "Value" "4k7"
+		(property "Value" "2k2"
 			(at 97.79 266.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3335,7 +3335,7 @@
 				)
 			)
 		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005 MOT-HW-016"
 			(at 93.98 266.7 0)
 			(hide yes)
 			(show_name no)
@@ -3360,7 +3360,11 @@
 				)
 			)
 		)
-	)
+(property "Purpose" "Central LP bus pull-up:2k2 for initial2-output ribbon rise-time screen. No per-output pull-ups." (at 93.98 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "Manufacturer" "UNI-ROYAL" (at 93.98 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "MPN" "0805W8F2201T5E" (at 93.98 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "LCSC" "C17520" (at 93.98 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+)
 	(symbol
 		(lib_id "Device:R")
 		(at 93.98 88.9 0)
@@ -3482,7 +3486,7 @@
 				)
 			)
 		)
-		(property "Value" "4k7"
+		(property "Value" "2k2"
 			(at 120.65 266.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3535,7 +3539,7 @@
 				)
 			)
 		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005"
+		(property "Requirements" "MOT-HW-001 MOT-HW-003 MOT-HW-004 MOT-HW-009 MOT-SENS-005 MOT-HW-016"
 			(at 116.84 266.7 0)
 			(hide yes)
 			(show_name no)
@@ -3560,7 +3564,11 @@
 				)
 			)
 		)
-	)
+(property "Purpose" "Central LP bus pull-up:2k2 for initial2-output ribbon rise-time screen. No per-output pull-ups." (at 116.84 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "Manufacturer" "UNI-ROYAL" (at 116.84 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "MPN" "0805W8F2201T5E" (at 116.84 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+(property "LCSC" "C17520" (at 116.84 266.7 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1 1))))
+)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
 		(at 457.2 266.7 0)

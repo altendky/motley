@@ -897,7 +897,7 @@
 		)
 		(uuid "d352901d-c89d-5767-a6e7-e811c5b3c3cb")
 	)
-	(text "4 x 17k = 68k: illustrative dissipation about 0.21 W total at120Vac and1.03 W at264Vac.\nR84 supply filtering: detector VCC/threshold guaranteed ranges, tolerance and transients require review.\nReinforced-isolation spacing, resistor voltage/pulse ratings and timing remain UNQUALIFIED; no PCB routing."
+	(text "3 x18k CRGP=54k: guarded bank heat upper bound1.33W at264Vac; minimum sine trip about65Vrms.\nR84 filtering and qualified edge timing remain to verify. Loss of reference inhibits both modes.\nSelect mains surge protection and verify resistor/insulation/thermal limits before use; exploratory routed study."
 		(exclude_from_sim no)
 		(at 15 167.64 0)
 		(effects
@@ -951,16 +951,6 @@
 			(type default)
 		)
 		(uuid "019f179c-9c81-5498-8068-131f81aa901f")
-	)
-	(wire
-		(pts
-			(xy 41.91 111.76) (xy 20.32 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "04d7f2fe-2136-53bf-bbe5-17bf0210dc52")
 	)
 	(wire
 		(pts
@@ -1141,16 +1131,6 @@
 			(type default)
 		)
 		(uuid "9ed89734-e8ef-570d-adde-86ac6916520a")
-	)
-	(wire
-		(pts
-			(xy 72.39 111.76) (xy 49.53 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ade98242-c02d-5626-904e-f2200a2dd741")
 	)
 	(wire
 		(pts
@@ -1488,107 +1468,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 45.72 111.76 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "113a7fe0-0433-557d-b1e3-69c88cf638e5")
-		(property "Reference" "R83"
-			(at 49.53 106.68 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Value" "17k / 1W / HV"
-			(at 49.53 109.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
-			(at 45.72 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 45.72 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "One of four series AC detector input resistors; 68k total. 2512 1W/HV part to select; voltage, surge and flame behavior unqualified."
-			(at 45.72 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "FunctionalGroup" "ac.line-reference"
-			(at 45.72 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Requirements" "MOT-HW-001 MOT-HW-002 MOT-HW-003 MOT-HW-004 MOT-AC-001 MOT-AC-002 MOT-AC-008"
-			(at 45.72 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "e56f64d0-072a-4772-b3eb-5bbb09dc093f")
-		)
-		(pin "1"
-			(uuid "6e17e762-45dd-4097-b137-b44328763775")
-		)
-		(instances
-			(project "motley-carrier"
-				(path "/48358fe0-81bc-55f5-b912-79aff100e69d/601d5273-9ef7-5326-bddb-c9639ed15c93"
-					(reference "R83")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 147.32 38.1 0)
 		(unit 1)
 		(body_style 1)
@@ -1920,7 +1799,7 @@
 		(dnp no)
 		(uuid "492c9801-1e9b-5a27-add4-887f04ce1d32")
 		(property "Reference" "R82"
-			(at 80.01 106.68 0)
+			(at 80.01 106.68 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1929,8 +1808,8 @@
 				)
 			)
 		)
-		(property "Value" "17k / 1W / HV"
-			(at 80.01 109.22 0)
+		(property "Value" "18k / CRGP"
+			(at 80.01 109.22 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1950,7 +1829,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 76.2 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -1961,7 +1840,7 @@
 				)
 			)
 		)
-		(property "Description" "One of four series AC detector input resistors; 68k total. 2512 1W/HV part to select; voltage, surge and flame behavior unqualified."
+		(property "Description" "One of three TE pulse-rated18k resistors;54k total carrier detector burden. Protection envelope and timing still require qualification."
 			(at 76.2 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -2008,6 +1887,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 76.2 111.76 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F18K" (at 76.2 111.76 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C2082909" (at 76.2 111.76 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "Rating" "2W at70C /1% /500V working; qualify actual surge and board temperature." (at 76.2 111.76 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -2292,7 +2179,7 @@
 		(dnp no)
 		(uuid "9ab818a2-bb40-5c04-9d81-002412267216")
 		(property "Reference" "R80"
-			(at 49.53 76.2 0)
+			(at 49.53 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2301,8 +2188,8 @@
 				)
 			)
 		)
-		(property "Value" "17k / 1W / HV"
-			(at 49.53 78.74 0)
+		(property "Value" "18k / CRGP"
+			(at 49.53 78.74 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2322,7 +2209,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 45.72 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -2333,7 +2220,7 @@
 				)
 			)
 		)
-		(property "Description" "One of four series AC detector input resistors; 68k total. 2512 1W/HV part to select; voltage, surge and flame behavior unqualified."
+		(property "Description" "One of three TE pulse-rated18k resistors;54k total carrier detector burden. Protection envelope and timing still require qualification."
 			(at 45.72 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -2380,6 +2267,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 45.72 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F18K" (at 45.72 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C2082909" (at 45.72 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "Rating" "2W at70C /1% /500V working; qualify actual surge and board temperature." (at 45.72 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -2393,7 +2288,7 @@
 		(dnp no)
 		(uuid "b0b923c6-c720-5516-a32e-1f7c73282103")
 		(property "Reference" "R81"
-			(at 80.01 76.2 0)
+			(at 80.01 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2402,8 +2297,8 @@
 				)
 			)
 		)
-		(property "Value" "17k / 1W / HV"
-			(at 80.01 78.74 0)
+		(property "Value" "18k / CRGP"
+			(at 80.01 78.74 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2423,7 +2318,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=9-1773463-9&DocType=Data+Sheet"
 			(at 76.2 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -2434,7 +2329,7 @@
 				)
 			)
 		)
-		(property "Description" "One of four series AC detector input resistors; 68k total. 2512 1W/HV part to select; voltage, surge and flame behavior unqualified."
+		(property "Description" "One of three TE pulse-rated18k resistors;54k total carrier detector burden. Protection envelope and timing still require qualification."
 			(at 76.2 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -2481,6 +2376,14 @@
 				)
 			)
 		)
+
+		(property "Manufacturer" "TE Connectivity" (at 76.2 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "MPN" "CRGP2512F18K" (at 76.2 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "LCSC" "C2082909" (at 76.2 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
+
+		(property "Rating" "2W at70C /1% /500V working; qualify actual surge and board temperature." (at 76.2 81.28 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 0.8 0.8))))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -2794,4 +2697,5 @@
 			)
 		)
 	)
+	(wire (pts (xy 20.32 111.76) (xy 72.39 111.76)) (stroke (width 0) (type default)) (uuid "1ee325dc-58f5-5dc0-8c86-b5db3ad95cf7"))
 )

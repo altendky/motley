@@ -498,6 +498,50 @@
         </criterion>
       </acceptance>
     </req>
+    <req id="MOT-HW-014" type="IR" title="Optional alternative USB wiring header" status="draft" priority="should">
+      <statement>The controller board SHOULD provide a normally unpopulated 2.54 mm USB wiring header adjacent to the panel-cable interface, with optional independent USB-C sink pull-downs.</statement>
+      <acceptance>
+        <criterion id="AC-MOT-HW-014-01">
+          <given>the default assembly</given><when>the alternative interface is inspected</when><then>six labelled positions expose VBUS, ground, D+, D-, CC1 and CC2; the header and two separate 5.1 kilohm one-percent CC-to-ground resistors are DNP, and the existing panel cable remains selected</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-014-02">
+          <given>a supported alternative-harness configuration</given><when>its manual connector selection is applied</when><then>VBUS and both data lines select the same upstream connector without joining two upstream VBUS sources; selected data retains ESD protection and valid-host-VBUS qualification, and inactive long data branches are disconnected</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-014-03">
+          <given>an alternative USB-C receptacle</given><when>its harness is configured</when><then>CC1 and CC2 have separate pull-downs from either the receptacle assembly or the optional board resistors, without paralleling duplicate pull-downs or joining CC1 to CC2; connector polarity, one-host operation and the absence of USB-PD support are documented</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-015" type="IR" title="Hardware poka-yoke" status="draft" priority="must">
+      <statement>Hardware interfaces and removable assemblies SHALL provide physical mistake-proofing against foreseeable incorrect connection or assembly that could cause a hazard, hardware damage or unintended actuation.</statement>
+      <rationale>The connector discussion exposed electrically incompatible USB and output-bus harnesses with the same mating housing. This is a general design obligation, not a selection of one connector family or keying method.</rationale>
+      <acceptance>
+        <criterion id="AC-MOT-HW-015-01">
+          <given>all supported hardware populations, including deployment, service, bench and optional DNP interfaces</given><when>the poka-yoke review is performed</when><then>connectors, harnesses, jumpers and other removable assemblies have an inventory of intended mates or configurations and foreseeable mistakes, including incompatible cross-mating, reversal, offset insertion and incorrect orientation, with their consequences recorded</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-015-02">
+          <given>a mistake identified as capable of causing a hazard, damage or unintended actuation</given><when>the selected parts and assembly are checked</when><then>mechanical features prevent that mistake during ordinary assembly without forcing or modifying parts; reversal prevention and incompatible-circuit discrimination are checked separately, and labels or colours alone are not accepted as physical prevention</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-015-03">
+          <given>a case where physical prevention is impractical or intentionally compatible interfaces are interchangeable</given><when>the design review is completed</when><then>each exception has an explicitly reviewed justification, alternative mitigation, residual consequences and verification evidence; unresolved cases remain open, and interfaces declared interchangeable have compatible pinouts and electrical limits</then>
+        </criterion>
+      </acceptance>
+    </req>
+    <req id="MOT-HW-016" type="IR" title="Continuous multi-drop output harness" status="draft" priority="must">
+      <statement>The output interface SHALL support a continuous six-conductor internal ribbon harness with keyed 2-by-3, 2.54 mm board headers and one fitted plus one normally unpopulated parallel header per output board.</statement>
+      <rationale>Continuous conductors avoid passing downstream power through intermediate boards and their mating contacts; the second footprint retains an optional separate-cable population.</rationale>
+      <acceptance>
+        <criterion id="AC-MOT-HW-016-01">
+          <given>the default carrier, output boards and harness</given><when>their numbered connectivity and assembly population are inspected</when><then>every socket connects wire 1 to pin 1 with the same six-signal mapping, selected logic 5 V and raw actuator 5 V remain separate, output headers are electrically parallel, and only the primary output header is fitted</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-016-02">
+          <given>the continuous harness construction</given><when>its cable and connectors are selected</when><then>the recorded parts support uncut intermediate taps, conductor gauge and insulation match the termination, and nominal 50 mm tap spacing accounts for connector folds and service allowance</then>
+        </criterion>
+        <criterion id="AC-MOT-HW-016-03">
+          <given>a proposed harness length and board population</given><when>its electrical limits are assessed</when><then>aggregate current, supply and ground drop, I2C capacitance and rise time, and line-reference fanout are checked; the selected supply and wiring do not gain an unsupported sixteen-output rating from connector selection alone</then>
+        </criterion>
+      </acceptance>
+    </req>
     <req id="MOT-HW-004" type="CR" title="External-interface ESD assessment" status="draft" priority="must">
       <statement>Every externally accessible electrical interface SHALL have a documented ESD assessment and appropriate protective measures for its declared exposure and operating states.</statement>
       <acceptance>
@@ -1273,5 +1317,32 @@
     <edge id="E-VER-MOT-HW-013" type="verifiedBy" from="MOT-HW-013" to="scripts/test_hardware_groups.py" toKind="test" status="draft" createdBy="rqml">
       <notes>20 executed regression fixtures pass: invalid/duplicate/missing/board-inappropriate fields, repeated/multi-unit/BOM-only/board-only identity, CLI failures and input preservation.</notes>
     </edge>
+    <edge id="E-IMPL-MOT-HW-003-46" type="implements" from="hardware/controller/Motley.pretty/Vishay_PR02_P15.24mm.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-47" type="implements" from="hardware/controller/Motley.pretty/TerminalBlock_GOOSVN_GS007S_P5.08mm_1x03_Horizontal.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-48" type="implements" from="hardware/controller/Motley.pretty/TerminalBlock_GOOSVN_GS007S_P7.50mm_1x03_Horizontal.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-49" type="implements" from="hardware/controller/Motley.pretty/Fuseholder_Schurter_OGN_0031.8201_P22.50mm_Covered.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-50" type="implements" from="hardware/controller/Motley.pretty/Samtec_HMTSW-102-07-G-S-200_Vertical.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-51" type="implements" from="hardware/controller/Motley.pretty/Samtec_HMTSW-102-07-L-D-200_Vertical.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-014-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-014" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-014" type="dependsOn" from="MOT-HW-014" to="hardware/controller/usb-power.kicad_sch" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-014-2" type="dependsOn" from="MOT-HW-014" to="hardware/controller/motley-carrier.kicad_pcb" status="draft" createdBy="rqml"/>
+    <edge id="E-SAT-MOT-HW-015-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-015" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-015-ISSUE-59" type="dependsOn" from="https://github.com/altendky/motley/issues/59" to="MOT-HW-015" status="draft" createdBy="rqml">
+      <notes>Deferred review and implementation work; this relationship is not implementation or verification evidence.</notes>
+    </edge>
+    <edge id="E-DEP-ADR0022-MOT-HW-015" type="dependsOn" from=".rqml/adr/0022-multidrop-output-ribbon.md" to="MOT-HW-015" status="draft" createdBy="rqml">
+      <notes>Accepted harness design direction; native integration and physical qualification remain pending.</notes>
+    </edge>
+    <edge id="E-DEP-ADR0022-MOT-AC-009" type="dependsOn" from=".rqml/adr/0022-multidrop-output-ribbon.md" to="MOT-AC-009" status="draft" createdBy="rqml">
+      <notes>Accepted harness design direction; native integration and physical qualification remain pending.</notes>
+    </edge>
+    <edge id="E-SAT-MOT-HW-016-GOAL-MOT-HARDWARE" type="satisfies" from="MOT-HW-016" to="GOAL-MOT-HARDWARE" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-ADR0022-MOT-HW-016" type="dependsOn" from="MOT-HW-016" to=".rqml/adr/0022-multidrop-output-ribbon.md" status="draft" createdBy="rqml"/>
+    <edge id="E-IMPL-MOT-HW-003-52" type="implements" from="hardware/controller/Motley.pretty/Kinghelm_KH-2.54PH180-2X3P-L8.9_Vertical.kicad_mod" fromKind="code" to="MOT-HW-003" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-016-2" type="dependsOn" from="MOT-HW-016" to="hardware/controller/motley-carrier.kicad_sch" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-016-3" type="dependsOn" from="MOT-HW-016" to="hardware/controller/motley-ac-output.kicad_sch" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-016-4" type="dependsOn" from="MOT-HW-016" to="hardware/controller/qwiic-bench.kicad_sch" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-016-5" type="dependsOn" from="MOT-HW-016" to="docs/output-ribbon.md" status="draft" createdBy="rqml"/>
+    <edge id="E-DEP-MOT-HW-016-6" type="dependsOn" from="MOT-HW-016" to="hardware/controller/four-layer-review.md" status="draft" createdBy="rqml"/>
   </trace>
 </rqml>
