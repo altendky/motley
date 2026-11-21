@@ -1,5 +1,26 @@
 # Motley plan
 
+## Reviewed mise-action dependency update, 2026-11-21
+
+Reviewed `238b371617987e74273dd373c090f28357832472` and show/impact results for
+`MOT-CI-001/002/003/004` and `MOT-HW-013`. The update changes only the four
+`jdx/mise-action` pins from `b44d12e7d0d8ee7461bb893e1b1993500433185b` to
+`90f833d396d0cc3674b631d2d225e306476c303a`. Locked installation, firmware build
+and artifact handling, the independent requirements report, generated-board
+freshness and hardware checks remain configured as before. No requirement
+intent or verification link changes are needed.
+
+Refreshed only the five baseline edges mapped to `.github/workflows/ci.yml`:
+`E-IMP-MOT-CI-BUILD`, `E-IMP-MOT-CI-UPLOAD`, `E-IMPL-MOT-CI-003`,
+`E-IMPL-MOT-CI-004-3` and `E-IMPL-MOT-HW-013-5`. RQML hashes the whole file for
+fragment locators too. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0. `mise exec -- pre-commit run --all-files` exited 0,
+including actionlint, Mergify validation, hardware/firmware metadata tests,
+board SVG checks and RQML gates. The reviewed workflow SHA-256 is
+`94d834d14b792eb55dc3b45f49ca442d2fbeb6150d7adbd0dc4c5c24e179dca9`;
+the other source/test inputs remain at the reviewed commit above. These local
+checks do not claim a new firmware build or hosted action execution.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
