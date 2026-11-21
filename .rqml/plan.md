@@ -1,5 +1,25 @@
 # Motley plan
 
+## Reviewed mise dependency update, 2026-11-21
+
+Reviewed `c79cc27e7dd6ab0a7de712632279a2523a14db21` and show/impact results for
+`MOT-CI-001/002/003/004` and `MOT-HW-013`. The update changes only the four
+workflow mise versions from 2026.11.4 to 2026.11.12. Locked installation,
+firmware build and artifact handling, the independent requirements report,
+generated-board freshness and hardware checks remain configured as before.
+No requirement intent or verification link changes are needed.
+
+Refreshed only the five baseline edges mapped to `.github/workflows/ci.yml`:
+`E-IMP-MOT-CI-BUILD`, `E-IMP-MOT-CI-UPLOAD`, `E-IMPL-MOT-CI-003`,
+`E-IMPL-MOT-CI-004-3` and `E-IMPL-MOT-HW-013-5`. RQML hashes the whole file for
+fragment locators too. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0. `mise exec -- pre-commit run --all-files` exited 0,
+including actionlint, Mergify validation, hardware/firmware metadata tests,
+board SVG checks and RQML gates. The reviewed workflow SHA-256 is
+`ecbaa21b2dda52d0ff6bc017d1474e9afe4a837c1f4a00691b8af19104de5ee3`;
+the other source/test inputs remain at the reviewed commit above. These local
+checks do not claim a new firmware build or hosted action execution.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
