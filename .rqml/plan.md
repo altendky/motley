@@ -43,6 +43,74 @@ for `mise.lock`; other source/test inputs remain at the reviewed commit above.
 These local checks do not claim a new firmware build or additional platform
 execution evidence.
 
+## Reviewed mise dependency update, 2026-11-21
+
+Reviewed `c79cc27e7dd6ab0a7de712632279a2523a14db21` and show/impact results for
+`MOT-CI-001/002/003/004` and `MOT-HW-013`. The update changes only the four
+workflow mise versions from 2026.11.4 to 2026.11.12. Locked installation,
+firmware build and artifact handling, the independent requirements report,
+generated-board freshness and hardware checks remain configured as before.
+No requirement intent or verification link changes are needed.
+
+Refreshed only the five baseline edges mapped to `.github/workflows/ci.yml`:
+`E-IMP-MOT-CI-BUILD`, `E-IMP-MOT-CI-UPLOAD`, `E-IMPL-MOT-CI-003`,
+`E-IMPL-MOT-CI-004-3` and `E-IMPL-MOT-HW-013-5`. RQML hashes the whole file for
+fragment locators too. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0. `mise exec -- pre-commit run --all-files` exited 0,
+including actionlint, Mergify validation, hardware/firmware metadata tests,
+board SVG checks and RQML gates. The reviewed workflow SHA-256 is
+`ecbaa21b2dda52d0ff6bc017d1474e9afe4a837c1f4a00691b8af19104de5ee3`;
+the other source/test inputs remain at the reviewed commit above. These local
+checks do not claim a new firmware build or hosted action execution.
+
+### Main catch-up review, 2026-11-21
+
+Reviewed the merge of main `032d7a9b4827082d3b3ecd135e3c238041e7b784`
+into `744c4d9d5f55b935145c222f87277c0fc2241bba`, preserving the reviewed
+mise-action and uv updates from #23 and #64. The combined workflow changes
+only those action pins and the four mise versions; requirements, locked
+installation, firmware/artifact handling and hardware checks retain their
+intent. Re-ran show/impact for `MOT-CI-001/002/003/004`, `MOT-HW-013` and
+`MOT-HW-003` before resolution. Kept the main baseline as authoritative,
+including both uv hashes, and refreshed only the five workflow edges listed
+above for the actual combined `.github/workflows/ci.yml` SHA-256:
+`0d12de38edfbbd86215f0c95a78d79e38a8181b955852b2a5296f27d06a68843`.
+
+`mise exec -- pre-commit run --all-files` exited 0 for the combined state,
+including standard RQML consistency/drift, the mapped-implementation approval
+gate, hardware/firmware metadata tests and generated SVG checks. This records
+local review and checks, not a new firmware build or hosted action execution.
+
+## Firmware fixture isolation review, 2026-11-21
+
+Reviewed `MOT-BUILD-002` and `MOT-PLAT-001` with show/impact and the matrix
+before changing their shared `scripts/test_firmware.py` target. Git hooks export
+repository-local environment variables that override `git -C`; foreign fixture
+reset/clean and init commands must therefore run with those variables removed.
+The test contexts now remove the names reported by `git rev-parse
+--local-env-vars`. Production source identity, provenance and dependency checks
+retain their existing behavior.
+
+The 35 tests passed normally and with hook variables targeting a disposable
+shared clone. Two new regression tests execute the actual identity and runner
+fixtures under those variables, checking that the invoking repository's HEAD,
+index, MERGE_HEAD and config remain byte-for-byte unchanged. Both init fixtures
+also check that their own Git directory was created. The full-suite hook test
+additionally preserved the recovery worktree's Git state. No fixture commits
+were created. The reviewed test SHA-256 is
+`6bd949e02df3b5a3d7efe32235402c3f46f7ef554cb5553dff689a518bb0fc77`;
+`scripts/build_metadata.py` remains
+`58a115e6dbbb74991745c12f63e6889e335f713dae868233b4bddd97449320e1`.
+
+The existing `E-VER-MOT-IDENTITY-FIXTURES` and `E-VER-MOT-PLAT-001` links still
+target this test file. RQML 0.11.0 supports baseline refresh only for implements
+edges, so no verification hashes were fabricated or baseline entries changed.
+The five reviewed workflow and two uv baseline values were preserved.
+`mise exec -- pre-commit run --all-files` exited 0, including firmware metadata,
+hardware, generated SVG, RQML validation/lint/consistency and approval checks.
+These checks exercise fixture safety and existing mocked firmware behavior;
+they do not claim a new SDK firmware build or hardware verification.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
