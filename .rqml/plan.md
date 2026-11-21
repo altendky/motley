@@ -1,5 +1,40 @@
 # Motley plan
 
+## Python 3.15 maintenance update, 2026-11-21
+
+Reviewed dependency PR #12 and show/impact results for `MOT-HW-003`,
+`MOT-HW-013`, `MOT-CI-001/002/003/004` and `MOT-PROC-001/002` before editing
+the tooling configuration. Python also runs firmware metadata, hardware trace,
+allocation and SVG helpers beyond the declared tooling links. Their behavior,
+requirements, tool trust exceptions and native sources must remain unchanged.
+
+Combined dependency head `648b59c200ed54f8999a3aa7f69f39a17a84e13e` with main
+`e78f6aeb47b720a0cf22e6c4797c928d969a2fab`, keeping Python 3.15.2 and the
+current main tool pins. Cold wheel-only replay of the old pre-commit graph
+failed with exit 2 because PyYAML 6.0.3 lacks a Python 3.15 wheel. PyYAML 6.0.4
+publishes the required wheels for all five declared platforms:
+<https://pypi.org/project/PyYAML/6.0.4/#files>.
+
+Used uv 0.13.9 to update only PyYAML to 6.0.4, preserving every other package
+record and the original global release cutoff. A package-specific cutoff admits
+the reviewed PyYAML release. `mise lock pipx:pre-commit` refreshed its graph
+digest; pre-commit remains 4.7.0. `mise install --locked` exited 0, and the actual
+pre-commit environment runs Python 3.15.2 with PyYAML 6.0.4 and libyaml enabled.
+
+Refreshed only `E-IMPL-MOT-HW-003-21` and `E-IMPL-MOT-HW-003-22` with RQML.
+Reviewed SHA-256 values are
+`be7fa89a57774bbceb7b6c7b1214bb694bd77c4e7b27afdddb03d4ce4d949ead` for
+`mise.toml` and
+`6e551851116395c6d8ac008d81fadf4bfb0ea9a740f7d9da27fb0116be883872` for
+`mise.lock`; other source/test inputs remain at the reviewed main commit.
+
+`mise exec -- uv run scripts/test_firmware.py` passed all 35 tests on Python
+3.15.2. `mise exec -- pre-commit run --all-files` exited 0, including firmware,
+hardware and board SVG fixtures, strict RQML lint, standard consistency/drift
+checks and the mapped-implementation approval gate. Requirement intent and other
+baselines are unchanged. These checks do not claim a new firmware build,
+additional platform execution or completion of the existing requirements backlog.
+
 ## Reviewed mise-action dependency update, 2026-11-21
 
 Reviewed `238b371617987e74273dd373c090f28357832472` and show/impact results for
