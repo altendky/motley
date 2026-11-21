@@ -21,6 +21,28 @@ board SVG checks and RQML gates. The reviewed workflow SHA-256 is
 the other source/test inputs remain at the reviewed commit above. These local
 checks do not claim a new firmware build or hosted action execution.
 
+## Reviewed uv dependency update, 2026-11-21
+
+Reviewed `598e342fd533cfaf3855848ae1cc1b66d4ee2886` and the `MOT-HW-003`
+show/impact results before refreshing its two tooling baselines. The update
+changes only uv 0.13.8 to 0.13.9 in `mise.toml` and the corresponding release
+asset URLs and checksums for all five existing `mise.lock` platforms, retaining
+their provenance settings. KiCad pins, native hardware, traceability checks and
+requirements remain unchanged. This maintains the approved tooling relationship,
+with no requirement-intent change or new implementation coverage.
+
+Used `rqml link --refresh` for `E-IMPL-MOT-HW-003-21` and
+`E-IMPL-MOT-HW-003-22` only. Standard RQML consistency and the mapped-implementation
+approval gate both exited 0 after the refresh.
+`mise exec -- pre-commit run --all-files` exited 0, including hardware trace,
+firmware metadata, generated SVG and RQML checks. Reviewed SHA-256 values are
+`f72986a4096e8245f7339d9c58292c10f8fef214f90c2093ed7085e990cdef17`
+for `mise.toml` and
+`f32e0653f13de516ac345d752545c6b2aa574eae8d468fa4fa10e9b27bb3adb9`
+for `mise.lock`; other source/test inputs remain at the reviewed commit above.
+These local checks do not claim a new firmware build or additional platform
+execution evidence.
+
 ## Multi-drop output ribbon, 2026-11-17
 
 **Readiness:** READY for the reviewed native integration. Kinghelm
